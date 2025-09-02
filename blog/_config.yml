@@ -1,0 +1,9 @@
+title: "이음케어라이프 블로그"
+description: "요양병원, 요양원, 방문요양서비스 정보센터"
+baseurl: "/blog"
+url: "https://ecl.ai.kr"
+
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

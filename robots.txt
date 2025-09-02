@@ -3,10 +3,10 @@ Allow: /
 
 # 주요 페이지
 Allow: /
-Allow: /#services
-Allow: /#about
-Allow: /#testimonials
-Allow: /#contact
+Allow: /contact
+Allow: /testimonials
+Allow: /blog
+Allow: /services/*
 
 # 사이트맵 위치
 Sitemap: https://ecl.ai.kr/sitemap.xml

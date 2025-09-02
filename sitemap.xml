@@ -7,41 +7,73 @@
   <!-- 홈페이지 -->
   <url>
     <loc>https://ecl.ai.kr/</loc>
-    <lastmod>2025-08-31</lastmod>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- 서비스 섹션 -->
+  <!-- 상담문의 페이지 -->
   <url>
-    <loc>https://ecl.ai.kr/#services</loc>
-    <lastmod>2025-08-31</lastmod>
+    <loc>https://ecl.ai.kr/contact</loc>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- 회사소개 섹션 -->
+  <!-- 고객후기 페이지 -->
   <url>
-    <loc>https://ecl.ai.kr/#about</loc>
-    <lastmod>2025-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 고객후기 섹션 -->
-  <url>
-    <loc>https://ecl.ai.kr/#testimonials</loc>
-    <lastmod>2025-08-31</lastmod>
+    <loc>https://ecl.ai.kr/testimonials</loc>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- 상담문의 섹션 -->
+  <!-- 블로그 페이지 -->
   <url>
-    <loc>https://ecl.ai.kr/#contact</loc>
-    <lastmod>2025-08-31</lastmod>
+    <loc>https://ecl.ai.kr/blog</loc>
+    <lastmod>2025-08-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 서비스 목록 페이지 -->
+  <url>
+    <loc>https://ecl.ai.kr/services</loc>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 요양병원 상담 서비스 -->
+  <url>
+    <loc>https://ecl.ai.kr/services/nursing-hospital</loc>
+    <lastmod>2025-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 요양원 입소지원 서비스 -->
+  <url>
+    <loc>https://ecl.ai.kr/services/nursing-home</loc>
+    <lastmod>2025-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 장기요양보험 서비스 -->
+  <url>
+    <loc>https://ecl.ai.kr/services/long-term-care</loc>
+    <lastmod>2025-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 새마을상조 서비스 -->
+  <url>
+    <loc>https://ecl.ai.kr/services/postpaid-mutual-aid</loc>
+    <lastmod>2025-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

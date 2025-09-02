@@ -1,0 +1,7 @@
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="200" fill="#10B981"/>
+  <text x="400" y="80" font-family="Arial" font-size="24" font-weight="bold" fill="white" text-anchor="middle">방문요양서비스</text>
+  <text x="400" y="110" font-family="Arial" font-size="18" fill="white" text-anchor="middle">서울 전역 · 고양 · 파주 · 김포</text>
+  <text x="400" y="135" font-family="Arial" font-size="16" fill="white" text-anchor="middle">24시간 무료 상담</text>
+  <text x="400" y="160" font-family="Arial" font-size="20" font-weight="bold" fill="white" text-anchor="middle">010-3829-2548</text>
+</svg>

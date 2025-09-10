@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>이음케어라이프 RSS</title>
+    <link>https://ecl.ai.kr/</link>
+    <description>이음케어라이프 소식 피드 - 후불제상조, 요양병원·요양원, 방문요양서비스 전문 상담</description>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 11 Sep 2025 12:00:00 +0900</lastBuildDate>
+    <pubDate>Thu, 11 Sep 2025 12:00:00 +0900</pubDate>
+    <ttl>1800</ttl>
+
+    <!-- 첫 게시글 -->
+    <item>
+      <title>홈페이지 오픈</title>
+      <link>https://ecl.ai.kr/</link>
+      <description>이음케어라이프 공식 홈페이지가 열렸습니다! 후불제상조, 요양병원·요양원 연결, 방문요양서비스 상담을 제공합니다.</description>
+      <pubDate>Thu, 11 Sep 2025 12:00:00 +0900</pubDate>
+      <guid>https://ecl.ai.kr/</guid>
+    </item>
+
+    <!-- 두 번째 게시글 예시 -->
+    <item>
+      <title>요양 서비스 상담 개시</title>
+      <link>https://ecl.ai.kr/services</link>
+      <description>어르신의 삶과 가족의 마음을 이어주는 종합 케어 서비스. 장기요양보험과 맞춤형 상담을 지금 신청하세요.</description>
+      <pubDate>Thu, 11 Sep 2025 12:30:00 +0900</pubDate>
+      <guid>https://ecl.ai.kr/services</guid>
+    </item>
+
+  </channel>
+</rss>

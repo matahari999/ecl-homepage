@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="naver-site-verification" content="0c43039445589a05bd7ef5b810261e892da4501c" />
-<link rel="alternate" type="application/rss+xml" title="ECL RSS" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="ECL RSS" href="/rss.xml" />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://ecl.ai.kr/" />
@@ -71,41 +71,66 @@
     <!-- SEO 텍스트 (검색엔진만 읽음, 사용자 화면엔 숨김) -->
     <div class="seo-text">
       <h1>이음케어라이프 - 후불제상조 · 요양병원 · 요양원 · 방문요양서비스 전문 상담</h1>
-
       <h2>주요 서비스</h2>
       <h3>후불제상조 서비스</h3>
       <p>경제적 부담을 최소화한 합리적인 후불제 상조 서비스 제공.</p>
-
       <h3>요양병원·요양원 연결</h3>
       <p>어르신 상황에 맞는 요양병원·요양원 연계 지원.</p>
-
       <h3>방문요양서비스</h3>
       <p>가정에서 제공되는 방문 요양 서비스와 장기요양보험 상담.</p>
-
       <h2>이음케어라이프의 약속</h2>
       <h3>어르신 돌봄</h3>
       <p>가족의 마음으로 어르신의 삶을 존중하는 케어 제공.</p>
-
       <h3>전문 상담</h3>
       <p>장기요양보험부터 상조 서비스까지 전문가의 맞춤형 상담.</p>
-
       <h3>24시간 상담 가능</h3>
       <p>언제든 필요한 순간 즉시 상담 가능.</p>
     </div>
 
     <!-- 리액트 앱 진입점 -->
     <div id="root"></div>
+
+    <!-- ✅ 상담 신청 폼 -->
+    <section id="consult-form" style="max-width:600px;margin:50px auto;padding:20px;border:1px solid #ddd;border-radius:10px;">
+      <h2>무료 상담 신청하기</h2>
+      <form action="https://formspree.io/f/mzzaowbn" method="POST">
+        <label>이름 *</label><br>
+        <input type="text" name="name" required style="width:100%;padding:8px;margin:5px 0;"><br><br>
+
+        <label>연락처 *</label><br>
+        <input type="text" name="phone" required style="width:100%;padding:8px;margin:5px 0;"><br><br>
+
+        <label>이메일</label><br>
+        <input type="email" name="email" style="width:100%;padding:8px;margin:5px 0;"><br><br>
+
+        <label>상담 희망 서비스</label><br>
+        <select name="service" style="width:100%;padding:8px;margin:5px 0;">
+          <option value="후불제상조">후불제상조</option>
+          <option value="요양병원">요양병원</option>
+          <option value="요양원">요양원</option>
+          <option value="방문요양서비스">방문요양서비스</option>
+        </select><br><br>
+
+        <label>상담 내용</label><br>
+        <textarea name="message" style="width:100%;padding:8px;margin:5px 0;"></textarea><br><br>
+
+        <button type="submit" style="background:#3B82F6;color:white;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;">
+          무료 상담 신청하기
+        </button>
+      </form>
+    </section>
+
+    <!-- Scripts -->
     <script type="module" crossorigin src="/assets/index-Cl4BGa32.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CoHfiPMk.css">
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(reg => console.log('✅ Service Worker 등록 성공:', reg.scope))
-        .catch(err => console.error('❌ Service Worker 등록 실패:', err));
-    });
-  }
-</script>
-
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(reg => console.log('✅ Service Worker 등록 성공:', reg.scope))
+            .catch(err => console.error('❌ Service Worker 등록 실패:', err));
+        });
+      }
+    </script>
   </body>
 </html>

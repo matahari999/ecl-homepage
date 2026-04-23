@@ -93,6 +93,22 @@
         visibility: hidden;
       }
       /* --- ✨ 프리로더 스타일 끝 --- */
+
+      /* --- ✅ 유튜브 창 크기 조절 스타일 추가 --- */
+      iframe[src*="youtube"] {
+        width: 180px !important;  /* 아주 조그맣게 가로 크기 지정 */
+        height: 101px !important; /* 16:9 비율에 맞춘 세로 크기 */
+        max-width: 100% !important;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        margin: 10px 0;
+      }
+      /* 유튜브를 감싸는 컨테이너가 있다면 그 크기도 함께 제한 */
+      .video-container, .youtube-wrapper {
+        width: 180px !important;
+        height: auto !important;
+        margin: 0 auto; /* 중앙 정렬이 필요 없다면 삭제하세요 */
+      }
     </style>
   </head>
   <body>
@@ -134,7 +150,7 @@
         <select name="service" style="width:100%;padding:8px;margin:5px 0;">
           <option value="후불제상조">후불제상조</option>
           <option value="요양병원">요양병원</option>
-                    <option value="방문요양서비스">방문요양서비스</option>
+          <option value="방문요양서비스">방문요양서비스</option>
         </select><br><br>
         <label>상담 내용</label><br>
         <textarea name="message" style="width:100%;padding:8px;margin:5px 0;"></textarea><br><br>

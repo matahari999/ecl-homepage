@@ -94,7 +94,7 @@
       }
       /* --- ✨ 프리로더 스타일 끝 --- */
 
-      /* --- ✅ 유튜브 창 및 링크 버튼 크기 조절 스타일 --- */
+      /* --- ✅ 유튜브 창 기본 크기 설정 --- */
       iframe[src*="youtube"] {
         width: 180px !important;  
         height: 101px !important; 
@@ -107,13 +107,6 @@
         width: 180px !important;
         height: auto !important;
         margin: 0 auto; 
-      }
-      
-      /* 신사방TV 유튜브 채널 버튼을 작게 만듭니다 */
-      a[href*="youtube.com"], a[href*="youtu.be"] {
-        transform: scale(0.8) !important; /* 크기를 80%로 줄임. 더 줄이려면 0.7로 변경 */
-        transform-origin: center !important;
-        display: inline-block;
       }
     </style>
   </head>
@@ -143,7 +136,7 @@
 
     <div id="root"></div>
 
-    <section id="consult-form" style="max-width:600px;margin:50px auto;padding:20px;border:1px solid #ddd;border-radius:10px;">
+    <section id="consult-form" style="max-width:600px;margin:50px auto;padding:20px;border:1px solid #ddd;border-radius:10px; display: none;">
       <h2>무료 상담 신청하기</h2>
       <form action="https://formspree.io/f/mzzaowbn" method="POST">
         <label>이름 *</label><br>
@@ -184,37 +177,65 @@
         });
       }
     </script>
-    
+
     <script>
-      window.addEventListener('load', () => {
-        // 리액트 앱이 화면을 그리는 시간을 고려해 주기적으로 확인합니다.
-        const hideInterval = setInterval(() => {
-          // 화면상의 텍스트 요소를 모두 찾습니다.
-          const textElements = document.querySelectorAll('p, span, div');
-          let found = false;
-          
-          textElements.forEach(element => {
-            // 지우고 싶은 두 번째 카드의 고유한 설명글을 찾습니다.
-            if (element.textContent.includes('어르신들이 편안하고 안전하게 지낼 수 있는 요양병원')) {
-              // 해당 텍스트를 감싸고 있는 가장 바깥쪽 카드(박스) 요소를 찾아서 숨깁니다.
-              let parentBox = element.parentElement;
-              for(let i = 0; i < 5; i++) { 
-                if (parentBox) {
-                  // 다른 요소를 잘못 지우지 않도록 안전장치를 둡니다.
-                  if (parentBox.textContent.includes('요양병원') && parentBox.textContent.length < 300) {
-                    parentBox.style.display = 'none';
-                    found = true;
+      const fixUI = setInterval(() => {
+        // 1. "신사방 전체 테두리(큰 박스)" 가로 크기 줄이기
+        document.querySelectorAll('div').forEach(div => {
+          if (div.textContent.includes('특별한 약속입니다') && div.children.length > 1) {
+            div.style.maxWidth = '850px'; // 전체 박스 크기를 좀 더 좁게 조절
+            div.style.margin = '0 auto';  // 정중앙 배치
+          }
+        });
+
+        // 2. 유튜브 빨간 버튼 텍스트가 밑으로 떨어지는 현상 고치기
+        document.querySelectorAll('a, button').forEach(btn => {
+          if (btn.textContent.includes('신사방TV 유튜브 채널')) {
+            btn.style.transform = 'none'; // 비율 축소 해제
+            btn.style.whiteSpace = 'nowrap'; // 텍스트 한 줄 고정
+            btn.style.padding = '8px 16px'; // 버튼 내부 여백 조절하여 아담하게
+            btn.style.fontSize = '14px'; // 폰트 크기 조절
+            btn.style.display = 'inline-flex'; 
+            btn.style.alignItems = 'center';
+            btn.style.justifyContent = 'center';
+            btn.style.height = 'auto'; // 높이를 내용에 맞게 자동 조절
+          }
+        });
+
+        // 3. 중복 카드 숨기고 남은 3개를 중앙으로 예쁘게 정렬하기
+        document.querySelectorAll('*').forEach(el => {
+          if (el.children.length === 0 && el.textContent.includes('편안하고 안전하게')) {
+            let card = el;
+            while (card && card.tagName !== 'BODY') {
+              if (card.parentElement && card.parentElement.children.length === 4) {
+                // 두 번째 요양병원 카드 숨김
+                card.style.display = 'none';
+                
+                // 남은 카드 3개를 감싸는 부모 상자를 찾아 Flexbox로 중앙 정렬
+                let container = card.parentElement;
+                container.style.display = 'flex';
+                container.style.justifyContent = 'center'; // 전체를 정중앙으로
+                container.style.gap = '24px'; // 카드 간격
+                container.style.gridTemplateColumns = 'unset'; // 이전 그리드 설정 무시
+                container.style.flexWrap = 'wrap'; // 화면 좁아지면 밑으로 떨어지게
+
+                // 남은 3개 카드의 너비 고정
+                Array.from(container.children).forEach(child => {
+                  if (child.style.display !== 'none') {
+                    child.style.flex = '0 1 300px'; // 300px 정도로 카드 너비 통일
+                    child.style.width = '100%';
                   }
-                  parentBox = parentBox.parentElement;
-                }
+                });
+                break;
               }
+              card = card.parentElement;
             }
-          });
-          
-          // 카드를 성공적으로 숨겼다면 반복 확인을 중지합니다.
-          if (found) clearInterval(hideInterval);
-        }, 800); // 0.8초마다 확인
-      });
+          }
+        });
+      }, 300);
+
+      // 컴퓨터 자원 낭비를 막기 위해 3초 뒤 종료
+      setTimeout(() => clearInterval(fixUI), 3000);
     </script>
-  </body>
+    </body>
 </html>

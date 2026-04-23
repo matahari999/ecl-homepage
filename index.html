@@ -94,17 +94,18 @@
       }
       /* --- ✨ 프리로더 스타일 끝 --- */
 
-      /* --- ✅ 유튜브 창 기본 크기 설정 --- */
-      iframe[src*="youtube"] {
-        width: 180px !important;  
-        height: 101px !important; 
+      /* --- ✅ 동영상(유튜브 창)만 작게 줄이는 코드 --- */
+      iframe[src*="youtube"], iframe[src*="youtu.be"] {
+        width: 240px !important;   /* 동영상 가로 크기 */
+        height: 135px !important;  /* 동영상 세로 크기 (16:9 비율) */
         max-width: 100% !important;
-        border-radius: 8px;
+        border-radius: 10px;
         border: 1px solid #ddd;
-        margin: 10px 0;
+        margin: 10px auto !important;
+        display: block !important;
       }
       .video-container, .youtube-wrapper {
-        width: 180px !important;
+        width: 240px !important;
         height: auto !important;
         margin: 0 auto; 
       }
@@ -148,7 +149,6 @@
         <label>상담 희망 서비스</label><br>
         <select name="service" style="width:100%;padding:8px;margin:5px 0;">
           <option value="후불제상조">후불제상조</option>
-          <option value="요양병원">요양병원</option>
           <option value="방문요양서비스">방문요양서비스</option>
         </select><br><br>
         <label>상담 내용</label><br>
@@ -179,63 +179,53 @@
     </script>
 
     <script>
-      const fixUI = setInterval(() => {
-        // 1. "신사방 전체 테두리(큰 박스)" 가로 크기 줄이기
-        document.querySelectorAll('div').forEach(div => {
-          if (div.textContent.includes('특별한 약속입니다') && div.children.length > 1) {
-            div.style.maxWidth = '850px'; // 전체 박스 크기를 좀 더 좁게 조절
-            div.style.margin = '0 auto';  // 정중앙 배치
-          }
-        });
+      const removeKeywords = [
+        '편안하고 안전하게 지낼 수 있는', 
+        '의료진과 시설을 갖춘 요양병원',
+        '환자 상태에 맞는 최적의 요양병원',
+        '적합한 요양병원 선택부터 입소 준비까지'
+      ];
 
-        // 2. 유튜브 빨간 버튼 텍스트가 밑으로 떨어지는 현상 고치기
-        document.querySelectorAll('a, button').forEach(btn => {
-          if (btn.textContent.includes('신사방TV 유튜브 채널')) {
-            btn.style.transform = 'none'; // 비율 축소 해제
-            btn.style.whiteSpace = 'nowrap'; // 텍스트 한 줄 고정
-            btn.style.padding = '8px 16px'; // 버튼 내부 여백 조절하여 아담하게
-            btn.style.fontSize = '14px'; // 폰트 크기 조절
-            btn.style.display = 'inline-flex'; 
-            btn.style.alignItems = 'center';
-            btn.style.justifyContent = 'center';
-            btn.style.height = 'auto'; // 높이를 내용에 맞게 자동 조절
-          }
-        });
-
-        // 3. 중복 카드 숨기고 남은 3개를 중앙으로 예쁘게 정렬하기
+      setInterval(() => {
+        // 메인 및 서비스 페이지에 있는 '요양병원' 카드 모두 지우고 남은 카드 예쁘게 정렬
         document.querySelectorAll('*').forEach(el => {
-          if (el.children.length === 0 && el.textContent.includes('편안하고 안전하게')) {
-            let card = el;
-            while (card && card.tagName !== 'BODY') {
-              if (card.parentElement && card.parentElement.children.length === 4) {
-                // 두 번째 요양병원 카드 숨김
-                card.style.display = 'none';
-                
-                // 남은 카드 3개를 감싸는 부모 상자를 찾아 Flexbox로 중앙 정렬
-                let container = card.parentElement;
-                container.style.display = 'flex';
-                container.style.justifyContent = 'center'; // 전체를 정중앙으로
-                container.style.gap = '24px'; // 카드 간격
-                container.style.gridTemplateColumns = 'unset'; // 이전 그리드 설정 무시
-                container.style.flexWrap = 'wrap'; // 화면 좁아지면 밑으로 떨어지게
+          if (el.children.length === 0) {
+            const text = el.textContent;
+            const isNursingHospitalCard = removeKeywords.some(keyword => text.includes(keyword));
+            
+            if (isNursingHospitalCard) {
+              let card = el;
+              for (let i = 0; i < 5; i++) {
+                if (card.parentElement) {
+                  card = card.parentElement;
+                  if (card.parentElement && card.parentElement.children.length >= 2 && card.tagName !== 'BODY') {
+                    
+                    // 찾은 요양병원 카드 투명인간 처리!
+                    card.style.display = 'none';
+                    
+                    // 요양병원 카드가 빠진 빈자리를 채우기 위해 남은 카드들 정중앙 정렬
+                    let container = card.parentElement;
+                    container.style.display = 'flex';
+                    container.style.justifyContent = 'center';
+                    container.style.gap = '24px';
+                    container.style.gridTemplateColumns = 'unset'; 
+                    container.style.flexWrap = 'wrap'; 
 
-                // 남은 3개 카드의 너비 고정
-                Array.from(container.children).forEach(child => {
-                  if (child.style.display !== 'none') {
-                    child.style.flex = '0 1 300px'; // 300px 정도로 카드 너비 통일
-                    child.style.width = '100%';
+                    Array.from(container.children).forEach(child => {
+                      if (child.style.display !== 'none') {
+                        child.style.flex = '0 1 320px'; // 남은 카드 크기 고정
+                        child.style.width = '100%';
+                      }
+                    });
+                    break;
                   }
-                });
-                break;
+                }
               }
-              card = card.parentElement;
             }
           }
         });
-      }, 300);
 
-      // 컴퓨터 자원 낭비를 막기 위해 3초 뒤 종료
-      setTimeout(() => clearInterval(fixUI), 3000);
+      }, 500); 
     </script>
-    </body>
+  </body>
 </html>

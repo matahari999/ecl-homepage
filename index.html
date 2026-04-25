@@ -106,21 +106,8 @@
       }
       /* --- ✨ 프리로더 스타일 끝 --- */
 
-      /* --- ✅ 유튜브 창 크기 조절 스타일 추가 --- */
-      iframe[src*="youtube"] {
-        width: 220px !important;
-        height: 124px !important;
-        max-width: 100% !important;
-        border-radius: 16px;
-        border: 1px solid rgba(0,0,0,0.05);
-        margin: 12px 0;
-        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-      }
-      .video-container, .youtube-wrapper {
-        width: 220px !important;
-        height: auto !important;
-        margin: 0 auto;
-      }
+
+
 
       /* --- 🎨 디자인 개선 스타일 --- */
 
@@ -384,13 +371,21 @@
         preloader.classList.add("preloader-finish");
       });
     </script>
+
+
+    <!-- 캐시 초기화 및 서비스 워커 제거 스크립트 -->
     <script>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js')
-            .then(reg => console.log('✅ Service Worker 등록 성공:', reg.scope))
-            .catch(err => console.error('❌ Service Worker 등록 실패:', err));
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            registration.unregister();
+          }
         });
+      }
+      // 캐시 방지를 위해 강제로 1회 새로고침 (로컬스토리지 활용)
+      if (!localStorage.getItem('cacheCleared')) {
+        localStorage.setItem('cacheCleared', 'true');
+        window.location.reload(true);
       }
     </script>
   </body>

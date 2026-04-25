@@ -1,4 +1,4 @@
-// 이음케어라이프 Service Worker
+// 제대군인이음케어라이프 Service Worker
 // 캐싱 전략 구현으로 성능 최적화
 
 const CACHE_NAME = 'ieumcarelife-v1.0.0';
@@ -208,7 +208,7 @@ self.addEventListener('push', (event) => {
   };
 
   event.waitUntil(
-    self.registration.showNotification('이음케어라이프', options)
+    self.registration.showNotification('제대군인이음케어라이프', options)
   );
 });
 

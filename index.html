@@ -292,7 +292,14 @@
         wrap.style.cssText='display:inline-flex;align-items:center;';
         var b1=document.createElement('button');b1.className='ecl-nav-btn';b1.textContent='지정시행사';b1.onclick=openPartnerModal;
         var b2=document.createElement('button');b2.className='ecl-nav-btn';b2.textContent='멤버십';b2.onclick=openMemberModal;
-        wrap.appendChild(b1);wrap.appendChild(b2);
+        var b3=document.createElement('a');
+        b3.href='https://blog.naver.com/sinabro7500';
+        b3.target='_blank';b3.rel='noopener noreferrer';
+        b3.style.cssText='display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:0.9rem;color:rgba(255,255,255,0.85);background:rgba(3,199,90,0.18);border:1.5px solid rgba(3,199,90,0.4);padding:6px 14px;border-radius:20px;font-family:inherit;font-weight:600;white-space:nowrap;text-decoration:none;transition:all 0.2s;margin-left:8px;';
+        b3.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="#03C75A"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>블로그';
+        b3.onmouseover=function(){this.style.background='rgba(3,199,90,0.32)';this.style.color='#fff';};
+        b3.onmouseout=function(){this.style.background='rgba(3,199,90,0.18)';this.style.color='rgba(255,255,255,0.85)';};
+        wrap.appendChild(b1);wrap.appendChild(b2);wrap.appendChild(b3);
         var first=nav.querySelector('a');
         if(first) nav.insertBefore(wrap,first); else nav.prepend(wrap);
       }

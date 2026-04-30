@@ -575,5 +575,270 @@
       }
     </script>
 
+    <!-- ✅ 네비게이션 항목 주입 + 이미지 수정 + 모달 -->
+    <style>
+      /* 파트너 모달 */
+      #ecl-partner-overlay, #ecl-member-overlay {
+        position: fixed; top:0; left:0; width:100%; height:100%;
+        background: rgba(10,15,30,0.75); backdrop-filter: blur(6px);
+        z-index: 9000; display: none; align-items: center; justify-content: center;
+      }
+      #ecl-partner-overlay.open, #ecl-member-overlay.open { display: flex; }
+      .ecl-modal-box {
+        background: #fff; border-radius: 28px; padding: 48px 40px;
+        max-width: 780px; width: 92%; max-height: 88vh; overflow-y: auto;
+        position: relative; box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+        animation: ecl-modal-in 0.35s cubic-bezier(0.22,1,0.36,1);
+      }
+      @keyframes ecl-modal-in {
+        from { transform: scale(0.88) translateY(30px); opacity:0; }
+        to   { transform: scale(1) translateY(0); opacity:1; }
+      }
+      .ecl-modal-close {
+        position: absolute; top:18px; right:20px;
+        background: #f1f5f9; border: none; width:36px; height:36px;
+        border-radius: 50%; cursor: pointer; font-size:18px; color:#64748b;
+        display:flex; align-items:center; justify-content:center;
+        transition: background 0.2s;
+      }
+      .ecl-modal-close:hover { background:#e2e8f0; }
+      /* 파트너 카드 */
+      .ecl-partner-grid {
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 32px;
+      }
+      @media(max-width:600px){ .ecl-partner-grid { grid-template-columns: 1fr; } }
+      .ecl-partner-card {
+        border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 28px 24px;
+        text-align: center; text-decoration: none; color: inherit;
+        transition: all 0.3s; display: block;
+      }
+      .ecl-partner-card:hover {
+        border-color: #3b82f6; box-shadow: 0 12px 30px rgba(59,130,246,0.12);
+        transform: translateY(-4px);
+      }
+      .ecl-partner-icon {
+        width: 70px; height: 70px; border-radius: 16px; margin: 0 auto 14px;
+        display: flex; align-items:center; justify-content:center;
+        font-size: 32px;
+      }
+      .ecl-partner-name { font-size: 1rem; font-weight: 700; color: #1e3a8a; margin-bottom: 6px; }
+      .ecl-partner-type { font-size: 0.82rem; color: #94a3b8; }
+      .ecl-partner-link {
+        display: inline-block; margin-top: 10px; font-size: 0.8rem;
+        color: #3b82f6; font-weight: 600;
+      }
+      /* 주입 nav 버튼 */
+      .ecl-nav-extra {
+        display: inline-flex; align-items: center; gap: 0px;
+      }
+      .ecl-nav-btn {
+        cursor: pointer; font-size: 0.95rem; color: rgba(255,255,255,0.85);
+        background: none; border: none; padding: 0 14px; font-family: inherit;
+        transition: color 0.2s; font-weight: 500;
+        text-decoration: none; white-space: nowrap;
+      }
+      .ecl-nav-btn:hover { color: #60a5fa; }
+      /* 멤버십 모달 */
+      .ecl-member-feature {
+        display: flex; align-items: flex-start; gap: 14px; padding: 18px 0;
+        border-bottom: 1px solid #f1f5f9;
+      }
+      .ecl-member-feature:last-child { border-bottom: none; }
+      .ecl-member-feature-icon {
+        width: 44px; height: 44px; border-radius: 12px;
+        background: rgba(59,130,246,0.1); display: flex;
+        align-items:center; justify-content:center; flex-shrink:0; font-size:20px;
+      }
+    </style>
+
+    <!-- 파트너사 모달 -->
+    <div id="ecl-partner-overlay" onclick="if(event.target===this)closePartnerModal()">
+      <div class="ecl-modal-box">
+        <button class="ecl-modal-close" onclick="closePartnerModal()">✕</button>
+        <div style="text-align:center; margin-bottom:8px;">
+          <span style="background:rgba(59,130,246,0.1);color:#1e40af;padding:6px 18px;border-radius:100px;font-size:0.8rem;font-weight:700;">MOU 협약 지정시행사</span>
+        </div>
+        <h2 style="text-align:center;font-size:1.7rem;font-weight:800;color:#1e3a8a;margin:12px 0 6px;">협약 파트너 기관</h2>
+        <p style="text-align:center;color:#64748b;font-size:0.92rem;">제대군인이음케어라이프와 MOU를 체결한 지역 협력 기관입니다.</p>
+        <div class="ecl-partner-grid">
+          <a class="ecl-partner-card" href="https://www.kfcc.co.kr" target="_blank" rel="noopener">
+            <div class="ecl-partner-icon" style="background:rgba(34,197,94,0.1);">🏦</div>
+            <div class="ecl-partner-name">일산새마을금고</div>
+            <div class="ecl-partner-type">지역 금융 협약 기관</div>
+            <span class="ecl-partner-link">홈페이지 바로가기 →</span>
+          </a>
+          <a class="ecl-partner-card" href="https://www.kfcc.co.kr" target="_blank" rel="noopener">
+            <div class="ecl-partner-icon" style="background:rgba(59,130,246,0.1);">🏦</div>
+            <div class="ecl-partner-name">고양누리새마을금고</div>
+            <div class="ecl-partner-type">지역 금융 협약 기관</div>
+            <span class="ecl-partner-link">홈페이지 바로가기 →</span>
+          </a>
+          <a class="ecl-partner-card" href="https://www.kfcc.co.kr" target="_blank" rel="noopener">
+            <div class="ecl-partner-icon" style="background:rgba(168,85,247,0.1);">🏦</div>
+            <div class="ecl-partner-name">파주중앙새마을금고</div>
+            <div class="ecl-partner-type">지역 금융 협약 기관</div>
+            <span class="ecl-partner-link">홈페이지 바로가기 →</span>
+          </a>
+          <a class="ecl-partner-card" href="https://www.nonghyup.com" target="_blank" rel="noopener">
+            <div class="ecl-partner-icon" style="background:rgba(234,179,8,0.1);">🌾</div>
+            <div class="ecl-partner-name">송포농협</div>
+            <div class="ecl-partner-type">지역 농협 협약 기관</div>
+            <span class="ecl-partner-link">홈페이지 바로가기 →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 멤버십 모달 -->
+    <div id="ecl-member-overlay" onclick="if(event.target===this)closeMemberModal()">
+      <div class="ecl-modal-box">
+        <button class="ecl-modal-close" onclick="closeMemberModal()">✕</button>
+        <div style="text-align:center; margin-bottom:8px;">
+          <span style="background:rgba(59,130,246,0.1);color:#1e40af;padding:6px 18px;border-radius:100px;font-size:0.8rem;font-weight:700;">🎖️ PREMIUM MEMBERSHIP</span>
+        </div>
+        <h2 style="text-align:center;font-size:1.7rem;font-weight:800;color:#1e3a8a;margin:12px 0 4px;">제대군인 멤버십</h2>
+        <div style="text-align:center;margin:16px 0 8px;">
+          <span style="font-size:3.5rem;font-weight:900;color:#0f172a;line-height:1;">₩10,000</span>
+          <span style="font-size:1.2rem;font-weight:700;color:#1e40af;"> / 월</span>
+        </div>
+        <p style="text-align:center;color:#94a3b8;font-size:0.85rem;margin-bottom:24px;">부가세 포함 · 언제든지 해지 가능</p>
+        <div style="background:#f8fafc;border-radius:20px;padding:24px 28px;">
+          <div class="ecl-member-feature">
+            <div class="ecl-member-feature-icon">💳</div>
+            <div>
+              <div style="font-weight:700;color:#1e293b;margin-bottom:4px;">후불제 상조 서비스 우선 혜택</div>
+              <div style="font-size:0.87rem;color:#64748b;">선납금 없이 서비스 이용, 멤버십 회원 특별 할인 적용</div>
+            </div>
+          </div>
+          <div class="ecl-member-feature">
+            <div class="ecl-member-feature-icon">🏥</div>
+            <div>
+              <div style="font-weight:700;color:#1e293b;margin-bottom:4px;">요양병원 우선 연결</div>
+              <div style="font-size:0.87rem;color:#64748b;">전국 네트워크 기반 맞춤형 요양병원 매칭 서비스</div>
+            </div>
+          </div>
+          <div class="ecl-member-feature">
+            <div class="ecl-member-feature-icon">📞</div>
+            <div>
+              <div style="font-weight:700;color:#1e293b;margin-bottom:4px;">24시간 전담 상담사 배정</div>
+              <div style="font-size:0.87rem;color:#64748b;">언제든 즉시 연결, 전담 상담사 1:1 맞춤 케어</div>
+            </div>
+          </div>
+          <div class="ecl-member-feature">
+            <div class="ecl-member-feature-icon">📋</div>
+            <div>
+              <div style="font-weight:700;color:#1e293b;margin-bottom:4px;">장기요양보험 신청 대행</div>
+              <div style="font-size:0.87rem;color:#64748b;">등급 신청부터 급여 수령까지 전 과정 무료 지원</div>
+            </div>
+          </div>
+          <div class="ecl-member-feature">
+            <div class="ecl-member-feature-icon">🎖️</div>
+            <div>
+              <div style="font-weight:700;color:#1e293b;margin-bottom:4px;">제대군인 특별 우대</div>
+              <div style="font-size:0.87rem;color:#64748b;">국가를 위해 헌신한 분들을 위한 감사한 마음의 서비스</div>
+            </div>
+          </div>
+        </div>
+        <a href="#consult-form" onclick="closeMemberModal()" style="display:block;text-align:center;margin-top:28px;padding:18px;background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:100px;font-weight:700;font-size:1rem;text-decoration:none;box-shadow:0 15px 35px rgba(30,58,138,0.3);">
+          지금 바로 상담 신청하기 →
+        </a>
+      </div>
+    </div>
+
+    <script>
+      function openPartnerModal() {
+        document.getElementById('ecl-partner-overlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closePartnerModal() {
+        document.getElementById('ecl-partner-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      function openMemberModal() {
+        document.getElementById('ecl-member-overlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMemberModal() {
+        document.getElementById('ecl-member-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // 깨진 상조 이미지 자동 교체
+      function fixSangjoImage() {
+        var imgs = document.querySelectorAll('img');
+        for (var i = 0; i < imgs.length; i++) {
+          var src = imgs[i].src || '';
+          if (src.indexOf('sangjo-service-image') !== -1) {
+            imgs[i].onerror = function() {
+              this.src = '/sangjo-service-info.svg';
+              this.onerror = null;
+            };
+            // 이미 broken인 경우 교체
+            if (!imgs[i].complete || imgs[i].naturalWidth === 0) {
+              imgs[i].src = '/sangjo-service-info.svg';
+            }
+          }
+        }
+      }
+
+      // 네비게이션에 버튼 주입
+      function injectNavButtons() {
+        var nav = document.querySelector('header nav');
+        if (!nav) {
+          setTimeout(injectNavButtons, 300);
+          return;
+        }
+        if (document.getElementById('ecl-nav-extra')) return;
+
+        var wrapper = document.createElement('span');
+        wrapper.id = 'ecl-nav-extra';
+        wrapper.className = 'ecl-nav-extra';
+
+        var partnerBtn = document.createElement('button');
+        partnerBtn.className = 'ecl-nav-btn';
+        partnerBtn.textContent = '지정시행사';
+        partnerBtn.onclick = openPartnerModal;
+
+        var memberBtn = document.createElement('button');
+        memberBtn.className = 'ecl-nav-btn';
+        memberBtn.textContent = '멤버십';
+        memberBtn.onclick = openMemberModal;
+
+        wrapper.appendChild(partnerBtn);
+        wrapper.appendChild(memberBtn);
+
+        // 첫번째 a태그 앞에 삽입
+        var firstLink = nav.querySelector('a');
+        if (firstLink) {
+          nav.insertBefore(wrapper, firstLink);
+        } else {
+          nav.prepend(wrapper);
+        }
+      }
+
+      // 실행
+      document.addEventListener('DOMContentLoaded', function() {
+        fixSangjoImage();
+        injectNavButtons();
+        // React 렌더링 대기
+        setTimeout(function() {
+          injectNavButtons();
+          fixSangjoImage();
+        }, 1500);
+        setTimeout(function() {
+          injectNavButtons();
+          fixSangjoImage();
+        }, 4000);
+      });
+
+      // ESC 키로 모달 닫기
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closePartnerModal();
+          closeMemberModal();
+        }
+      });
+    </script>
+
   </body>
 </html>

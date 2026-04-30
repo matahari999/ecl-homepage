@@ -273,6 +273,158 @@
           padding: 24px 24px 30px;
         }
       }
+
+      /* --- 🎖️ 멤버십 섹션 프리미엄 디자인 --- */
+      #membership-section {
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        padding: 100px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .membership-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .membership-card {
+        background: #ffffff;
+        border: 1px solid rgba(59, 130, 246, 0.1);
+        border-radius: 40px;
+        padding: 60px 40px;
+        box-shadow: 0 40px 100px rgba(30, 58, 138, 0.06);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      .membership-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 50px 120px rgba(30, 58, 138, 0.12);
+        border-color: rgba(59, 130, 246, 0.3);
+      }
+      .membership-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 8px;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+      }
+      .membership-badge {
+        background: rgba(59, 130, 246, 0.1);
+        color: #1e40af;
+        padding: 8px 20px;
+        border-radius: 100px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        letter-spacing: 0.05em;
+      }
+      .membership-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1e3a8a;
+        margin-bottom: 16px;
+        letter-spacing: -0.03em;
+      }
+      .membership-subtitle {
+        font-size: 1.2rem;
+        color: #64748b;
+        margin-bottom: 48px;
+        line-height: 1.7;
+        max-width: 600px;
+      }
+      .price-container {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .price-amount {
+        font-size: 5rem;
+        font-weight: 900;
+        color: #0f172a;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+      .price-unit {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1e40af;
+      }
+      .price-note {
+        font-size: 1rem;
+        color: #94a3b8;
+        margin-bottom: 50px;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        width: 100%;
+        margin-bottom: 50px;
+      }
+      .feature-box {
+        background: #f8fafc;
+        padding: 30px 20px;
+        border-radius: 24px;
+        text-align: center;
+        border: 1px solid #f1f5f9;
+        transition: all 0.3s ease;
+      }
+      .feature-box:hover {
+        background: #fff;
+        border-color: #3b82f6;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      }
+      .feature-box .label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #94a3b8;
+        margin-bottom: 10px;
+      }
+      .feature-box .value {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #1e293b;
+      }
+      .feature-box .highlight {
+        color: #3b82f6;
+      }
+      .membership-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 20px 50px;
+        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        color: #ffffff;
+        border-radius: 100px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 20px 40px rgba(30, 58, 138, 0.25);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .membership-cta:hover {
+        transform: scale(1.05);
+        box-shadow: 0 25px 50px rgba(30, 58, 138, 0.35);
+      }
+      .cert-icon {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 30px;
+        filter: drop-shadow(0 15px 30px rgba(30, 58, 138, 0.15));
+      }
+
+      @media (max-width: 768px) {
+        .membership-title { font-size: 1.8rem; }
+        .price-amount { font-size: 3.5rem; }
+        .features-grid { grid-template-columns: 1fr; }
+        .membership-card { padding: 40px 24px; }
+      }
     </style>
 
   </head>
@@ -301,6 +453,55 @@
     </div>
 
     <div id="root"></div>
+
+    <!-- 🎖️ 회원 전용 구조 및 상품 구성 섹션 추가 -->
+    <section id="membership-section">
+      <div class="membership-container">
+        <div style="text-align:center; margin-bottom:60px;">
+          <h2 style="font-size:2.5rem; font-weight:800; color:#1e3a8a; margin-bottom:16px;">회원 전용 구조 및 상품 구성</h2>
+          <p style="color:#64748b; font-size:1.1rem; max-width:700px; margin:0 auto;">제대군인이음케어라이프만의 특별한 멤버십 혜택을 확인해보세요.</p>
+        </div>
+
+        <div class="membership-card">
+          <div class="membership-badge">LIFETIME MEMBERSHIP</div>
+          
+          <img src="membership_certificate_icon.png" alt="회원가입증권" class="cert-icon">
+          
+          <div class="membership-title">평생 전용 혜택 멤버십</div>
+          <p class="membership-subtitle">
+            단 한 번의 등록으로 월 납입금 걱정 없이<br>
+            평생 동안 제공되는 프리미엄 케어 서비스를 누리실 수 있습니다.
+          </p>
+          
+          <div class="price-container">
+            <span class="price-amount">10,000</span>
+            <span class="price-unit">원</span>
+          </div>
+          <div class="price-note">최초 1회 등록비 (추가 비용 없음)</div>
+          
+          <div class="features-grid">
+            <div class="feature-box">
+              <span class="label">회원가입증권</span>
+              <span class="value">즉시 발급</span>
+            </div>
+            <div class="feature-box">
+              <span class="label">월 납입금</span>
+              <span class="value highlight">0원 (없음)</span>
+            </div>
+            <div class="feature-box">
+              <span class="label">유효 기간</span>
+              <span class="value highlight">평생 유지</span>
+            </div>
+          </div>
+          
+          <a href="#consult-form" class="membership-cta">
+            지금 바로 멤버십 신청하기
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ✨ MOU 파트너 배너 섹션 추가 ✨ -->
     <section id="mou-section" style="background:#f8fafc; padding:60px 0; border-top:1px solid #e2e8f0; border-bottom:1px solid #e2e8f0;">
       <div style="max-width:1200px; margin:0 auto; px:20px; text-align:center;">
@@ -345,6 +546,7 @@
           <div class="form-group">
             <label>상담 희망 서비스</label>
             <select name="service">
+              <option value="멤버십등록">회원 전용 멤버십 (1만원/평생)</option>
               <option value="후불제상조">후불제상조</option>
               <option value="요양병원">요양병원</option>
               <option value="방문요양서비스">방문요양서비스</option>

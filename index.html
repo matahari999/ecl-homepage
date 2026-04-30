@@ -49,6 +49,86 @@
         font-family: 'Noto Sans KR', 'Nanum Gothic', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
         font-display: swap;
       }
+      
+      /* --- 🚀 플로팅 바 (Quick Menu) 스타일 --- */
+      #floating-bar {
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 9999;
+      }
+      .floating-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        border: none;
+        outline: none;
+        text-decoration: none;
+      }
+      .floating-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      }
+      
+      /* 카카오톡 버튼 */
+      .btn-kakao {
+        background: #FEE500;
+        color: #3C1E1E;
+      }
+      .btn-kakao svg { width: 32px; height: 32px; }
+      
+      /* 위로 가기 버튼 */
+      .btn-top {
+        background: #fff;
+        color: #1e3a8a;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+      }
+      .btn-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .btn-top svg { width: 26px; height: 26px; }
+
+      /* 말풍선 라벨 */
+      .floating-label {
+        position: absolute;
+        right: 75px;
+        background: #1e3a8a;
+        color: #fff;
+        padding: 8px 15px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: all 0.3s;
+        pointer-events: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+      .floating-btn:hover .floating-label {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      @media (max-width: 768px) {
+        #floating-bar { right: 20px; bottom: 20px; gap: 10px; }
+        .floating-btn { width: 52px; height: 52px; }
+        .floating-label { display: none; }
+      }
       .seo-text {
         position: absolute;
         left: -9999px;
@@ -1011,6 +1091,37 @@
         localStorage.setItem('cacheCleared', 'true');
         window.location.reload(true);
       }
+    </script>
+  </body>
+    <!-- 🚀 플로팅 바 (Quick Menu) -->
+    <div id="floating-bar">
+      <!-- 카카오톡 상담 버튼 -->
+      <a href="https://pf.kakao.com/_xxxx" target="_blank" class="floating-btn btn-kakao">
+        <div class="floating-label">카카오톡 실시간 상담</div>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.558 1.712 4.8 4.346 6.09l-.843 3.127c-.115.429.135.867.564.981.144.038.293.038.437 0l3.874-2.581c.205.015.412.022.622.022 4.97 0 9-3.185 9-7.115S16.97 3 12 3z"/>
+        </svg>
+      </a>
+      
+      <!-- 위로 가기 버튼 -->
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="floating-btn btn-top" id="top-btn">
+        <div class="floating-label">맨 위로</div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <script>
+      // 스크롤 시 Top 버튼 노출 로직
+      window.addEventListener('scroll', function() {
+        const topBtn = document.getElementById('top-btn');
+        if (window.scrollY > 300) {
+          topBtn.classList.add('show');
+        } else {
+          topBtn.classList.remove('show');
+        }
+      });
     </script>
   </body>
 </html>

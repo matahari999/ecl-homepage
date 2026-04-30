@@ -170,6 +170,84 @@
       body { padding-top: 80px; }
       @media (max-width: 768px) { body { padding-top: 64px; } }
 
+      /* --- 🖼️ 갤러리 모달 스타일 --- */
+      #gallery-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        backdrop-filter: blur(8px);
+      }
+      #gallery-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #gallery-img {
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 12px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        transition: opacity 0.3s ease;
+      }
+      .gallery-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.3s;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px; height: 60px;
+      }
+      .gallery-btn:hover { background: rgba(59, 130, 246, 0.5); border-color: #3b82f6; transform: translateY(-50%) scale(1.1); }
+      #gallery-prev { left: -100px; }
+      #gallery-next { right: -100px; }
+      #gallery-close {
+        position: absolute;
+        top: -60px;
+        right: 0;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+      #gallery-close:hover { opacity: 1; }
+      #gallery-counter {
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 30px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+      .mou-card { cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+      .mou-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(30, 58, 138, 0.15) !important; }
+      
+      @media (max-width: 1024px) {
+        #gallery-prev { left: 20px; }
+        #gallery-next { right: 20px; }
+        .gallery-btn { background: rgba(0, 0, 0, 0.3); width: 50px; height: 50px; }
+      }
+
 
 
 
@@ -755,18 +833,46 @@
         <h2 style="font-size:1.5rem; font-weight:700; color:#1e3a8a; margin-bottom:10px;">함께하는 파트너 (MOU)</h2>
         <p style="color:#64748b; font-size:0.9rem; margin-bottom:40px;">제대군인이음케어라이프는 신뢰할 수 있는 기관들과 함께합니다</p>
         
-        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; align-items:center;">
-          <!-- 여기에 MOU 사진들을 추가하세요. 이미지를 덮어쓰거나 경로를 지정하시면 됩니다 -->
-          <div class="mou-card" style="background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.05); width:180px; height:100px; display:flex; align-items:center; justify-content:center;">
-            <img src="mou1.png" alt="MOU 파트너 1" style="max-width:100%; max-height:100%; filter:grayscale(100%); opacity:0.7; transition:all 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1';" onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.7';">
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; align-items:center; padding-top:20px;">
+          <!-- 1. 일산새마을금고 -->
+          <div class="mou-card" onclick="openGallery('ilsan')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:280px; overflow:hidden;">
+            <div style="height:180px; overflow:hidden; border-radius:10px; position:relative;">
+              <img src="mou/ilsan_0.jpg" alt="일산새마을금고 업무협약식" style="width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">사진 20장 +</div>
+            </div>
+            <p style="margin-top:15px; font-weight:700; color:#1e293b;">일산 MG새마을금고</p>
+            <p style="font-size:0.8rem; color:#64748b; margin-bottom:10px;">지정제휴 업무협약 체결</p>
           </div>
-          <div class="mou-card" style="background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.05); width:180px; height:100px; display:flex; align-items:center; justify-content:center;">
-            <img src="mou2.png" alt="MOU 파트너 2" style="max-width:100%; max-height:100%; filter:grayscale(100%); opacity:0.7;" onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1';" onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.7';">
+
+          <!-- 2. 파주중앙새마을금고 -->
+          <div class="mou-card" onclick="openGallery('paju')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:280px; overflow:hidden;">
+            <div style="height:180px; overflow:hidden; border-radius:10px; position:relative;">
+              <img src="mou/paju_0.jpg" alt="파주중앙새마을금고 업무협약식" style="width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">사진 9장 +</div>
+            </div>
+            <p style="margin-top:15px; font-weight:700; color:#1e293b;">파주중앙 MG새마을금고</p>
+            <p style="font-size:0.8rem; color:#64748b; margin-bottom:10px;">지정제휴 업무협약 체결</p>
           </div>
-          <div class="mou-card" style="background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.05); width:180px; height:100px; display:flex; align-items:center; justify-content:center;">
-            <img src="mou3.png" alt="MOU 파트너 3" style="max-width:100%; max-height:100%; filter:grayscale(100%); opacity:0.7;" onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1';" onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.7';">
+
+          <!-- 3. 송포농협 -->
+          <div class="mou-card" onclick="openGallery('songpo')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:280px; overflow:hidden;">
+            <div style="height:180px; overflow:hidden; border-radius:10px; position:relative;">
+              <img src="mou/songpo_0.jpg" alt="송포농협 업무협약식" style="width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">사진 17장 +</div>
+            </div>
+            <p style="margin-top:15px; font-weight:700; color:#1e293b;">송포농업협동조합 (송포농협)</p>
+            <p style="font-size:0.8rem; color:#64748b; margin-bottom:10px;">지정제휴 업무협약 체결</p>
           </div>
-          <!-- 추가 사진이 필요하면 위 div를 복사해서 아래에 붙여넣으세요 -->
+
+          <!-- 4. 고양누리새마을금고 -->
+          <div class="mou-card" onclick="openGallery('goyang')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:280px; overflow:hidden; cursor:pointer;">
+            <div style="height:180px; overflow:hidden; border-radius:10px; position:relative;">
+              <img src="mou/goyang_0.jpg" alt="고양누리새마을금고 업무협약식" style="width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">사진 8장 +</div>
+            </div>
+            <p style="margin-top:15px; font-weight:700; color:#1e293b;">고양누리 MG새마을금고</p>
+            <p style="font-size:0.8rem; color:#64748b; margin-bottom:10px;">지정제휴 업무협약 체결</p>
+          </div>
         </div>
       </div>
     </section>
@@ -810,6 +916,75 @@
         </form>
       </div>
     </section>
+
+    <!-- 🖼️ 갤러리 모달 구조 -->
+    <div id="gallery-modal">
+      <div id="gallery-content">
+        <span id="gallery-close" onclick="closeGallery()">&times; 닫기</span>
+        <button id="gallery-prev" class="gallery-btn" onclick="changeImage(-1)">&#10094;</button>
+        <img id="gallery-img" src="" alt="협약식 사진">
+        <button id="gallery-next" class="gallery-btn" onclick="changeImage(1)">&#10095;</button>
+      </div>
+      <div id="gallery-counter">1 / 1</div>
+    </div>
+
+    <script>
+      let currentGroup = '';
+      let currentIdx = 0;
+      const groupCounts = {
+        'ilsan': 20,
+        'paju': 9,
+        'songpo': 17,
+        'goyang': 8
+      };
+
+      function openGallery(group) {
+        currentGroup = group;
+        currentIdx = 0;
+        updateGallery();
+        document.getElementById('gallery-modal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeGallery() {
+        document.getElementById('gallery-modal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      function changeImage(delta) {
+        currentIdx += delta;
+        const count = groupCounts[currentGroup];
+        if (currentIdx < 0) currentIdx = count - 1;
+        if (currentIdx >= count) currentIdx = 0;
+        updateGallery();
+      }
+
+      function updateGallery() {
+        const img = document.getElementById('gallery-img');
+        const counter = document.getElementById('gallery-counter');
+        
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = `mou/${currentGroup}_${currentIdx}.jpg`;
+          counter.innerText = `${currentIdx + 1} / ${groupCounts[currentGroup]}`;
+          img.onload = () => { img.style.opacity = '1'; };
+        }, 200);
+      }
+
+      // 키보드 네비게이션
+      document.addEventListener('keydown', (e) => {
+        if (document.getElementById('gallery-modal').style.display === 'flex') {
+          if (e.key === 'Escape') closeGallery();
+          if (e.key === 'ArrowLeft') changeImage(-1);
+          if (e.key === 'ArrowRight') changeImage(1);
+        }
+      });
+
+      // 모달 바깥 클릭 시 닫기
+      document.getElementById('gallery-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'gallery-modal') closeGallery();
+      });
+    </script>
 
     <script type="module" crossorigin src="/assets/index-Cl4BGa32.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CoHfiPMk.css">

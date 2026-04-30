@@ -410,4 +410,170 @@
     <link rel="stylesheet" crossorigin href="/assets/index-CoHfiPMk.css">
   </head>
   <body>
-    <div class="
+    <div class="preloader">
+      <div class="preloader-icon">
+        <span></span>
+      </div>
+    </div>
+
+    <div class="seo-text">
+      <h1>제대군인이음케어라이프 - 후불제상조 · 요양병원 · 방문요양서비스 전문 상담</h1>
+      <h2>주요 서비스</h2>
+      <h3>후불제상조 서비스</h3>
+      <p>경제적 부담을 최소화한 합리적인 후불제 상조 서비스 제공.</p>
+      <h3>요양병원 연결</h3>
+      <p>어르신 상황에 맞는 요양병원 연계 지원.</p>
+      <h3>방문요양서비스</h3>
+      <p>가정에서 제공되는 방문 요양 서비스와 장기요양보험 상담.</p>
+      <h2>제대군인이음케어라이프의 약속</h2>
+      <h3>어르신 돌봄</h3>
+      <p>가족의 마음으로 어르신의 삶을 존중하는 케어 제공.</p>
+      <h3>전문 상담</h3>
+      <p>장기요양보험부터 상조 서비스까지 전문가의 맞춤형 상담.</p>
+      <h3>24시간 상담 가능</h3>
+      <p>언제든 필요한 순간 즉시 상담 가능.</p>
+    </div>
+
+    <div id="root"></div>
+
+    <!-- ✅ MOU 협약기관 사진 갤러리 섹션 -->
+    <section id="mou-section" style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); padding: 80px 20px;">
+      <div style="max-width: 1100px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 60px;">
+          <span style="background: rgba(59,130,246,0.1); color: #1e40af; padding: 8px 20px; border-radius: 100px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;">MOU 협약</span>
+          <h2 style="font-size: 2.2rem; font-weight: 800; color: #1e3a8a; margin: 16px 0 12px; letter-spacing: -0.03em;">협약 기관 활동 사진</h2>
+          <p style="color: #64748b; font-size: 1.05rem; line-height: 1.7;">지역 사회와 함께하는 제대군인이음케어라이프의 협약 현장을 소개합니다.</p>
+        </div>
+
+        <!-- 탭 버튼 -->
+        <div id="mou-tabs" style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 40px;">
+          <button onclick="showMouGroup('ilsan')" id="tab-ilsan" class="mou-tab-btn active-tab" style="padding: 12px 28px; border-radius: 100px; border: 2px solid #1e3a8a; background: #1e3a8a; color: #fff; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">일산새마을금고</button>
+          <button onclick="showMouGroup('goyang')" id="tab-goyang" class="mou-tab-btn" style="padding: 12px 28px; border-radius: 100px; border: 2px solid #e2e8f0; background: #fff; color: #64748b; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">고양누리새마을금고</button>
+          <button onclick="showMouGroup('paju')" id="tab-paju" class="mou-tab-btn" style="padding: 12px 28px; border-radius: 100px; border: 2px solid #e2e8f0; background: #fff; color: #64748b; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">파주중앙새마을금고</button>
+          <button onclick="showMouGroup('songpo')" id="tab-songpo" class="mou-tab-btn" style="padding: 12px 28px; border-radius: 100px; border: 2px solid #e2e8f0; background: #fff; color: #64748b; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">송포농협</button>
+        </div>
+
+        <!-- 일산새마을금고 (20장) -->
+        <div id="mou-ilsan" class="mou-group">
+          <h3 style="font-size: 1.3rem; font-weight: 700; color: #1e3a8a; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0;">🏦 일산새마을금고 협약 현장</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+            <img src="/mou/ilsan_0.jpg" alt="일산새마을금고 협약 1" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_1.jpg" alt="일산새마을금고 협약 2" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_2.jpg" alt="일산새마을금고 협약 3" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_3.jpg" alt="일산새마을금고 협약 4" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_4.jpg" alt="일산새마을금고 협약 5" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_5.jpg" alt="일산새마을금고 협약 6" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_6.jpg" alt="일산새마을금고 협약 7" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_7.jpg" alt="일산새마을금고 협약 8" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_8.jpg" alt="일산새마을금고 협약 9" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_9.jpg" alt="일산새마을금고 협약 10" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_10.jpg" alt="일산새마을금고 협약 11" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_11.jpg" alt="일산새마을금고 협약 12" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_12.jpg" alt="일산새마을금고 협약 13" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_13.jpg" alt="일산새마을금고 협약 14" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_14.jpg" alt="일산새마을금고 협약 15" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_15.jpg" alt="일산새마을금고 협약 16" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_16.jpg" alt="일산새마을금고 협약 17" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_17.jpg" alt="일산새마을금고 협약 18" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_18.jpg" alt="일산새마을금고 협약 19" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/ilsan_19.jpg" alt="일산새마을금고 협약 20" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+          </div>
+        </div>
+
+        <!-- 고양누리새마을금고 (8장) -->
+        <div id="mou-goyang" class="mou-group" style="display:none;">
+          <h3 style="font-size: 1.3rem; font-weight: 700; color: #1e3a8a; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0;">🏦 고양누리새마을금고 협약 현장</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+            <img src="/mou/goyang_0.jpg" alt="고양누리새마을금고 협약 1" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/goyang_1.jpg" alt="고양누리새마을금고 협약 2" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/goyang_2.jpg" alt="고양누리새마을금고 협약 3" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/goyang_3.jpg" alt="고양누리새마을금고 협약 4" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/goyang_4.jpg" alt="고양누리새마을금고 협약 5" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/goyang_5.jpg" alt="고양누리새마을금고 협약 6" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/goyang_6.jpg" alt="고양누리새마을금고 협약 7" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/goyang_7.jpg" alt="고양누리새마을금고 협약 8" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+          </div>
+        </div>
+
+        <!-- 파주중앙새마을금고 (9장) -->
+        <div id="mou-paju" class="mou-group" style="display:none;">
+          <h3 style="font-size: 1.3rem; font-weight: 700; color: #1e3a8a; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0;">🏦 파주중앙새마을금고 협약 현장</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+            <img src="/mou/paju_0.jpg" alt="파주중앙새마을금고 협약 1" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/paju_1.jpg" alt="파주중앙새마을금고 협약 2" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/paju_2.jpg" alt="파주중앙새마을금고 협약 3" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/paju_3.jpg" alt="파주중앙새마을금고 협약 4" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/paju_4.jpg" alt="파주중앙새마을금고 협약 5" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/paju_5.jpg" alt="파주중앙새마을금고 협약 6" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/paju_6.jpg" alt="파주중앙새마을금고 협약 7" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/paju_7.jpg" alt="파주중앙새마을금고 협약 8" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/paju_8.jpg" alt="파주중앙새마을금고 협약 9" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+          </div>
+        </div>
+
+        <!-- 송포농협 (17장) -->
+        <div id="mou-songpo" class="mou-group" style="display:none;">
+          <h3 style="font-size: 1.3rem; font-weight: 700; color: #1e3a8a; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0;">🌾 송포농협 협약 현장</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+            <img src="/mou/songpo_0.jpg" alt="송포농협 협약 1" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_1.jpg" alt="송포농협 협약 2" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_2.jpg" alt="송포농협 협약 3" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_3.jpg" alt="송포농협 협약 4" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_4.jpg" alt="송포농협 협약 5" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_5.jpg" alt="송포농협 협약 6" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_6.jpg" alt="송포농협 협약 7" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_7.jpg" alt="송포농협 협약 8" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_8.jpg" alt="송포농협 협약 9" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_9.jpg" alt="송포농협 협약 10" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_10.jpg" alt="송포농협 협약 11" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_11.jpg" alt="송포농협 협약 12" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_12.jpg" alt="송포농협 협약 13" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_13.jpg" alt="송포농협 협약 14" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_14.jpg" alt="송포농협 협약 15" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_15.jpg" alt="송포농협 협약 16" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+            <img src="/mou/songpo_16.jpg" alt="송포농협 협약 17" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08);" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function showMouGroup(group) {
+        // 모든 그룹 숨기기
+        document.querySelectorAll('.mou-group').forEach(function(el) {
+          el.style.display = 'none';
+        });
+        // 선택된 그룹 보이기
+        document.getElementById('mou-' + group).style.display = 'block';
+        // 모든 탭 버튼 초기화
+        document.querySelectorAll('.mou-tab-btn').forEach(function(btn) {
+          btn.style.background = '#fff';
+          btn.style.color = '#64748b';
+          btn.style.borderColor = '#e2e8f0';
+        });
+        // 선택된 탭 활성화
+        var activeBtn = document.getElementById('tab-' + group);
+        activeBtn.style.background = '#1e3a8a';
+        activeBtn.style.color = '#fff';
+        activeBtn.style.borderColor = '#1e3a8a';
+      }
+    </script>
+
+    <script>
+      window.addEventListener("load", function () {
+        var preloader = document.querySelector(".preloader");
+        if (preloader) preloader.classList.add("preloader-finish");
+      });
+    </script>
+
+    <!-- 서비스 워커 제거 -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(var r of registrations) { r.unregister(); }
+        });
+      }
+    </script>
+
+  </body>
+</html>

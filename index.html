@@ -319,7 +319,12 @@
         font-weight: 500;
         letter-spacing: 1px;
       }
-      .mou-card { cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+      .mou-card { 
+        cursor: pointer; 
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+        width: 100%; 
+        max-width: 280px; 
+      }
       .mou-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(30, 58, 138, 0.15) !important; }
       
       @media (max-width: 1024px) {
@@ -493,6 +498,9 @@
         }
         .form-body {
           padding: 24px 24px 30px;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr !important;
         }
       }
 
@@ -706,13 +714,14 @@
       }
       #membership-drawer {
         position: fixed;
-        top: 0; right: -100%; width: 450px; height: 100%;
+        top: 0; right: -100%; width: 100%; max-width: 450px; height: 100%;
         background: #ffffff;
         z-index: 2001;
         box-shadow: -20px 0 50px rgba(0,0,0,0.1);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         overflow-y: auto;
         padding: 40px 30px;
+        box-sizing: border-box;
       }
       body.drawer-open {
         overflow: hidden;
@@ -805,7 +814,7 @@
           <h2 class="membership-title">평생 안심 멤버십</h2>
           <p class="membership-subtitle">단 한 번의 등록으로 평생 누리는 제대군인이음케어라이프만의 특별한 회원 혜택 구조를 경험하세요.</p>
           
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin-bottom: 35px;">
+          <div class="feature-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin-bottom: 35px;">
             <div class="feature-box">
               <div style="width:10px; height:10px; border-radius:50%; background:#3b82f6;"></div>
               <span style="font-size:0.95rem; font-weight:600; color:#1e293b;">회원가입증권 즉시 발급</span>
@@ -915,7 +924,7 @@
         
         <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; align-items:center; padding-top:20px;">
           <!-- 1. 일산새마을금고 -->
-          <div class="mou-card" onclick="openGallery('ilsan')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:280px; overflow:hidden;">
+          <div class="mou-card" onclick="openGallery('ilsan')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); overflow:hidden;">
             <div style="height:180px; overflow:hidden; border-radius:10px; position:relative;">
               <img src="mou/ilsan_0.jpg" alt="일산새마을금고 업무협약식" style="width:100%; height:100%; object-fit:cover;">
               <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">사진 20장 +</div>
@@ -925,7 +934,7 @@
           </div>
 
           <!-- 2. 파주중앙새마을금고 -->
-          <div class="mou-card" onclick="openGallery('paju')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:280px; overflow:hidden;">
+          <div class="mou-card" onclick="openGallery('paju')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); overflow:hidden;">
             <div style="height:180px; overflow:hidden; border-radius:10px; position:relative;">
               <img src="mou/paju_0.jpg" alt="파주중앙새마을금고 업무협약식" style="width:100%; height:100%; object-fit:cover;">
               <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">사진 9장 +</div>
@@ -935,7 +944,7 @@
           </div>
 
           <!-- 3. 송포농협 -->
-          <div class="mou-card" onclick="openGallery('songpo')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:280px; overflow:hidden;">
+          <div class="mou-card" onclick="openGallery('songpo')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); overflow:hidden;">
             <div style="height:180px; overflow:hidden; border-radius:10px; position:relative;">
               <img src="mou/songpo_0.jpg" alt="송포농협 업무협약식" style="width:100%; height:100%; object-fit:cover;">
               <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">사진 17장 +</div>
@@ -945,7 +954,7 @@
           </div>
 
           <!-- 4. 고양누리새마을금고 -->
-          <div class="mou-card" onclick="openGallery('goyang')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:280px; overflow:hidden; cursor:pointer;">
+          <div class="mou-card" onclick="openGallery('goyang')" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); overflow:hidden; cursor:pointer;">
             <div style="height:180px; overflow:hidden; border-radius:10px; position:relative;">
               <img src="mou/goyang_0.jpg" alt="고양누리새마을금고 업무협약식" style="width:100%; height:100%; object-fit:cover;">
               <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">사진 8장 +</div>
@@ -953,6 +962,18 @@
             <p style="margin-top:15px; font-weight:700; color:#1e293b;">고양누리 MG새마을금고</p>
             <p style="font-size:0.8rem; color:#64748b; margin-bottom:10px;">지정제휴 업무협약 체결</p>
           </div>
+
+          <!-- 5. 국제청년연합회 (GYEA) -->
+          <a href="https://gyea.kr/wp/" target="_blank" class="mou-card" style="background:#fff; padding:10px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); overflow:hidden; text-decoration:none; display:block;">
+            <div style="height:180px; overflow:hidden; border-radius:10px; position:relative; background:#f1f5f9; display:flex; align-items:center; justify-content:center;">
+              <div style="text-align:center;">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <div style="font-size:0.7rem; color:#1e3a8a; font-weight:800; margin-top:10px;">GYEA</div>
+              </div>
+            </div>
+            <p style="margin-top:15px; font-weight:700; color:#1e293b;">국제청년연합회 (GYEA)</p>
+            <p style="font-size:0.8rem; color:#64748b; margin-bottom:10px;">글로벌 청년 파트너십</p>
+          </a>
         </div>
       </div>
     </section>
@@ -996,6 +1017,45 @@
         </form>
       </div>
     </section>
+
+    <!-- 🏁 푸터 섹션 -->
+    <footer style="background:#0f172a; color:#f8fafc; padding:80px 20px 40px; border-top:1px solid rgba(255,255,255,0.05);">
+      <div style="max-width:1200px; margin:0 auto;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:60px; margin-bottom:60px;">
+          <!-- 기업 정보 -->
+          <div>
+            <img src="logo.png" alt="로고" style="height:40px; filter:brightness(0) invert(1); margin-bottom:25px;">
+            <p style="color:#94a3b8; line-height:1.8; font-size:0.95rem;">
+              어르신의 삶과 가족의 마음을 이어주는<br>종합 케어 서비스 전문가 집단입니다.
+            </p>
+          </div>
+
+          <!-- 주요 링크 (파트너 사이트) -->
+          <div>
+            <h4 style="color:#fff; font-size:1.1rem; font-weight:700; margin-bottom:25px;">파트너사 바로가기</h4>
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
+              <li><a href="http://1san.co.kr" target="_blank" style="color:#94a3b8; text-decoration:none; font-size:0.9rem; transition:color 0.3s;">일산새마을금고</a></li>
+              <li><a href="http://pjkfcc.co.kr" target="_blank" style="color:#94a3b8; text-decoration:none; font-size:0.9rem; transition:color 0.3s;">파주중앙새마을금고</a></li>
+              <li><a href="http://goyangnuri.co.kr" target="_blank" style="color:#94a3b8; text-decoration:none; font-size:0.9rem; transition:color 0.3s;">고양누리새마을금고</a></li>
+              <li><a href="http://songpo.nonghyup.com" target="_blank" style="color:#94a3b8; text-decoration:none; font-size:0.9rem; transition:color 0.3s;">송포농협</a></li>
+              <li><a href="https://gyea.kr/wp/" target="_blank" style="color:#94a3b8; text-decoration:none; font-size:0.9rem; transition:color 0.3s;">국제청년연합회 (GYEA)</a></li>
+            </ul>
+          </div>
+
+          <!-- 연락처 -->
+          <div>
+            <h4 style="color:#fff; font-size:1.1rem; font-weight:700; margin-bottom:25px;">고객 지원</h4>
+            <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:10px;">24시간 무료 상담</p>
+            <a href="tel:010-7500-0000" style="color:#3b82f6; font-size:1.5rem; font-weight:800; text-decoration:none;">010-7500-XXXX</a>
+            <p style="color:#64748b; font-size:0.85rem; margin-top:15px;">경기도 고양시 일산서구</p>
+          </div>
+        </div>
+
+        <div style="padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
+          <p style="color:#64748b; font-size:0.85rem;">&copy; 2024 제대군인이음케어라이프. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
 
     <!-- 🖼️ 갤러리 모달 구조 -->
     <div id="gallery-modal">
@@ -1092,7 +1152,7 @@
         window.location.reload(true);
       }
     </script>
-  </body>
+
     <!-- 🚀 플로팅 바 (Quick Menu) -->
     <div id="floating-bar">
       <!-- 카카오톡 상담 버튼 -->

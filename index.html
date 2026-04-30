@@ -208,14 +208,35 @@
         justify-content: space-between;
         align-items: center;
       }
-      .logo-area img {
-        height: 50px;
-        width: auto;
-        display: block;
+      .logo-area a {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-decoration: none;
+      }
+      .logo-text-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .logo-main-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #1e3a8a;
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+        white-space: nowrap;
+      }
+      .logo-sub-title {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #64748b;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
       }
       nav {
         display: flex;
-        gap: 30px;
+        gap: 40px;
         align-items: center;
       }
       nav a {
@@ -239,11 +260,14 @@
         gap: 6px;
       }
       @media (max-width: 768px) {
-        header { padding: 0 20px; height: 64px; }
-        .logo-area img { height: 36px; }
-        nav { gap: 15px; }
-        nav a { font-size: 0.85rem; }
-        .nav-blog-btn { padding: 6px 12px; }
+        header { padding: 0 15px; height: 70px; }
+        .logo-area img { height: 32px; }
+        .logo-area { gap: 8px; }
+        .logo-main-title { font-size: 1rem; }
+        .logo-sub-title { font-size: 0.65rem; }
+        nav { gap: 12px; }
+        nav a { font-size: 0.75rem; }
+        nav a[href="#consult-form"] { padding: 6px 12px !important; font-size: 0.75rem !important; }
       }
       
       /* 헤더 높이만큼 바디에 패딩 추가 */
@@ -790,16 +814,19 @@
     <header>
       <div class="header-container">
         <div class="logo-area">
-          <a href="/"><img src="logo.png" alt="제대군인이음케어라이프 로고"></a>
+          <a href="/">
+            <img src="logo.png" alt="제대군인이음케어라이프 로고">
+            <div class="logo-text-group">
+              <span class="logo-main-title">제대군인이음케어라이프</span>
+              <span class="logo-sub-title">후불제상조 · 요양병원 · 방문요양</span>
+            </div>
+          </a>
         </div>
         <nav>
-          <a href="#membership-main-section">멤버십</a>
-          <a href="#mou-section">파트너</a>
-          <a href="#consult-form">상담신청</a>
-          <a href="https://blog.naver.com/sinabro7500" target="_blank" class="nav-blog-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/></svg>
-            블로그
-          </a>
+          <a href="#membership-main-section">서비스</a>
+          <a href="#mou-section">후기</a>
+          <a href="https://blog.naver.com/sinabro7500" target="_blank">정보센터</a>
+          <a href="#consult-form" style="background: #1e3a8a; color: #fff; padding: 10px 20px; border-radius: 10px; font-size: 0.9rem;">상담문의</a>
         </nav>
       </div>
     </header>

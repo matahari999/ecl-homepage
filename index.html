@@ -391,12 +391,33 @@
       function closeMemberModal(){document.getElementById('ecl-member-overlay').classList.remove('open');document.body.style.overflow='';}
 
       function fixSangjoImage(){
+        var replaced=false;
         document.querySelectorAll('img').forEach(function(img){
-          if((img.src||"").indexOf('sangjo-service-image')!==-1){
-            img.onerror=function(){this.src='/sangjo-service-info.svg';this.onerror=null;};
-            if(!img.complete||img.naturalWidth===0) img.src='/sangjo-service-info.svg';
+          var isBroken=(img.src||'').indexOf('sangjo-service-image')!==-1||((img.alt||'').indexOf('상조')!==-1&&(img.alt||'').indexOf('종합 안내')!==-1);
+          if(isBroken){
+            img.onerror=null;
+            img.src='/sangjo-service-info.svg';
+            img.style.cssText+='width:100%;max-width:100%;height:auto;border-radius:16px;display:block;';
+            replaced=true;
           }
         });
+        return replaced;
+      }
+
+      function fixContactCards(){
+        var found=false;
+        var allEls=document.querySelectorAll('div,section');
+        for(var i=0;i<allEls.length;i++){
+          var el=allEls[i];
+          if(el.children.length===3&&el.textContent.indexOf('전화상담')!==-1&&el.textContent.indexOf('카카오톡')!==-1&&el.textContent.indexOf('이메일')!==-1){
+            el.style.cssText+=';display:grid!important;grid-template-columns:repeat(3,minmax(200px,1fr))!important;gap:20px!important;';
+            var par=el.parentElement;
+            if(par){par.style.maxWidth='900px';par.style.margin='0 auto';}
+            found=true;
+            break;
+          }
+        }
+        if(!found) setTimeout(fixContactCards,600);
       }
 
       function injectNavButtons(){
@@ -451,10 +472,19 @@
       }
 
       document.addEventListener('DOMContentLoaded',function(){
-        fixSangjoImage(); injectNavButtons();
-        setTimeout(function(){injectNavButtons();fixSangjoImage();},1500);
-        setTimeout(function(){injectNavButtons();fixSangjoImage();},4000);
+        fixSangjoImage(); injectNavButtons(); fixContactCards();
+        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();},1500);
+        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();},4000);
       });
+
+      // MutationObserver로 React 렌더링 후 이미지/카드 감지
+      (function(){
+        var obs=new MutationObserver(function(){
+          fixSangjoImage(); fixContactCards();
+        });
+        obs.observe(document.getElementById('root')||document.body,{childList:true,subtree:true});
+        setTimeout(function(){obs.disconnect();},10000);
+      })();
       document.addEventListener('keydown',function(e){if(e.key==='Escape'){closePartnerModal();closeMemberModal();}});
     </script>
 

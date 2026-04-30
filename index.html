@@ -118,59 +118,296 @@
       [class*="rounded-2xl"][class*="shadow"] {
         transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
       }
+
+      /* 푸터 디자인 미세 조정 */
+      footer {
+        background: #0f172a !important;
+      }
+      footer a {
+        transition: all 0.3s ease !important;
+      }
+      footer a:hover {
+        color: #60a5fa !important;
+        transform: translateX(3px);
+      }
+
+      @media (max-width: 640px) {
+        #consult-form {
+          margin: 40px 16px 40px;
+          border-radius: 20px;
+        }
+        .form-header {
+          padding: 30px 24px 24px;
+        }
+        .form-header h2 {
+          font-size: 1.25rem;
+        }
+        .form-body {
+          padding: 24px 24px 30px;
+        }
+      }
+
+      /* --- 🎖️ 멤버십 섹션 프리미엄 디자인 --- */
+      #membership-section {
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        padding: 100px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .membership-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .membership-card {
+        background: #ffffff;
+        border: 1px solid rgba(59, 130, 246, 0.1);
+        border-radius: 40px;
+        padding: 60px 40px;
+        box-shadow: 0 40px 100px rgba(30, 58, 138, 0.06);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      .membership-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 50px 120px rgba(30, 58, 138, 0.12);
+        border-color: rgba(59, 130, 246, 0.3);
+      }
+      .membership-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 8px;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+      }
+      .membership-badge {
+        background: rgba(59, 130, 246, 0.1);
+        color: #1e40af;
+        padding: 8px 20px;
+        border-radius: 100px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        letter-spacing: 0.05em;
+      }
+      .membership-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1e3a8a;
+        margin-bottom: 16px;
+        letter-spacing: -0.03em;
+      }
+      .membership-subtitle {
+        font-size: 1.2rem;
+        color: #64748b;
+        margin-bottom: 48px;
+        line-height: 1.7;
+        max-width: 600px;
+      }
+      .price-container {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .price-amount {
+        font-size: 5rem;
+        font-weight: 900;
+        color: #0f172a;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+      .price-unit {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1e40af;
+      }
+      .price-note {
+        font-size: 1rem;
+        color: #94a3b8;
+        margin-bottom: 50px;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        width: 100%;
+        margin-bottom: 50px;
+      }
+      .feature-box {
+        background: #f8fafc;
+        padding: 30px 20px;
+        border-radius: 24px;
+        text-align: center;
+        border: 1px solid #f1f5f9;
+        transition: all 0.3s ease;
+      }
+      .feature-box:hover {
+        background: #fff;
+        border-color: #3b82f6;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      }
+      .feature-box .label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #94a3b8;
+        margin-bottom: 10px;
+      }
+      .feature-box .value {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #1e293b;
+      }
+      .feature-box .highlight {
+        color: #3b82f6;
+      }
+      .membership-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 20px 50px;
+        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        color: #ffffff;
+        border-radius: 100px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 20px 40px rgba(30, 58, 138, 0.25);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .membership-cta:hover {
+        transform: scale(1.05);
+        box-shadow: 0 25px 50px rgba(30, 58, 138, 0.35);
+      }
+      .cert-icon {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 30px;
+        filter: drop-shadow(0 15px 30px rgba(30, 58, 138, 0.15));
+      }
+
+      @media (max-width: 768px) {
+        .membership-title { font-size: 1.8rem; }
+        .price-amount { font-size: 3.5rem; }
+        .features-grid { grid-template-columns: 1fr; }
+        .membership-card { padding: 40px 24px; }
+      }
+
+      /* --- 📱 사이드바 멤버십 스타일 --- */
+      .membership-toggle-btn {
+        position: fixed;
+        right: 24px;
+        bottom: 180px;
+        z-index: 1000;
+        width: 76px;
+        height: 76px;
+        background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        animation: float-btn 3s ease-in-out infinite;
+      }
+      @keyframes float-btn {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      .membership-toggle-btn:hover {
+        transform: scale(1.1) rotate(5deg) translateY(-5px);
+        box-shadow: 0 15px 40px rgba(30, 58, 138, 0.5);
+        background: linear-gradient(135deg, #1e40af, #2563eb);
+      }
+      .membership-toggle-btn::after {
+        content: '';
+        position: absolute;
+        width: 100%; height: 100%;
+        border-radius: 50%;
+        border: 2px solid #3b82f6;
+        animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        pointer-events: none;
+      }
+      @keyframes pulse-ring {
+        0% { transform: scale(0.8); opacity: 1; }
+        80%, 100% { transform: scale(1.5); opacity: 0; }
+      }
+      .membership-toggle-btn span {
+        font-size: 0.7rem;
+        font-weight: 700;
+        margin-top: 2px;
+      }
+      
+      #membership-drawer-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(4px);
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+      }
+      #membership-drawer {
+        position: fixed;
+        top: 0; right: -100%; width: 450px; height: 100%;
+        background: #ffffff;
+        z-index: 2001;
+        box-shadow: -20px 0 50px rgba(0,0,0,0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        padding: 40px 30px;
+      }
+      body.drawer-open {
+        overflow: hidden;
+      }
+      body.drawer-open #membership-drawer-overlay {
+        opacity: 1;
+        visibility: visible;
+      }
+      body.drawer-open #membership-drawer {
+        right: 0;
+      }
+      .drawer-close {
+        position: absolute;
+        top: 20px; left: 20px;
+        background: #f1f5f9;
+        border: none;
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+        transition: all 0.2s;
+      }
+      .drawer-close:hover {
+        background: #e2e8f0;
+        color: #0f172a;
+      }
+
+      /* 하단 섹션 사이즈 수정 오버라이드 */
+      #root section .max-w-md.mx-auto {
+        max-width: 1100px !important;
+      }
+      #root section .grid.md-grid-cols-3 {
+        gap: 30px !important;
+      }
     </style>
 
-    <script type="module" crossorigin src="/assets/index-D2mSX3VZ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CKqb2HUg.css">
+    <script type="module" crossorigin src="/assets/index-Cl4BGa32.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CoHfiPMk.css">
   </head>
   <body>
-    <div class="preloader">
-      <div class="preloader-icon">
-        <span></span>
-      </div>
-    </div>
-    <div class="seo-text">
-      <h1>제대군인이음케어라이프 - 후불제상조 · 요양병원 · 방문요양서비스 전문 상담</h1>
-      <h2>주요 서비스</h2>
-      <h3>후불제상조 서비스</h3>
-      <p>경제적 부담을 최소화한 합리적인 후불제 상조 서비스 제공.</p>
-      <h3>요양병원 연결</h3>
-      <p>어르신 상황에 맞는 요양병원 연계 지원.</p>
-      <h3>방문요양서비스</h3>
-      <p>가정에서 제공되는 방문 요양 서비스와 장기요양보험 상담.</p>
-      <h2>제대군인이음케어라이프의 약속</h2>
-      <h3>어르신 돌봄</h3>
-      <p>가족의 마음으로 어르신의 삶을 존중하는 케어 제공.</p>
-      <h3>전문 상담</h3>
-      <p>장기요양보험부터 상조 서비스까지 전문가의 맞춤형 상담.</p>
-      <h3>24시간 상담 가능</h3>
-      <p>언제든 필요한 순간 즉시 상담 가능.</p>
-    </div>
-
-    <div id="root"></div>
-    
-    <script>
-      window.addEventListener("load", function () {
-        const preloader = document.querySelector(".preloader");
-        preloader.classList.add("preloader-finish");
-      });
-    </script>
-
-
-    <!-- 캐시 초기화 및 서비스 워커 제거 스크립트 -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-          for(let registration of registrations) {
-            registration.unregister();
-          }
-        });
-      }
-      // 캐시 방지를 위해 강제로 1회 새로고침 (로컬스토리지 활용)
-      if (!localStorage.getItem('cacheCleared')) {
-        localStorage.setItem('cacheCleared', 'true');
-        window.location.reload(true);
-      }
-    </script>
-  </body>
-</html>
+    <div class="

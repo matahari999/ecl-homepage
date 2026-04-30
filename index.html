@@ -285,23 +285,54 @@
       }
 
       function injectNavButtons(){
-        var nav=document.querySelector('header nav');
-        if(!nav){setTimeout(injectNavButtons,300);return;}
         if(document.getElementById('ecl-nav-extra')) return;
+        // 실제 배포 앱의 데스크탑 nav 컨테이너 찾기 (lg:flex items-center)
+        var header=document.querySelector('header');
+        if(!header){setTimeout(injectNavButtons,300);return;}
+        var desktopNav=null;
+        var divs=header.querySelectorAll('div');
+        for(var i=0;i<divs.length;i++){
+          var cls=divs[i].className||'';
+          if(cls.indexOf('lg:flex')!==-1&&cls.indexOf('items-center')!==-1){
+            desktopNav=divs[i];break;
+          }
+        }
+        if(!desktopNav){setTimeout(injectNavButtons,400);return;}
+
         var wrap=document.createElement('span');wrap.id='ecl-nav-extra';
-        wrap.style.cssText='display:inline-flex;align-items:center;';
-        var b1=document.createElement('button');b1.className='ecl-nav-btn';b1.textContent='지정시행사';b1.onclick=openPartnerModal;
-        var b2=document.createElement('button');b2.className='ecl-nav-btn';b2.textContent='멤버십';b2.onclick=openMemberModal;
+        wrap.style.cssText='display:inline-flex;align-items:center;gap:4px;';
+
+        // 지정시행사 버튼
+        var b1=document.createElement('button');
+        b1.style.cssText='cursor:pointer;font-size:0.88rem;color:#475569;background:none;border:none;padding:0 10px;font-family:inherit;font-weight:500;white-space:nowrap;transition:color 0.2s;';
+        b1.textContent='지정시행사';
+        b1.onmouseover=function(){this.style.color='#1e3a8a';};
+        b1.onmouseout=function(){this.style.color='#475569';};
+        b1.onclick=openPartnerModal;
+
+        // 멤버십 버튼
+        var b2=document.createElement('button');
+        b2.style.cssText='cursor:pointer;font-size:0.88rem;color:#475569;background:none;border:none;padding:0 10px;font-family:inherit;font-weight:500;white-space:nowrap;transition:color 0.2s;';
+        b2.textContent='멤버십';
+        b2.onmouseover=function(){this.style.color='#1e3a8a';};
+        b2.onmouseout=function(){this.style.color='#475569';};
+        b2.onclick=openMemberModal;
+
+        // 네이버 블로그 버튼
         var b3=document.createElement('a');
         b3.href='https://blog.naver.com/sinabro7500';
         b3.target='_blank';b3.rel='noopener noreferrer';
-        b3.style.cssText='display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:0.9rem;color:rgba(255,255,255,0.85);background:rgba(3,199,90,0.18);border:1.5px solid rgba(3,199,90,0.4);padding:6px 14px;border-radius:20px;font-family:inherit;font-weight:600;white-space:nowrap;text-decoration:none;transition:all 0.2s;margin-left:8px;';
-        b3.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="#03C75A"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>블로그';
-        b3.onmouseover=function(){this.style.background='rgba(3,199,90,0.32)';this.style.color='#fff';};
-        b3.onmouseout=function(){this.style.background='rgba(3,199,90,0.18)';this.style.color='rgba(255,255,255,0.85)';};
+        b3.style.cssText='display:inline-flex;align-items:center;gap:5px;font-size:0.85rem;color:#fff;background:#03C75A;border:none;padding:6px 12px;border-radius:8px;font-family:inherit;font-weight:700;white-space:nowrap;text-decoration:none;transition:all 0.2s;margin-left:6px;';
+        b3.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>블로그';
+        b3.onmouseover=function(){this.style.background='#02a84b';};
+        b3.onmouseout=function(){this.style.background='#03C75A';};
+
         wrap.appendChild(b1);wrap.appendChild(b2);wrap.appendChild(b3);
-        var first=nav.querySelector('a');
-        if(first) nav.insertBefore(wrap,first); else nav.prepend(wrap);
+
+        // dark mode 토글 버튼 바로 앞에 삽입
+        var toggleBtn=desktopNav.querySelector('button');
+        if(toggleBtn) desktopNav.insertBefore(wrap,toggleBtn);
+        else desktopNav.appendChild(wrap);
       }
 
       document.addEventListener('DOMContentLoaded',function(){

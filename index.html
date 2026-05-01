@@ -78,6 +78,50 @@
         transition:color 0.2s; font-weight:500; white-space:nowrap;
       }
       .ecl-nav-btn:hover { color:#60a5fa; }
+      /* 영상 배너 */
+      #ecl-video-banner {
+        background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%);
+        padding: 60px 20px 70px;
+        text-align: center;
+      }
+      #ecl-video-banner .vb-inner {
+        max-width: 1100px; margin: 0 auto;
+        display: flex; align-items: center; gap: 48px; flex-wrap: wrap; justify-content: center;
+      }
+      #ecl-video-banner .vb-text {
+        flex: 1; min-width: 260px; text-align: left;
+      }
+      #ecl-video-banner .vb-badge {
+        display: inline-block;
+        background: rgba(59,130,246,0.2);
+        border: 1px solid rgba(59,130,246,0.4);
+        color: #60a5fa; padding: 7px 22px;
+        border-radius: 100px; font-size: 0.85rem; font-weight: 700;
+        margin-bottom: 18px; letter-spacing: 0.5px;
+      }
+      #ecl-video-banner h2 {
+        font-size: 2rem; font-weight: 800; color: #ffffff;
+        margin: 0 0 12px; line-height: 1.35;
+      }
+      #ecl-video-banner p {
+        color: rgba(148,163,184,1); font-size: 1rem; margin: 0; line-height: 1.7;
+      }
+      #ecl-video-banner .vb-player {
+        flex-shrink: 0; width: 340px;
+      }
+      #ecl-video-banner .vb-ratio {
+        position: relative; width: 100%; padding-top: 177.78%; /* 9:16 */
+        border-radius: 20px; overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      }
+      #ecl-video-banner .vb-ratio iframe {
+        position: absolute; top: 0; left: 0;
+        width: 100%; height: 100%; border: none;
+      }
+      @media (max-width: 700px) {
+        #ecl-video-banner .vb-text { text-align: center; }
+        #ecl-video-banner .vb-player { width: 260px; }
+      }
     </style>
 
     <script type="module" crossorigin src="/assets/index-Cl4BGa32.js"></script>
@@ -420,7 +464,33 @@
         if(!found) setTimeout(fixContactCards,600);
       }
 
-      function injectNavButtons(){
+      function injectVideoBanner(){
+        if(document.getElementById('ecl-video-banner')) return;
+        var header=document.querySelector('header');
+        if(!header){setTimeout(injectVideoBanner,300);return;}
+
+        var section=document.createElement('section');
+        section.id='ecl-video-banner';
+        section.innerHTML=
+          '<div class="vb-inner">'+
+            '<div class="vb-text">'+
+              '<div class="vb-badge">🎬 회사 소개 영상</div>'+
+              '<h2>제대군인이음케어라이프<br>서비스 소개</h2>'+
+              '<p>어르신의 삶과 가족의 마음을 이어주는<br>종합 케어 서비스를 영상으로 만나보세요.<br><br>후불제 상조 · 요양병원 연결<br>방문요양 · 장기요양보험 상담</p>'+
+            '</div>'+
+            '<div class="vb-player">'+
+              '<div class="vb-ratio">'+
+                '<iframe src="https://www.youtube.com/embed/JBm6zRhy9ZU?rel=0&modestbranding=1" '+
+                  'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" '+
+                  'allowfullscreen title="제대군인이음케어라이프 소개 영상"></iframe>'+
+              '</div>'+
+            '</div>'+
+          '</div>';
+
+        header.insertAdjacentElement('afterend', section);
+      }
+
+      function injectNavButtons(){      function injectNavButtons(){
         if(document.getElementById('ecl-nav-extra')) return;
         // 실제 배포 앱의 데스크탑 nav 컨테이너 찾기 (lg:flex items-center)
         var header=document.querySelector('header');
@@ -472,15 +542,15 @@
       }
 
       document.addEventListener('DOMContentLoaded',function(){
-        fixSangjoImage(); injectNavButtons(); fixContactCards();
-        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();},1500);
-        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();},4000);
+        fixSangjoImage(); injectNavButtons(); fixContactCards(); injectVideoBanner();
+        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();},1500);
+        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();},4000);
       });
 
       // MutationObserver로 React 렌더링 후 이미지/카드 감지
       (function(){
         var obs=new MutationObserver(function(){
-          fixSangjoImage(); fixContactCards();
+          fixSangjoImage(); fixContactCards(); injectVideoBanner();
         });
         obs.observe(document.getElementById('root')||document.body,{childList:true,subtree:true});
         setTimeout(function(){obs.disconnect();},10000);

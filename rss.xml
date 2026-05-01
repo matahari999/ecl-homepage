@@ -3,28 +3,58 @@
   <channel>
     <title>제대군인이음케어라이프 RSS</title>
     <link>https://ecl.ai.kr/</link>
-    <description>제대군인이음케어라이프 소식 피드 - 후불제상조, 요양병원·요양원, 방문요양서비스 전문 상담</description>
+    <description>제대군인이음케어라이프 소식 피드 - 후불제상조, 요양병원·요양원, 방문요양서비스 전문 상담. 일산새마을금고·고양누리새마을금고·파주중앙새마을금고·송포농협 MOU 협약 지정시행사.</description>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 11 Sep 2025 12:00:00 +0900</lastBuildDate>
-    <pubDate>Thu, 11 Sep 2025 12:00:00 +0900</pubDate>
+    <lastBuildDate>Thu, 01 May 2026 09:00:00 +0900</lastBuildDate>
+    <pubDate>Thu, 01 May 2026 09:00:00 +0900</pubDate>
     <ttl>1800</ttl>
 
-    <!-- 첫 게시글 -->
     <item>
-      <title>홈페이지 오픈</title>
+      <title>송포농협·파주중앙새마을금고 MOU 협약 체결</title>
       <link>https://ecl.ai.kr/</link>
-      <description>제대군인이음케어라이프 공식 홈페이지가 열렸습니다! 후불제상조, 요양병원·요양원 연결, 방문요양서비스 상담을 제공합니다.</description>
-      <pubDate>Thu, 11 Sep 2025 12:00:00 +0900</pubDate>
-      <guid>https://ecl.ai.kr/</guid>
+      <description>제대군인이음케어라이프가 송포농협, 파주중앙새마을금고와 업무협약(MOU)을 체결했습니다. 경기도 파주시 지역 어르신을 위한 후불제 상조 및 방문요양 서비스를 제공합니다.</description>
+      <pubDate>Thu, 01 May 2026 09:00:00 +0900</pubDate>
+      <guid>https://ecl.ai.kr/#mou-songpo-paju</guid>
     </item>
 
-    <!-- 두 번째 게시글 예시 -->
     <item>
-      <title>요양 서비스 상담 개시</title>
-      <link>https://ecl.ai.kr/services</link>
-      <description>어르신의 삶과 가족의 마음을 이어주는 종합 케어 서비스. 장기요양보험과 맞춤형 상담을 지금 신청하세요.</description>
+      <title>국제청년환경연합회 MOU 협약 체결</title>
+      <link>https://ecl.ai.kr/</link>
+      <description>제대군인이음케어라이프가 국제청년환경연합회(gyea.kr)와 MOU 협약을 맺었습니다. 환경과 복지를 아우르는 종합 케어 서비스를 함께 제공합니다.</description>
+      <pubDate>Wed, 30 Apr 2026 10:00:00 +0900</pubDate>
+      <guid>https://ecl.ai.kr/#mou-gyea</guid>
+    </item>
+
+    <item>
+      <title>일산새마을금고·고양누리새마을금고 MOU 협약 현장 사진 공개</title>
+      <link>https://ecl.ai.kr/</link>
+      <description>일산새마을금고, 고양누리새마을금고와의 MOU 협약 현장 사진을 홈페이지에 공개했습니다. 지역 사회와 함께하는 제대군인이음케어라이프의 협약 활동을 확인하세요.</description>
+      <pubDate>Tue, 29 Apr 2026 10:00:00 +0900</pubDate>
+      <guid>https://ecl.ai.kr/#mou-gallery</guid>
+    </item>
+
+    <item>
+      <title>후불제 상조 멤버십 증권 안내</title>
+      <link>https://ecl.ai.kr/services/postpaid-mutual-aid</link>
+      <description>제대군인이음케어라이프 상조 회원권 증권 액면가 ₩10,000. 선납금 없이 후불제로 이용 가능한 상조 서비스를 소개합니다.</description>
+      <pubDate>Mon, 28 Apr 2026 09:00:00 +0900</pubDate>
+      <guid>https://ecl.ai.kr/services/postpaid-mutual-aid</guid>
+    </item>
+
+    <item>
+      <title>24시간 무료 상담 서비스 운영 안내</title>
+      <link>https://ecl.ai.kr/contact</link>
+      <description>전화(1588-9012), 카카오톡, 이메일로 24시간 무료 상담이 가능합니다. 요양병원 연결, 방문요양서비스, 장기요양보험 등 궁금한 사항을 문의하세요.</description>
       <pubDate>Thu, 11 Sep 2025 12:30:00 +0900</pubDate>
-      <guid>https://ecl.ai.kr/services</guid>
+      <guid>https://ecl.ai.kr/contact</guid>
+    </item>
+
+    <item>
+      <title>제대군인이음케어라이프 공식 홈페이지 오픈</title>
+      <link>https://ecl.ai.kr/</link>
+      <description>제대군인이음케어라이프 공식 홈페이지가 열렸습니다. 후불제상조, 요양병원·요양원 연결, 방문요양서비스 상담을 제공합니다.</description>
+      <pubDate>Thu, 11 Sep 2025 12:00:00 +0900</pubDate>
+      <guid>https://ecl.ai.kr/open</guid>
     </item>
 
   </channel>

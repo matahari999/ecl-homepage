@@ -72,6 +72,10 @@
       .mou-tab-btn { transition: all 0.3s; }
       /* 모달 */
       #ecl-partner-overlay.open, #ecl-member-overlay.open { display:flex !important; }
+      /* 24시간 상담 카드 강제 수정 */
+      [class*="grid"] > * {
+        word-break: keep-all !important;
+      }
       .ecl-nav-btn {
         cursor:pointer; font-size:0.95rem; color:rgba(255,255,255,0.85);
         background:none; border:none; padding:0 14px; font-family:inherit;
@@ -489,15 +493,52 @@
 
       function fixContactCards(){
         var found=false;
-        var allEls=document.querySelectorAll('div,section');
+        // 전화상담 텍스트를 가진 요소 찾기
+        var allEls=document.querySelectorAll('div,section,article');
         for(var i=0;i<allEls.length;i++){
           var el=allEls[i];
-          if(el.children.length===3&&el.textContent.indexOf('전화상담')!==-1&&el.textContent.indexOf('카카오톡')!==-1&&el.textContent.indexOf('이메일')!==-1){
-            el.style.cssText+=';display:grid!important;grid-template-columns:repeat(3,minmax(200px,1fr))!important;gap:20px!important;';
-            var par=el.parentElement;
-            if(par){par.style.maxWidth='900px';par.style.margin='0 auto';}
-            found=true;
-            break;
+          var txt=el.textContent||'';
+          if(txt.indexOf('전화 상담')!==-1||txt.indexOf('전화상담')!==-1){
+            if(txt.indexOf('카카오톡')!==-1&&txt.indexOf('이메일')!==-1){
+              // 카드 컨테이너(그리드) 찾기 - 자식 3개짜리
+              var grid=null;
+              var cur=el;
+              for(var d=0;d<6;d++){
+                if(cur.children&&cur.children.length===3){grid=cur;break;}
+                cur=cur.parentElement;
+                if(!cur) break;
+              }
+              if(grid){
+                // 그리드 강제 설정
+                grid.style.cssText='display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:24px!important;width:100%!important;max-width:100%!important;';
+                // 각 카드 최소 너비 + 텍스트 정렬
+                for(var k=0;k<grid.children.length;k++){
+                  var card=grid.children[k];
+                  card.style.cssText+='min-width:0!important;word-break:keep-all!important;overflow-wrap:break-word!important;text-align:center!important;padding:24px 16px!important;';
+                  // 카드 안 모든 텍스트 요소
+                  var texts=card.querySelectorAll('p,span,h3,h4,div');
+                  for(var t=0;t<texts.length;t++){
+                    texts[t].style.wordBreak='keep-all';
+                    texts[t].style.whiteSpace='normal';
+                  }
+                }
+                // 부모 컨테이너 너비 확장
+                var par=grid.parentElement;
+                if(par){
+                  par.style.maxWidth='860px';
+                  par.style.width='100%';
+                  par.style.margin='0 auto';
+                  var par2=par.parentElement;
+                  if(par2){
+                    par2.style.maxWidth='900px';
+                    par2.style.width='100%';
+                    par2.style.margin='0 auto';
+                  }
+                }
+                found=true;
+                break;
+              }
+            }
           }
         }
         if(!found) setTimeout(fixContactCards,600);

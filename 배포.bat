@@ -19,7 +19,7 @@ if exist ".git\index.lock" (
 
 :: git add
 echo  [2/4] 변경된 파일 추가 중...
-git add index.html sitemap.xml rss.xml
+git add index.html sitemap.xml rss.xml robots.txt _headers
 echo        완료!
 
 :: git commit

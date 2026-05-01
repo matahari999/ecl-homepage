@@ -598,6 +598,35 @@
     </script>
 
     <script>
+      // React Router 네비게이션 감지 → 홈에서만 배너/MOU 표시
+      function handleRouteChange(){
+        var path=window.location.pathname;
+        var isHome=(path==='/'||path==='');
+        var vid=document.getElementById('ecl-video-banner');
+        var mou=document.getElementById('mou-section');
+        if(vid) vid.style.display=isHome?'':'none';
+        if(mou) mou.style.display=isHome?'':'none';
+        // 홈으로 돌아오면 스크롤 위치 유지
+        if(isHome&&vid) vid.scrollIntoView&&false;
+      }
+      // history.pushState 패치 (React Router가 이걸 씀)
+      (function(){
+        var orig=history.pushState;
+        history.pushState=function(){
+          orig.apply(this,arguments);
+          setTimeout(handleRouteChange,80);
+        };
+        var origReplace=history.replaceState;
+        history.replaceState=function(){
+          origReplace.apply(this,arguments);
+          setTimeout(handleRouteChange,80);
+        };
+      })();
+      window.addEventListener('popstate',function(){setTimeout(handleRouteChange,80);});
+      window.addEventListener('load',function(){setTimeout(handleRouteChange,300);});
+    </script>
+
+    <script>
       window.addEventListener("load",function(){var p=document.querySelector(".preloader");if(p)p.classList.add("preloader-finish");});
     </script>
     <script>

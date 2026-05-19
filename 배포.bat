@@ -2,7 +2,7 @@
 chcp 65001 > nul
 echo.
 echo  ===================================
-echo   제대군인이음케어라이프 홈페이지 배포
+echo   이음케어라이프 홈페이지 배포
 echo  ===================================
 echo.
 
@@ -19,14 +19,14 @@ if exist ".git\index.lock" (
 
 :: git add
 echo  [2/4] 변경된 파일 추가 중...
-git add index.html sitemap.xml rss.xml robots.txt _headers
+git add index.html sitemap.xml rss.xml robots.txt _headers logo.png
 echo        완료!
 
 :: git commit
 echo  [3/4] 커밋 중...
 for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set dt=%%I
 set TIMESTAMP=%dt:~0,4%-%dt:~4,2%-%dt:~6,2% %dt:~8,2%:%dt:~10,2%
-git commit -m "update: 홈페이지 업데이트 %TIMESTAMP%"
+git commit -m "update: 이음케어라이프 리브랜딩 + 로고 교체 %TIMESTAMP%"
 echo        완료!
 
 :: git push

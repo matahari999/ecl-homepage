@@ -668,6 +668,46 @@
     </script>
 
     <script>
+      // React 렌더링 후 "제대군인" 텍스트 전부 교체
+      function replaceVeteranText() {
+        var walker = document.createTreeWalker(
+          document.body,
+          NodeFilter.SHOW_TEXT,
+          null,
+          false
+        );
+        var nodes = [];
+        var node;
+        while (node = walker.nextNode()) {
+          if (node.nodeValue && node.nodeValue.indexOf('제대군인') !== -1) {
+            nodes.push(node);
+          }
+        }
+        nodes.forEach(function(n) {
+          n.nodeValue = n.nodeValue
+            .replace(/제대군인이음케어라이프/g, '이음케어라이프')
+            .replace(/제대군인/g, '');
+        });
+        // title 태그도 교체
+        if (document.title.indexOf('제대군인') !== -1) {
+          document.title = document.title
+            .replace(/제대군인이음케어라이프/g, '이음케어라이프')
+            .replace(/제대군인/g, '');
+        }
+      }
+      // DOM 변경 감지해서 계속 교체
+      var _vetObs = new MutationObserver(function() { replaceVeteranText(); });
+      document.addEventListener('DOMContentLoaded', function() {
+        replaceVeteranText();
+        _vetObs.observe(document.body, { childList: true, subtree: true });
+        setTimeout(replaceVeteranText, 500);
+        setTimeout(replaceVeteranText, 1500);
+        setTimeout(replaceVeteranText, 3000);
+        setTimeout(function() { _vetObs.disconnect(); }, 10000);
+      });
+    </script>
+
+    <script>
       window.addEventListener("load",function(){var p=document.querySelector(".preloader");if(p)p.classList.add("preloader-finish");});
     </script>
     <script>

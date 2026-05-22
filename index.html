@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="naver-site-verification" content="0c43039445589a05bd7ef5b810261e892da4501c" />
+    <!-- ★ 구글 Search Console 인증 태그 — 아래 주석 해제 후 코드 교체하세요 -->
+    <!-- <meta name="google-site-verification" content="여기에_구글_발급_코드_붙여넣기" /> -->
 
     <link rel="canonical" href="https://ecl.ai.kr/" />
 
@@ -16,9 +18,14 @@
     <meta name="language" content="Korean" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ecl.ai.kr/" />
+    <meta property="og:site_name" content="이음케어라이프" />
+    <meta property="og:locale" content="ko_KR" />
     <meta property="og:title" content="이음케어라이프 - 후불제상조 | 요양병원·방문요양서비스 전문 상담" />
     <meta property="og:description" content="어르신의 삶과 가족의 마음을 이어주는 종합 케어 서비스. 일산새마을금고·고양누리새마을금고·파주중앙새마을금고·송포농협 MOU 협약 지정시행사. 후불제 상조, 요양병원 연결, 방문요양서비스 24시간 무료 상담." />
     <meta property="og:image" content="https://ecl.ai.kr/logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="이음케어라이프 로고" />
 
     <meta property="twitter:card" content="summary_large_image" />
@@ -132,30 +139,117 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "이음케어라이프",
-      "description": "후불제 상조, 요양병원 연결, 방문요양서비스 전문 상담. 일산새마을금고·고양누리새마을금고·파주중앙새마을금고·송포농협 MOU 협약 지정시행사.",
-      "url": "https://ecl.ai.kr",
-      "logo": "https://ecl.ai.kr/logo.png",
-      "telephone": "1588-9012",
-      "areaServed": ["고양시", "파주시", "일산", "경기도"],
-      "serviceType": ["후불제상조", "요양병원연결", "방문요양서비스", "장기요양보험상담"],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "이음케어라이프 서비스",
-        "itemListElement": [
-          {"@type": "Offer", "name": "후불제 상조 서비스", "description": "선납금 없는 후불제 상조"},
-          {"@type": "Offer", "name": "요양병원 연결", "description": "전국 네트워크 맞춤형 요양병원 매칭"},
-          {"@type": "Offer", "name": "방문요양서비스", "description": "24시간 가정 방문 요양"},
-          {"@type": "Offer", "name": "장기요양보험 상담", "description": "등급 신청부터 급여 안내까지 무료 상담"}
-        ]
-      },
-      "memberOf": [
-        {"@type": "Organization", "name": "일산새마을금고", "description": "MOU 협약 기관"},
-        {"@type": "Organization", "name": "고양누리새마을금고", "description": "MOU 협약 기관"},
-        {"@type": "Organization", "name": "파주중앙새마을금고", "description": "MOU 협약 기관"},
-        {"@type": "Organization", "name": "송포농협", "description": "MOU 협약 기관"},
-        {"@type": "Organization", "name": "국제청년환경연합회", "description": "MOU 협약 기관"}
+      "@graph": [
+        {
+          "@type": ["LocalBusiness", "FuneralHome"],
+          "@id": "https://ecl.ai.kr/#business",
+          "name": "이음케어라이프",
+          "alternateName": "ECL케어라이프",
+          "description": "후불제 상조, 요양병원 연결, 방문요양서비스 전문 상담. 일산새마을금고·고양누리새마을금고·파주중앙새마을금고·송포농협 MOU 협약 지정시행사.",
+          "url": "https://ecl.ai.kr",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://ecl.ai.kr/logo.png"
+          },
+          "image": "https://ecl.ai.kr/logo.png",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "경기도",
+            "addressLocality": "고양시",
+            "addressCountry": "KR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 37.6559,
+            "longitude": 126.8320
+          },
+          "areaServed": [
+            {"@type": "City", "name": "고양시"},
+            {"@type": "City", "name": "파주시"},
+            {"@type": "City", "name": "김포시"},
+            {"@type": "AdministrativeArea", "name": "경기도"},
+            {"@type": "AdministrativeArea", "name": "수도권"}
+          ],
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          },
+          "serviceType": ["후불제상조", "요양병원연결", "방문요양서비스", "장기요양보험상담"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "이음케어라이프 서비스",
+            "itemListElement": [
+              {"@type": "Offer", "name": "후불제 상조 서비스", "description": "선납금 없는 후불제 상조 — 장례 후 납부"},
+              {"@type": "Offer", "name": "요양병원 연결", "description": "전국 네트워크 맞춤형 요양병원 매칭"},
+              {"@type": "Offer", "name": "방문요양서비스", "description": "24시간 가정 방문 요양 및 장기요양보험 상담"},
+              {"@type": "Offer", "name": "장기요양보험 상담", "description": "등급 신청부터 급여 안내까지 무료 상담"}
+            ]
+          },
+          "memberOf": [
+            {"@type": "Organization", "name": "일산새마을금고", "description": "MOU 협약 기관"},
+            {"@type": "Organization", "name": "고양누리새마을금고", "description": "MOU 협약 기관"},
+            {"@type": "Organization", "name": "파주중앙새마을금고", "description": "MOU 협약 기관"},
+            {"@type": "Organization", "name": "송포농협", "description": "MOU 협약 기관"},
+            {"@type": "Organization", "name": "국제청년환경연합회", "description": "MOU 협약 기관"}
+          ],
+          "knowsAbout": ["후불제상조", "장례서비스", "요양병원", "방문요양", "장기요양보험", "노인돌봄"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ecl.ai.kr/#website",
+          "url": "https://ecl.ai.kr",
+          "name": "이음케어라이프",
+          "description": "후불제 상조, 요양병원·방문요양서비스 전문",
+          "inLanguage": "ko-KR",
+          "publisher": {"@id": "https://ecl.ai.kr/#business"}
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "후불제 상조란 무엇인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "후불제 상조란 장례가 진행된 후에 비용을 납부하는 방식으로, 미리 선납금을 내지 않아도 됩니다. 이음케어라이프는 일산새마을금고·고양누리새마을금고·파주중앙새마을금고·송포농협 MOU 협약 지정시행사로, 경기도 고양시·파주시 지역에서 후불제 상조 서비스를 제공합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "서비스 이용 가능 지역은 어디인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "경기도 고양시(일산동구, 일산서구, 덕양구), 파주시, 김포시 및 수도권 전 지역에서 서비스 이용이 가능하며, 요양병원 연결은 전국 네트워크를 통해 제공됩니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "일산새마을금고·새마을금고 회원도 이용할 수 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "네, 이음케어라이프는 일산새마을금고·고양누리새마을금고·파주중앙새마을금고·송포농협 MOU 협약 지정시행사입니다. 해당 금융기관 회원을 위한 특별 상조 서비스를 제공합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "요양병원 연결 서비스는 어떻게 받나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "24시간 무료 상담을 통해 가족 상황에 맞는 요양병원을 매칭해 드립니다. 전국 요양병원 네트워크를 통해 맞춤형 연결 서비스를 무료로 제공합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "방문요양서비스와 장기요양보험 신청은 어떻게 하나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "장기요양보험 등급을 받은 어르신 가정에 전문 요양보호사가 직접 방문하여 돌봄 서비스를 제공합니다. 등급 신청부터 급여 안내까지 무료 상담을 제공합니다."
+              }
+            }
+          ]
+        }
       ]
     }
     </script>

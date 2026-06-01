@@ -442,6 +442,7 @@
       }
 
       function fixContactCards(){
+        if(window.location.pathname !== '/') return;
         var found=false;
         // 전화상담 텍스트를 가진 요소 찾기
         var allEls=document.querySelectorAll('div,section,article');

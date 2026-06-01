@@ -651,23 +651,70 @@
         if(grid){
           grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px;';
           grid.innerHTML=
-            '<a href="/bangmun_slideshow_.html" target="_blank" style="display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);background:linear-gradient(135deg, #1e3a8a, #3b82f6);color:white;text-decoration:none;padding:50px 20px;text-align:center;transition:all 0.3s;aspect-ratio:4/3;">'+
+            '<div onclick="window.openEclModal(\'/bangmun_slideshow_.html\')" style="cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);background:linear-gradient(135deg, #1e3a8a, #3b82f6);color:white;text-decoration:none;padding:50px 20px;text-align:center;transition:all 0.3s;aspect-ratio:4/3;">'+
               '<div style="font-size:3rem;margin-bottom:15px;">🏠</div>'+
               '<h3 style="font-size:1.4rem;font-weight:800;margin-bottom:15px;line-height:1.4;">방문요양서비스<br/>신청 절차</h3>'+
-              '<span style="display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.2);border-radius:100px;font-size:0.9rem;font-weight:700;">자세히 보기 &rarr;</span>'+
-            '</a>'+
-            '<a href="/yoyangbyungwon_guide.html" target="_blank" style="display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);background:linear-gradient(135deg, #047857, #10b981);color:white;text-decoration:none;padding:50px 20px;text-align:center;transition:all 0.3s;aspect-ratio:4/3;">'+
+              '<span style="display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.2);border-radius:100px;font-size:0.9rem;font-weight:700;">화면 크게 보기</span>'+
+            '</div>'+
+            '<div onclick="window.openEclModal(\'/yoyangbyungwon_guide.html\')" style="cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);background:linear-gradient(135deg, #047857, #10b981);color:white;text-decoration:none;padding:50px 20px;text-align:center;transition:all 0.3s;aspect-ratio:4/3;">'+
               '<div style="font-size:3rem;margin-bottom:15px;">🏥</div>'+
               '<h3 style="font-size:1.4rem;font-weight:800;margin-bottom:15px;line-height:1.4;">요양병원<br/>입소 및 시설</h3>'+
-              '<span style="display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.2);border-radius:100px;font-size:0.9rem;font-weight:700;">자세히 보기 &rarr;</span>'+
-            '</a>'+
-            '<a href="/ieum_carelife_slideshow.html" target="_blank" style="display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);background:linear-gradient(135deg, #b45309, #f59e0b);color:white;text-decoration:none;padding:50px 20px;text-align:center;transition:all 0.3s;aspect-ratio:4/3;">'+
+              '<span style="display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.2);border-radius:100px;font-size:0.9rem;font-weight:700;">화면 크게 보기</span>'+
+            '</div>'+
+            '<div onclick="window.openEclModal(\'/ieum_carelife_slideshow.html\')" style="cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);background:linear-gradient(135deg, #b45309, #f59e0b);color:white;text-decoration:none;padding:50px 20px;text-align:center;transition:all 0.3s;aspect-ratio:4/3;">'+
               '<div style="font-size:3rem;margin-bottom:15px;">🕊️</div>'+
               '<h3 style="font-size:1.4rem;font-weight:800;margin-bottom:15px;line-height:1.4;">후불제 상조 및<br/>선불제상조 비교</h3>'+
-              '<span style="display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.2);border-radius:100px;font-size:0.9rem;font-weight:700;">자세히 보기 &rarr;</span>'+
-            '</a>';
+              '<span style="display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.2);border-radius:100px;font-size:0.9rem;font-weight:700;">화면 크게 보기</span>'+
+            '</div>';
         }
       }
+
+      window.openEclModal = function(url) {
+        var modal = document.createElement('div');
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100vw';
+        modal.style.height = '100vh';
+        modal.style.backgroundColor = 'rgba(0,0,0,0.85)';
+        modal.style.zIndex = '999999';
+        modal.style.display = 'flex';
+        modal.style.flexDirection = 'column';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        
+        var closeBtn = document.createElement('button');
+        closeBtn.innerHTML = '✖ 닫기';
+        closeBtn.style.position = 'absolute';
+        closeBtn.style.top = '20px';
+        closeBtn.style.right = '20px';
+        closeBtn.style.backgroundColor = 'white';
+        closeBtn.style.color = 'black';
+        closeBtn.style.border = 'none';
+        closeBtn.style.padding = '10px 20px';
+        closeBtn.style.fontSize = '16px';
+        closeBtn.style.fontWeight = 'bold';
+        closeBtn.style.borderRadius = '30px';
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.style.zIndex = '1000000';
+        closeBtn.onclick = function() {
+          document.body.removeChild(modal);
+        };
+        
+        var iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.style.width = '90%';
+        iframe.style.maxWidth = '1200px';
+        iframe.style.height = '85%';
+        iframe.style.border = 'none';
+        iframe.style.borderRadius = '16px';
+        iframe.style.backgroundColor = 'white';
+        iframe.style.boxShadow = '0 10px 40px rgba(0,0,0,0.5)';
+        
+        modal.appendChild(closeBtn);
+        modal.appendChild(iframe);
+        document.body.appendChild(modal);
+      };
 
       // 서비스 상세페이지 바로가기 연결 (메인에서 클릭 시 React Router 경로로 이동)
       function fixServiceLinks(){

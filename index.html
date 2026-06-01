@@ -687,14 +687,30 @@
 
       document.addEventListener('DOMContentLoaded',function(){
         fixSangjoImage(); injectNavButtons(); fixContactCards(); injectVideoBanner();
-        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();},1500);
-        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();},4000);
+        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideSinsabangBanner();},1500);
+        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideSinsabangBanner();},4000);
       });
+
+      // React가 렌더링한 큰 신사방TV 배너 숨기기 (유튜브/블로그 카드로 대체됨)
+      function hideSinsabangBanner(){
+        var allH2 = document.querySelectorAll('h2');
+        for(var i=0;i<allH2.length;i++){
+          var txt = allH2[i].textContent||'';
+          if(txt.indexOf('신사방TV')!==-1 && txt.indexOf('특별한 약속')!==-1){
+            var sec = allH2[i].closest('section');
+            if(sec && !sec.getAttribute('data-ecl-hidden')){
+              sec.setAttribute('data-ecl-hidden','true');
+              sec.style.display='none';
+            }
+            break;
+          }
+        }
+      }
 
       // MutationObserver로 React 렌더링 후 이미지/카드 감지
       (function(){
         var obs=new MutationObserver(function(){
-          fixSangjoImage(); fixContactCards(); injectVideoBanner(); injectYoutubeBlogCards(); replaceBlogSectionWithGif(); fixServiceLinks();
+          fixSangjoImage(); fixContactCards(); injectVideoBanner(); injectYoutubeBlogCards(); replaceBlogSectionWithGif(); fixServiceLinks(); hideSinsabangBanner();
         });
         obs.observe(document.getElementById('root')||document.body,{childList:true,subtree:true});
         setTimeout(function(){obs.disconnect();},10000);

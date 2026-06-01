@@ -652,13 +652,13 @@
           grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px;';
           grid.innerHTML=
             '<div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);aspect-ratio:4/3;">'+
-              '<iframe src="/ieum_carelife_slideshow.html" style="width:100%;height:100%;border:none;" loading="lazy" title="이음케어라이프 소개"></iframe>'+
+              '<iframe src="/bangmun_slideshow_.html" style="width:100%;height:100%;border:none;" loading="lazy" title="방문요양서비스 신청 절차"></iframe>'+
             '</div>'+
             '<div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);aspect-ratio:4/3;">'+
-              '<iframe src="/bangmun_slideshow_1.html" style="width:100%;height:100%;border:none;" loading="lazy" title="방문요양 안내"></iframe>'+
+              '<iframe src="/yoyangbyungwon_guide.html" style="width:100%;height:100%;border:none;" loading="lazy" title="요양병원 입소 및 시설"></iframe>'+
             '</div>'+
             '<div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);aspect-ratio:4/3;">'+
-              '<iframe src="/yoyangbyungwon_guide.html" style="width:100%;height:100%;border:none;" loading="lazy" title="요양병원 가이드"></iframe>'+
+              '<iframe src="/ieum_carelife_slideshow.html" style="width:100%;height:100%;border:none;" loading="lazy" title="후불제 상조 및 선불제상조의 비교"></iframe>'+
             '</div>';
         }
       }
@@ -687,22 +687,29 @@
 
       document.addEventListener('DOMContentLoaded',function(){
         fixSangjoImage(); injectNavButtons(); fixContactCards(); injectVideoBanner();
-        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideSinsabangBanner();},1500);
-        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideSinsabangBanner();},4000);
+        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideUnwantedSections();},1500);
+        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideUnwantedSections();},4000);
       });
 
-      // React가 렌더링한 큰 신사방TV 배너 숨기기 (유튜브/블로그 카드로 대체됨)
-      function hideSinsabangBanner(){
+      // React가 렌더링한 불필요한 하단 섹션들 숨기기
+      function hideUnwantedSections(){
         var allH2 = document.querySelectorAll('h2');
         for(var i=0;i<allH2.length;i++){
           var txt = allH2[i].textContent||'';
-          if(txt.indexOf('신사방TV')!==-1 && txt.indexOf('특별한 약속')!==-1){
+          
+          // 1. 큰 신사방TV 배너 숨기기
+          var isSinsabang = txt.indexOf('신사방TV')!==-1 && txt.indexOf('특별한 약속')!==-1;
+          // 2. 상조 서비스 종합 안내 숨기기
+          var isSangjo = txt.indexOf('상조 서비스')!==-1 && txt.indexOf('이음케어라이프')!==-1;
+          // 3. 24시간 무료상담 숨기기
+          var isConsult = txt.indexOf('24시간 무료상담')!==-1;
+
+          if(isSinsabang || isSangjo || isConsult){
             var sec = allH2[i].closest('section');
             if(sec && !sec.getAttribute('data-ecl-hidden')){
               sec.setAttribute('data-ecl-hidden','true');
               sec.style.display='none';
             }
-            break;
           }
         }
       }
@@ -710,7 +717,7 @@
       // MutationObserver로 React 렌더링 후 이미지/카드 감지
       (function(){
         var obs=new MutationObserver(function(){
-          fixSangjoImage(); fixContactCards(); injectVideoBanner(); injectYoutubeBlogCards(); replaceBlogSectionWithGif(); fixServiceLinks(); hideSinsabangBanner();
+          fixSangjoImage(); fixContactCards(); injectVideoBanner(); injectYoutubeBlogCards(); replaceBlogSectionWithGif(); fixServiceLinks(); hideUnwantedSections();
         });
         obs.observe(document.getElementById('root')||document.body,{childList:true,subtree:true});
         setTimeout(function(){obs.disconnect();},10000);

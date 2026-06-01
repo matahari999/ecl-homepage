@@ -749,14 +749,9 @@
         var allH2 = document.querySelectorAll('h2');
         for(var i=0;i<allH2.length;i++){
           var txt = allH2[i].textContent||'';
-          
-          // 1. 큰 신사방TV 배너 숨기기
           var isSinsabang = txt.indexOf('신사방TV')!==-1 && txt.indexOf('특별한 약속')!==-1;
-          // 2. 상조 서비스 종합 안내 숨기기
           var isSangjo = txt.indexOf('상조 서비스')!==-1 && txt.indexOf('이음케어라이프')!==-1;
-          // 3. 24시간 무료상담 숨기기
           var isConsult = txt.indexOf('24시간 무료상담')!==-1;
-
           if(isSinsabang || isSangjo || isConsult){
             var sec = allH2[i].closest('section');
             if(sec && !sec.getAttribute('data-ecl-hidden')){
@@ -767,10 +762,136 @@
         }
       }
 
+      function enhanceBlogPage() {
+        var isBlogPage = window.location.pathname.indexOf('/blog') === 0;
+        var main = document.querySelector('main');
+        var customUI = document.getElementById('ecl-custom-blog-ui');
+        
+        if (!isBlogPage) {
+          if (customUI) customUI.style.display = 'none';
+          if (main) {
+            for(var i=0; i<main.children.length; i++) {
+              if(main.children[i].id !== 'ecl-custom-blog-ui') {
+                main.children[i].style.display = '';
+              }
+            }
+          }
+          return;
+        }
+
+        if (!main) return;
+
+        for(var i=0; i<main.children.length; i++) {
+          if(main.children[i].id !== 'ecl-custom-blog-ui') {
+            main.children[i].style.display = 'none';
+          }
+        }
+
+        if (customUI) {
+          customUI.style.display = 'block';
+          return;
+        }
+
+        var ui = document.createElement('div');
+        ui.id = 'ecl-custom-blog-ui';
+        ui.innerHTML = `
+<div style="background:#f8fafc; min-height:100vh; padding:60px 20px;">
+<div style="max-width:1200px; margin:0 auto; font-family:'Pretendard', sans-serif;">
+  <div style="text-align:center; margin-bottom:60px;">
+    <h1 style="font-size:2.5rem; font-weight:800; color:#1e293b; margin-bottom:15px; word-break:keep-all;">어르신 돌봄과 관련된 유용한 정보와 최신 소식을 확인하세요</h1>
+    <p style="font-size:1.1rem; color:#64748b;">제대군인이음케어라이프가 전하는 필수 가이드</p>
+  </div>
+
+  <div style="display:flex; flex-wrap:wrap; background:white; border-radius:24px; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,0.08); margin-bottom:40px; cursor:pointer; transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'" onclick="window.openEclModal('/yoyangbyungwon_guide.html')">
+    <div style="flex:1 1 50%; min-width:300px;">
+      <img src="https://images.unsplash.com/photo-1576765974102-b756026ecee3?auto=format&fit=crop&w=800&q=80" alt="Featured" style="width:100%; height:100%; object-fit:cover; min-height:300px; display:block;">
+    </div>
+    <div style="flex:1 1 50%; padding:50px; display:flex; flex-direction:column; justify-content:center;">
+      <div style="display:flex; align-items:center; margin-bottom:15px;">
+        <span style="background:#ef4444; color:white; font-size:0.85rem; font-weight:700; padding:6px 14px; border-radius:100px; margin-right:10px;">🔥 주요 정보</span>
+        <span style="color:#94a3b8; font-size:0.9rem;">2026. 4. 25.</span>
+      </div>
+      <h2 style="font-size:2rem; font-weight:800; color:#0f172a; margin-bottom:20px; line-height:1.3; word-break:keep-all;">어르신 돌봄 서비스의 중요성과 선택 가이드</h2>
+      <p style="font-size:1.1rem; color:#475569; line-height:1.6; margin-bottom:30px; word-break:keep-all;">고령화 사회에서 어르신 돌봄 서비스 선택의 중요성과 제대군인이음케어라이프의 25년 전문 경험을 소개합니다.</p>
+      <div><span style="display:inline-block; font-weight:700; color:#2563eb; font-size:1.1rem;">자세히 보기 &rarr;</span></div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:30px; margin-bottom:60px;">
+    
+    <div style="background:white; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.05); display:flex; flex-direction:column; cursor:pointer; transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'" onclick="window.openEclModal('/bangmun_slideshow_.html')">
+      <div style="aspect-ratio:16/10; overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1581575199676-43b92222d366?auto=format&fit=crop&w=600&q=80" style="width:100%; height:100%; object-fit:cover;" alt="Thumbnail">
+      </div>
+      <div style="padding:30px; flex:1; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:center; margin-bottom:12px;">
+          <span style="background:#e2e8f0; color:#475569; font-size:0.8rem; font-weight:700; padding:4px 12px; border-radius:100px; margin-right:10px;">정보</span>
+          <span style="color:#94a3b8; font-size:0.85rem;">2026. 4. 25.</span>
+        </div>
+        <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-bottom:15px; line-height:1.4;">방문요양서비스 신청 절차와 혜택 안내</h3>
+        <p style="font-size:1rem; color:#64748b; line-height:1.5; margin-bottom:20px; flex:1;">방문요양서비스 신청부터 혜택까지, 복잡한 절차를 쉽게 이해하고 신청할 수 있도록 도와드립니다.</p>
+        <div style="font-weight:700; color:#2563eb;">자세히 보기 &rarr;</div>
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.05); display:flex; flex-direction:column; cursor:pointer; transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'" onclick="window.openEclModal('/ieum_carelife_slideshow.html')">
+      <div style="aspect-ratio:16/10; overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1475724017904-b712052c192a?auto=format&fit=crop&w=600&q=80" style="width:100%; height:100%; object-fit:cover;" alt="Thumbnail">
+      </div>
+      <div style="padding:30px; flex:1; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:center; margin-bottom:12px;">
+          <span style="background:#e2e8f0; color:#475569; font-size:0.8rem; font-weight:700; padding:4px 12px; border-radius:100px; margin-right:10px;">정보</span>
+          <span style="color:#94a3b8; font-size:0.85rem;">2026. 4. 25.</span>
+        </div>
+        <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-bottom:15px; line-height:1.4;">이음케어후불제상조 선불제 vs 후불제 완벽 비교</h3>
+        <p style="font-size:1rem; color:#64748b; line-height:1.5; margin-bottom:20px; flex:1;">상조 서비스 선불제와 후불제의 차이점을 비교하고, 제대군인이음케어라이프 후불제의 장점을 소개합니다.</p>
+        <div style="font-weight:700; color:#2563eb;">자세히 보기 &rarr;</div>
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.05); display:flex; flex-direction:column; cursor:pointer; transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'" onclick="window.openEclModal('/yoyangbyungwon_guide.html')">
+      <div style="aspect-ratio:16/10; overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80" style="width:100%; height:100%; object-fit:cover;" alt="Thumbnail">
+      </div>
+      <div style="padding:30px; flex:1; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:center; margin-bottom:12px;">
+          <span style="background:#e2e8f0; color:#475569; font-size:0.8rem; font-weight:700; padding:4px 12px; border-radius:100px; margin-right:10px;">정보</span>
+          <span style="color:#94a3b8; font-size:0.85rem;">2026. 4. 25.</span>
+        </div>
+        <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-bottom:15px; line-height:1.4;">요양병원 vs 요양원 정보 및 선택 가이드</h3>
+        <p style="font-size:1rem; color:#64748b; line-height:1.5; margin-bottom:20px; flex:1;">요양병원과 요양원의 차이점을 비교하고, 어르신 상황에 맞는 최적의 선택을 도와드립니다.</p>
+        <div style="font-weight:700; color:#2563eb;">자세히 보기 &rarr;</div>
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.05); display:flex; flex-direction:column; cursor:pointer; transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'" onclick="window.openEclModal('/yoyangbyungwon_guide.html')">
+      <div style="aspect-ratio:16/10; overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" style="width:100%; height:100%; object-fit:cover;" alt="Thumbnail">
+      </div>
+      <div style="padding:30px; flex:1; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:center; margin-bottom:12px;">
+          <span style="background:#e2e8f0; color:#475569; font-size:0.8rem; font-weight:700; padding:4px 12px; border-radius:100px; margin-right:10px;">정보</span>
+          <span style="color:#94a3b8; font-size:0.85rem;">2026. 4. 25.</span>
+        </div>
+        <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-bottom:15px; line-height:1.4;">어르신 돌봄 서비스의 중요성과 선택 가이드</h3>
+        <p style="font-size:1rem; color:#64748b; line-height:1.5; margin-bottom:20px; flex:1;">고령화 사회에서 어르신 돌봄 서비스의 중요성과 제대군인이음케어라이프의 전문 서비스를 소개합니다.</p>
+        <div style="font-weight:700; color:#2563eb;">자세히 보기 &rarr;</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;">
+    <a href="/contact" style="display:inline-block; padding:16px 40px; background:#1e293b; color:white; font-size:1.1rem; font-weight:700; border-radius:100px; text-decoration:none; transition:background 0.3s;" onmouseover="this.style.background='#0f172a'" onmouseout="this.style.background='#1e293b'">더 많은 정보가 필요하신가요? 문의하기</a>
+  </div>
+</div>
+</div>`;
+        main.appendChild(ui);
+      }
+
       // MutationObserver로 React 렌더링 후 이미지/카드 감지
       (function(){
         var obs=new MutationObserver(function(){
-          fixSangjoImage(); fixContactCards(); injectVideoBanner(); injectYoutubeBlogCards(); replaceBlogSectionWithGif(); fixServiceLinks(); hideUnwantedSections();
+          fixSangjoImage(); fixContactCards(); injectVideoBanner(); injectYoutubeBlogCards(); replaceBlogSectionWithGif(); fixServiceLinks(); hideUnwantedSections(); enhanceBlogPage();
         });
         obs.observe(document.getElementById('root')||document.body,{childList:true,subtree:true});
         setTimeout(function(){obs.disconnect();},10000);

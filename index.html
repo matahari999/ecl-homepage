@@ -651,15 +651,21 @@
         if(grid){
           grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px;';
           grid.innerHTML=
-            '<div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);aspect-ratio:4/3;">'+
-              '<iframe src="/bangmun_slideshow_.html" style="width:100%;height:100%;border:none;" loading="lazy" title="방문요양서비스 신청 절차"></iframe>'+
-            '</div>'+
-            '<div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);aspect-ratio:4/3;">'+
-              '<iframe src="/yoyangbyungwon_guide.html" style="width:100%;height:100%;border:none;" loading="lazy" title="요양병원 입소 및 시설"></iframe>'+
-            '</div>'+
-            '<div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);aspect-ratio:4/3;">'+
-              '<iframe src="/ieum_carelife_slideshow.html" style="width:100%;height:100%;border:none;" loading="lazy" title="후불제 상조 및 선불제상조의 비교"></iframe>'+
-            '</div>';
+            '<a href="/bangmun_slideshow_.html" target="_blank" style="display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);background:linear-gradient(135deg, #1e3a8a, #3b82f6);color:white;text-decoration:none;padding:50px 20px;text-align:center;transition:all 0.3s;aspect-ratio:4/3;">'+
+              '<div style="font-size:3rem;margin-bottom:15px;">🏠</div>'+
+              '<h3 style="font-size:1.4rem;font-weight:800;margin-bottom:15px;line-height:1.4;">방문요양서비스<br/>신청 절차</h3>'+
+              '<span style="display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.2);border-radius:100px;font-size:0.9rem;font-weight:700;">자세히 보기 &rarr;</span>'+
+            '</a>'+
+            '<a href="/yoyangbyungwon_guide.html" target="_blank" style="display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);background:linear-gradient(135deg, #047857, #10b981);color:white;text-decoration:none;padding:50px 20px;text-align:center;transition:all 0.3s;aspect-ratio:4/3;">'+
+              '<div style="font-size:3rem;margin-bottom:15px;">🏥</div>'+
+              '<h3 style="font-size:1.4rem;font-weight:800;margin-bottom:15px;line-height:1.4;">요양병원<br/>입소 및 시설</h3>'+
+              '<span style="display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.2);border-radius:100px;font-size:0.9rem;font-weight:700;">자세히 보기 &rarr;</span>'+
+            '</a>'+
+            '<a href="/ieum_carelife_slideshow.html" target="_blank" style="display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);background:linear-gradient(135deg, #b45309, #f59e0b);color:white;text-decoration:none;padding:50px 20px;text-align:center;transition:all 0.3s;aspect-ratio:4/3;">'+
+              '<div style="font-size:3rem;margin-bottom:15px;">🕊️</div>'+
+              '<h3 style="font-size:1.4rem;font-weight:800;margin-bottom:15px;line-height:1.4;">후불제 상조 및<br/>선불제상조 비교</h3>'+
+              '<span style="display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.2);border-radius:100px;font-size:0.9rem;font-weight:700;">자세히 보기 &rarr;</span>'+
+            '</a>';
         }
       }
 

@@ -17,8 +17,8 @@ const QUOTE_CATEGORIES: QuoteCategory[] = [
     options: [{ value: '기본수의 (기본 포함)', price: 0 }, { value: '저대수의로 변경', price: 150000 }, { value: '대마수의로 변경', price: 250000 }, { value: '한지수의로 변경', price: 350000 }, { value: '종교수의로 변경', price: 350000 }, { value: '인견수의로 변경', price: 650000 }, { value: '매장수의로 변경', price: 0, special: true }] },
   { emoji: '🌸', label: '6. 고급서비스 (선택)', dataLabel: '고급서비스', description: '',
     options: [{ value: '미선택', price: 0 }, { value: '생화꽃관', price: 150000 }, { value: '궁중대렴', price: 250000 }, { value: '금장궁중대렴', price: 400000 }, { value: '생화꽃관 + 궁중대렴', price: 350000 }, { value: '생화꽃관 + 금장궁중대렴', price: 400000 }] },
-  { emoji: '🚌', label: '7. 장의차량 업그레이드 (선택)', dataLabel: '장의차량 업그레이드', description: '기본 장의버스 포함',
-    options: [{ value: '장의버스 (기본 포함)', price: 0 }, { value: '리무진으로 변경', price: 400000 }, { value: '리무진 + 장의버스', price: 400000 }] },
+  { emoji: '🚌', label: '7. 장의차량 (선택)', dataLabel: '장의차량', description: '승합장의 30만원 · 리무진 40만원 · 장의버스 45만원',
+    options: [{ value: '미선택', price: 0 }, { value: '승합장의', price: 300000 }, { value: '리무진', price: 400000 }, { value: '장의버스', price: 450000 }, { value: '리무진 + 장의버스', price: 850000 }] },
   { emoji: '👥', label: '8. 발인운구 (선택)', dataLabel: '발인운구', description: '',
     options: [{ value: '미선택', price: 0 }, { value: '2명', price: 200000 }, { value: '4명', price: 400000 }, { value: '6명', price: 600000 }] },
 ];
@@ -29,7 +29,7 @@ const BASE_INCLUDES = [
   { category: '용품', items: ['보통관', '기본수의', '입관용품(관보·결관·염지·소독제·탈지면·다라니경·기독경·천주경)', '빈소용품(초·향·위패·명패·부의록·완장·상장핀)', '유골함(오동나무 목함)'] },
   { category: '상복', items: ['남자 2벌', '여자 2벌'] },
   { category: '인력 (3일)', items: ['장례지도사 1명', '입관지도사 1명'] },
-  { category: '차량', items: ['장의버스'] },
+  { category: '차량', items: ['장의차량은 별도 선택'] },
   { category: '서비스', items: ['장례일정 컨설팅', '화장 예약', '장지 알선(납골당·수목장·잔디장·해양장)', '행정 절차 안내', '부고 문자 서비스', '서류 절차 지원'] },
 ];
 

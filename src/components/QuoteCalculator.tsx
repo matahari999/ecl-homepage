@@ -102,13 +102,15 @@ const QUOTE_CATEGORIES: QuoteCategory[] = [
   },
   {
     emoji: '🚌',
-    label: '7. 장의차량 업그레이드 (선택)',
-    dataLabel: '장의차량 업그레이드',
-    description: '기본 장의버스 포함',
+    label: '7. 장의차량 (선택)',
+    dataLabel: '장의차량',
+    description: '승합장의 30만원 · 리무진 40만원 · 장의버스 45만원',
     options: [
-      { value: '장의버스 (기본 포함)', price: 0 },
-      { value: '리무진으로 변경', price: 400000 },
-      { value: '리무진 + 장의버스', price: 400000 },
+      { value: '미선택', price: 0 },
+      { value: '승합장의', price: 300000 },
+      { value: '리무진', price: 400000 },
+      { value: '장의버스', price: 450000 },
+      { value: '리무진 + 장의버스', price: 850000 },
     ]
   },
   {
@@ -141,7 +143,7 @@ const BASE_INCLUDES = [
   { category: '용품', items: ['보통관', '기본수의', '입관용품(관보·결관·염지·소독제·탈지면·다라니경·기독경·천주경)', '빈소용품(초·향·위패·명패·부의록·완장·상장핀)', '유골함(오동나무 목함)'] },
   { category: '상복', items: ['남자 2벌', '여자 2벌'] },
   { category: '인력 (3일)', items: ['장례지도사 1명', '입관지도사 1명'] },
-  { category: '차량', items: ['장의버스'] },
+  { category: '차량', items: ['장의차량은 별도 선택'] },
   { category: '서비스', items: ['장례일정 컨설팅', '화장 예약', '장지 알선(납골당·수목장·잔디장·해양장)', '행정 절차 안내', '부고 문자 서비스', '서류 절차 지원'] },
 ];
 
@@ -311,7 +313,7 @@ const QuoteCalculator = ({ isOpen, onClose }: QuoteCalculatorProps) => {
                     {/* Base Info */}
                     <p className="text-slate-400 text-sm leading-relaxed mb-5">
                       기본 견적 기준금액은 <strong className="text-white">990,000원</strong>입니다.<br />
-                      (용품 + 상복 + 인력 + 장의버스 + 서비스 포함)<br />
+                      (용품 + 상복 + 인력 + 서비스 포함, 장의차량 별도)<br />
                       추가 선택 항목은 아래 요약에 즉시 반영됩니다.
                     </p>
 

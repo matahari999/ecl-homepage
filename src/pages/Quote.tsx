@@ -17,8 +17,8 @@ const QUOTE_CATEGORIES: QuoteCategory[] = [
     options: [{ value: '기본수의 (기본 포함)', price: 0 }, { value: '저대수의로 변경', price: 150000 }, { value: '대마수의로 변경', price: 250000 }, { value: '한지수의로 변경', price: 350000 }, { value: '종교수의로 변경', price: 350000 }, { value: '인견수의로 변경', price: 650000 }, { value: '매장수의로 변경', price: 0, special: true }] },
   { emoji: '🌸', label: '6. 고급서비스 (선택)', dataLabel: '고급서비스', description: '',
     options: [{ value: '미선택', price: 0 }, { value: '생화꽃관', price: 150000 }, { value: '궁중대렴', price: 250000 }, { value: '금장궁중대렴', price: 400000 }, { value: '생화꽃관 + 궁중대렴', price: 350000 }, { value: '생화꽃관 + 금장궁중대렴', price: 400000 }] },
-  { emoji: '🚌', label: '7. 장의차량 업그레이드 (선택)', dataLabel: '장의차량 업그레이드', description: '기본 승합장의 포함',
-    options: [{ value: '승합장의 (기본 포함)', price: 0 }, { value: '리무진', price: 400000 }, { value: '장의버스', price: 450000 }, { value: '리무진 + 장의버스', price: 850000 }] },
+  { emoji: '🚌', label: '7. 장의차량 업그레이드 (선택)', dataLabel: '장의차량 업그레이드', description: '기본 승합장의 포함, 업그레이드는 차액만',
+    options: [{ value: '승합장의 (기본 포함)', price: 0 }, { value: '리무진', price: 100000 }, { value: '장의버스', price: 150000 }, { value: '리무진 + 장의버스', price: 550000 }] },
   { emoji: '👥', label: '8. 발인운구 (선택)', dataLabel: '발인운구', description: '',
     options: [{ value: '미선택', price: 0 }, { value: '2명', price: 200000 }, { value: '4명', price: 400000 }, { value: '6명', price: 600000 }] },
 ];

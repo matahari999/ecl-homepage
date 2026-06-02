@@ -188,6 +188,55 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ── 맞춤상조 견적내기 섹션 (모바일 최우선 노출) ── */}
+      <section className="py-12 bg-gradient-to-b from-[#0a0f1e] via-[#0d1323] to-[#0a0f1e]">
+        <div className="max-w-xl mx-auto px-5 text-center">
+          {/* 배지 */}
+          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-4 py-2 rounded-full mb-5">
+            <span className="text-amber-400 text-sm font-bold tracking-wide">💰 이음케어라이프 상조 서비스</span>
+          </div>
+
+          {/* 메인 헤드라인 - 크고 깜빡이게 */}
+          <h2 className="blink-quote text-5xl sm:text-6xl font-black text-amber-400 mb-6 leading-tight tracking-tight">
+            맞춤상조<br/>견적내기
+          </h2>
+
+          {/* 질문 & 설명 텍스트 */}
+          <div className="space-y-2 mb-8 text-base sm:text-lg">
+            <p className="text-white font-black text-xl sm:text-2xl">선불상조? 후불상조?</p>
+            <p className="text-slate-400">어떤 상품을 선택해야하지?</p>
+            <p className="text-slate-400">상조가 필요한 시기에 맞춰</p>
+            <p className="text-amber-300 font-semibold">꼭 필요한 것만 맞춤으로 선택하는 방법!</p>
+          </div>
+
+          {/* 구분선 */}
+          <div className="flex items-center gap-4 mb-8">
+            <div className="flex-1 h-px bg-amber-500/20"></div>
+            <div className="w-2 h-2 rounded-full bg-amber-500/60"></div>
+            <div className="flex-1 h-px bg-amber-500/20"></div>
+          </div>
+
+          {/* 내용 카드 */}
+          <div className="bg-slate-900/60 border border-amber-500/20 rounded-3xl p-6 mb-8 text-left">
+            <p className="text-slate-400 text-base sm:text-lg leading-loose">
+              이미 꼭 필요한 것으로 선택된<br/>
+              <span className="text-white font-black text-2xl sm:text-3xl">99만원 맞춤상조</span><br/>
+              <span className="text-slate-300">여기에 내가 추가로 필요한 것만</span><br/>
+              <span className="text-amber-400 font-bold text-xl sm:text-2xl">쏙쏙 골라서 치르는 장례</span>
+            </p>
+          </div>
+
+          {/* CTA 버튼 */}
+          <button
+            onClick={() => setIsQuoteOpen(true)}
+            className="w-full flex items-center justify-center gap-3 py-5 bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-900 font-black text-xl rounded-2xl shadow-2xl shadow-amber-900/40 transition-all hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span className="text-2xl">💰</span>
+            나만의 견적서 만들기
+          </button>
+        </div>
+      </section>
+
       {/* ── Section 2: YouTube | Naver Blog 2분할 ── */}
       <section className="py-10 bg-[#0a0f1e]">
         <div className="max-w-4xl mx-auto px-4">

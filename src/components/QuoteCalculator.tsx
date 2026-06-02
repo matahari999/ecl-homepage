@@ -107,9 +107,9 @@ const QUOTE_CATEGORIES: QuoteCategory[] = [
     description: '기본 승합장의 포함, 업그레이드는 차액만',
     options: [
       { value: '승합장의 (기본 포함)', price: 0 },
-      { value: '리무진', price: 100000 },
-      { value: '장의버스', price: 150000 },
-      { value: '리무진 + 장의버스', price: 550000 },
+      { value: '리무진', price: 150000 },
+      { value: '장의버스', price: 200000 },
+      { value: '리무진 + 장의버스', price: 650000 },
     ]
   },
   {

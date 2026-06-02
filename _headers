@@ -32,9 +32,9 @@
 /robots.txt
   Cache-Control: no-cache, must-revalidate
 
-# JS/CSS 파일 - 파일명에 해시가 있어서 1년 캐시 OK
+# JS/CSS 파일 - 캐시 강제 갱신 (리브랜딩 적용)
 /assets/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: no-cache, must-revalidate
 
 # 이미지 파일
 /*.png

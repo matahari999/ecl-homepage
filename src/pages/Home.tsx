@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import QuoteCalculator from '../components/QuoteCalculator';
 import { 
   Heart, 
@@ -126,9 +127,9 @@ const Home = () => {
               <a href="#consult-form" className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-black transition-all shadow-2xl shadow-blue-900/40 text-lg">
                 지금 무료상담 받기
               </a>
-              <a href="/services" className="px-10 py-5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-black transition-all border border-slate-700 text-lg">
+              <Link to="/services" className="px-10 py-5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-black transition-all border border-slate-700 text-lg">
                 서비스 둘러보기
-              </a>
+              </Link>
             </div>
 
             <div className="grid grid-cols-3 gap-6 max-w-lg">

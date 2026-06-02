@@ -252,7 +252,7 @@
         }
       ]
     }
-    </script>
+    </script>
     <script type="module" crossorigin src="/assets/index-DCHlkLMg.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BvDE3rE1.css">
   </head>
@@ -508,7 +508,7 @@
               '<div class="vb-badge">💰 맞춤상조 견적내기</div>'+
               '<h2 style="font-size:clamp(1.6rem,3.5vw,2.8rem);line-height:1.25;">선불상조? 후불상조?<br><span style="color:#f59e0b;">어떤 상품을 선택해야하지?</span></h2>'+
               '<p style="font-size:clamp(0.95rem,1.8vw,1.15rem);line-height:1.9;">상조가 필요한 시기에 맞춰<br>꼭 필요한 것만 맞춤으로 선택하는 방법!<br><br>이미 꼭 필요한 것으로 선택된<br><strong style="color:#fff;font-size:1.2em;">99만원 맞춤상조</strong><br>여기에 내가 추가로 필요한 것만<br>쏙쏙 골라서 치르는 장례</p>'+
-              '<a href="/quote" style="margin-top:24px;display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:1.05rem;font-weight:800;padding:16px 32px;border-radius:14px;text-decoration:none;box-shadow:0 8px 24px rgba(245,158,11,0.35);transition:all 0.2s;" onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 12px 32px rgba(245,158,11,0.5)\'" onmouseout="this.style.transform=\'none\';this.style.boxShadow=\'0 8px 24px rgba(245,158,11,0.35)\'">'+
+              '<a href="#" onclick="openQuoteModal();return false;" style="margin-top:24px;display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:1.05rem;font-weight:800;padding:16px 32px;border-radius:14px;text-decoration:none;box-shadow:0 8px 24px rgba(245,158,11,0.35);transition:all 0.2s;" onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 12px 32px rgba(245,158,11,0.5)\'" onmouseout="this.style.transform=\'none\';this.style.boxShadow=\'0 8px 24px rgba(245,158,11,0.35)\'">'+
                 '💰 나만의 견적서 만들기'+
               '</a>'+
             '</div>'+
@@ -597,7 +597,8 @@
 
         // 💰 견적서 버튼 (맨 앞, 빨간 반짝)
         var bq=document.createElement('a');
-        bq.href='/quote';
+        bq.href='#';
+        bq.onclick=function(e){e.preventDefault();openQuoteModal();};
         bq.style.cssText='cursor:pointer;font-size:0.92rem;font-weight:900;color:#ef4444;background:none;border:none;padding:0 10px;font-family:inherit;white-space:nowrap;text-decoration:none;animation:navQuoteBlink 1s ease-in-out infinite;';
         bq.textContent='💰 견적서';
         if(!document.getElementById('ecl-quote-blink-style')){
@@ -993,5 +994,68 @@
       if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(regs){regs.forEach(function(r){r.unregister();});});}
     </script>
 
+
+    <!-- 💰 맞춤상조 견적 모달 -->
+    <div id="ecl-quote-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.7);overflow-y:auto;padding:20px 0;" onclick="if(event.target===this)closeQuoteModal()">
+      <div style="background:#fff;max-width:560px;margin:20px auto;border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.4);">
+        <div style="background:linear-gradient(135deg,#1e3a8a,#2563eb);padding:28px 28px 20px;position:relative;">
+          <button onclick="closeQuoteModal()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:1.1rem;cursor:pointer;line-height:1;">&#x2715;</button>
+          <div style="background:rgba(245,158,11,0.2);color:#fbbf24;font-size:0.78rem;font-weight:700;padding:4px 12px;border-radius:100px;display:inline-block;margin-bottom:8px;">&#x1F4B0; 맞춤상조 견적내기</div>
+          <h2 style="color:#fff;font-size:1.4rem;font-weight:800;margin:0 0 4px;">나만의 맞춤 견적서</h2>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.88rem;margin:0;">기본 99만원 + 필요한 옵션만 선택하세요</p>
+        </div>
+        <div style="padding:24px 28px;display:flex;flex-direction:column;gap:16px;">
+          <div class="ecl-qrow"><div class="ecl-qlabel">&#x1F454; 1. 상복/남 <span style="font-size:0.78rem;color:#94a3b8;">(넥타이/와이셔츠 별도)</span></div><select class="ecl-qsel" data-key="man" onchange="updateQuote()"><option value="0">기본 2벌 (0원)</option><option value="30000">1벌 (+3만원)</option><option value="60000">2벌 (+6만원)</option><option value="90000">3벌 (+9만원)</option><option value="120000">4벌 (+12만원)</option><option value="150000">5벌 (+15만원)</option></select></div>
+          <div class="ecl-qrow"><div class="ecl-qlabel">&#x1F9E5; 2. 상복/여</div><select class="ecl-qsel" data-key="woman" onchange="updateQuote()"><option value="0">기본 2벌 (0원)</option><option value="20000">1벌 (+2만원)</option><option value="40000">2벌 (+4만원)</option><option value="60000">3벌 (+6만원)</option><option value="80000">4벌 (+8만원)</option><option value="100000">5벌 (+10만원)</option></select></div>
+          <div class="ecl-qrow"><div class="ecl-qlabel">&#x1F37D;&#xFE0F; 3. 도우미 <span style="font-size:0.78rem;color:#94a3b8;">(1인당 11만원/10시간)</span></div><select class="ecl-qsel" data-key="helper" onchange="updateQuote()"><option value="0">미선택 (0원)</option><option value="110000">1명 (+11만원)</option><option value="220000">2명 (+22만원)</option><option value="330000">3명 (+33만원)</option><option value="440000">4명 (+44만원)</option><option value="550000">5명 (+55만원)</option><option value="660000">6명 (+66만원)</option></select></div>
+          <div class="ecl-qrow"><div class="ecl-qlabel">&#x26B0;&#xFE0F; 4. 용품 (관)</div><select class="ecl-qsel" data-key="coffin" onchange="updateQuote()"><option value="0">보통관 (0원)</option><option value="100000">특관 (+10만원)</option><option value="350000">맞춤관 (+35만원)</option><option value="-1">매장관 (별도문의)</option></select></div>
+          <div class="ecl-qrow"><div class="ecl-qlabel">&#x1F9F5; 5. 용품 (수의)</div><select class="ecl-qsel" data-key="shroud" onchange="updateQuote()"><option value="0">기본수의 (0원)</option><option value="150000">저대수의 (+15만원)</option><option value="250000">대마수의 (+25만원)</option><option value="350000">한지수의 (+35만원)</option><option value="350000">종교수의 (+35만원)</option><option value="650000">인견수의 (+65만원)</option><option value="-1">매장수의 (별도문의)</option></select></div>
+          <div class="ecl-qrow"><div class="ecl-qlabel">&#x1F338; 6. 고급서비스</div><select class="ecl-qsel" data-key="premium" onchange="updateQuote()"><option value="0">미선택 (0원)</option><option value="150000">생화꽃관 (+15만원)</option><option value="250000">궁중대렴 (+25만원)</option><option value="400000">금장궁중대렴 (+40만원)</option><option value="350000">생화꽃관 + 궁중대렴 (+35만원)</option><option value="400000">생화꽃관 + 금장궁중대렴 (+40만원)</option></select></div>
+          <div class="ecl-qrow"><div class="ecl-qlabel">&#x1F68C; 7. 장의차량</div><select class="ecl-qsel" data-key="vehicle" onchange="updateQuote()"><option value="0">미선택 (0원)</option><option value="300000">승합장의 (+30만원)</option><option value="400000">리무진 (+40만원)</option><option value="450000">장의버스 (+45만원)</option><option value="800000">리무진 + 장의버스 (+80만원)</option></select></div>
+          <div class="ecl-qrow"><div class="ecl-qlabel">&#x1F465; 8. 발인운구</div><select class="ecl-qsel" data-key="carry" onchange="updateQuote()"><option value="0">미선택 (0원)</option><option value="200000">2명 (+20만원)</option><option value="400000">4명 (+40만원)</option><option value="600000">6명 (+60만원)</option></select></div>
+        </div>
+        <div style="margin:0 28px 8px;background:linear-gradient(135deg,#f8fafc,#f1f5f9);border:2px solid #e2e8f0;border-radius:16px;padding:20px 24px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span style="font-size:0.9rem;color:#64748b;font-weight:600;">기본 견적</span><span style="font-size:0.9rem;color:#1e293b;font-weight:700;">990,000원</span></div>
+          <div id="ecl-quote-items" style="font-size:0.85rem;color:#475569;margin-bottom:12px;"></div>
+          <div style="border-top:2px solid #cbd5e1;padding-top:14px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:1rem;font-weight:700;color:#1e293b;">합계 견적</span><span id="ecl-quote-total" style="font-size:1.6rem;font-weight:900;color:#1e3a8a;">&#x20A9;990,000</span></div>
+          <div id="ecl-quote-separate-note" style="display:none;margin-top:8px;font-size:0.78rem;color:#ef4444;">&#x203B; 별도문의 항목은 자동 합산되지 않으며, 상담 후 최종 견적이 반영됩니다.</div>
+        </div>
+        <div style="margin:8px 28px 0;padding:14px 16px;background:#fef9ec;border-radius:12px;font-size:0.78rem;color:#78350f;line-height:1.7;">
+          &#x2022; 기본 차량 거리 150km, 추가 시 1km당 1,800원 (통행료 별도)<br>
+          &#x2022; 넥타이&#xB7;와이셔츠&#xB7;양말&#xB7;벨트 미제공 (별도 판매)<br>
+          &#x2022; 장례식장 음식&#xB7;매점&#xB7;시성사용료&#xB7;제단꽃&#xB7;헌화꽃 별도
+        </div>
+        <div style="padding:20px 28px 28px;display:flex;gap:12px;">
+          <button onclick="resetQuote()" style="flex:1;padding:14px;border:2px solid #e2e8f0;background:#fff;border-radius:12px;font-size:0.9rem;font-weight:700;color:#64748b;cursor:pointer;">견적 다시만들기</button>
+          <a href="tel:031-908-9977" style="flex:2;padding:14px;background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:12px;font-size:0.95rem;font-weight:800;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;">&#x1F4DE; 상담 신청하기</a>
+        </div>
+      </div>
+    </div>
+    <style>
+      .ecl-qrow{display:flex;flex-direction:column;gap:6px;}
+      .ecl-qlabel{font-size:0.88rem;font-weight:700;color:#1e293b;}
+      .ecl-qsel{width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:0.9rem;color:#1e293b;background:#f8fafc;cursor:pointer;outline:none;}
+      .ecl-qsel:focus{border-color:#2563eb;background:#fff;}
+    </style>
+    <script>
+      var BASE_PRICE=990000;
+      function openQuoteModal(){document.getElementById('ecl-quote-modal').style.display='block';document.body.style.overflow='hidden';updateQuote();}
+      function closeQuoteModal(){document.getElementById('ecl-quote-modal').style.display='none';document.body.style.overflow='';}
+      function resetQuote(){document.querySelectorAll('.ecl-qsel').forEach(function(s){s.selectedIndex=0;});updateQuote();}
+      function updateQuote(){
+        var total=BASE_PRICE,items=[],hasSep=false;
+        var labels={man:'상복/남',woman:'상복/여',helper:'도우미',coffin:'관',shroud:'수의',premium:'고급서비스',vehicle:'장의차량',carry:'발인운구'};
+        document.querySelectorAll('.ecl-qsel').forEach(function(sel){
+          var v=parseInt(sel.value),key=sel.getAttribute('data-key');
+          if(v===-1){hasSep=true;items.push('<div style="display:flex;justify-content:space-between;"><span>'+labels[key]+'</span><span style="color:#ef4444;">별도문의</span></div>');}
+          else if(v>0){total+=v;items.push('<div style="display:flex;justify-content:space-between;"><span>'+labels[key]+'</span><span>+'+v.toLocaleString()+'원</span></div>');}
+        });
+        var el=document.getElementById('ecl-quote-items');
+        el.innerHTML=items.length?items.join(''):'<div style="color:#94a3b8;font-size:0.82rem;">추가 선택 항목이 없습니다.</div>';
+        document.getElementById('ecl-quote-total').textContent='&#x20A9;'+total.toLocaleString();
+        document.getElementById('ecl-quote-separate-note').style.display=hasSep?'block':'none';
+      }
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQuoteModal();});
+    </script>
   </body>
 </html>

@@ -1,5 +1,6 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useMemo } from 'react';
 import { Printer, RotateCcw, Calculator, CheckCircle2, Send } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 interface QuoteOption { value: string; price: number; special?: boolean; }
 interface QuoteCategory { emoji: string; label: string; dataLabel: string; description: string; options: QuoteOption[]; }
@@ -73,8 +74,80 @@ const Quote = () => {
     setSubmitted(true);
   };
 
+  const jsonLd = useMemo(() => ({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': 'https://ecl.ai.kr/quote#service',
+        name: '이음케어라이프 맞춤상조 견적서비스',
+        description: '기본 99만원 후불제 상조 패키지에서 필요한 옵션만 선택하는 맞춤형 장례비용 견적 서비스',
+        provider: { '@id': 'https://ecl.ai.kr/#business' },
+        serviceType: '후불제상조 맞춤견적',
+        areaServed: { '@type': 'Country', name: '대한민국' },
+        offers: {
+          '@type': 'Offer',
+          priceCurrency: 'KRW',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            price: BASE_PRICE,
+            priceCurrency: 'KRW',
+            description: '기본 상조 패키지 (상복·수의·관·차량·장례지도사 포함)',
+          },
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: '홈', item: 'https://ecl.ai.kr/' },
+          { '@type': 'ListItem', position: 2, name: '맞춤상조 견적내기', item: 'https://ecl.ai.kr/quote' },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: '후불제 상조 기본 비용은 얼마인가요?',
+            acceptedAnswer: { '@type': 'Answer', text: '이음케어라이프 후불제 상조의 기본 패키지는 99만원(990,000원)이며, 보통관·기본수의·상복 2벌·승합장의·장례지도사가 포함됩니다. 추가 옵션은 필요한 것만 선택하여 비용을 더할 수 있습니다.' },
+          },
+          {
+            '@type': 'Question',
+            name: '99만원 기본 상조 패키지에 어떤 것이 포함되나요?',
+            acceptedAnswer: { '@type': 'Answer', text: '보통관, 기본수의, 입관용품(관보·염지·소독제 등), 빈소용품(초·향·위패·부의록 등), 유골함, 남녀 상복 각 2벌, 장례지도사·입관지도사 1명씩(3일), 승합장의, 화장 예약·장지 알선·부고 문자 서비스가 포함됩니다.' },
+          },
+          {
+            '@type': 'Question',
+            name: '후불제 상조 선불제와 차이점은 무엇인가요?',
+            acceptedAnswer: { '@type': 'Answer', text: '후불제 상조는 가입비나 월 납입금 없이 장례 발생 후에 비용을 정산하는 방식입니다. 선불제는 매월 납입하는 방식이나, 이음케어라이프 후불제는 사전 부담이 없어 경제적입니다.' },
+          },
+          {
+            '@type': 'Question',
+            name: '상조 견적을 어떻게 계산하나요?',
+            acceptedAnswer: { '@type': 'Answer', text: '기본 99만원 패키지에서 상복 추가, 관 업그레이드, 수의 업그레이드, 장의차량, 도우미, 고급서비스 등 필요한 항목만 선택하면 실시간으로 총 견적 금액이 계산됩니다.' },
+          },
+        ],
+      },
+    ],
+  }), []);
+
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-200 py-10 px-4">
+      <Helmet>
+        <title>상조 견적 계산기 | 99만원 맞춤상조 비용 견적 - 이음케어라이프</title>
+        <meta name="description" content="후불제 상조 기본 99만원 패키지에서 필요한 옵션만 선택하는 맞춤형 장례비용 견적 계산기. 상복·수의·관·차량·도우미를 직접 선택해 실시간 견적을 확인하세요." />
+        <meta name="keywords" content="상조견적,후불상조,후불제상조,맞춤상조,장례비용,99만원상조,장례견적,상조비용계산기,이음케어라이프,고양상조,일산상조,파주상조" />
+        <link rel="canonical" href="https://ecl.ai.kr/quote" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ecl.ai.kr/quote" />
+        <meta property="og:title" content="맞춤상조 견적 계산기 | 99만원부터 - 이음케어라이프" />
+        <meta property="og:description" content="후불제 상조 99만원 기본 패키지에서 필요한 옵션만 추가하는 맞춤형 장례비용 견적. 투명한 가격, 부담 없는 후불 정산." />
+        <meta property="og:image" content="https://ecl.ai.kr/logo.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="맞춤상조 견적 계산기 | 99만원부터 - 이음케어라이프" />
+        <meta name="twitter:description" content="후불제 상조 99만원 기본 패키지에서 필요한 옵션만 추가하는 맞춤형 장례비용 견적." />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <div className="max-w-[1200px] mx-auto">
 
         {/* Header */}
@@ -120,7 +193,7 @@ const Quote = () => {
         </div>
 
         {/* 견적 계산기 */}
-        <div className="grid lg:grid-cols-[1fr_380px] gap-8 mb-16">
+        <section aria-label="견적 계산기" className="grid lg:grid-cols-[1fr_380px] gap-8 mb-16">
           {/* Left: 옵션 선택 */}
           <div className="space-y-3">
             <div className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-3 px-1">추가 옵션 선택 (필요한 부분만 직접 선택)</div>
@@ -147,7 +220,7 @@ const Quote = () => {
           </div>
 
           {/* Right: 견적 요약 (sticky) */}
-          <div className="lg:sticky lg:top-[100px] self-start">
+          <aside className="lg:sticky lg:top-[100px] self-start">
             <div className="bg-slate-900/80 border border-white/10 rounded-3xl overflow-hidden shadow-xl">
               <div className="bg-gradient-to-r from-blue-900/40 to-indigo-900/40 px-6 py-5 text-center border-b border-white/5">
                 <h3 className="text-xl font-black text-white">견적 확인</h3>
@@ -210,11 +283,11 @@ const Quote = () => {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
+          </aside>
+        </section>
 
         {/* ── 무료 상담 신청 폼 ── */}
-        <div ref={consultRef} id="consult-form" className="bg-gradient-to-br from-slate-900 to-slate-800 border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+        <section ref={consultRef} id="consult-form" aria-label="무료 상담 신청" className="bg-gradient-to-br from-slate-900 to-slate-800 border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 text-amber-400 text-xs font-black px-4 py-2 rounded-full mb-4 uppercase tracking-widest">
               FREE CONSULTATION
@@ -287,7 +360,7 @@ const Quote = () => {
               <p className="text-center text-slate-600 text-xs">개인정보는 상담 목적으로만 사용되며 제3자에게 제공되지 않습니다.</p>
             </form>
           )}
-        </div>
+        </section>
       </div>
     </div>
   );

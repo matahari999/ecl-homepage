@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
@@ -11,6 +12,7 @@ import Quote from './pages/Quote';
 
 function App() {
   return (
+    <HelmetProvider>
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
@@ -28,6 +30,7 @@ function App() {
         <FloatingButtons />
       </div>
     </Router>
+    </HelmetProvider>
   );
 }
 

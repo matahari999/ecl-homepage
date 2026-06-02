@@ -320,7 +320,7 @@ const QuoteCalculator = ({ isOpen, onClose }: QuoteCalculatorProps) => {
                     <div className="bg-slate-800/60 border border-white/10 rounded-2xl p-5 mb-6">
                       <div className="text-slate-500 text-xs font-bold mb-2 uppercase tracking-wider">합계 견적</div>
                       <div className="text-3xl md:text-4xl font-black text-white leading-tight">
-                        ₩<span>{numberWithCommas(totalPrice)}</span>
+                        <span>{numberWithCommas(totalPrice)}</span>원
                       </div>
                       <div className="text-slate-500 text-xs mt-2">(현금, 카드 동일함)</div>
                     </div>

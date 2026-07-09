@@ -1,6 +1,27 @@
+import { Helmet } from 'react-helmet-async';
+
 const Services = () => {
+  const title = '요양병원 연결·방문요양서비스 신청 | 이음케어라이프';
+  const description = '요양병원 매칭부터 방문요양서비스, 장기요양보험 등급 신청까지. 고양·일산·파주·김포 지역 24시간 무료 상담. 이음케어라이프.';
+  const canonical = 'https://ecl.ai.kr/services';
+  const ogImage = 'https://ecl.ai.kr/logo.png';
+
   return (
     <div className="flex flex-col w-full bg-slate-50 min-h-screen py-16">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content="요양병원연결,방문요양서비스,장기요양보험,요양원,어르신돌봄,고양요양병원,일산요양병원,파주요양병원,이음케어라이프" />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 text-center">서비스 소개</h1>
         <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">

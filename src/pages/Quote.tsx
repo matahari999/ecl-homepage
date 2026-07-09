@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useMemo } from 'react';
 import { Printer, RotateCcw, Calculator, CheckCircle2, Send } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { WEB3FORMS_ACCESS_KEY } from '../config';
 
 interface QuoteOption { value: string; price: number; special?: boolean; }
 interface QuoteCategory { emoji: string; label: string; dataLabel: string; description: string; options: QuoteOption[]; }
@@ -42,6 +43,8 @@ const Quote = () => {
   const [selections, setSelections] = useState<number[]>(QUOTE_CATEGORIES.map(() => 0));
   const [showBaseDetails, setShowBaseDetails] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '후불제상조', message: '' });
   const consultRef = useRef<HTMLDivElement>(null);
 
@@ -69,9 +72,41 @@ const Quote = () => {
     consultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError(false);
+    const itemsSummary = pickedItems.length > 0
+      ? pickedItems.map(i => `${i.label}: ${i.special ? i.value : `${i.value} (+${numberWithCommas(i.price)}원)`}`).join('\n')
+      : '추가 옵션 없음';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `[이음케어라이프 견적상담신청] ${form.name}님 - 총 ${numberWithCommas(totalPrice)}원`,
+          from_name: '이음케어라이프 견적 페이지',
+          이름: form.name,
+          연락처: form.phone,
+          이메일: form.email,
+          상담희망서비스: form.service,
+          문의내용: form.message,
+          견적총액: `${numberWithCommas(totalPrice)}원`,
+          선택옵션: itemsSummary,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setSubmitError(true);
+      }
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const jsonLd = useMemo(() => ({
@@ -353,9 +388,12 @@ const Quote = () => {
                   value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                   className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-500/50 transition-all resize-none" />
               </div>
-              <button type="submit"
-                className="w-full py-5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-black text-lg rounded-2xl transition-all shadow-lg shadow-amber-900/30 flex items-center justify-center gap-3">
-                <Send size={20} />무료 상담 신청하기
+              {submitError && (
+                <p className="text-red-400 text-sm font-bold text-center">전송에 실패했습니다. 전화(1588-9012)로 문의해 주시거나 잠시 후 다시 시도해 주세요.</p>
+              )}
+              <button type="submit" disabled={submitting}
+                className="w-full py-5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-black text-lg rounded-2xl transition-all shadow-lg shadow-amber-900/30 flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed">
+                <Send size={20} />{submitting ? '전송 중...' : '무료 상담 신청하기'}
               </button>
               <p className="text-center text-slate-600 text-xs">개인정보는 상담 목적으로만 사용되며 제3자에게 제공되지 않습니다.</p>
             </form>

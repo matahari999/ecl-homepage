@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "powershell -Command \"Copy-Item index.src.html index.html -Force; vite\"",
+    "build": "powershell -Command \"Copy-Item index.src.html index.html -Force; tsc; vite build\"",
     "deploy": "npm run build && powershell -Command \"Copy-Item -Path dist\\* -Destination C:\\Users\\sinab\\Documents\\GitHub\\ecl-homepage -Recurse -Force\"",
     "preview": "vite preview"
   },

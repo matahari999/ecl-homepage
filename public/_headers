@@ -1,0 +1,54 @@
+# HTML 페이지 - 항상 최신버전 확인
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+
+# 모든 페이지 기본 보안 헤더
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+# sitemap, rss, robots - 항상 최신버전
+/sitemap.xml
+  Cache-Control: no-cache, must-revalidate
+
+/rss.xml
+  Cache-Control: no-cache, must-revalidate
+
+/robots.txt
+  Cache-Control: no-cache, must-revalidate
+
+# JS/CSS 파일 - 캐시 강제 갱신
+/assets/*
+  Cache-Control: no-cache, must-revalidate
+
+# 이미지 파일
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable

@@ -23,9 +23,9 @@ const Footer = () => {
             <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 900, marginBottom: '30px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>파트너사 바로가기</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <li><a href="http://1san.co.kr" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }} className="hover:text-blue-500 transition-colors">일산 MG새마을금고</a></li>
-              <li><a href="http://pjkfcc.co.kr" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }} className="hover:text-blue-500 transition-colors">파주중앙 MG새마을금고</a></li>
-              <li><a href="http://goyangnuri.co.kr" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }} className="hover:text-blue-500 transition-colors">고양누리 MG새마을금고</a></li>
-              <li><a href="http://songpo.nonghyup.com" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }} className="hover:text-blue-500 transition-colors">송포농협</a></li>
+              <li><a href="https://pjkfcc.co.kr" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }} className="hover:text-blue-500 transition-colors">파주중앙 MG새마을금고</a></li>
+              <li><a href="https://goyangnuri.co.kr" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }} className="hover:text-blue-500 transition-colors">고양누리 MG새마을금고</a></li>
+              <li><a href="https://songpo.nonghyup.com" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }} className="hover:text-blue-500 transition-colors">송포농협</a></li>
               <li><a href="https://gyea.kr/wp/" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }} className="hover:text-blue-500 transition-colors">국제청년연합회 (GYEA)</a></li>
             </ul>
           </div>

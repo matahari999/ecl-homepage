@@ -10,7 +10,7 @@ const Blog = () => {
       date: '2025. 02. 20',
       datePublished: '2025-02-20',
       category: '방문요양',
-      image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=600&auto=format&fit=crop'
+      image: '/images/blog/blog-post-1.webp'
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const Blog = () => {
       date: '2025. 02. 10',
       datePublished: '2025-02-10',
       category: '요양병원',
-      image: 'https://images.unsplash.com/photo-1538137524007-21e48ea5ebdc?q=80&w=600&auto=format&fit=crop'
+      image: '/images/blog/blog-post-2.webp'
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ const Blog = () => {
       date: '2025. 01. 25',
       datePublished: '2025-01-25',
       category: '상조 정보',
-      image: 'https://images.unsplash.com/photo-1601625907474-511475c40bc9?q=80&w=600&auto=format&fit=crop'
+      image: '/images/blog/blog-post-3.webp'
     }
   ];
 
@@ -131,6 +131,9 @@ const Blog = () => {
                     <img
                       src={post.image}
                       alt={post.title}
+                      width={600}
+                      height={400}
+                      loading="lazy"
                       className="w-full h-full object-cover max-w-full group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>

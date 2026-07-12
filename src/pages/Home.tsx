@@ -70,8 +70,8 @@ const Home = () => {
       excerpt: '방문재가서비스 신청부터 이용까지, 절차와 혜택을 알기 쉽게 안내해 드립니다. 방문요양·방문목욕·방문간호 서비스 이용 가이드.',
       date: '2025. 02. 20',
       category: '방문재가',
-      iframe: '/bangmun_slideshow.html',
-      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=600&auto=format&fit=crop'
+      iframe: '/bangmun_slideshow_.html',
+      image: '/images/blog/home-post-1.webp'
     },
     {
       id: 2,
@@ -80,7 +80,7 @@ const Home = () => {
       date: '2025. 02. 10',
       category: '요양병원',
       iframe: '/yoyangbyungwon_guide.html',
-      image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=600&auto=format&fit=crop'
+      image: '/images/blog/home-post-2.webp'
     },
     {
       id: 3,
@@ -89,7 +89,7 @@ const Home = () => {
       date: '2025. 01. 25',
       category: '상조 정보',
       iframe: '/ieum_carelife_slideshow.html',
-      image: 'https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=600&auto=format&fit=crop'
+      image: '/images/blog/home-post-3.webp'
     }
   ];
 
@@ -490,6 +490,7 @@ const Home = () => {
                       className="w-full h-full border-0 pointer-events-none"
                       title={post.title}
                       scrolling="no"
+                      loading="lazy"
                     />
                   ) : (
                     <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />

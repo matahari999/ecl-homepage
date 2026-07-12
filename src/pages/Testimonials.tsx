@@ -1,4 +1,9 @@
+import { Helmet } from 'react-helmet-async';
+
 const Testimonials = () => {
+  const title = '고객 후기 | 이음케어라이프 후불제상조·요양병원·방문요양 이용 후기';
+  const description = '이음케어라이프와 함께하신 가족분들의 후불제상조, 요양병원 연계, 방문요양서비스 이용 후기를 소개합니다.';
+  const canonical = 'https://ecl.ai.kr/testimonials';
   const reviews = [
     {
       id: 1,
@@ -6,6 +11,7 @@ const Testimonials = () => {
       service: '후불제 상조',
       content: '갑작스러운 아버님의 상에 경황이 없었는데, 새벽에 연락드렸음에도 바로 달려와 주시고 모든 절차를 내 가족처럼 꼼꼼히 챙겨주셔서 정말 큰 위로가 되었습니다. 비용도 처음에 안내받은 그대로라 부담이 덜했습니다.',
       date: '2025. 02. 15',
+      isoDate: '2025-02-15',
       rating: 5
     },
     {
@@ -14,6 +20,7 @@ const Testimonials = () => {
       service: '요양병원 연계',
       content: '치매가 있으신 어머님을 모실 병원을 찾느라 막막했는데, 집에서 가깝고 시설 좋은 곳을 여러 군데 비교해서 추천해 주신 덕분에 안심하고 모실 수 있었습니다. 직접 방문해서 확인까지 시켜주시는 꼼꼼함에 감동했습니다.',
       date: '2025. 01. 22',
+      isoDate: '2025-01-22',
       rating: 5
     },
     {
@@ -22,12 +29,49 @@ const Testimonials = () => {
       service: '방문요양서비스',
       content: '등급 신청하는 방법조차 몰랐는데 처음부터 끝까지 다 알아서 해주셨어요. 지금 오시는 요양보호사 선생님도 너무 친절하시고 부모님 말벗도 잘 되어주셔서 제가 마음 편히 직장생활을 할 수 있게 되었습니다.',
       date: '2024. 11. 08',
+      isoDate: '2024-11-08',
       rating: 5
     }
   ];
 
+  const avgRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+  const reviewJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': 'https://ecl.ai.kr/#business',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: avgRating,
+      reviewCount: reviews.length,
+      bestRating: '5',
+      worstRating: '1'
+    },
+    review: reviews.map((r) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: r.name },
+      datePublished: r.isoDate,
+      reviewBody: r.content,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: r.rating,
+        bestRating: '5',
+        worstRating: '1'
+      }
+    }))
+  };
+
   return (
     <div className="flex flex-col w-full bg-slate-50 min-h-screen py-16">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <script type="application/ld+json">{JSON.stringify(reviewJsonLd)}</script>
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 text-center">고객 후기</h1>
         <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">

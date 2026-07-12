@@ -28,8 +28,8 @@ const Navbar = () => {
 
   const navLinks: { name: string; href: string; isExternal?: boolean; isQuote?: boolean; isRouter?: boolean }[] = [
     { name: '견적서', href: '/quote', isQuote: true, isRouter: true },
-    { name: '서비스', href: '#membership-main-section' },
-    { name: '후기', href: '#testimonials-section' },
+    { name: '서비스', href: '/services', isRouter: true },
+    { name: '후기', href: '/testimonials', isRouter: true },
     { name: '정보센터', href: 'https://blog.naver.com/sinabro7500', isExternal: true },
   ];
 

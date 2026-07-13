@@ -981,51 +981,6 @@
     </script>
 
     <script>
-      // React 렌더링 후 "" 텍스트 전부 교체
-      function replaceVeteranText() {
-        var walker = document.createTreeWalker(
-          document.body,
-          NodeFilter.SHOW_TEXT,
-          null,
-          false
-        );
-        var nodes = [];
-        var node;
-        while (node = walker.nextNode()) {
-          if (node.nodeValue && node.nodeValue.indexOf('') !== -1) {
-            nodes.push(node);
-          }
-        }
-        nodes.forEach(function(n) {
-          n.nodeValue = n.nodeValue
-            .replace(/이음케어라이프/g, '이음케어라이프')
-            .replace(//g, '');
-        });
-        // title 태그도 교체
-        if (document.title.indexOf('') !== -1) {
-          document.title = document.title
-            .replace(/이음케어라이프/g, '이음케어라이프')
-            .replace(//g, '');
-        }
-      }
-      // DOM 변경 감지해서 계속 교체 (디바운스: mutation이 몰릴 때 매번 전체 body를
-      // TreeWalker로 스캔하지 않도록 200ms 동안 잠잠해지면 한 번만 실행)
-      var _vetPending = null;
-      var _vetObs = new MutationObserver(function() {
-        if (_vetPending) clearTimeout(_vetPending);
-        _vetPending = setTimeout(replaceVeteranText, 200);
-      });
-      document.addEventListener('DOMContentLoaded', function() {
-        replaceVeteranText();
-        _vetObs.observe(document.body, { childList: true, subtree: true });
-        setTimeout(replaceVeteranText, 500);
-        setTimeout(replaceVeteranText, 1500);
-        setTimeout(replaceVeteranText, 3000);
-        // SPA 환경에서는 페이지 이동 시 계속 감지해야 하므로 disconnect 하지 않음 (디바운스로 부하만 줄임)
-      });
-    </script>
-
-    <script>
       function eclDismissPreloader(){var p=document.querySelector(".preloader");if(p)p.classList.add("preloader-finish");}
       window.addEventListener("load",eclDismissPreloader);
       // Safety net: never let a slow/blocked third-party resource (e.g. the YouTube embed)

@@ -267,7 +267,7 @@
     <link rel="stylesheet" crossorigin="" href="/assets/index-DS-tk0rD.css">
   <link rel="canonical" href="https://ecl.ai.kr/services" data-rh="true"><meta name="description" content="요양병원 매칭부터 방문요양서비스, 장기요양보험 등급 신청까지. 고양·일산·파주·김포 지역 24시간 무료 상담. 이음케어라이프." data-rh="true"><meta name="keywords" content="요양병원연결,방문요양서비스,장기요양보험,요양원,어르신돌봄,고양요양병원,일산요양병원,파주요양병원,이음케어라이프" data-rh="true"><meta property="og:type" content="website" data-rh="true"><meta property="og:url" content="https://ecl.ai.kr/services" data-rh="true"><meta property="og:title" content="요양병원 연결·방문요양서비스 신청 | 이음케어라이프" data-rh="true"><meta property="og:description" content="요양병원 매칭부터 방문요양서비스, 장기요양보험 등급 신청까지. 고양·일산·파주·김포 지역 24시간 무료 상담. 이음케어라이프." data-rh="true"><meta property="og:image" content="https://ecl.ai.kr/logo.png" data-rh="true"><meta name="twitter:card" content="summary_large_image" data-rh="true"><meta name="twitter:title" content="요양병원 연결·방문요양서비스 신청 | 이음케어라이프" data-rh="true"><meta name="twitter:description" content="요양병원 매칭부터 방문요양서비스, 장기요양보험 등급 신청까지. 고양·일산·파주·김포 지역 24시간 무료 상담. 이음케어라이프." data-rh="true"><style>@media(max-width:700px){#ecl-yt-blog-section>div{grid-template-columns:1fr !important;}}</style></head>
   <body>
-    <div class="preloader">
+    <div class="preloader preloader-finish">
       <div class="preloader-icon"><span></span></div>
     </div>
 
@@ -987,51 +987,6 @@
       // 로드되어야 발동하므로 느리거나 아예 안 뜰 수 있음 — 최초 진입 시 canonical
       // 정리가 지연되지 않도록 DOMContentLoaded에서도 한 번 더 실행
       document.addEventListener('DOMContentLoaded',function(){setTimeout(handleRouteChange,300);});
-    </script>
-
-    <script>
-      // React 렌더링 후 "" 텍스트 전부 교체
-      function replaceVeteranText() {
-        var walker = document.createTreeWalker(
-          document.body,
-          NodeFilter.SHOW_TEXT,
-          null,
-          false
-        );
-        var nodes = [];
-        var node;
-        while (node = walker.nextNode()) {
-          if (node.nodeValue && node.nodeValue.indexOf('') !== -1) {
-            nodes.push(node);
-          }
-        }
-        nodes.forEach(function(n) {
-          n.nodeValue = n.nodeValue
-            .replace(/이음케어라이프/g, '이음케어라이프')
-            .replace(//g, '');
-        });
-        // title 태그도 교체
-        if (document.title.indexOf('') !== -1) {
-          document.title = document.title
-            .replace(/이음케어라이프/g, '이음케어라이프')
-            .replace(//g, '');
-        }
-      }
-      // DOM 변경 감지해서 계속 교체 (디바운스: mutation이 몰릴 때 매번 전체 body를
-      // TreeWalker로 스캔하지 않도록 200ms 동안 잠잠해지면 한 번만 실행)
-      var _vetPending = null;
-      var _vetObs = new MutationObserver(function() {
-        if (_vetPending) clearTimeout(_vetPending);
-        _vetPending = setTimeout(replaceVeteranText, 200);
-      });
-      document.addEventListener('DOMContentLoaded', function() {
-        replaceVeteranText();
-        _vetObs.observe(document.body, { childList: true, subtree: true });
-        setTimeout(replaceVeteranText, 500);
-        setTimeout(replaceVeteranText, 1500);
-        setTimeout(replaceVeteranText, 3000);
-        // SPA 환경에서는 페이지 이동 시 계속 감지해야 하므로 disconnect 하지 않음 (디바운스로 부하만 줄임)
-      });
     </script>
 
     <script>

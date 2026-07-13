@@ -319,9 +319,9 @@ const Home = () => {
                 <li className="flex items-center gap-3 text-slate-300 font-bold"><CheckCircle2 className="w-5 h-5 text-orange-500" /> 24시간 즉시 출동 시스템</li>
                 <li className="flex items-center gap-3 text-slate-300 font-bold"><CheckCircle2 className="w-5 h-5 text-orange-500" /> 전문 장례지도사 전담 케어</li>
               </ul>
-              <button onClick={() => handleOpenDetail('/ieum_carelife_slideshow.html')} className="text-blue-500 font-black flex items-center gap-2 mx-auto hover:gap-4 transition-all">
+              <Link to="/services/postpaid-mutual-aid" className="text-blue-500 font-black flex items-center gap-2 mx-auto hover:gap-4 transition-all">
                 상세 정보 보기 <ArrowRight size={20} />
-              </button>
+              </Link>
             </div>
 
             {/* Card 2: 요양병원 */}
@@ -338,9 +338,9 @@ const Home = () => {
                 <li className="flex items-center gap-3 text-slate-300 font-bold"><CheckCircle2 className="w-5 h-5 text-blue-500" /> 입원 수속 및 이동 원스톱 지원</li>
                 <li className="flex items-center gap-3 text-slate-300 font-bold"><CheckCircle2 className="w-5 h-5 text-blue-500" /> 시설 및 비용 정밀 분석</li>
               </ul>
-              <button onClick={() => handleOpenDetail('/yoyangbyungwon_guide.html')} className="text-blue-500 font-black flex items-center gap-2 mx-auto hover:gap-4 transition-all">
+              <Link to="/services/nursing-hospital" className="text-blue-500 font-black flex items-center gap-2 mx-auto hover:gap-4 transition-all">
                 상세 정보 보기 <ArrowRight size={20} />
-              </button>
+              </Link>
             </div>
 
             {/* Card 3: 방문요양 */}
@@ -357,9 +357,9 @@ const Home = () => {
                 <li className="flex items-center gap-3 text-slate-300 font-bold"><CheckCircle2 className="w-5 h-5 text-purple-500" /> 엄선된 전문 요양보호사 파견</li>
                 <li className="flex items-center gap-3 text-slate-300 font-bold"><CheckCircle2 className="w-5 h-5 text-purple-500" /> 장기요양보험 활용 극대화</li>
               </ul>
-              <button onClick={() => handleOpenDetail('/bangmun_slideshow.html')} className="text-blue-500 font-black flex items-center gap-2 mx-auto hover:gap-4 transition-all">
+              <Link to="/services/home-care" className="text-blue-500 font-black flex items-center gap-2 mx-auto hover:gap-4 transition-all">
                 상세 정보 보기 <ArrowRight size={20} />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

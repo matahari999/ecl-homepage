@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import ServiceDetail from './pages/ServiceDetail';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
 import Blog from './pages/Blog';
@@ -20,6 +21,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/postpaid-mutual-aid" element={<ServiceDetail category="postpaid-mutual-aid" />} />
+            <Route path="/services/nursing-hospital" element={<ServiceDetail category="nursing-hospital" />} />
+            <Route path="/services/home-care" element={<ServiceDetail category="home-care" />} />
             <Route path="/services/*" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/testimonials" element={<Testimonials />} />

@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const title = '요양병원 연결·방문요양서비스 신청 | 이음케어라이프';
@@ -55,6 +56,9 @@ const Services = () => {
                 <li className="flex items-center gap-2">✓ 전국 24시간 장례 출동</li>
                 <li className="flex items-center gap-2">✓ 전문 장례지도사 1:1 전담</li>
               </ul>
+              <Link to="/services/postpaid-mutual-aid" className="inline-flex items-center gap-1 mt-6 text-blue-600 font-bold hover:gap-2 transition-all">
+                자세히 보기 →
+              </Link>
             </div>
           </div>
 
@@ -79,6 +83,9 @@ const Services = () => {
                 <li className="flex items-center gap-2">✓ 비용 및 시설 비교 분석 상담</li>
                 <li className="flex items-center gap-2">✓ 입원 수속 및 이동 안내 지원</li>
               </ul>
+              <Link to="/services/nursing-hospital" className="inline-flex items-center gap-1 mt-6 text-blue-600 font-bold hover:gap-2 transition-all">
+                자세히 보기 →
+              </Link>
             </div>
           </div>
 
@@ -103,8 +110,9 @@ const Services = () => {
                 <li className="flex items-center gap-2">✓ 검증된 전문 요양보호사 파견</li>
                 <li className="flex items-center gap-2">✓ 신체 활동 지원, 정서 지원, 가사 지원</li>
               </ul>
-              
-              {/* Address indicator removed here as requested */}
+              <Link to="/services/home-care" className="inline-flex items-center gap-1 mt-6 text-blue-600 font-bold hover:gap-2 transition-all">
+                자세히 보기 →
+              </Link>
             </div>
           </div>
         </div>

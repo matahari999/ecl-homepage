@@ -43,8 +43,8 @@ const paths: Record<Category, string> = {
 
 const meta: Record<Category, { title: string; description: string; emoji: string; heroTitle: string; heroSub: string; serviceArea: string; features: string[]; process: string[] }> = {
   'postpaid-mutual-aid': {
-    title: '후불제 상조 서비스 요금표·절차 안내 | 이음케어라이프',
-    description: '선불금 없는 이음케어후불제상조. 플랫폼 300/360 요금표, 선불제 vs 후불제 비교, 24시간 접수부터 사후 정리까지 전 과정을 안내합니다.',
+    title: '고양·파주·김포 후불제상조 요금표·절차 안내 | 이음케어라이프',
+    description: '고양시 후불제상조, 파주시 후불제상조, 김포시 후불제상조 - 선불금 없는 이음케어후불제상조. 플랫폼 300/360 요금표, 선불제 vs 후불제 비교, 24시간 접수부터 사후 정리까지 전 과정을 안내합니다.',
     emoji: '🕊️',
     heroTitle: '이음케어 후불제상조',
     heroSub: '갑작스러운 이별을 위한 후불제 상조서비스로 경제적 부담 없이 정성스럽게 모시겠습니다.',
@@ -288,6 +288,24 @@ const ServiceDetail = ({ category }: ServiceDetailProps) => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </Card>
+
+            <Card className="mb-10">
+              <h2 className="text-xl font-bold text-slate-900 text-center mb-6">지역별 후불제상조 안내</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="p-6 bg-blue-50 rounded-lg border border-blue-100">
+                  <h3 className="font-bold text-slate-900 mb-2">고양시 후불제상조</h3>
+                  <p className="text-sm text-slate-600">일산동구·일산서구·덕양구 포함 고양시 전 지역에서 선납금 없는 후불제상조 서비스를 이용하실 수 있습니다. 일산새마을금고·고양누리새마을금고 MOU 협약 지정시행사입니다.</p>
+                </div>
+                <div className="p-6 bg-blue-50 rounded-lg border border-blue-100">
+                  <h3 className="font-bold text-slate-900 mb-2">파주시 후불제상조</h3>
+                  <p className="text-sm text-slate-600">운정신도시·금촌 등 파주시 전 지역에서 후불제상조 상담이 가능합니다. 파주중앙새마을금고 MOU 협약 지정시행사로 지역 어르신을 위한 상조 서비스를 제공합니다.</p>
+                </div>
+                <div className="p-6 bg-blue-50 rounded-lg border border-blue-100">
+                  <h3 className="font-bold text-slate-900 mb-2">김포시 후불제상조</h3>
+                  <p className="text-sm text-slate-600">김포신도시·장기동 등 김포시 전 지역에서 24시간 후불제상조 상담 및 장례 출동이 가능합니다.</p>
+                </div>
               </div>
             </Card>
 

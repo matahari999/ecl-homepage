@@ -438,21 +438,7 @@
       function openMemberModal(){document.getElementById('ecl-member-overlay').classList.add('open');document.body.style.overflow='hidden';}
       function closeMemberModal(){document.getElementById('ecl-member-overlay').classList.remove('open');document.body.style.overflow='';}
 
-      function fixSangjoImage(){
-        var replaced=false;
-        document.querySelectorAll('img').forEach(function(img){
-          var isBroken=(img.src||'').indexOf('sangjo-service-image')!==-1||((img.alt||'').indexOf('상조')!==-1&&(img.alt||'').indexOf('종합 안내')!==-1);
-          if(isBroken){
-            img.onerror=null;
-            img.src='/sangjo-service-info.svg';
-            img.style.cssText+='width:100%;max-width:100%;height:auto;border-radius:16px;display:block;';
-            replaced=true;
-          }
-        });
-        return replaced;
-      }
-
-      function fixContactCards(){
+function fixContactCards(){
         if(window.location.pathname !== '/') return;
         var found=false;
         // 전화상담 텍스트를 가진 요소 찾기
@@ -753,9 +739,9 @@
       }
 
       document.addEventListener('DOMContentLoaded',function(){
-        fixSangjoImage(); injectNavButtons(); fixContactCards(); injectVideoBanner(); positionMouSection();
-        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideUnwantedSections();positionMouSection();},1500);
-        setTimeout(function(){injectNavButtons();fixSangjoImage();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideUnwantedSections();positionMouSection();},4000);
+        injectNavButtons(); fixContactCards(); injectVideoBanner(); positionMouSection();
+        setTimeout(function(){injectNavButtons();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideUnwantedSections();positionMouSection();},1500);
+        setTimeout(function(){injectNavButtons();fixContactCards();injectVideoBanner();injectYoutubeBlogCards();replaceBlogSectionWithGif();fixServiceLinks();hideUnwantedSections();positionMouSection();},4000);
       });
 
       // React가 렌더링한 불필요한 하단 섹션들 숨기기
@@ -919,7 +905,7 @@
         var pending=null;
         var run=function(){
           pending=null;
-          fixSangjoImage(); fixContactCards(); injectVideoBanner(); injectYoutubeBlogCards(); replaceBlogSectionWithGif(); fixServiceLinks(); hideUnwantedSections(); enhanceBlogPage(); positionMouSection();
+          fixContactCards(); injectVideoBanner(); injectYoutubeBlogCards(); replaceBlogSectionWithGif(); fixServiceLinks(); hideUnwantedSections(); enhanceBlogPage(); positionMouSection();
         };
         var obs=new MutationObserver(function(){
           if(pending) clearTimeout(pending);

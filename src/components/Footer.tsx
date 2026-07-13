@@ -48,6 +48,10 @@ const Footer = () => {
         </div>
 
         <div style={{ paddingTop: '40px', borderTop: '1px solid rgba(255,255,255,0.05)', textAlign: 'center' }}>
+          <p style={{ color: '#475569', fontSize: '0.8rem', fontWeight: 600, lineHeight: '1.8', marginBottom: '12px' }}>
+            이음케어라이프 · 대표: 김경무 · 사업자등록번호: 398-57-01031<br />
+            경기 고양 일산서구 산현로17번길
+          </p>
           <p style={{ color: '#334155', fontSize: '0.85rem', fontWeight: 700 }}>&copy; 2025 이음케어라이프. All rights reserved.</p>
         </div>
       </div>

@@ -5,6 +5,10 @@
 // 4) 정적 페이지를 다시 생성합니다. (커밋·푸시는 GitHub Actions가 함)
 //
 // 사용법
+//   [Claude Code 모드 — Pro 구독, API 키 불필요]
+//   node _autopilot/run.mjs --brief            # 오늘의 검색어 + 작성 지침 출력 → Claude가 글 JSON 작성
+//   node _autopilot/run.mjs --publish post.json # 그 JSON을 검증·내부링크·발행
+//   [API 모드]
 //   node _autopilot/run.mjs                    # 자동 (서치콘솔 → 없으면 예비 키워드)
 //   node _autopilot/run.mjs --keyword "무빈소 장례 비용"   # 키워드 직접 지정
 //   node _autopilot/run.mjs --dry-run          # 어떤 키워드를 고를지만 보기 (글 안 씀)
@@ -177,9 +181,7 @@ function validate(post, posts) {
 }
 
 async function writePost(target, posts) {
-  const user = `오늘 쓸 글의 목표 검색어: "${target.query}"
-${target.impressions ? `참고: 이 검색어로 최근 ${config.gsc.lookbackDays}일간 우리 사이트가 ${target.impressions}번 노출됐지만 클릭은 ${target.clicks}번(평균 순위 ${target.position.toFixed(1)}위)뿐이었습니다. 이 검색어를 입력한 사람이 정확히 원하는 답을 주는 전용 글이 필요합니다.` : '예비 키워드 목록에서 고른 검색어입니다.'}
-이 검색어를 검색한 사람의 의도를 먼저 파악하고, 그 질문에 가장 잘 답하는 글을 써 주세요.`;
+  const user = userBrief(target);
   let lastErr;
   for (let attempt = 1; attempt <= 2; attempt++) {
     const text = await claude(writerPrompt(posts), attempt === 1 ? user : `${user}\n\n(이전 시도 문제: ${lastErr}. 이 부분을 고쳐 다시 작성)`);
@@ -196,48 +198,106 @@ ${target.impressions ? `참고: 이 검색어로 최근 ${config.gsc.lookbackDay
   throw new Error('글 생성 실패: ' + lastErr);
 }
 
+// ---------------- 공통: 오늘의 검색어 고르기 / 발행 ----------------
+async function pickTargets(posts, log) {
+  let candidates = [];
+  let topGuidePages = [];
+  if (opt('--keyword')) return { candidates: [{ query: opt('--keyword'), source: 'manual' }], topGuidePages };
+  if (env.GSC_SERVICE_ACCOUNT_JSON) {
+    try {
+      const token = await gscToken();
+      const rows = await gscQuery(token, ['query', 'page']);
+      const pages = await gscQuery(token, ['page'], 500);
+      topGuidePages = pages
+        .filter((r) => r.keys[0].includes(config.site.guidePath + '/'))
+        .sort((a, b) => b.clicks - a.clicks || b.impressions - a.impressions)
+        .map((r) => r.keys[0].replace(/\/$/, '').split('/').pop().replace(/\.html$/, ''));
+      candidates = findGaps(rows, posts).map((c) => ({ ...c, source: 'gsc' }));
+      console.error(`서치콘솔: 검색어 ${rows.length}행 분석 → 빈칸 후보 ${candidates.length}개`);
+    } catch (e) {
+      console.error('⚠ 서치콘솔 사용 불가 → 예비 키워드로 진행:', e.message);
+    }
+  } else {
+    console.error('ℹ 서치콘솔 미연결 → 예비 키워드로 진행');
+  }
+  if (!candidates.length) {
+    const used = new Set(log.map((l) => norm(l.keyword)));
+    candidates = config.seedKeywords.filter((k) => !used.has(norm(k)) && !isCovered(k, posts)).map((query) => ({ query, source: 'seed' }));
+  }
+  return { candidates, topGuidePages };
+}
+
+function userBrief(target) {
+  return `오늘 쓸 글의 목표 검색어: "${target.query}"
+${target.impressions ? `참고: 이 검색어로 최근 ${config.gsc.lookbackDays}일간 우리 사이트가 ${target.impressions}번 노출됐지만 클릭은 ${target.clicks}번(평균 순위 ${target.position.toFixed(1)}위)뿐이었습니다. 이 검색어를 입력한 사람이 정확히 원하는 답을 주는 전용 글이 필요합니다.` : '예비 키워드 목록에서 고른 검색어입니다.'}
+이 검색어를 검색한 사람의 의도를 먼저 파악하고, 그 질문에 가장 잘 답하는 글을 써 주세요.`;
+}
+
+/** 검증·내부링크·저장·렌더까지. 실패하면 예외 */
+function publishPost(post, target, topGuidePages, log) {
+  const all = loadPosts();
+  const errs = validate(post, all);
+  if (errs.length) throw new Error('품질 기준 미달: ' + errs.join(', '));
+  post.publishedAt = today();
+  post.keyword = post.keyword || target.query;
+  post.keywords = [...new Set([target.query, ...(post.keywords || [])])];
+  post.source = 'autopilot';
+  if (target.impressions) post.gsc = { impressions: target.impressions, clicks: target.clicks, position: +Number(target.position).toFixed(1) };
+  post.sections = post.sections.map((s) => ({ heading: s.heading, html: sanitize(s.html) }));
+  post.faq = (post.faq || []).map((f) => ({ q: f.q, a: sanitize(f.a) }));
+
+  // 내부 링크: 방문자가 많은 기존 글(서치콘솔 기준, 없으면 최신 글)에서 새 글로 길을 깔아줌
+  const sources = [...new Set([...(topGuidePages || []), ...all.map((p) => p.slug)])].filter((s) => all.some((p) => p.slug === s)).slice(0, config.publish.internalLinkSources);
+  for (const slug of sources) {
+    const f = path.join(POSTS_DIR, `${slug}.json`);
+    const p = JSON.parse(fs.readFileSync(f, 'utf8'));
+    p.related = [post.slug, ...(p.related || []).filter((s) => s !== post.slug)].slice(0, 4);
+    fs.writeFileSync(f, JSON.stringify(p, null, 2) + '\n');
+  }
+  post.related = sources.slice(0, 2);
+  delete post.status;
+
+  fs.writeFileSync(path.join(POSTS_DIR, `${post.slug}.json`), JSON.stringify(post, null, 2) + '\n');
+  log.push({ date: today(), keyword: target.query, source: target.source, slug: post.slug, title: post.title, gsc: post.gsc || null, linkedFrom: sources });
+  fs.writeFileSync(LOG_FILE, JSON.stringify(log, null, 2) + '\n');
+  const rendered = renderAll();
+  console.log(`✓ 발행: ${config.site.origin}${config.site.guidePath}/${post.slug}  ← 링크: ${sources.join(', ') || '없음'} (전체 ${rendered.length}편)`);
+  return post;
+}
+
+const BRIEF_FILE = path.join(ROOT, '_guide', '.brief.json');
+
 // ---------------- main ----------------
 async function main() {
   const posts = loadPosts();
   const log = fs.existsSync(LOG_FILE) ? JSON.parse(fs.readFileSync(LOG_FILE, 'utf8')) : [];
-  let candidates = [];
-  let topGuidePages = [];
-  let gscOk = false;
 
-  if (opt('--keyword')) {
-    candidates = [{ query: opt('--keyword'), source: 'manual' }];
-  } else {
-    if (env.GSC_SERVICE_ACCOUNT_JSON) {
-      try {
-        const token = await gscToken();
-        const rows = await gscQuery(token, ['query', 'page']);
-        const pages = await gscQuery(token, ['page'], 500);
-        topGuidePages = pages
-          .filter((r) => r.keys[0].includes(config.site.guidePath + '/'))
-          .sort((a, b) => b.clicks - a.clicks || b.impressions - a.impressions)
-          .map((r) => r.keys[0].split('/').pop().replace(/\.html$/, ''));
-        candidates = findGaps(rows, posts).map((c) => ({ ...c, source: 'gsc' }));
-        gscOk = true;
-        console.log(`서치콘솔: 검색어 ${rows.length}행 분석 → 빈칸 후보 ${candidates.length}개`);
-        if (flag('--report')) {
-          console.table(candidates.slice(0, 20).map((c) => ({ 검색어: c.query, 노출: c.impressions, 클릭: c.clicks, CTR: (c.ctr * 100).toFixed(1) + '%', 순위: c.position.toFixed(1) })));
-          return;
-        }
-      } catch (e) {
-        console.warn('⚠ 서치콘솔 사용 불가 → 예비 키워드로 진행:', e.message);
-      }
-    } else {
-      console.log('ℹ GSC_SERVICE_ACCOUNT_JSON 없음 → 예비 키워드로 진행');
-    }
-    // 서치콘솔 후보가 없으면 예비 키워드에서 아직 안 쓴 것
-    if (!candidates.length) {
-      const used = new Set(log.map((l) => norm(l.keyword)));
-      candidates = config.seedKeywords.filter((k) => !used.has(norm(k)) && !isCovered(k, posts)).map((query) => ({ query, source: 'seed' }));
-    }
+  // [Claude Code 모드 2단계] Claude가 쓴 글 JSON을 받아 발행
+  if (opt('--publish')) {
+    const brief = fs.existsSync(BRIEF_FILE) ? JSON.parse(fs.readFileSync(BRIEF_FILE, 'utf8')) : { target: { query: '', source: 'manual' }, topGuidePages: [] };
+    const post = JSON.parse(fs.readFileSync(opt('--publish'), 'utf8'));
+    if (!brief.target.query) brief.target.query = post.keyword || post.title;
+    publishPost(post, brief.target, brief.topGuidePages, log);
+    fs.rmSync(BRIEF_FILE, { force: true });
+    return;
   }
 
+  const { candidates, topGuidePages } = await pickTargets(posts, log);
+
+  if (flag('--report')) {
+    console.table(candidates.slice(0, 20).map((c) => ({ 검색어: c.query, 출처: c.source, 노출: c.impressions ?? '', 클릭: c.clicks ?? '', 순위: c.position ? c.position.toFixed(1) : '' })));
+    return;
+  }
   if (!candidates.length) {
     console.log('오늘 채울 빈칸이 없습니다. 종료.');
+    return;
+  }
+
+  // [Claude Code 모드 1단계] 오늘의 검색어와 작성 지침을 출력 → Claude가 직접 글을 씀
+  if (flag('--brief')) {
+    const target = candidates[0];
+    fs.writeFileSync(BRIEF_FILE, JSON.stringify({ target, topGuidePages }, null, 2));
+    console.log(`=== 오늘의 검색어: ${target.query} (${target.source}) ===\n\n[작성 지침]\n${writerPrompt(posts)}\n\n[오늘의 요청]\n${userBrief(target)}`);
     return;
   }
 
@@ -246,40 +306,14 @@ async function main() {
     console.log('오늘 고른 검색어:', picks);
     return;
   }
-  if (!env.ANTHROPIC_API_KEY) throw new Error('ANTHROPIC_API_KEY가 없습니다.');
 
+  // [API 모드] ANTHROPIC_API_KEY가 있으면 스크립트가 직접 Claude API 호출
+  if (!env.ANTHROPIC_API_KEY) throw new Error('ANTHROPIC_API_KEY가 없습니다. Claude Code에서는 --brief / --publish 를 사용하세요.');
   for (const target of picks) {
     console.log(`✎ "${target.query}" 글 작성 중... (${target.source})`);
-    const all = loadPosts();
-    const post = await writePost(target, all);
-    post.publishedAt = today();
-    post.keyword = post.keyword || target.query;
-    post.keywords = [...new Set([target.query, ...(post.keywords || [])])];
-    post.source = 'autopilot';
-    if (target.impressions) post.gsc = { impressions: target.impressions, clicks: target.clicks, position: +target.position.toFixed(1) };
-    // 안전을 위해 저장 전에도 html 정리
-    post.sections = post.sections.map((s) => ({ heading: s.heading, html: sanitize(s.html) }));
-    post.faq = (post.faq || []).map((f) => ({ q: f.q, a: sanitize(f.a) }));
-    post.related = [];
-
-    // 내부 링크: 방문자가 많은 기존 글(서치콘솔 기준, 없으면 최신 글)에서 새 글로 길을 깔아줌
-    const sources = [...new Set([...topGuidePages, ...all.map((p) => p.slug)])].filter((s) => all.some((p) => p.slug === s)).slice(0, config.publish.internalLinkSources);
-    for (const slug of sources) {
-      const f = path.join(POSTS_DIR, `${slug}.json`);
-      const p = JSON.parse(fs.readFileSync(f, 'utf8'));
-      p.related = [post.slug, ...(p.related || []).filter((s) => s !== post.slug)].slice(0, 4);
-      fs.writeFileSync(f, JSON.stringify(p, null, 2) + '\n');
-    }
-    post.related = sources.slice(0, 2);
-
-    fs.writeFileSync(path.join(POSTS_DIR, `${post.slug}.json`), JSON.stringify(post, null, 2) + '\n');
-    log.push({ date: today(), keyword: target.query, source: target.source, slug: post.slug, title: post.title, gsc: post.gsc || null, linkedFrom: sources });
-    console.log(`✓ 발행: ${config.site.origin}${config.site.guidePath}/${post.slug}  ← 링크: ${sources.join(', ') || '없음'}`);
+    const post = await writePost(target, loadPosts());
+    publishPost(post, target, topGuidePages, log);
   }
-
-  fs.writeFileSync(LOG_FILE, JSON.stringify(log, null, 2) + '\n');
-  const rendered = renderAll();
-  console.log(`✓ 전체 ${rendered.length}개 글 다시 생성 완료${gscOk ? '' : ' (서치콘솔 미연결)'}`);
 }
 
 main().catch((e) => {

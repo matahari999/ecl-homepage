@@ -223,7 +223,7 @@ ${jsonLd.map((j) => `<script type="application/ld+json">${JSON.stringify(j).repl
   <nav class="nav">
     <a class="q" href="${S.quoteUrl}">💰 견적서</a>
     <a class="hide-m" href="/services">서비스</a>
-    <a class="on" href="${S.guidePath}">가이드</a>
+    <a class="on" href="${S.guidePath}">블로그</a>
     <a class="hide-m" href="/testimonials">후기</a>
     <a class="btn btn-blue hide-m" href="${S.consultUrl}">상담문의</a>
   </nav>
@@ -231,7 +231,7 @@ ${jsonLd.map((j) => `<script type="application/ld+json">${JSON.stringify(j).repl
 ${body}
 <footer class="ft"><div class="ft-in">
   <div><b style="color:#fff">${esc(S.brand)}</b><br>고양·파주·김포 및 수도권 후불제 상조 · 요양병원 연계 · 방문요양</div>
-  <div>대표전화 <a href="tel:${S.phone}">${S.phone}</a> (24시간)<br><a href="/">홈</a> · <a href="${S.quoteUrl}">견적 계산기</a> · <a href="${S.guidePath}">가이드</a> · <a href="${S.consultUrl}">상담 신청</a></div>
+  <div>대표전화 <a href="tel:${S.phone}">${S.phone}</a> (24시간)<br><a href="/">홈</a> · <a href="${S.quoteUrl}">견적 계산기</a> · <a href="${S.guidePath}">블로그</a> · <a href="${S.consultUrl}">상담 신청</a></div>
 </div></footer>
 <div class="float"><a class="f-kakao" href="${S.kakao}" target="_blank" rel="noopener" aria-label="카카오톡 상담">톡</a><a class="f-call" href="tel:${S.phone}" aria-label="전화 상담">📞</a></div>
 </body>
@@ -354,11 +354,16 @@ export function renderAll() {
   const all = loadPosts();
   fs.mkdirSync(OUT_DIR, { recursive: true });
   // 더 이상 없는 글의 html 정리
-  const keep = new Set(all.map((p) => `${p.slug}.html`).concat(['index.html', 'rss.xml']));
+  const keep = new Set(all.map((p) => `${p.slug}.html`).concat(['index.html', 'rss.xml', 'latest.json']));
   for (const f of fs.readdirSync(OUT_DIR)) if (!keep.has(f)) fs.rmSync(path.join(OUT_DIR, f));
   for (const p of all) fs.writeFileSync(path.join(OUT_DIR, `${p.slug}.html`), renderPost(p, all));
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), renderIndex(all));
   fs.writeFileSync(path.join(OUT_DIR, 'rss.xml'), renderRss(all));
+  // 홈페이지 메인에 보여줄 최신 글 목록
+  fs.writeFileSync(
+    path.join(OUT_DIR, 'latest.json'),
+    JSON.stringify(all.slice(0, 6).map((p) => ({ slug: p.slug, title: p.title, description: p.description, category: p.category || '가이드', date: p.publishedAt, cover: (p.cover && safeImg(p.cover.src)) || null })))
+  );
   fs.writeFileSync(path.join(ROOT, 'guide-sitemap.xml'), renderSitemap(all));
   return all;
 }

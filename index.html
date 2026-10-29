@@ -277,7 +277,8 @@
         }
       ]
     }
-    </script>
+    </script>
+
     <script type="module" crossorigin src="/assets/index-CGhiAHFy.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BV7zfsqn.css">
   </head>
@@ -1054,5 +1055,48 @@ function fixContactCards(){
       }
       document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQuoteModal();});
     </script>
-  </body>
+  <!-- ECL_BLOG_SECTION -->
+<style>
+#ecl-blog-home{background:#f8fafc;padding:72px 16px;font-family:'Noto Sans KR',system-ui,sans-serif;word-break:keep-all}
+#ecl-blog-home .in{max-width:1120px;margin:0 auto}
+#ecl-blog-home .hd{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+#ecl-blog-home .eb{display:inline-block;background:#dbeafe;color:#1d4ed8;font-weight:800;font-size:13px;padding:5px 12px;border-radius:999px}
+#ecl-blog-home h2{margin:10px 0 6px;font-size:clamp(26px,4vw,36px);font-weight:900;color:#0f172a;letter-spacing:-.03em}
+#ecl-blog-home p.s{margin:0;color:#64748b;font-size:16px}
+#ecl-blog-home .all{color:#fff;background:#2563eb;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:12px;font-size:15px}
+#ecl-blog-home .g{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){#ecl-blog-home .g{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){#ecl-blog-home .g{grid-template-columns:1fr}#ecl-blog-home{padding:52px 16px}}
+#ecl-blog-home a.c{display:block;background:#fff;border:1px solid #e2e8f0;border-radius:18px;overflow:hidden;text-decoration:none;color:#0f172a;transition:transform .15s,box-shadow .15s}
+#ecl-blog-home a.c:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,23,42,.08)}
+#ecl-blog-home a.c img{display:block;width:100%;aspect-ratio:1200/630;object-fit:cover;background:#eef2f7}
+#ecl-blog-home a.c .b{padding:16px 18px 20px}
+#ecl-blog-home a.c .t{font-size:12px;font-weight:800;color:#2563eb}
+#ecl-blog-home a.c h3{margin:6px 0 6px;font-size:18px;line-height:1.45;font-weight:800;letter-spacing:-.02em}
+#ecl-blog-home a.c .d{margin:0;color:#64748b;font-size:14px;line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+</style>
+<script>
+(function(){
+  var data=null, loading=false;
+  function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function build(){
+    var sec=document.createElement('section'); sec.id='ecl-blog-home';
+    sec.innerHTML='<div class="in"><div class="hd"><div><span class="eb">이음케어라이프 블로그</span><h2>장례·요양, 처음이라면 먼저 읽어보세요</h2><p class="s">후불제 상조, 장례 절차, 사망 후 행정처리까지 쉽게 정리했습니다.</p></div><a class="all" href="/guide">블로그 전체 보기 →</a></div><div class="g">'+
+      data.slice(0,3).map(function(p){return '<a class="c" href="/guide/'+esc(p.slug)+'">'+(p.cover?'<img src="'+esc(p.cover)+'" alt="" loading="lazy">':'')+'<div class="b"><span class="t">'+esc(p.category)+'</span><h3>'+esc(p.title)+'</h3><p class="d">'+esc(p.description)+'</p></div></a>'}).join('')+'</div></div>';
+    return sec;
+  }
+  function place(){
+    if(location.pathname!=='/'&&location.pathname!=='/index.html')return;
+    if(document.getElementById('ecl-blog-home'))return;
+    var ft=document.querySelector('#root footer'); if(!ft||!ft.parentNode)return;
+    if(!data){ if(!loading){loading=true;fetch('/guide/latest.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(d){data=d;place()}).catch(function(){})} return; }
+    if(!data.length)return;
+    ft.parentNode.insertBefore(build(),ft);
+  }
+  new MutationObserver(place).observe(document.documentElement,{childList:true,subtree:true});
+  document.addEventListener('DOMContentLoaded',place); place();
+})();
+</script>
+<!-- /ECL_BLOG_SECTION -->
+</body>
 </html>

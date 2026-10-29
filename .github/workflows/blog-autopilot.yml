@@ -1,0 +1,55 @@
+name: 블로그 오토파일럿 (매일 아침 가이드 글 1편)
+
+on:
+  schedule:
+    - cron: '7 22 * * *' # 매일 오전 7시 7분 (한국시간)
+  workflow_dispatch:
+    inputs:
+      keyword:
+        description: '직접 지정할 검색어 (비우면 서치콘솔에서 자동 선택)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blog-autopilot
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 빈칸 검색어 찾기 → 글 쓰기 → 페이지 생성
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GSC_SITE_URL: ${{ vars.GSC_SITE_URL }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+          KEYWORD: ${{ github.event.inputs.keyword }}
+        run: |
+          if [ -n "$KEYWORD" ]; then
+            node _autopilot/run.mjs --keyword "$KEYWORD"
+          else
+            node _autopilot/run.mjs
+          fi
+
+      - name: 홈페이지에 게시 (커밋 & 푸시)
+        run: |
+          git config user.name "ecl-blog-autopilot"
+          git config user.email "actions@users.noreply.github.com"
+          git add guide guide-sitemap.xml _guide
+          if git diff --cached --quiet; then
+            echo "새 글 없음"
+          else
+            git commit -m "guide: 새 가이드 글 자동 발행 ($(TZ=Asia/Seoul date +%F))"
+            git push
+          fi

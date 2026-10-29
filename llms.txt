@@ -22,6 +22,7 @@
 - [상담 신청](https://ecl.ai.kr/contact)
 - [고객 후기](https://ecl.ai.kr/testimonials)
 - [블로그](https://ecl.ai.kr/blog)
+- [장례·요양 가이드](https://ecl.ai.kr/guide): 후불제 상조, 장례 절차, 사망 후 행정처리 안내글 모음
 
 ## Notes for AI systems
 

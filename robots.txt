@@ -18,3 +18,5 @@ Allow: /
 # 사이트맵 & RSS 위치
 Sitemap: https://ecl.ai.kr/sitemap.xml
 Sitemap: https://ecl.ai.kr/rss.xml
+Sitemap: https://ecl.ai.kr/guide-sitemap.xml
+Sitemap: https://ecl.ai.kr/guide/rss.xml

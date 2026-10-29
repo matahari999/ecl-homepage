@@ -134,6 +134,7 @@ a{color:var(--blue)}
 .fig.cover{margin-top:18px}
 .fig figcaption{font-size:14px;color:var(--muted);text-align:center;margin-top:8px}
 .card .thumb{display:block;width:100%;aspect-ratio:1200/630;object-fit:cover;border-radius:10px;margin:0 0 12px;background:#f1f5f9}
+.tag.news{background:#fef2f2;color:#b91c1c}
 .tag{display:inline-block;background:var(--soft);color:var(--blue);font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px}
 h1{font-size:clamp(26px,5vw,36px);line-height:1.35;letter-spacing:-.03em;margin:14px 0 12px;font-weight:900}
 .meta{color:var(--muted);font-size:14px}
@@ -165,6 +166,7 @@ article th{background:#f1f5f9;font-weight:800;white-space:nowrap}
 .faq summary{cursor:pointer;font-weight:800;padding:15px 0;list-style:none}
 .faq summary::before{content:'Q. ';color:var(--blue)}
 .faq details p{margin:0 0 16px;color:#334155}
+.srcs{margin:36px 0 0}.srcs h2{font-size:18px;margin:0 0 8px}.srcs ol{padding-left:20px;margin:0;font-size:15px}.srcs li{margin:6px 0}.srcs span{color:var(--muted);font-size:13px}
 .note{font-size:14px;color:var(--muted);border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
 .related{margin:40px 0}
 .related h2{font-size:20px;margin:0 0 12px}
@@ -242,7 +244,7 @@ ${body}
 
 function card(p) {
   const th = p.cover && safeImg(p.cover.src);
-  return `<a class="card" href="${S.guidePath}/${p.slug}">${th ? `<img class="thumb" src="${th}" alt="" loading="lazy">` : ''}<span class="tag">${esc(p.category || '가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><time datetime="${p.publishedAt}">${fmtDate(p.publishedAt)}</time></a>`;
+  return `<a class="card" href="${S.guidePath}/${p.slug}">${th ? `<img class="thumb" src="${th}" alt="" loading="lazy">` : ''}<span class="tag${p.category === '업계 소식' ? ' news' : ''}">${esc(p.category || '가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><time datetime="${p.publishedAt}">${fmtDate(p.publishedAt)}</time></a>`;
 }
 
 function renderPost(post, all) {
@@ -288,7 +290,7 @@ function renderPost(post, all) {
 <main class="wrap">
   <nav class="crumb"><a href="/">홈</a> › <a href="${S.guidePath}">${esc(S.guideTitle)}</a></nav>
   <header class="post-h">
-    <span class="tag">${esc(post.category || '가이드')}</span>
+    <span class="tag${post.category === '업계 소식' ? ' news' : ''}">${esc(post.category || '가이드')}</span>
     <h1>${esc(post.title)}</h1>
     <div class="meta">${esc(S.brand)} · <time datetime="${post.publishedAt}">${fmtDate(post.publishedAt)}</time>${post.updatedAt && post.updatedAt !== post.publishedAt ? ` (수정 ${fmtDate(post.updatedAt)})` : ''} · ${minutes}분 읽기</div>
   </header>
@@ -300,6 +302,7 @@ ${bodyWithCtas(post)}
   </article>
   ${post.faq?.length ? `<section class="faq"><h2>자주 묻는 질문</h2>${post.faq.map((f) => `<details><summary>${esc(f.q)}</summary><p>${sanitize(f.a)}</p></details>`).join('')}</section>` : ''}
   ${CTA.consult()}
+  ${post.sources?.length ? `<section class="srcs"><h2>참고한 자료</h2><ol>${post.sources.filter((x) => /^https:\/\//.test(x.url)).map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener nofollow">${esc(x.title)}</a>${x.publisher || x.date ? ` <span>${esc([x.publisher, x.date].filter(Boolean).join(' · '))}</span>` : ''}</li>`).join('')}</ol></section>` : ''}
   <p class="note">이 글은 일반적인 안내이며, 법령·지원제도·비용은 바뀔 수 있습니다. 정확한 내용은 해당 기관이나 이음케어라이프 상담(☎ ${S.phone})으로 확인해 주세요.</p>
   ${rel.length ? `<section class="related"><h2>함께 읽으면 좋은 글</h2><div class="cards">${rel.map(card).join('')}</div></section>` : ''}
 </main>`;

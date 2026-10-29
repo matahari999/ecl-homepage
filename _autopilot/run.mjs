@@ -191,6 +191,13 @@ function validate(post, posts) {
   if (textLength(post) < config.publish.minBodyChars) errs.push(`본문 ${textLength(post)}자 (최소 ${config.publish.minBodyChars})`);
   post.slug = String(post.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 70);
   if (post.slug.length < 3) errs.push('slug');
+  if (post.category === '업계 소식') {
+    const src = Array.isArray(post.sources) ? post.sources.filter((x) => x && /^https:\/\//.test(x.url || '') && x.title) : [];
+    if (src.length < 2) errs.push('업계 소식 글은 https 출처(sources) 2개 이상 필요');
+    post.sources = src.slice(0, 8).map((x) => ({ title: String(x.title).slice(0, 140), publisher: String(x.publisher || '').slice(0, 40), date: String(x.date || '').slice(0, 10), url: x.url }));
+  } else if (Array.isArray(post.sources)) {
+    post.sources = post.sources.filter((x) => x && /^https:\/\//.test(x.url || '') && x.title).slice(0, 8);
+  }
   for (const f of [post.cover, ...(post.sections || []).map((s) => s.figure)].filter((f) => f && f.src)) {
     if (!/^\/images\/guide\/[a-z0-9\-\/]+\.(svg|webp|png|jpg|jpeg|gif)$/.test(f.src)) errs.push(`이미지 경로 형식: ${f.src}`);
     else if (!fs.existsSync(path.join(ROOT, f.src))) errs.push(`이미지 파일 없음: ${f.src}`);
@@ -254,6 +261,19 @@ async function pickTargets(posts, log) {
   return { candidates, topGuidePages };
 }
 
+function newsBrief() {
+  const N = config.news;
+  return `오늘은 키워드 글 대신 "장례·상조 업계 최신 소식" 글을 씁니다.
+1. WebSearch로 최근 ${N.lookbackDays}일 안의 장례·상조 관련 뉴스를 찾습니다. 검색어 예: ${N.searchQueries.join(', ')}
+   - 공정거래위원회·보건복지부·지자체 보도자료, 주요 언론 기사를 우선합니다. 블로그·광고성 글은 근거로 쓰지 않습니다.
+2. 일반 소비자(부모님 장례를 앞둔 자녀 세대)에게 실제로 영향이 있는 소식 1~3건을 고릅니다.
+   - 예: 상조업체 폐업·등록취소와 피해보상 방법, 공정위 제재·소비자 주의보, 화장장·장례식장 요금·제도 변경, 장례 지원금 변경, 장사 관련 법 개정
+   - 최근 ${N.lookbackDays}일 안에 쓸 만한 소식이 없으면 뉴스 글을 쓰지 말고, \`node _autopilot/run.mjs --brief --no-news\` 를 실행해 받은 지침으로 일반 키워드 글을 대신 씁니다.
+3. 글 구성: 소식별로 ① 무슨 일이 있었나(날짜·기관/매체 명시, 사실만 짧게) ② 우리 가족에게 무슨 의미인가 ③ 지금 확인하거나 해야 할 일(조회 방법, 신청 기관, 기한) 순서. 마지막 섹션은 "정리: 소비자가 기억할 3가지".
+4. 기사 문장을 그대로 옮기지 말고 반드시 자기 말로 요약합니다(인용은 한 문장 이내). 업체명은 공식 발표나 복수 언론에 나온 사실일 때만 쓰고, 평가·비방 표현은 쓰지 않습니다. 이음케어라이프 홍보는 마지막에 한 번만 자연스럽게.
+5. JSON에 "category":"업계 소식", "slug":"news-<YYYYMMDD>-<영문 주제>", "keyword": 대표 검색어(예: "상조업체 폐업 피해보상"), 그리고 근거 기사 목록 "sources":[{"title":"기사/보도자료 제목","publisher":"매체·기관","date":"YYYY-MM-DD","url":"https://..."}] 를 2개 이상 넣습니다. 제목은 "[업계 소식]"으로 시작하지 말고, 소식의 핵심과 소비자 행동이 드러나게(예: "OO상조 폐업, 낸 돈 돌려받는 방법과 기한").`;
+}
+
 function userBrief(target) {
   return `오늘 쓸 글의 목표 검색어: "${target.query}"
 ${target.impressions ? `참고: 이 검색어로 최근 ${config.gsc.lookbackDays}일간 우리 사이트가 ${target.impressions}번 노출됐지만 클릭은 ${target.clicks}번(평균 순위 ${target.position.toFixed(1)}위)뿐이었습니다. 이 검색어를 입력한 사람이 정확히 원하는 답을 주는 전용 글이 필요합니다.` : '예비 키워드 목록에서 고른 검색어입니다.'}
@@ -268,7 +288,7 @@ function publishPost(post, target, topGuidePages, log) {
   post.publishedAt = today();
   post.keyword = post.keyword || target.query;
   post.keywords = [...new Set([target.query, ...(post.keywords || [])])];
-  post.source = 'autopilot';
+  post.source = target.source === 'news' ? 'news' : 'autopilot';
   if (target.impressions) post.gsc = { impressions: target.impressions, clicks: target.clicks, position: +Number(target.position).toFixed(1) };
   post.sections = post.sections.map((s) => ({ heading: s.heading, html: sanitize(s.html), ...(s.figure && s.figure.src ? { figure: s.figure } : {}) }));
   if (post.cover && !post.cover.src) delete post.cover;
@@ -322,6 +342,17 @@ async function main() {
   }
 
   // [Claude Code 모드 1단계] 오늘의 검색어와 작성 지침을 출력 → Claude가 직접 글을 씀
+  // [뉴스 차례] 키워드 글 N편마다 1번은 업계 최신 뉴스 정리 글
+  if (flag('--brief') && !flag('--no-news') && !opt('--keyword') && config.news) {
+    const sinceNews = (() => { let n = 0; for (let i = log.length - 1; i >= 0 && log[i].source !== 'news'; i--) n++; return n; })();
+    if (sinceNews >= config.news.every - 1) {
+      const target = { query: '장례·상조 업계 최신 소식', source: 'news' };
+      fs.writeFileSync(BRIEF_FILE, JSON.stringify({ target, topGuidePages }, null, 2));
+      console.log(`=== 오늘은 [업계 뉴스] 차례입니다 ===\n\n[작성 지침]\n${writerPrompt(posts)}\n\n[오늘의 요청]\n${newsBrief()}`);
+      return;
+    }
+  }
+
   if (flag('--brief')) {
     const target = candidates[0];
     fs.writeFileSync(BRIEF_FILE, JSON.stringify({ target, topGuidePages }, null, 2));

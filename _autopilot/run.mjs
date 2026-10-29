@@ -223,13 +223,15 @@ async function writePost(target, posts) {
 async function pickTargets(posts, log) {
   let candidates = [];
   let topGuidePages = [];
+  // 방문자 통계에서 많이 본 가이드 글 (예: --top slug1,slug2) → 내부 링크 출발점으로 사용
+  if (opt('--top')) topGuidePages = opt('--top').split(',').map((s) => s.trim()).filter(Boolean);
   if (opt('--keyword')) return { candidates: [{ query: opt('--keyword'), source: 'manual' }], topGuidePages };
   if (env.GSC_SERVICE_ACCOUNT_JSON) {
     try {
       const token = await gscToken();
       const rows = await gscQuery(token, ['query', 'page']);
       const pages = await gscQuery(token, ['page'], 500);
-      topGuidePages = pages
+      if (!topGuidePages.length) topGuidePages = pages
         .filter((r) => r.keys[0].includes(config.site.guidePath + '/'))
         .sort((a, b) => b.clicks - a.clicks || b.impressions - a.impressions)
         .map((r) => r.keys[0].replace(/\/$/, '').split('/').pop().replace(/\.html$/, ''));

@@ -211,6 +211,7 @@ function layout({ title, description, canonical, jsonLd = [], body, ogType = 'ar
 <link rel="icon" type="image/png" href="/logo.png">
 <link rel="alternate" type="application/rss+xml" title="${esc(S.guideTitle)}" href="${S.guidePath}/rss.xml">
 <meta name="theme-color" content="#0a0f1e">
+<script src="/ecl-track.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">

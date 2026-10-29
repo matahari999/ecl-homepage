@@ -74,12 +74,18 @@ async function gscQuery(token, dimensions, rowLimit = 5000) {
   return j.rows || [];
 }
 
+const REGIONS = config.regionTokens || [];
+const regionsOf = (s) => REGIONS.filter((r) => String(s).includes(r)).map((r) => r.replace(/시$/, ''));
 function isCovered(query, posts) {
   const q = norm(query);
   const qt = tokens(query);
+  const qr = new Set(regionsOf(query));
   for (const p of posts) {
     for (const k of [p.keyword, ...(p.keywords || [])].filter(Boolean)) {
       if (norm(k) === q) return p.slug;
+      // 지역이 다르면 다른 검색어로 본다 (예: '후불제 상조' vs '파주 후불제 상조')
+      const kr = new Set(regionsOf(k));
+      if (qr.size !== kr.size || [...qr].some((r) => !kr.has(r))) continue;
       const kt = tokens(k);
       const inter = qt.filter((t) => kt.includes(t)).length;
       const union = new Set([...qt, ...kt]).size;
@@ -143,7 +149,8 @@ ${config.businessFacts.map((f) => '- ' + f).join('\n')}
 4. 의료·법률 판단은 단정하지 않고 전문가 확인을 권한다. 다른 상조회사·장례식장을 비방하지 않는다.
 5. 회사 홍보는 자연스럽게 1~2번만. 과장 표현(최고, 최저가, 100% 등) 금지.
 6. 독자가 읽다가 "그래서 우리 집은 얼마지? / 누구에게 물어보지?" 하고 멈출 만한 자리에 CTA 표시를 넣는다. 섹션 html 안에 그대로 [[CTA:quote]] (견적 계산), [[CTA:consult]] (상담), [[CTA:call]] (지금 급한 장례) 중 맞는 것을 문단 사이에 넣는다. 글 전체에서 2~3개.
-7. 관련 있는 기존 글이 있으면 본문에 <a href='/guide/슬러그'>글 제목</a> 형태로 1~2개 자연스럽게 링크한다. 기존 글 목록:
+7. 지역 검색어(예: 고양시·일산·파주 후불제 상조)는 지역 이름만 바꾼 복제 글이 되면 안 된다. 그 지역 사람이 실제로 궁금해할 내용(그 지역에서 장례를 치를 때 장례식장·화장장 이용 흐름, 관내/관외 이용 차이, 이동 거리, 이음케어라이프의 해당 지역 출동·MOU 기관 등)을 담고, 지역 시설 이름·요금은 검색으로 확인된 것만 쓴다. 이미 있는 다른 지역 글과 문단을 겹치지 않게 쓴다.
+8. 관련 있는 기존 글이 있으면 본문에 <a href='/guide/슬러그'>글 제목</a> 형태로 1~2개 자연스럽게 링크한다. 기존 글 목록:
 ${posts.map((p) => `   - /guide/${p.slug} : ${p.title}`).join('\n') || '   (아직 없음)'}
 
 [형식]
@@ -236,7 +243,11 @@ async function pickTargets(posts, log) {
   }
   if (!candidates.length) {
     const used = new Set(log.map((l) => norm(l.keyword)));
-    candidates = config.seedKeywords.filter((k) => !used.has(norm(k)) && !isCovered(k, posts)).map((query) => ({ query, source: 'seed' }));
+    // 사장님이 직접 지정한 키워드: 같은 검색어로 쓴 글이 없으면 무조건 먼저
+    const exact = new Set(posts.flatMap((p) => [p.keyword, ...(p.keywords || [])]).filter(Boolean).map(norm));
+    const pri = (config.priorityKeywords || []).filter((k) => !used.has(norm(k)) && !exact.has(norm(k))).map((query) => ({ query, source: 'priority' }));
+    const seed = config.seedKeywords.filter((k) => !used.has(norm(k)) && !isCovered(k, posts)).map((query) => ({ query, source: 'seed' }));
+    candidates = [...pri, ...seed];
   }
   return { candidates, topGuidePages };
 }

@@ -154,8 +154,17 @@ ${posts.map((p) => `   - /guide/${p.slug} : ${p.title}`).join('\n') || '   (아�
 - description은 80~150자, 검색어 포함.
 - slug는 영어 소문자와 하이픈만(예: mubinso-funeral-cost).
 
+[그림 — 글마다 2장, 직접 제작]
+- 대표 그림(cover)과 설명 그림 1장을 애니메이션 SVG로 직접 그린다. 파일 위치: images/guide/<slug>/cover.svg , images/guide/<slug>/<이름>.svg
+- cover: viewBox 0 0 1200 630, 주제를 한눈에 보여주는 따뜻한 플랫 일러스트 + 큰 한글 제목 1줄. 장례 주제는 차분한 톤(국화·촛불·남색·크림색), 사람 얼굴·실제 인물·회사 로고는 그리지 않는다.
+- 설명 그림: 절차는 타임라인, 비교는 표/그래프, 기한은 막대 등 본문 핵심을 시각화. viewBox 가로 1200.
+- 애니메이션은 SVG 안의 <style> CSS @keyframes로만(스크립트·외부 파일·외부 폰트 금지). 부드럽고 느리게, @media (prefers-reduced-motion:reduce){*{animation:none!important}} 포함.
+- 글꼴: font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif. 글자가 도형과 겹치지 않게 배치. 숫자·기한은 본문과 똑같이.
+- JSON에 "cover":{"src":"/images/guide/<slug>/cover.svg","alt":"그림 설명"} 를 넣고, 설명 그림은 해당 섹션에 "figure":{"src":"/images/guide/<slug>/<이름>.svg","alt":"","caption":"짧은 설명"} 로 넣는다.
+- (API 모드처럼 파일을 만들 수 없으면 cover/figure는 생략한다.)
+
 반드시 아래 JSON 하나만 출력한다. 코드블록·설명 금지.
-{"slug":"","title":"","description":"","keyword":"","keywords":["관련 검색어 3~6개"],"category":"상조 비교|장례 절차|장례 비용|사망 후 행정|요양병원|방문요양|장기요양|추모·장지 중 하나","summary":["핵심 요약 3개, 각 60자 이내"],"sections":[{"heading":"","html":""}],"faq":[{"q":"","a":""}]}
+{"slug":"","title":"","description":"","keyword":"","cover":{"src":"","alt":""},"keywords":["관련 검색어 3~6개"],"category":"상조 비교|장례 절차|장례 비용|사망 후 행정|요양병원|방문요양|장기요양|추모·장지 중 하나","summary":["핵심 요약 3개, 각 60자 이내"],"sections":[{"heading":"","html":"","figure":{"src":"","alt":"","caption":""}}],"faq":[{"q":"","a":""}]}
 FAQ는 3~5개, 실제로 사람들이 검색할 법한 질문으로.`;
 }
 
@@ -175,6 +184,11 @@ function validate(post, posts) {
   if (textLength(post) < config.publish.minBodyChars) errs.push(`본문 ${textLength(post)}자 (최소 ${config.publish.minBodyChars})`);
   post.slug = String(post.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 70);
   if (post.slug.length < 3) errs.push('slug');
+  for (const f of [post.cover, ...(post.sections || []).map((s) => s.figure)].filter((f) => f && f.src)) {
+    if (!/^\/images\/guide\/[a-z0-9\-\/]+\.(svg|webp|png|jpg|jpeg|gif)$/.test(f.src)) errs.push(`이미지 경로 형식: ${f.src}`);
+    else if (!fs.existsSync(path.join(ROOT, f.src))) errs.push(`이미지 파일 없음: ${f.src}`);
+    else if (f.src.endsWith('.svg') && /<script|on[a-z]+\s*=|href\s*=\s*["']https?:/i.test(fs.readFileSync(path.join(ROOT, f.src), 'utf8'))) errs.push(`SVG에 스크립트/외부 링크 금지: ${f.src}`);
+  }
   let base = post.slug, n = 2;
   while (posts.some((p) => p.slug === post.slug)) post.slug = `${base}-${n++}`;
   return errs;
@@ -243,7 +257,8 @@ function publishPost(post, target, topGuidePages, log) {
   post.keywords = [...new Set([target.query, ...(post.keywords || [])])];
   post.source = 'autopilot';
   if (target.impressions) post.gsc = { impressions: target.impressions, clicks: target.clicks, position: +Number(target.position).toFixed(1) };
-  post.sections = post.sections.map((s) => ({ heading: s.heading, html: sanitize(s.html) }));
+  post.sections = post.sections.map((s) => ({ heading: s.heading, html: sanitize(s.html), ...(s.figure && s.figure.src ? { figure: s.figure } : {}) }));
+  if (post.cover && !post.cover.src) delete post.cover;
   post.faq = (post.faq || []).map((f) => ({ q: f.q, a: sanitize(f.a) }));
 
   // 내부 링크: 방문자가 많은 기존 글(서치콘솔 기준, 없으면 최신 글)에서 새 글로 길을 깔아줌
@@ -312,6 +327,8 @@ async function main() {
   for (const target of picks) {
     console.log(`✎ "${target.query}" 글 작성 중... (${target.source})`);
     const post = await writePost(target, loadPosts());
+    delete post.cover;
+    post.sections.forEach((x) => delete x.figure);
     publishPost(post, target, topGuidePages, log);
   }
 }

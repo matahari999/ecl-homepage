@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="3일장 타임라인: 1일차 임종·안치·빈소·부고, 2일차 염습·입관·성복·조문, 3일차 발인·운구·화장 또는 매장">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes draw{0%{stroke-dashoffset:900}60%,100%{stroke-dashoffset:0}}
+  @keyframes in{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes pulse{0%,100%{r:22}50%{r:28}}
+  .line{stroke-dasharray:900;animation:draw 3s ease-out both}
+  .d{opacity:0;animation:in .7s ease-out both}
+  .d1{animation-delay:.3s}.d2{animation-delay:1.3s}.d3{animation-delay:2.3s}
+  .dot{animation:pulse 2.4s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important}}
+</style>
+<rect width="1200" height="700" fill="#ffffff"/>
+<text x="600" y="70" text-anchor="middle" class="t" font-size="36" font-weight="900" fill="#0f1b3d">3일장 한눈에 보기</text>
+<line class="line" x1="200" y1="170" x2="1000" y2="170" stroke="#2563eb" stroke-width="8" stroke-linecap="round"/>
+
+<g class="d d1">
+  <circle class="dot" cx="200" cy="170" r="22" fill="#2563eb"/><text x="200" y="179" text-anchor="middle" class="t" font-size="22" font-weight="900" fill="#fff">1</text>
+  <rect x="60" y="225" width="280" height="420" rx="22" fill="#eff6ff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="200" y="275" text-anchor="middle" class="t" font-size="30" font-weight="900" fill="#1d4ed8">1일차</text>
+  <g class="t" font-size="23" font-weight="700" fill="#1e293b">
+    <text x="90" y="340">① 사망진단서 발급</text>
+    <text x="90" y="395">② 장례식장 안치</text>
+    <text x="90" y="450">③ 빈소 · 규모 결정</text>
+    <text x="90" y="505">④ 부고 알리기</text>
+    <text x="90" y="560">⑤ 화장장 예약</text>
+  </g>
+  <text x="200" y="615" text-anchor="middle" class="t" font-size="19" fill="#64748b">진단서는 여러 부 받아두기</text>
+</g>
+<g class="d d2">
+  <circle class="dot" cx="600" cy="170" r="22" fill="#2563eb"/><text x="600" y="179" text-anchor="middle" class="t" font-size="22" font-weight="900" fill="#fff">2</text>
+  <rect x="460" y="225" width="280" height="420" rx="22" fill="#fefce8" stroke="#fde68a" stroke-width="3"/>
+  <text x="600" y="275" text-anchor="middle" class="t" font-size="30" font-weight="900" fill="#b45309">2일차</text>
+  <g class="t" font-size="23" font-weight="700" fill="#1e293b">
+    <text x="490" y="340">① 염습</text>
+    <text x="490" y="395">② 입관 · 마지막 인사</text>
+    <text x="490" y="450">③ 성복 (상복 착용)</text>
+    <text x="490" y="505">④ 본격 조문</text>
+  </g>
+  <text x="600" y="615" text-anchor="middle" class="t" font-size="19" fill="#64748b">조문객이 가장 많은 날</text>
+</g>
+<g class="d d3">
+  <circle class="dot" cx="1000" cy="170" r="22" fill="#2563eb"/><text x="1000" y="179" text-anchor="middle" class="t" font-size="22" font-weight="900" fill="#fff">3</text>
+  <rect x="860" y="225" width="280" height="420" rx="22" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="3"/>
+  <text x="1000" y="275" text-anchor="middle" class="t" font-size="30" font-weight="900" fill="#0f1b3d">3일차</text>
+  <g class="t" font-size="23" font-weight="700" fill="#1e293b">
+    <text x="890" y="340">① 발인제</text>
+    <text x="890" y="395">② 운구 (6~8명)</text>
+    <text x="890" y="450">③ 화장 또는 매장</text>
+    <text x="890" y="505">④ 봉안 · 자연장</text>
+  </g>
+  <text x="1000" y="615" text-anchor="middle" class="t" font-size="19" fill="#64748b">이후 삼우제 · 사십구재</text>
+</g>
+</svg>

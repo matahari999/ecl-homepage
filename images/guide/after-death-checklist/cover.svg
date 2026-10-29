@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="사망 후 행정 절차 체크리스트에 하나씩 체크 표시가 되는 모습">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes ck{0%,10%{stroke-dashoffset:50}20%,100%{stroke-dashoffset:0}}
+  @keyframes box{0%,10%{fill:#ffffff}20%,100%{fill:#16a34a}}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(-3deg)}}
+  .k{stroke-dasharray:50}
+  .r1 .k{animation:ck 8s ease-out infinite}.r1 .bx{animation:box 8s ease-out infinite}
+  .r2 .k{animation:ck 8s ease-out 1s infinite}.r2 .bx{animation:box 8s ease-out 1s infinite}
+  .r3 .k{animation:ck 8s ease-out 2s infinite}.r3 .bx{animation:box 8s ease-out 2s infinite}
+  .r4 .k{animation:ck 8s ease-out 3s infinite}.r4 .bx{animation:box 8s ease-out 3s infinite}
+  .cal{transform-origin:950px 300px;animation:float 5s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef3ff"/><stop offset="1" stop-color="#fdf6ec"/></linearGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="1050" cy="560" r="180" fill="#dbeafe" opacity=".6"/>
+<!-- 클립보드 -->
+<rect x="90" y="70" width="560" height="500" rx="28" fill="#fff" stroke="#0f1b3d" stroke-width="5"/>
+<rect x="290" y="48" width="160" height="50" rx="14" fill="#0f1b3d"/>
+<text x="370" y="150" text-anchor="middle" class="t" font-size="36" font-weight="900" fill="#0f1b3d">장례 후 해야 할 일</text>
+<g class="t" font-size="27" font-weight="700" fill="#1e293b">
+  <g class="r1"><rect class="bx" x="140" y="200" width="44" height="44" rx="10" stroke="#16a34a" stroke-width="4"/><path class="k" d="M150 222 l10 10 l18 -20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><text x="205" y="232">사망신고</text><text x="610" y="232" text-anchor="end" fill="#dc2626" font-size="23">1개월</text></g>
+  <g class="r2"><rect class="bx" x="140" y="280" width="44" height="44" rx="10" stroke="#16a34a" stroke-width="4"/><path class="k" d="M150 302 l10 10 l18 -20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><text x="205" y="312">상속포기 · 한정승인</text><text x="610" y="312" text-anchor="end" fill="#ea580c" font-size="23">3개월</text></g>
+  <g class="r3"><rect class="bx" x="140" y="360" width="44" height="44" rx="10" stroke="#16a34a" stroke-width="4"/><path class="k" d="M150 382 l10 10 l18 -20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><text x="205" y="392">상속세 신고</text><text x="610" y="392" text-anchor="end" fill="#ca8a04" font-size="23">6개월</text></g>
+  <g class="r4"><rect class="bx" x="140" y="440" width="44" height="44" rx="10" stroke="#16a34a" stroke-width="4"/><path class="k" d="M150 462 l10 10 l18 -20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><text x="205" y="472">안심상속 조회</text><text x="610" y="472" text-anchor="end" fill="#2563eb" font-size="23">1년</text></g>
+</g>
+<!-- 달력 -->
+<g class="cal">
+  <rect x="790" y="160" width="320" height="290" rx="24" fill="#fff" stroke="#1d4ed8" stroke-width="5"/>
+  <rect x="790" y="160" width="320" height="70" rx="24" fill="#1d4ed8"/><rect x="790" y="200" width="320" height="30" fill="#1d4ed8"/>
+  <rect x="845" y="140" width="14" height="44" rx="7" fill="#0f1b3d"/><rect x="1041" y="140" width="14" height="44" rx="7" fill="#0f1b3d"/>
+  <text x="950" y="208" text-anchor="middle" class="t" font-size="28" font-weight="900" fill="#fff">기한 확인</text>
+  <g fill="#e2e8f0">
+    <rect x="820" y="255" width="44" height="36" rx="6"/><rect x="876" y="255" width="44" height="36" rx="6"/><rect x="932" y="255" width="44" height="36" rx="6"/><rect x="988" y="255" width="44" height="36" rx="6"/><rect x="1044" y="255" width="44" height="36" rx="6"/>
+    <rect x="820" y="303" width="44" height="36" rx="6"/><rect x="876" y="303" width="44" height="36" rx="6"/><rect x="988" y="303" width="44" height="36" rx="6"/><rect x="1044" y="303" width="44" height="36" rx="6"/>
+    <rect x="820" y="351" width="44" height="36" rx="6"/><rect x="876" y="351" width="44" height="36" rx="6"/><rect x="932" y="351" width="44" height="36" rx="6"/><rect x="988" y="351" width="44" height="36" rx="6"/><rect x="1044" y="351" width="44" height="36" rx="6"/>
+  </g>
+  <rect x="932" y="303" width="44" height="36" rx="6" fill="#fca5a5"/>
+  <circle cx="954" cy="321" r="30" fill="none" stroke="#dc2626" stroke-width="5"/>
+</g>
+</svg>

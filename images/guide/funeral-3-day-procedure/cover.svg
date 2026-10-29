@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="흰 국화와 촛불이 놓인 차분한 추모 장면">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes flick{0%,100%{transform:scale(1,1)}25%{transform:scale(.92,1.08)}50%{transform:scale(1.05,.95)}75%{transform:scale(.96,1.04)}}
+  @keyframes glow{0%,100%{opacity:.55}50%{opacity:.85}}
+  @keyframes rise{0%{transform:translateY(0);opacity:0}20%{opacity:.7}100%{transform:translateY(-200px);opacity:0}}
+  @keyframes sway{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
+  .fl{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.6s ease-in-out infinite}
+  .gl{animation:glow 3s ease-in-out infinite}
+  .p1{animation:rise 7s linear infinite}.p2{animation:rise 7s linear 2.3s infinite}.p3{animation:rise 7s linear 4.6s infinite}
+  .fw{transform-origin:400px 560px;animation:sway 6s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1b3d"/><stop offset="1" stop-color="#1e2c58"/></linearGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#fde68a" stop-opacity=".9"/><stop offset="1" stop-color="#fde68a" stop-opacity="0"/></radialGradient>
+  <radialGradient id="pet" cx=".5" cy=".3"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e2e8f0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle class="gl" cx="860" cy="300" r="230" fill="url(#halo)"/>
+<circle class="p1" cx="820" cy="430" r="4" fill="#fde68a"/>
+<circle class="p2" cx="900" cy="440" r="3" fill="#fde68a"/>
+<circle class="p3" cx="860" cy="420" r="3.5" fill="#fde68a"/>
+<!-- 테이블 -->
+<rect x="0" y="560" width="1200" height="70" fill="#0a1229"/>
+<!-- 초 -->
+<rect x="820" y="360" width="80" height="200" rx="10" fill="#f8fafc"/>
+<rect x="820" y="360" width="80" height="22" rx="10" fill="#e2e8f0"/>
+<line x1="860" y1="360" x2="860" y2="340" stroke="#334155" stroke-width="4"/>
+<path class="fl" d="M860 260 C 885 300, 882 330, 860 345 C 838 330, 835 300, 860 260 Z" fill="#fbbf24"/>
+<path class="fl" d="M860 292 C 872 312, 870 328, 860 337 C 850 328, 848 312, 860 292 Z" fill="#fff7d6"/>
+<!-- 국화 -->
+<g class="fw">
+  <path d="M400 560 C 395 470, 410 420, 400 360" stroke="#4d7c0f" stroke-width="8" fill="none"/>
+  <path d="M402 470 C 440 450, 470 455, 490 470 C 460 485, 430 485, 402 470 Z" fill="#65a30d"/>
+  <path d="M398 430 C 360 410, 330 415, 312 430 C 340 445, 370 445, 398 430 Z" fill="#65a30d"/>
+  <g transform="translate(400 330)">
+    <g fill="url(#pet)" stroke="#cbd5e1" stroke-width="1.5">
+      <ellipse rx="16" ry="62" transform="rotate(0)"/><ellipse rx="16" ry="62" transform="rotate(20)"/><ellipse rx="16" ry="62" transform="rotate(40)"/><ellipse rx="16" ry="62" transform="rotate(60)"/><ellipse rx="16" ry="62" transform="rotate(80)"/><ellipse rx="16" ry="62" transform="rotate(100)"/><ellipse rx="16" ry="62" transform="rotate(120)"/><ellipse rx="16" ry="62" transform="rotate(140)"/><ellipse rx="16" ry="62" transform="rotate(160)"/>
+    </g>
+    <g fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2">
+      <ellipse rx="11" ry="40" transform="rotate(10)"/><ellipse rx="11" ry="40" transform="rotate(40)"/><ellipse rx="11" ry="40" transform="rotate(70)"/><ellipse rx="11" ry="40" transform="rotate(100)"/><ellipse rx="11" ry="40" transform="rotate(130)"/><ellipse rx="11" ry="40" transform="rotate(160)"/>
+    </g>
+    <circle r="16" fill="#fef3c7"/>
+  </g>
+</g>
+<!-- 문구 -->
+<text x="80" y="120" class="t" font-size="48" font-weight="900" fill="#ffffff">3일장 장례 절차</text>
+<text x="80" y="172" class="t" font-size="26" font-weight="700" fill="#cbd5e1">임종부터 발인 · 화장까지, 날짜별 순서</text>
+</svg>

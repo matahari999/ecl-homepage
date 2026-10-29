@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="선불제는 매달 돈을 미리 내고, 후불제는 장례 후 한 번 정산하는 모습">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes drop{0%{transform:translateY(-120px);opacity:0}15%{opacity:1}55%,100%{transform:translateY(0);opacity:1}}
+  @keyframes fill{0%{transform:scaleY(.15)}100%{transform:scaleY(1)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes pop{0%,40%{transform:scale(0);opacity:0}60%{transform:scale(1.12);opacity:1}70%,100%{transform:scale(1);opacity:1}}
+  @keyframes tick{0%,30%{stroke-dashoffset:60}55%,100%{stroke-dashoffset:0}}
+  .c1{animation:drop 3.6s ease-in infinite}
+  .c2{animation:drop 3.6s ease-in .9s infinite}
+  .c3{animation:drop 3.6s ease-in 1.8s infinite}
+  .jar{transform-origin:310px 470px;animation:fill 7s ease-in-out infinite alternate}
+  .rc{transform-origin:890px 330px;animation:pop 5s ease-out infinite}
+  .ck{stroke-dasharray:60;animation:tick 5s ease-out infinite}
+  .fl{animation:float 4s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdf6ec"/><stop offset="1" stop-color="#eef3ff"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fcd34d"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="1080" cy="90" r="160" fill="#dbeafe" opacity=".6"/>
+<circle cx="90" cy="580" r="140" fill="#fde68a" opacity=".35"/>
+<line x1="600" y1="70" x2="600" y2="560" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="10 12"/>
+<text x="600" y="320" text-anchor="middle" class="t" font-size="34" font-weight="900" fill="#94a3b8">VS</text>
+
+<!-- 왼쪽: 선불제 -->
+<text x="310" y="110" text-anchor="middle" class="t" font-size="46" font-weight="900" fill="#0f1b3d">선불제 상조</text>
+<text x="310" y="152" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#64748b">매달 미리 납입</text>
+<g class="c1"><circle cx="270" cy="250" r="22" fill="url(#gold)" stroke="#b45309" stroke-width="3"/><text x="270" y="259" text-anchor="middle" class="t" font-size="22" font-weight="900" fill="#92400e">₩</text></g>
+<g class="c2"><circle cx="312" cy="250" r="22" fill="url(#gold)" stroke="#b45309" stroke-width="3"/><text x="312" y="259" text-anchor="middle" class="t" font-size="22" font-weight="900" fill="#92400e">₩</text></g>
+<g class="c3"><circle cx="354" cy="250" r="22" fill="url(#gold)" stroke="#b45309" stroke-width="3"/><text x="354" y="259" text-anchor="middle" class="t" font-size="22" font-weight="900" fill="#92400e">₩</text></g>
+<rect x="215" y="285" width="190" height="200" rx="26" fill="#fff" stroke="#0f1b3d" stroke-width="5"/>
+<rect x="200" y="272" width="220" height="26" rx="10" fill="#0f1b3d"/>
+<rect class="jar" x="226" y="330" width="168" height="140" rx="16" fill="#fbbf24" opacity=".85"/>
+<g class="t" font-size="20" font-weight="700" fill="#475569">
+  <rect x="170" y="510" width="62" height="40" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="2"/><text x="201" y="537" text-anchor="middle">1월</text>
+  <rect x="242" y="510" width="62" height="40" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="2"/><text x="273" y="537" text-anchor="middle">2월</text>
+  <rect x="314" y="510" width="62" height="40" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="2"/><text x="345" y="537" text-anchor="middle">3월</text>
+  <rect x="386" y="510" width="62" height="40" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="2"/><text x="417" y="537" text-anchor="middle">…</text>
+</g>
+
+<!-- 오른쪽: 후불제 -->
+<text x="890" y="110" text-anchor="middle" class="t" font-size="46" font-weight="900" fill="#1d4ed8">후불제 상조</text>
+<text x="890" y="152" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#64748b">장례 후 한 번 정산</text>
+<g class="fl">
+  <rect x="740" y="200" width="300" height="300" rx="28" fill="#fff" stroke="#1d4ed8" stroke-width="5"/>
+  <rect x="740" y="200" width="300" height="64" rx="28" fill="#1d4ed8"/>
+  <rect x="740" y="236" width="300" height="28" fill="#1d4ed8"/>
+  <text x="890" y="243" text-anchor="middle" class="t" font-size="26" font-weight="900" fill="#fff">정산서</text>
+  <g class="t" font-size="22" font-weight="700" fill="#334155">
+    <text x="770" y="310">기본 구성</text><text x="1010" y="310" text-anchor="end">99만원</text>
+    <text x="770" y="355">필요한 옵션만</text><text x="1010" y="355" text-anchor="end">선택</text>
+    <line x1="770" y1="380" x2="1010" y2="380" stroke="#e2e8f0" stroke-width="3"/>
+    <text x="770" y="420" fill="#64748b">가입비 · 월 납입금</text><text x="1010" y="420" text-anchor="end" fill="#16a34a" font-weight="900">0원</text>
+  </g>
+</g>
+<g class="rc"><circle cx="1010" cy="470" r="44" fill="#16a34a"/><path class="ck" d="M988 470 l15 15 l28 -30" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

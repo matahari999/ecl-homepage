@@ -59,6 +59,17 @@ const fmtDate = (d) => {
   return `${y}년 ${Number(m)}월 ${Number(dd)}일`;
 };
 
+// ---------- images ----------
+/** 이미지 경로는 /images/guide/ 아래 파일만 허용 */
+export function safeImg(src) {
+  return typeof src === 'string' && /^\/images\/guide\/[a-z0-9\-\/]+\.(svg|webp|png|jpg|jpeg|gif)$/.test(src) ? src : null;
+}
+function figure(f, cls = '') {
+  const src = f && safeImg(f.src);
+  if (!src) return '';
+  return `<figure class="fig ${cls}"><img src="${src}" alt="${esc(f.alt || '')}" loading="${cls === 'cover' ? 'eager' : 'lazy'}" decoding="async">${f.caption ? `<figcaption>${esc(f.caption)}</figcaption>` : ''}</figure>`;
+}
+
 // ---------- CTA blocks ----------
 const CTA = {
   quote: () => `
@@ -82,7 +93,7 @@ function bodyWithCtas(post) {
   let used = 0;
   const parts = post.sections.map((s, i) => {
     let html = sanitize(s.html).replace(/\[\[CTA:(quote|consult|call)\]\]/g, (_, k) => (used++ < 3 ? CTA[k]() : ''));
-    return `<section id="s${i + 1}"><h2>${esc(s.heading)}</h2>${html}</section>`;
+    return `<section id="s${i + 1}"><h2>${esc(s.heading)}</h2>${figure(s.figure)}${html}</section>`;
   });
   // AI가 CTA를 하나도 안 넣었으면 2번째 섹션 뒤에 자동 삽입
   if (used === 0 && parts.length > 2) parts.splice(2, 0, CTA.quote());
@@ -118,6 +129,11 @@ a{color:var(--blue)}
 .crumb{font-size:14px;color:var(--muted);padding:22px 0 0}
 .crumb a{color:var(--muted);text-decoration:none}
 .post-h{padding:14px 0 8px}
+.fig{margin:22px 0 26px}
+.fig img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#fff}
+.fig.cover{margin-top:18px}
+.fig figcaption{font-size:14px;color:var(--muted);text-align:center;margin-top:8px}
+.card .thumb{display:block;width:100%;aspect-ratio:1200/630;object-fit:cover;border-radius:10px;margin:0 0 12px;background:#f1f5f9}
 .tag{display:inline-block;background:var(--soft);color:var(--blue);font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px}
 h1{font-size:clamp(26px,5vw,36px);line-height:1.35;letter-spacing:-.03em;margin:14px 0 12px;font-weight:900}
 .meta{color:var(--muted);font-size:14px}
@@ -224,7 +240,8 @@ ${body}
 }
 
 function card(p) {
-  return `<a class="card" href="${S.guidePath}/${p.slug}"><span class="tag">${esc(p.category || '가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><time datetime="${p.publishedAt}">${fmtDate(p.publishedAt)}</time></a>`;
+  const th = p.cover && safeImg(p.cover.src);
+  return `<a class="card" href="${S.guidePath}/${p.slug}">${th ? `<img class="thumb" src="${th}" alt="" loading="lazy">` : ''}<span class="tag">${esc(p.category || '가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><time datetime="${p.publishedAt}">${fmtDate(p.publishedAt)}</time></a>`;
 }
 
 function renderPost(post, all) {
@@ -274,6 +291,7 @@ function renderPost(post, all) {
     <h1>${esc(post.title)}</h1>
     <div class="meta">${esc(S.brand)} · <time datetime="${post.publishedAt}">${fmtDate(post.publishedAt)}</time>${post.updatedAt && post.updatedAt !== post.publishedAt ? ` (수정 ${fmtDate(post.updatedAt)})` : ''} · ${minutes}분 읽기</div>
   </header>
+  ${figure(post.cover, 'cover')}
   ${post.summary?.length ? `<div class="summary"><b>핵심만 먼저</b><ul>${post.summary.map((s) => `<li>${esc(s)}</li>`).join('')}</ul></div>` : ''}
   <nav class="toc"><b>목차</b><ol>${post.sections.map((s, i) => `<li><a href="#s${i + 1}">${esc(s.heading)}</a></li>`).join('')}</ol></nav>
   <article>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="고양시 장례 흐름 4단계와 승화원 관내 기준">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes dash{to{stroke-dashoffset:-40}}
+  @keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  .ln{stroke-dasharray:12 8;animation:dash 2.6s linear infinite}
+  .p1{transform-origin:150px 170px;animation:pop 6s ease-in-out infinite}
+  .p2{transform-origin:450px 170px;animation:pop 6s ease-in-out 1.5s infinite}
+  .p3{transform-origin:750px 170px;animation:pop 6s ease-in-out 3s infinite}
+  .p4{transform-origin:1050px 170px;animation:pop 6s ease-in-out 4.5s infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="520" fill="#fbf7ee"/>
+<text class="t" x="600" y="50" font-size="30" font-weight="700" fill="#1f2a4a" text-anchor="middle">고양시 장례, 이렇게 이어집니다</text>
+<line class="ln" x1="210" y1="170" x2="990" y2="170" stroke="#b08a4a" stroke-width="5"/>
+<g class="p1"><circle cx="150" cy="170" r="60" fill="#1f2a4a"/><text class="t" x="150" y="182" font-size="34" fill="#fdf6e3" text-anchor="middle" font-weight="700">1</text></g>
+<g class="p2"><circle cx="450" cy="170" r="60" fill="#3b4a78"/><text class="t" x="450" y="182" font-size="34" fill="#fdf6e3" text-anchor="middle" font-weight="700">2</text></g>
+<g class="p3"><circle cx="750" cy="170" r="60" fill="#5a6a96"/><text class="t" x="750" y="182" font-size="34" fill="#fdf6e3" text-anchor="middle" font-weight="700">3</text></g>
+<g class="p4"><circle cx="1050" cy="170" r="60" fill="#8a7a50"/><text class="t" x="1050" y="182" font-size="34" fill="#fdf6e3" text-anchor="middle" font-weight="700">4</text></g>
+<text class="t" x="150" y="270" font-size="25" font-weight="700" fill="#1f2a4a" text-anchor="middle">임종</text>
+<text class="t" x="150" y="304" font-size="19" fill="#4a5470" text-anchor="middle">사망진단서 또는</text>
+<text class="t" x="150" y="330" font-size="19" fill="#4a5470" text-anchor="middle">시체검안서 발급</text>
+<text class="t" x="450" y="270" font-size="25" font-weight="700" fill="#1f2a4a" text-anchor="middle">고양시 장례식장</text>
+<text class="t" x="450" y="304" font-size="19" fill="#4a5470" text-anchor="middle">일산동구 · 일산서구</text>
+<text class="t" x="450" y="330" font-size="19" fill="#4a5470" text-anchor="middle">덕양구</text>
+<text class="t" x="750" y="270" font-size="25" font-weight="700" fill="#1f2a4a" text-anchor="middle">서울시립승화원</text>
+<text class="t" x="750" y="304" font-size="19" fill="#4a5470" text-anchor="middle">덕양구 통일로 · 화장</text>
+<text class="t" x="750" y="330" font-size="19" fill="#4a5470" text-anchor="middle">e하늘에서 예약</text>
+<text class="t" x="1050" y="270" font-size="25" font-weight="700" fill="#1f2a4a" text-anchor="middle">장지</text>
+<text class="t" x="1050" y="304" font-size="19" fill="#4a5470" text-anchor="middle">봉안당 · 자연장 등</text>
+<text class="t" x="1050" y="330" font-size="19" fill="#4a5470" text-anchor="middle">미리 정한 곳으로</text>
+<rect x="150" y="380" width="900" height="110" rx="16" fill="#1f2a4a"/>
+<text class="t" x="600" y="425" font-size="23" font-weight="700" fill="#f7c35f" text-anchor="middle">승화원 '관내' 기준</text>
+<text class="t" x="600" y="463" font-size="21" fill="#fdf6e3" text-anchor="middle">서울 · 고양 · 파주 주민, 주민등록 주소지 6개월 이상 거주 (미만이면 관외 회차)</text>
+</svg>

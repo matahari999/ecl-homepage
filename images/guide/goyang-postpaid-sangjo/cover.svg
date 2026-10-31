@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="고양시 후불제 상조 안내: 장례식장에서 승화원으로 이어지는 길">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes glow{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+  @keyframes dash{to{stroke-dashoffset:-52}}
+  @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+  @keyframes twinkle{0%,100%{opacity:.25}50%{opacity:.9}}
+  .flame{transform-origin:1010px 300px;animation:glow 3.2s ease-in-out infinite}
+  .road{stroke-dasharray:16 10;animation:dash 3s linear infinite}
+  .fl{transform-origin:150px 560px;animation:sway 6s ease-in-out infinite}
+  .s1{animation:twinkle 4s ease-in-out infinite}.s2{animation:twinkle 4s ease-in-out 1.3s infinite}.s3{animation:twinkle 4s ease-in-out 2.6s infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f2a4a"/><stop offset="1" stop-color="#2d3b63"/></linearGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle class="s1" cx="180" cy="70" r="3" fill="#fdf6e3"/><circle class="s2" cx="420" cy="50" r="2.5" fill="#fdf6e3"/><circle class="s3" cx="760" cy="80" r="3" fill="#fdf6e3"/><circle class="s1" cx="1100" cy="60" r="2.5" fill="#fdf6e3"/>
+<text class="t" x="80" y="150" font-size="30" fill="#e8d9b5" font-weight="500">장례·요양 가이드</text>
+<text class="t" x="80" y="230" font-size="68" fill="#fdf6e3" font-weight="700">고양시 후불제 상조</text>
+<text class="t" x="80" y="290" font-size="30" fill="#c9d3ea">장례식장 · 승화원 관내 화장 · 비용 정리</text>
+<!-- ground -->
+<rect x="0" y="440" width="1200" height="190" fill="#f4ecd8"/>
+<path class="road" d="M260 520 C420 470 600 560 820 500" fill="none" stroke="#b08a4a" stroke-width="6" stroke-linecap="round"/>
+<!-- building left: funeral hall -->
+<g><rect x="200" y="420" width="120" height="100" rx="6" fill="#3b4a78"/><rect x="190" y="408" width="140" height="18" rx="4" fill="#2a3660"/><rect x="225" y="450" width="26" height="26" fill="#f6e7b8"/><rect x="270" y="450" width="26" height="26" fill="#f6e7b8"/><rect x="246" y="486" width="28" height="34" fill="#2a3660"/></g>
+<text class="t" x="260" y="590" font-size="24" fill="#3b4a78" text-anchor="middle" font-weight="600">장례식장</text>
+<!-- building right: crematorium -->
+<g><rect x="800" y="430" width="130" height="80" rx="6" fill="#5a6a96"/><path d="M790 432 L865 392 L940 432 Z" fill="#3b4a78"/><rect x="848" y="466" width="34" height="44" fill="#2a3660"/></g>
+<text class="t" x="865" y="590" font-size="24" fill="#3b4a78" text-anchor="middle" font-weight="600">서울시립승화원</text>
+<!-- candle -->
+<g><rect x="985" y="320" width="50" height="120" rx="6" fill="#fdf6e3"/><g class="flame"><ellipse cx="1010" cy="300" rx="14" ry="24" fill="#f7c35f"/><ellipse cx="1010" cy="306" rx="6" ry="12" fill="#fff4d6"/></g></g>
+<!-- chrysanthemum -->
+<g class="fl"><path d="M150 610 L150 520" stroke="#6b8f5e" stroke-width="5"/><g fill="#fdf6e3" stroke="#e5d6ad" stroke-width="2"><ellipse cx="150" cy="490" rx="10" ry="28"/><ellipse cx="150" cy="490" rx="10" ry="28" transform="rotate(45 150 518)"/><ellipse cx="150" cy="490" rx="10" ry="28" transform="rotate(-45 150 518)"/><ellipse cx="150" cy="490" rx="10" ry="28" transform="rotate(90 150 518)"/><ellipse cx="150" cy="490" rx="10" ry="28" transform="rotate(-90 150 518)"/></g><circle cx="150" cy="518" r="12" fill="#f2c94c"/></g>
+</svg>

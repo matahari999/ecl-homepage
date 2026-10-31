@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="새벽빛 아래 연꽃과 염주, 촛불로 표현한 불교식 배우자상 3일장 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes flick{0%,100%{transform:scale(1,1)}30%{transform:scale(.9,1.08)}60%{transform:scale(1.05,.95)}}
+  @keyframes glow{0%,100%{opacity:.4}50%{opacity:.8}}
+  @keyframes bloom{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+  @keyframes rise{0%{transform:translateY(0);opacity:0}30%{opacity:.6}100%{transform:translateY(-90px);opacity:0}}
+  .fl{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.6s ease-in-out infinite}
+  .gl{animation:glow 3.6s ease-in-out infinite}
+  .lo{transform-box:fill-box;transform-origin:50% 100%;animation:bloom 5s ease-in-out infinite}
+  .sm{animation:rise 4.5s ease-out infinite}.sm2{animation-delay:2.2s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b3a5c"/><stop offset=".55" stop-color="#c08497"/><stop offset="1" stop-color="#f6d6a8"/></linearGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#fde68a" stop-opacity=".85"/><stop offset="1" stop-color="#fde68a" stop-opacity="0"/></radialGradient>
+  <linearGradient id="pet" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f9a8d4"/><stop offset="1" stop-color="#fff1f2"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="1040" cy="470" r="90" fill="#fde68a" opacity=".55"/>
+<!-- 물 -->
+<rect x="0" y="520" width="1200" height="110" fill="#5b6b8c"/>
+<g stroke="#a5b4fc" stroke-width="3" opacity=".5" fill="none"><path d="M560 560 q30 -10 60 0 t60 0"/><path d="M820 590 q30 -10 60 0 t60 0"/><path d="M1000 555 q30 -10 60 0 t60 0"/></g>
+<!-- 연잎 -->
+<ellipse cx="880" cy="530" rx="150" ry="26" fill="#3f6212"/><ellipse cx="660" cy="545" rx="90" ry="16" fill="#4d7c0f"/>
+<!-- 연꽃 -->
+<g class="lo">
+  <g transform="translate(880 520)" fill="url(#pet)" stroke="#f472b6" stroke-width="1.5">
+    <path d="M0 0 C -70 -10, -120 -40, -130 -70 C -90 -70, -40 -40, 0 0 Z"/>
+    <path d="M0 0 C 70 -10, 120 -40, 130 -70 C 90 -70, 40 -40, 0 0 Z"/>
+    <path d="M0 0 C -50 -30, -70 -90, -55 -130 C -25 -100, -10 -50, 0 0 Z"/>
+    <path d="M0 0 C 50 -30, 70 -90, 55 -130 C 25 -100, 10 -50, 0 0 Z"/>
+    <path d="M0 0 C -22 -50, -18 -120, 0 -160 C 18 -120, 22 -50, 0 0 Z"/>
+  </g>
+</g>
+<!-- 향 -->
+<rect x="600" y="400" width="6" height="120" fill="#78350f"/>
+<circle cx="603" cy="398" r="5" fill="#f97316"/>
+<g fill="#ffffff"><circle class="sm" cx="603" cy="385" r="7"/><circle class="sm sm2" cx="610" cy="380" r="6"/></g>
+<!-- 초 -->
+<circle class="gl" cx="480" cy="400" r="120" fill="url(#halo)"/>
+<rect x="456" y="420" width="48" height="110" rx="8" fill="#fffdf7"/>
+<line x1="480" y1="420" x2="480" y2="406" stroke="#57534e" stroke-width="3"/>
+<path class="fl" d="M480 352 C 498 378, 496 398, 480 408 C 464 398, 462 378, 480 352 Z" fill="#f59e0b"/>
+<!-- 염주 -->
+<g fill="#7c2d12">
+  <circle cx="320" cy="560" r="9"/><circle cx="342" cy="566" r="9"/><circle cx="364" cy="568" r="9"/><circle cx="386" cy="566" r="9"/><circle cx="408" cy="560" r="9"/>
+  <circle cx="300" cy="548" r="9"/><circle cx="428" cy="548" r="9"/><circle cx="292" cy="530" r="9"/><circle cx="436" cy="530" r="9"/>
+  <circle cx="300" cy="512" r="9"/><circle cx="428" cy="512" r="9"/><circle cx="320" cy="500" r="9"/><circle cx="408" cy="500" r="9"/><circle cx="342" cy="494" r="9"/><circle cx="386" cy="494" r="9"/><circle cx="364" cy="492" r="9"/>
+</g>
+<text x="70" y="130" class="t" font-size="52" font-weight="900" fill="#ffffff">양주한국병원장례식장</text>
+<text x="70" y="198" class="t" font-size="40" font-weight="900" fill="#fde68a">불교식 배우자상 3일장</text>
+<text x="70" y="250" class="t" font-size="24" font-weight="700" fill="#f1f5f9">새벽 발인 · 성남 화장 · 실제 진행 사례</text>
+</svg>

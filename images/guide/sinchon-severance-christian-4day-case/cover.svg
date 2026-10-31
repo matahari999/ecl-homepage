@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="늦은 밤 하늘 아래 십자가와 백합, 촛불이 있는 기독교 4일장 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+  @keyframes flick{0%,100%{transform:scale(1,1)}30%{transform:scale(.9,1.08)}60%{transform:scale(1.05,.95)}}
+  @keyframes glow{0%,100%{opacity:.45}50%{opacity:.85}}
+  @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+  .s1{animation:tw 2.6s ease-in-out infinite}.s2{animation:tw 3.4s ease-in-out .8s infinite}.s3{animation:tw 4.2s ease-in-out 1.6s infinite}
+  .fl{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.6s ease-in-out infinite}
+  .gl{animation:glow 3.2s ease-in-out infinite}
+  .ly{transform-origin:860px 560px;animation:sway 6s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1b33"/><stop offset="1" stop-color="#253454"/></linearGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#fcd34d" stop-opacity=".85"/><stop offset="1" stop-color="#fcd34d" stop-opacity="0"/></radialGradient>
+  <radialGradient id="pet" cx=".5" cy=".2"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e2e8f0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<g fill="#fef9c3">
+  <circle class="s1" cx="620" cy="70" r="3"/><circle class="s2" cx="720" cy="140" r="2.5"/><circle class="s3" cx="540" cy="200" r="2"/>
+  <circle class="s2" cx="1120" cy="90" r="3"/><circle class="s1" cx="900" cy="60" r="2"/><circle class="s3" cx="1060" cy="230" r="2.5"/>
+  <circle class="s1" cx="460" cy="110" r="2"/><circle class="s3" cx="790" cy="250" r="2"/>
+</g>
+<!-- 달 -->
+<circle cx="1050" cy="150" r="56" fill="#fef3c7"/><circle cx="1074" cy="134" r="52" fill="#16223d"/>
+<!-- 십자가 -->
+<g fill="#cbd5e1" opacity=".85"><rect x="1000" y="250" width="18" height="120" rx="4"/><rect x="967" y="284" width="84" height="16" rx="4"/></g>
+<rect x="0" y="560" width="1200" height="70" fill="#1e293b"/>
+<!-- 초 -->
+<circle class="gl" cx="640" cy="380" r="150" fill="url(#halo)"/>
+<rect x="612" y="410" width="56" height="150" rx="8" fill="#fffdf7"/>
+<line x1="640" y1="410" x2="640" y2="394" stroke="#57534e" stroke-width="3"/>
+<path class="fl" d="M640 334 C 660 362, 658 384, 640 396 C 622 384, 620 362, 640 334 Z" fill="#f59e0b"/>
+<path class="fl" d="M640 358 C 649 371, 648 382, 640 389 C 632 382, 631 371, 640 358 Z" fill="#fff7d6"/>
+<!-- 백합 -->
+<g class="ly">
+  <path d="M860 560 C 855 480, 875 440, 860 380" stroke="#4d7c0f" stroke-width="7" fill="none"/>
+  <path d="M863 480 C 900 460, 928 466, 948 480 C 918 496, 888 496, 863 480 Z" fill="#65a30d"/>
+  <g transform="translate(860 365)" fill="url(#pet)" stroke="#cbd5e1" stroke-width="1.5">
+    <path d="M0 0 C -30 -40, -70 -50, -95 -30 C -70 -20, -35 -5, 0 0 Z"/>
+    <path d="M0 0 C 30 -40, 70 -50, 95 -30 C 70 -20, 35 -5, 0 0 Z"/>
+    <path d="M0 0 C -12 -50, -6 -95, 0 -110 C 6 -95, 12 -50, 0 0 Z"/>
+    <path d="M0 0 C -40 -20, -80 -10, -100 15 C -70 15, -30 10, 0 0 Z"/>
+    <path d="M0 0 C 40 -20, 80 -10, 100 15 C 70 15, 30 10, 0 0 Z"/>
+  </g>
+</g>
+<!-- 4일 점 -->
+<g class="t" font-size="20" font-weight="700" fill="#cbd5e1">
+  <circle cx="90" cy="400" r="14" fill="#fcd34d"/><circle cx="190" cy="400" r="14" fill="#e2e8f0"/><circle cx="290" cy="400" r="14" fill="#e2e8f0"/><circle cx="390" cy="400" r="14" fill="#e2e8f0"/>
+  <line x1="104" y1="400" x2="376" y2="400" stroke="#64748b" stroke-width="3" stroke-dasharray="6 6"/>
+  <text x="66" y="446">1일차</text><text x="166" y="446">2일차</text><text x="266" y="446">3일차</text><text x="366" y="446">4일차</text>
+  <text x="66" y="476" font-size="16" fill="#fcd34d">늦은 밤 임종</text><text x="354" y="476" font-size="16" fill="#e2e8f0">발인·화장</text>
+</g>
+<text x="70" y="130" class="t" font-size="50" font-weight="900" fill="#ffffff">신촌세브란스병원장례식장</text>
+<text x="70" y="196" class="t" font-size="40" font-weight="900" fill="#fcd34d">기독교 4일장</text>
+<text x="70" y="248" class="t" font-size="24" font-weight="700" fill="#cbd5e1">늦은 밤 임종 · 실제 진행 사례</text>
+</svg>

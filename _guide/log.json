@@ -37,5 +37,31 @@
       "postpaid-sangjo-how-it-works",
       "after-death-checklist"
     ]
+  },
+  {
+    "date": "2026-10-31",
+    "keyword": "신촌세브란스병원장례식장 4일장",
+    "source": "case",
+    "slug": "sinchon-severance-christian-4day-case",
+    "title": "신촌세브란스병원장례식장 기독교 4일장 후기: 늦은 밤 임종 후 진행 과정",
+    "gsc": null,
+    "linkedFrom": [
+      "ilsan-bogeum-funeral-3day-case",
+      "paju-hanbit-christian-family-funeral-case",
+      "postpaid-sangjo-how-it-works"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "keyword": "양주한국병원장례식장 후불제 상조",
+    "source": "case",
+    "slug": "yangju-hankook-buddhist-spouse-3day-case",
+    "title": "양주한국병원장례식장 불교 배우자상 3일장 후기: 새벽 발인과 성남 화장",
+    "gsc": null,
+    "linkedFrom": [
+      "ilsan-bogeum-funeral-3day-case",
+      "paju-hanbit-christian-family-funeral-case",
+      "postpaid-sangjo-how-it-works"
+    ]
   }
 ]

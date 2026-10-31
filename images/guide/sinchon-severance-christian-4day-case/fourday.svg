@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-label="늦은 밤 임종 시 3일장과 4일장 일정 비교 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes pop{0%,100%{opacity:.55}50%{opacity:1}}
+  .bar{transform-box:fill-box;transform-origin:0 50%;animation:grow 1.6s ease-out both}
+  .b2{animation-delay:.5s}
+  .pp{animation:pop 2.4s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1000" height="560" fill="#f8f7f4"/>
+<text x="40" y="52" class="t" font-size="28" font-weight="900" fill="#1e293b">늦은 밤 임종, 3일장과 4일장 일정 비교</text>
+<g class="t" font-size="18" font-weight="700" fill="#64748b">
+  <text x="250" y="110">1일차</text><text x="430" y="110">2일차</text><text x="610" y="110">3일차</text><text x="790" y="110">4일차</text>
+</g>
+<g stroke="#e2e8f0" stroke-width="2"><line x1="220" y1="122" x2="220" y2="470"/><line x1="400" y1="122" x2="400" y2="470"/><line x1="580" y1="122" x2="580" y2="470"/><line x1="760" y1="122" x2="760" y2="470"/><line x1="940" y1="122" x2="940" y2="470"/></g>
+<!-- 밤 표시 -->
+<rect x="340" y="122" width="60" height="348" fill="#1e293b" opacity=".08"/>
+<g class="pp"><circle cx="370" cy="146" r="11" fill="#f59e0b"/><text x="300" y="186" class="t" font-size="15" font-weight="700" fill="#b45309">밤 늦게 임종</text></g>
+<!-- 3일장 -->
+<text x="40" y="250" class="t" font-size="22" font-weight="900" fill="#1e293b">3일장</text>
+<text x="40" y="276" class="t" font-size="15" fill="#64748b">조문 시간 짧음</text>
+<rect class="bar" x="370" y="226" width="210" height="44" rx="10" fill="#94a3b8"/>
+<text x="384" y="255" class="t" font-size="16" font-weight="700" fill="#fff">조문·입관 하루뿐</text>
+<rect class="bar b2" x="580" y="226" width="150" height="44" rx="10" fill="#475569"/>
+<text x="592" y="255" class="t" font-size="16" font-weight="700" fill="#fff">발인·화장</text>
+<!-- 4일장 -->
+<text x="40" y="380" class="t" font-size="22" font-weight="900" fill="#1e293b">4일장</text>
+<text x="40" y="406" class="t" font-size="15" fill="#64748b">예배·조문 여유</text>
+<rect class="bar b2" x="370" y="356" width="390" height="44" rx="10" fill="#1d4ed8"/>
+<text x="384" y="385" class="t" font-size="16" font-weight="700" fill="#fff">빈소 마련 · 위로예배 · 조문</text>
+<rect class="bar b2" x="760" y="356" width="150" height="44" rx="10" fill="#b45309"/>
+<text x="772" y="385" class="t" font-size="16" font-weight="700" fill="#fff">발인예배·화장</text>
+<text x="600" y="430" class="t" font-size="15" font-weight="700" fill="#1d4ed8">입관예배는 3일차에</text>
+<text x="40" y="520" class="t" font-size="16" fill="#475569">늘어나는 건 '하루치' 빈소·안치·식대 위주 — 상조 구성이 두 배가 되지는 않습니다.</text>
+</svg>

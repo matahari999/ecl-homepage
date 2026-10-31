@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-label="양주한국병원장례식장에서 성남 화장장을 거쳐 가족 납골당까지 이어진 발인 날 동선 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes dash{to{stroke-dashoffset:-40}}
+  @keyframes drive{0%{offset-distance:0%}100%{offset-distance:100%}}
+  .rt{stroke-dasharray:14 10;animation:dash 1.2s linear infinite}
+  .car{offset-path:path('M150 170 C 330 170, 420 330, 560 330 C 700 330, 760 450, 850 450');animation:drive 6s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}.car{offset-distance:50%}}
+</style>
+<rect width="1000" height="560" fill="#faf7f2"/>
+<text x="40" y="52" class="t" font-size="28" font-weight="900" fill="#1e293b">발인 날 동선: 양주 → 성남 → 가족 납골당</text>
+<path d="M150 170 C 330 170, 420 330, 560 330 C 700 330, 760 450, 850 450" fill="none" stroke="#e7d9c4" stroke-width="16" stroke-linecap="round"/>
+<path class="rt" d="M150 170 C 330 170, 420 330, 560 330 C 700 330, 760 450, 850 450" fill="none" stroke="#b45309" stroke-width="5"/>
+<g class="car"><rect x="-22" y="-11" width="44" height="22" rx="6" fill="#1f2937"/><circle cx="-12" cy="12" r="5" fill="#111"/><circle cx="12" cy="12" r="5" fill="#111"/></g>
+<!-- 지점 -->
+<circle cx="150" cy="170" r="16" fill="#7c3aed"/><circle cx="560" cy="330" r="16" fill="#b45309"/><circle cx="850" cy="450" r="16" fill="#15803d"/>
+<g class="t">
+  <text x="60" y="122" font-size="20" font-weight="900" fill="#1e293b">① 양주한국병원장례식장</text>
+  <text x="60" y="226" font-size="16" fill="#475569">이른 아침 발인 · 리무진과 버스 출발</text>
+  <text x="590" y="296" font-size="20" font-weight="900" fill="#1e293b">② 성남 화장장</text>
+  <text x="540" y="374" text-anchor="end" font-size="16" fill="#475569">서류 접수 후 화장 · 가족 대기</text>
+  <text x="560" y="510" font-size="20" font-weight="900" fill="#1e293b">③ 가족 납골당 안치</text>
+</g>
+<rect x="40" y="420" width="380" height="96" rx="14" fill="#fff" stroke="#e7d9c4" stroke-width="2"/>
+<g class="t"><text x="60" y="456" font-size="17" font-weight="900" fill="#b45309">화장장이 멀수록</text>
+<text x="60" y="486" font-size="16" fill="#334155">발인 시각 = 화장 회차 − 이동 시간 − 접수 여유</text>
+<text x="60" y="508" font-size="14" fill="#64748b">출근길 정체까지 감안해 거꾸로 계산합니다</text></g>
+</svg>

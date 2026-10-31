@@ -11,5 +11,31 @@
       "funeral-3-day-procedure",
       "postpaid-vs-prepaid-sangjo"
     ]
+  },
+  {
+    "date": "2026-10-31",
+    "keyword": "일산복음병원장례식장 후불제 상조",
+    "source": "case",
+    "slug": "ilsan-bogeum-funeral-3day-case",
+    "title": "일산복음병원장례식장 3일장 후기: 후불제 상조로 치른 일반장례 과정",
+    "gsc": null,
+    "linkedFrom": [
+      "postpaid-sangjo-how-it-works",
+      "after-death-checklist",
+      "funeral-3-day-procedure"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "keyword": "파주한빛장례식장 가족장",
+    "source": "case",
+    "slug": "paju-hanbit-christian-family-funeral-case",
+    "title": "파주한빛장례식장 기독교 가족장 후기: 2일장으로 조용히 배웅한 과정",
+    "gsc": null,
+    "linkedFrom": [
+      "ilsan-bogeum-funeral-3day-case",
+      "postpaid-sangjo-how-it-works",
+      "after-death-checklist"
+    ]
   }
 ]

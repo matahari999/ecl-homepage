@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="3일장 일정: 1일차 접수와 화장 예약, 2일차 오후 입관, 3일차 오전 7시 발인 후 화장">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes draw{0%{stroke-dashoffset:900}70%,100%{stroke-dashoffset:0}}
+  @keyframes pop{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes arrow{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+  .ln{stroke-dasharray:900;animation:draw 3s ease-out both}
+  .p{opacity:0;animation:pop .7s ease-out both}
+  .p1{animation-delay:.3s}.p2{animation-delay:1.2s}.p3{animation-delay:2.1s}.p4{animation-delay:3s}
+  .ar{animation:arrow 1.6s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important}}
+</style>
+<rect width="1200" height="520" fill="#fff"/>
+<text x="60" y="64" class="t" font-size="32" font-weight="900" fill="#0f1b3d">화장 예약 시각에서 거꾸로 짠 3일</text>
+<line class="ln" x1="150" y1="200" x2="1050" y2="200" stroke="#2563eb" stroke-width="8" stroke-linecap="round"/>
+<g class="p p1">
+  <circle cx="150" cy="200" r="24" fill="#2563eb"/><text x="150" y="208" text-anchor="middle" class="t" font-size="20" font-weight="900" fill="#fff">1</text>
+  <rect x="50" y="250" width="200" height="190" rx="18" fill="#eff6ff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="150" y="292" text-anchor="middle" class="t" font-size="24" font-weight="900" fill="#1d4ed8">1일차</text>
+  <text x="150" y="338" text-anchor="middle" class="t" font-size="20" font-weight="700" fill="#1e293b">장례 접수</text>
+  <text x="150" y="372" text-anchor="middle" class="t" font-size="20" font-weight="700" fill="#1e293b">안치 · 빈소</text>
+  <text x="150" y="406" text-anchor="middle" class="t" font-size="20" font-weight="800" fill="#dc2626">화장 예약 확인</text>
+</g>
+<g class="p p2">
+  <circle cx="450" cy="200" r="24" fill="#2563eb"/><text x="450" y="208" text-anchor="middle" class="t" font-size="20" font-weight="900" fill="#fff">2</text>
+  <rect x="350" y="250" width="200" height="190" rx="18" fill="#fefce8" stroke="#fde68a" stroke-width="3"/>
+  <text x="450" y="292" text-anchor="middle" class="t" font-size="24" font-weight="900" fill="#b45309">2일차</text>
+  <text x="450" y="338" text-anchor="middle" class="t" font-size="20" font-weight="700" fill="#1e293b">오후 3시 입관</text>
+  <text x="450" y="372" text-anchor="middle" class="t" font-size="20" font-weight="700" fill="#1e293b">성복 · 조문</text>
+  <text x="450" y="406" text-anchor="middle" class="t" font-size="20" font-weight="700" fill="#1e293b">운구 인원 확정</text>
+</g>
+<g class="p p3">
+  <circle cx="750" cy="200" r="24" fill="#2563eb"/><text x="750" y="208" text-anchor="middle" class="t" font-size="20" font-weight="900" fill="#fff">3</text>
+  <rect x="650" y="250" width="200" height="190" rx="18" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="3"/>
+  <text x="750" y="292" text-anchor="middle" class="t" font-size="24" font-weight="900" fill="#0f1b3d">3일차 아침</text>
+  <text x="750" y="338" text-anchor="middle" class="t" font-size="20" font-weight="700" fill="#1e293b">오전 7시 발인</text>
+  <text x="750" y="372" text-anchor="middle" class="t" font-size="20" font-weight="700" fill="#1e293b">장의버스 이동</text>
+</g>
+<g class="p p4">
+  <circle cx="1050" cy="200" r="24" fill="#0f1b3d"/><text x="1050" y="208" text-anchor="middle" class="t" font-size="18" font-weight="900" fill="#fff">✓</text>
+  <rect x="950" y="250" width="200" height="190" rx="18" fill="#0f1b3d"/>
+  <text x="1050" y="292" text-anchor="middle" class="t" font-size="24" font-weight="900" fill="#fde68a">화장</text>
+  <text x="1050" y="338" text-anchor="middle" class="t" font-size="20" font-weight="700" fill="#fff">서울시립승화원</text>
+  <text x="1050" y="372" text-anchor="middle" class="t" font-size="20" font-weight="700" fill="#fff">오전 8시대 예약</text>
+</g>
+<g class="ar"><text x="1000" y="140" text-anchor="end" class="t" font-size="20" font-weight="800" fill="#dc2626">← 화장 시각이 정해지면 발인·입관 시간이 거꾸로 정해집니다</text></g>
+</svg>

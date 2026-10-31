@@ -70,6 +70,17 @@ function figure(f, cls = '') {
   return `<figure class="fig ${cls}"><img src="${src}" alt="${esc(f.alt || '')}" loading="${cls === 'cover' ? 'eager' : 'lazy'}" decoding="async">${f.caption ? `<figcaption>${esc(f.caption)}</figcaption>` : ''}</figure>`;
 }
 
+function gallery(list) {
+  const items = (Array.isArray(list) ? list : []).map((g) => ({ ...g, src: safeImg(g && g.src) })).filter((g) => g.src);
+  if (!items.length) return '';
+  const cols = items.length === 1 ? 1 : items.length === 2 || items.length === 4 ? 2 : 3;
+  return `<div class="gal gal-${cols}">${items.map((g) => `<figure><img src="${g.src}" alt="${esc(g.alt || '')}" loading="lazy" decoding="async">${g.caption ? `<figcaption>${esc(g.caption)}</figcaption>` : ''}</figure>`).join('')}</div>`;
+}
+function caseCard(info) {
+  if (!Array.isArray(info) || !info.length) return '';
+  return `<div class="case"><b>장례 진행 개요</b><dl>${info.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div>`;
+}
+
 // ---------- CTA blocks ----------
 const CTA = {
   quote: () => `
@@ -93,7 +104,7 @@ function bodyWithCtas(post) {
   let used = 0;
   const parts = post.sections.map((s, i) => {
     let html = sanitize(s.html).replace(/\[\[CTA:(quote|consult|call)\]\]/g, (_, k) => (used++ < 3 ? CTA[k]() : ''));
-    return `<section id="s${i + 1}"><h2>${esc(s.heading)}</h2>${figure(s.figure)}${html}</section>`;
+    return `<section id="s${i + 1}"><h2>${esc(s.heading)}</h2>${figure(s.figure)}${html}${gallery(s.gallery)}</section>`;
   });
   // AI가 CTA를 하나도 안 넣었으면 2번째 섹션 뒤에 자동 삽입
   if (used === 0 && parts.length > 2) parts.splice(2, 0, CTA.quote());
@@ -129,6 +140,17 @@ a{color:var(--blue)}
 .crumb{font-size:14px;color:var(--muted);padding:22px 0 0}
 .crumb a{color:var(--muted);text-decoration:none}
 .post-h{padding:14px 0 8px}
+.gal{display:grid;gap:10px;margin:18px 0 24px}
+.gal-1{grid-template-columns:1fr}.gal-2{grid-template-columns:1fr 1fr}.gal-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:560px){.gal-3{grid-template-columns:1fr 1fr}.gal-3 figure:first-child{grid-column:1/-1}.gal-3 figure:first-child img{aspect-ratio:16/10}}
+.gal figure{margin:0}
+.gal img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#eef2f7}
+.gal-1 img{aspect-ratio:auto}
+.gal figcaption{font-size:13px;color:var(--muted);margin-top:5px;text-align:center}
+.case{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:22px 0}
+.case b{display:block;font-size:15px;color:var(--blue);margin-bottom:8px}
+.case dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 18px;margin:0}
+.case dt{font-size:13px;color:var(--muted)}.case dd{margin:2px 0 0;font-weight:800;font-size:16px}
 .fig{margin:22px 0 26px}
 .fig img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#fff}
 .fig.cover{margin-top:18px}
@@ -295,6 +317,7 @@ function renderPost(post, all) {
     <div class="meta">${esc(S.brand)} · <time datetime="${post.publishedAt}">${fmtDate(post.publishedAt)}</time>${post.updatedAt && post.updatedAt !== post.publishedAt ? ` (수정 ${fmtDate(post.updatedAt)})` : ''} · ${minutes}분 읽기</div>
   </header>
   ${figure(post.cover, 'cover')}
+  ${caseCard(post.caseInfo)}
   ${post.summary?.length ? `<div class="summary"><b>핵심만 먼저</b><ul>${post.summary.map((s) => `<li>${esc(s)}</li>`).join('')}</ul></div>` : ''}
   <nav class="toc"><b>목차</b><ol>${post.sections.map((s, i) => `<li><a href="#s${i + 1}">${esc(s.heading)}</a></li>`).join('')}</ol></nav>
   <article>

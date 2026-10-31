@@ -50,6 +50,17 @@ a{color:var(--blue)}
 .crumb{font-size:14px;color:var(--muted);padding:22px 0 0}
 .crumb a{color:var(--muted);text-decoration:none}
 .post-h{padding:14px 0 8px}
+.gal{display:grid;gap:10px;margin:18px 0 24px}
+.gal-1{grid-template-columns:1fr}.gal-2{grid-template-columns:1fr 1fr}.gal-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:560px){.gal-3{grid-template-columns:1fr 1fr}.gal-3 figure:first-child{grid-column:1/-1}.gal-3 figure:first-child img{aspect-ratio:16/10}}
+.gal figure{margin:0}
+.gal img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#eef2f7}
+.gal-1 img{aspect-ratio:auto}
+.gal figcaption{font-size:13px;color:var(--muted);margin-top:5px;text-align:center}
+.case{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:22px 0}
+.case b{display:block;font-size:15px;color:var(--blue);margin-bottom:8px}
+.case dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 18px;margin:0}
+.case dt{font-size:13px;color:var(--muted)}.case dd{margin:2px 0 0;font-weight:800;font-size:16px}
 .fig{margin:22px 0 26px}
 .fig img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#fff}
 .fig.cover{margin-top:18px}
@@ -136,6 +147,7 @@ article th{background:#f1f5f9;font-weight:800;white-space:nowrap}
     <div class="meta">이음케어라이프 · <time datetime="2026-10-29">2026년 10월 29일</time> · 4분 읽기</div>
   </header>
   <figure class="fig cover"><img src="/images/guide/funeral-3-day-procedure/cover.svg" alt="흰 국화와 촛불이 놓인 추모 장면" loading="eager" decoding="async"></figure>
+  
   <div class="summary"><b>핵심만 먼저</b><ul><li>1일차는 임종 확인·사망진단서·안치·빈소 마련·부고, 2일차는 염습·입관·성복, 3일차는 발인·화장(또는 매장)입니다.</li><li>사망진단서(또는 시체검안서)는 사망신고, 화장, 보험금 청구에 모두 필요하니 처음부터 여러 부 받아 두세요.</li><li>화장장은 예약이 필요하므로 장례식장을 정하는 즉시 장례지도사와 화장 일정을 함께 잡는 것이 좋습니다.</li></ul></div>
   <nav class="toc"><b>목차</b><ol><li><a href="#s1">가장 먼저: 임종 직후 1~2시간 안에 할 일</a></li><li><a href="#s2">1일차: 안치, 빈소 마련, 부고 알리기</a></li><li><a href="#s3">2일차: 염습과 입관, 성복</a></li><li><a href="#s4">3일차: 발인, 운구, 화장 또는 매장</a></li><li><a href="#s5">장례 후: 삼우제와 남은 일들</a></li><li><a href="#s6">처음 장례를 치르는 가족이 자주 놓치는 것</a></li></ol></nav>
   <article>
@@ -162,7 +174,7 @@ article th{background:#f1f5f9;font-weight:800;white-space:nowrap}
 </aside>
   
   <p class="note">이 글은 일반적인 안내이며, 법령·지원제도·비용은 바뀔 수 있습니다. 정확한 내용은 해당 기관이나 이음케어라이프 상담(☎ 1588-9012)으로 확인해 주세요.</p>
-  <section class="related"><h2>함께 읽으면 좋은 글</h2><div class="cards"><a class="card" href="/guide/postpaid-sangjo-how-it-works"><img class="thumb" src="/images/guide/postpaid-sangjo-how-it-works/cover.svg" alt="" loading="lazy"><span class="tag">상조 비교</span><h3>후불제 상조 이용 방법: 첫 전화부터 정산까지 6단계</h3><p>후불제 상조는 가입비·월 납입 없이 장례가 생겼을 때 부르고 장례 후 정산하는 방식입니다. 진행 6단계, 비용이 나가는 곳, 첫 통화에서 물어볼 질문과 견적서 확인법을 정리했습니다.</p><time datetime="2026-10-31">2026년 10월 31일</time></a><a class="card" href="/guide/after-death-checklist"><img class="thumb" src="/images/guide/after-death-checklist/cover.svg" alt="" loading="lazy"><span class="tag">사망 후 행정</span><h3>부모님 돌아가신 후 해야 할 일: 사망신고·안심상속·상속포기 기한 정리</h3><p>장례 후 놓치면 과태료나 손해로 이어지는 행정 절차를 기한 순서로 정리했습니다. 사망신고 1개월, 상속포기·한정승인 3개월, 상속세 신고 6개월, 안심상속 1년까지 한눈에 확인하세요.</p><time datetime="2026-10-29">2026년 10월 29일</time></a><a class="card" href="/guide/postpaid-vs-prepaid-sangjo"><img class="thumb" src="/images/guide/postpaid-vs-prepaid-sangjo/cover.svg" alt="" loading="lazy"><span class="tag">상조 비교</span><h3>후불제 상조 vs 선불제 상조, 가입 전 꼭 알아야 할 차이 5가지</h3><p>매달 돈을 내는 선불제 상조와 장례 후에 정산하는 후불제 상조, 무엇이 다를까요? 비용 구조, 폐업 위험, 해약 환급금, 견적 확인법까지 한 번에 비교했습니다.</p><time datetime="2026-10-29">2026년 10월 29일</time></a></div></section>
+  <section class="related"><h2>함께 읽으면 좋은 글</h2><div class="cards"><a class="card" href="/guide/ilsan-bogeum-funeral-3day-case"><img class="thumb" src="/images/guide/ilsan-bogeum-funeral-3day-case/cover.svg" alt="" loading="lazy"><span class="tag">장례 진행 사례</span><h3>일산복음병원장례식장 3일장 후기: 후불제 상조로 치른 일반장례 과정</h3><p>일산복음병원장례식장에서 후불제 상조로 진행한 3일장 실제 사례입니다. 접수부터 입관, 이른 아침 발인과 서울시립승화원 화장까지 날짜별 흐름과 준비할 점을 정리했습니다.</p><time datetime="2026-10-31">2026년 10월 31일</time></a><a class="card" href="/guide/postpaid-sangjo-how-it-works"><img class="thumb" src="/images/guide/postpaid-sangjo-how-it-works/cover.svg" alt="" loading="lazy"><span class="tag">상조 비교</span><h3>후불제 상조 이용 방법: 첫 전화부터 정산까지 6단계</h3><p>후불제 상조는 가입비·월 납입 없이 장례가 생겼을 때 부르고 장례 후 정산하는 방식입니다. 진행 6단계, 비용이 나가는 곳, 첫 통화에서 물어볼 질문과 견적서 확인법을 정리했습니다.</p><time datetime="2026-10-31">2026년 10월 31일</time></a><a class="card" href="/guide/after-death-checklist"><img class="thumb" src="/images/guide/after-death-checklist/cover.svg" alt="" loading="lazy"><span class="tag">사망 후 행정</span><h3>부모님 돌아가신 후 해야 할 일: 사망신고·안심상속·상속포기 기한 정리</h3><p>장례 후 놓치면 과태료나 손해로 이어지는 행정 절차를 기한 순서로 정리했습니다. 사망신고 1개월, 상속포기·한정승인 3개월, 상속세 신고 6개월, 안심상속 1년까지 한눈에 확인하세요.</p><time datetime="2026-10-29">2026년 10월 29일</time></a><a class="card" href="/guide/postpaid-vs-prepaid-sangjo"><img class="thumb" src="/images/guide/postpaid-vs-prepaid-sangjo/cover.svg" alt="" loading="lazy"><span class="tag">상조 비교</span><h3>후불제 상조 vs 선불제 상조, 가입 전 꼭 알아야 할 차이 5가지</h3><p>매달 돈을 내는 선불제 상조와 장례 후에 정산하는 후불제 상조, 무엇이 다를까요? 비용 구조, 폐업 위험, 해약 환급금, 견적 확인법까지 한 번에 비교했습니다.</p><time datetime="2026-10-29">2026년 10월 29일</time></a></div></section>
 </main>
 <footer class="ft"><div class="ft-in">
   <div><b style="color:#fff">이음케어라이프</b><br>고양·파주·김포 및 수도권 후불제 상조 · 요양병원 연계 · 방문요양</div>

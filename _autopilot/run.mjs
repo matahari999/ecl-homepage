@@ -198,7 +198,7 @@ function validate(post, posts) {
   } else if (Array.isArray(post.sources)) {
     post.sources = post.sources.filter((x) => x && /^https:\/\//.test(x.url || '') && x.title).slice(0, 8);
   }
-  for (const f of [post.cover, ...(post.sections || []).map((s) => s.figure)].filter((f) => f && f.src)) {
+  for (const f of [post.cover, ...(post.sections || []).flatMap((s) => [s.figure, ...(s.gallery || [])])].filter((f) => f && f.src)) {
     if (!/^\/images\/guide\/[a-z0-9\-\/]+\.(svg|webp|png|jpg|jpeg|gif)$/.test(f.src)) errs.push(`이미지 경로 형식: ${f.src}`);
     else if (!fs.existsSync(path.join(ROOT, f.src))) errs.push(`이미지 파일 없음: ${f.src}`);
     else if (f.src.endsWith('.svg') && /<script|on[a-z]+\s*=|href\s*=\s*["']https?:/i.test(fs.readFileSync(path.join(ROOT, f.src), 'utf8'))) errs.push(`SVG에 스크립트/외부 링크 금지: ${f.src}`);
@@ -288,9 +288,9 @@ function publishPost(post, target, topGuidePages, log) {
   post.publishedAt = today();
   post.keyword = post.keyword || target.query;
   post.keywords = [...new Set([target.query, ...(post.keywords || [])])];
-  post.source = target.source === 'news' ? 'news' : 'autopilot';
+  post.source = target.source === 'news' ? 'news' : target.source === 'case' ? 'case' : 'autopilot';
   if (target.impressions) post.gsc = { impressions: target.impressions, clicks: target.clicks, position: +Number(target.position).toFixed(1) };
-  post.sections = post.sections.map((s) => ({ heading: s.heading, html: sanitize(s.html), ...(s.figure && s.figure.src ? { figure: s.figure } : {}) }));
+  post.sections = post.sections.map((s) => ({ heading: s.heading, html: sanitize(s.html), ...(s.figure && s.figure.src ? { figure: s.figure } : {}), ...(Array.isArray(s.gallery) && s.gallery.length ? { gallery: s.gallery } : {}) }));
   if (post.cover && !post.cover.src) delete post.cover;
   post.faq = (post.faq || []).map((f) => ({ q: f.q, a: sanitize(f.a) }));
 
@@ -325,6 +325,7 @@ async function main() {
     const brief = fs.existsSync(BRIEF_FILE) ? JSON.parse(fs.readFileSync(BRIEF_FILE, 'utf8')) : { target: { query: '', source: 'manual' }, topGuidePages: [] };
     const post = JSON.parse(fs.readFileSync(opt('--publish'), 'utf8'));
     if (!brief.target.query) brief.target.query = post.keyword || post.title;
+    if (flag('--case')) brief.target.source = 'case';
     publishPost(post, brief.target, brief.topGuidePages, log);
     fs.rmSync(BRIEF_FILE, { force: true });
     return;
@@ -344,7 +345,7 @@ async function main() {
   // [Claude Code 모드 1단계] 오늘의 검색어와 작성 지침을 출력 → Claude가 직접 글을 씀
   // [뉴스 차례] 키워드 글 N편마다 1번은 업계 최신 뉴스 정리 글
   if (flag('--brief') && !flag('--no-news') && !opt('--keyword') && config.news) {
-    const sinceNews = (() => { let n = 0; for (let i = log.length - 1; i >= 0 && log[i].source !== 'news'; i--) n++; return n; })();
+    const sinceNews = (() => { let n = 0; for (let i = log.length - 1; i >= 0 && log[i].source !== 'news'; i--) if (log[i].source !== 'case') n++; return n; })();
     if (sinceNews >= config.news.every - 1) {
       const target = { query: '장례·상조 업계 최신 소식', source: 'news' };
       fs.writeFileSync(BRIEF_FILE, JSON.stringify({ target, topGuidePages }, null, 2));

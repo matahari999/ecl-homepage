@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="장례식장에서 화장장까지 새벽길을 달리는 장의차와 떠오르는 해">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes drive{0%{transform:translateX(0)}100%{transform:translateX(560px)}}
+  @keyframes sun{0%{transform:translateY(40px);opacity:.4}100%{transform:translateY(0);opacity:1}}
+  @keyframes star{0%,100%{opacity:.2}50%{opacity:.9}}
+  @keyframes road{to{stroke-dashoffset:-60}}
+  .car{animation:drive 9s ease-in-out infinite alternate}
+  .sun{animation:sun 9s ease-in-out infinite alternate}
+  .s1{animation:star 3s ease-in-out infinite}.s2{animation:star 4s ease-in-out 1s infinite}.s3{animation:star 3.5s ease-in-out 2s infinite}
+  .rd{stroke-dasharray:30 30;animation:road 1.2s linear infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1b3d"/><stop offset=".6" stop-color="#3b4a7a"/><stop offset="1" stop-color="#f6c58a"/></linearGradient>
+  <radialGradient id="glow"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#fde68a" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#sky)"/>
+<circle class="s1" cx="140" cy="200" r="2.5" fill="#fff"/><circle class="s2" cx="320" cy="150" r="2" fill="#fff"/><circle class="s3" cx="980" cy="190" r="2.5" fill="#fff"/><circle class="s1" cx="1100" cy="250" r="2" fill="#fff"/>
+<g class="sun"><circle cx="640" cy="455" r="150" fill="url(#glow)" opacity=".75"/><circle cx="640" cy="455" r="54" fill="#fcd34d"/></g>
+<!-- 장례식장 건물 -->
+<g>
+  <rect x="70" y="330" width="250" height="160" rx="6" fill="#1e2a52"/>
+  <rect x="70" y="315" width="250" height="22" rx="4" fill="#2b3a6b"/>
+  <g fill="#fde68a" opacity=".85"><rect x="95" y="360" width="34" height="26" rx="3"/><rect x="145" y="360" width="34" height="26" rx="3"/><rect x="195" y="360" width="34" height="26" rx="3"/><rect x="245" y="360" width="34" height="26" rx="3"/><rect x="95" y="410" width="34" height="26" rx="3"/><rect x="245" y="410" width="34" height="26" rx="3"/></g>
+  <rect x="170" y="420" width="50" height="70" rx="4" fill="#0f1b3d"/>
+  <text x="195" y="308" text-anchor="middle" class="t" font-size="18" font-weight="700" fill="#cbd5e1">장례식장</text>
+</g>
+<!-- 화장장 -->
+<g>
+  <rect x="880" y="380" width="230" height="110" rx="6" fill="#26335f"/>
+  <path d="M870 385 L995 330 L1120 385 Z" fill="#33437a"/>
+  <text x="995" y="450" text-anchor="middle" class="t" font-size="18" font-weight="700" fill="#e2e8f0">화장장</text>
+</g>
+<!-- 도로 -->
+<rect x="0" y="490" width="1200" height="140" fill="#111a33"/>
+<line class="rd" x1="0" y1="560" x2="1200" y2="560" stroke="#fde68a" stroke-width="5" opacity=".6"/>
+<!-- 장의차 -->
+<g class="car">
+  <g transform="translate(250 470)">
+    <rect x="0" y="10" width="190" height="56" rx="14" fill="#f8fafc"/>
+    <rect x="20" y="-14" width="120" height="34" rx="10" fill="#e2e8f0"/>
+    <rect x="30" y="-8" width="44" height="22" rx="4" fill="#93c5fd"/><rect x="82" y="-8" width="48" height="22" rx="4" fill="#93c5fd"/>
+    <rect x="150" y="24" width="30" height="10" rx="3" fill="#fde68a"/>
+    <circle cx="44" cy="68" r="17" fill="#0f172a"/><circle cx="44" cy="68" r="7" fill="#94a3b8"/>
+    <circle cx="150" cy="68" r="17" fill="#0f172a"/><circle cx="150" cy="68" r="7" fill="#94a3b8"/>
+  </g>
+</g>
+<!-- 제목 -->
+<text x="70" y="110" class="t" font-size="46" font-weight="900" fill="#fff">일산복음병원장례식장 3일장</text>
+<text x="70" y="160" class="t" font-size="26" font-weight="700" fill="#cbd5e1">후불제 상조로 치른 일반장례 · 실제 진행 사례</text>
+</svg>

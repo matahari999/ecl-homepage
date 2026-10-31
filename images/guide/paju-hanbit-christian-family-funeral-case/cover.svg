@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="흰 백합과 촛불, 작은 십자가가 있는 기독교 가족장 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes flick{0%,100%{transform:scale(1,1)}30%{transform:scale(.92,1.08)}60%{transform:scale(1.05,.95)}}
+  @keyframes glow{0%,100%{opacity:.5}50%{opacity:.85}}
+  @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+  @keyframes rays{0%,100%{opacity:.25}50%{opacity:.55}}
+  .fl{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.7s ease-in-out infinite}
+  .gl{animation:glow 3.4s ease-in-out infinite}
+  .ly{transform-origin:800px 560px;animation:sway 6s ease-in-out infinite}
+  .ry{animation:rays 5s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8f5ef"/><stop offset="1" stop-color="#e9e2d4"/></linearGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#fde68a" stop-opacity=".9"/><stop offset="1" stop-color="#fde68a" stop-opacity="0"/></radialGradient>
+  <radialGradient id="pet" cx=".5" cy=".2"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e7e5e4"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<!-- 빛과 십자가 -->
+<g class="ry" fill="#fde68a"><path d="M980 120 L900 560 L940 560 Z"/><path d="M980 120 L1040 560 L1080 560 Z"/><path d="M980 120 L980 560 L1010 560 Z"/></g>
+<g fill="#b45309" opacity=".75"><rect x="970" y="90" width="20" height="120" rx="4"/><rect x="935" y="125" width="90" height="18" rx="4"/></g>
+<!-- 테이블 -->
+<rect x="0" y="560" width="1200" height="70" fill="#d6cab4"/>
+<!-- 초 -->
+<circle class="gl" cx="620" cy="350" r="150" fill="url(#halo)"/>
+<rect x="590" y="380" width="60" height="180" rx="8" fill="#fffdf7" stroke="#e7e5e4" stroke-width="2"/>
+<line x1="620" y1="380" x2="620" y2="362" stroke="#57534e" stroke-width="3"/>
+<path class="fl" d="M620 300 C 640 330, 638 352, 620 364 C 602 352, 600 330, 620 300 Z" fill="#f59e0b"/>
+<path class="fl" d="M620 324 C 629 338, 628 350, 620 357 C 612 350, 611 338, 620 324 Z" fill="#fff7d6"/>
+<!-- 백합 -->
+<g class="ly">
+  <path d="M800 560 C 795 480, 815 430, 800 360" stroke="#4d7c0f" stroke-width="7" fill="none"/>
+  <path d="M803 470 C 840 450, 868 456, 888 470 C 858 486, 828 486, 803 470 Z" fill="#65a30d"/>
+  <g transform="translate(800 345)" fill="url(#pet)" stroke="#d6d3d1" stroke-width="1.5">
+    <path d="M0 0 C -30 -40, -70 -50, -95 -30 C -70 -20, -35 -5, 0 0 Z"/>
+    <path d="M0 0 C 30 -40, 70 -50, 95 -30 C 70 -20, 35 -5, 0 0 Z"/>
+    <path d="M0 0 C -12 -50, -6 -95, 0 -110 C 6 -95, 12 -50, 0 0 Z"/>
+    <path d="M0 0 C -40 -20, -80 -10, -100 15 C -70 15, -30 10, 0 0 Z"/>
+    <path d="M0 0 C 40 -20, 80 -10, 100 15 C 70 15, 30 10, 0 0 Z"/>
+  </g>
+  <g stroke="#b45309" stroke-width="2"><line x1="800" y1="345" x2="790" y2="300"/><line x1="800" y1="345" x2="812" y2="298"/></g>
+</g>
+<text x="70" y="140" class="t" font-size="46" font-weight="900" fill="#1c1917">파주한빛장례식장</text>
+<text x="70" y="200" class="t" font-size="40" font-weight="900" fill="#b45309">기독교 2일 가족장</text>
+<text x="70" y="252" class="t" font-size="24" font-weight="700" fill="#57534e">후불제 상조 · 실제 진행 사례</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="3일장과 2일 가족장 일정 비교: 2일장은 둘째 날에 입관 예배, 발인, 화장을 이어서 진행">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes grow{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+  @keyframes fade{0%,50%{opacity:0}100%{opacity:1}}
+  .b{transform-box:fill-box;transform-origin:left;animation:grow 1s cubic-bezier(.2,.7,.2,1) both}
+  .f{animation:fade 2.4s ease-out both}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important}}
+</style>
+<rect width="1200" height="520" fill="#fff"/>
+<text x="60" y="64" class="t" font-size="32" font-weight="900" fill="#0f1b3d">3일장 vs 2일 가족장</text>
+<g class="t" font-size="20" fill="#94a3b8" text-anchor="middle">
+  <text x="410" y="118">1일차</text><text x="700" y="118">2일차</text><text x="990" y="118">3일차</text>
+</g>
+<!-- 3일장 -->
+<text x="60" y="190" class="t" font-size="26" font-weight="800" fill="#1e293b">3일장</text>
+<rect class="b" style="animation-delay:.1s" x="270" y="155" width="280" height="56" rx="12" fill="#dbeafe"/>
+<rect class="b" style="animation-delay:.4s" x="560" y="155" width="280" height="56" rx="12" fill="#bfdbfe"/>
+<rect class="b" style="animation-delay:.7s" x="850" y="155" width="280" height="56" rx="12" fill="#93c5fd"/>
+<g class="t f" font-size="19" font-weight="700" fill="#1e3a8a" text-anchor="middle">
+  <text x="410" y="190">안치 · 빈소 · 부고</text><text x="700" y="190">입관 · 성복 · 조문</text><text x="990" y="190">발인 · 화장</text>
+</g>
+<!-- 2일 가족장 -->
+<text x="60" y="320" class="t" font-size="26" font-weight="800" fill="#b45309">2일 가족장</text>
+<rect class="b" style="animation-delay:1.1s" x="270" y="285" width="280" height="56" rx="12" fill="#fef3c7"/>
+<rect class="b" style="animation-delay:1.4s" x="560" y="285" width="280" height="56" rx="12" fill="#fcd34d"/>
+<g class="t f" font-size="19" font-weight="700" fill="#78350f" text-anchor="middle">
+  <text x="410" y="320">안치 · 가족 빈소 · 교회 연락</text><text x="700" y="320">입관 예배 → 발인 → 화장</text>
+</g>
+<g class="f">
+  <rect x="270" y="390" width="860" height="86" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="300" y="428" class="t" font-size="20" font-weight="800" fill="#0f1b3d">2일장 핵심: 둘째 날 일정이 촘촘합니다</text>
+  <text x="300" y="460" class="t" font-size="18" font-weight="600" fill="#475569">교회 예배 시간 → 입관 → 발인 → 화장 예약 시각을 한 장의 일정표로 맞추세요</text>
+</g>
+</svg>

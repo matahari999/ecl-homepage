@@ -167,11 +167,11 @@ ${posts.map((p) => `   - /guide/${p.slug} : ${p.title}`).join('\n') || '   (아�
 - 설명 그림: 절차는 타임라인, 비교는 표/그래프, 기한은 막대 등 본문 핵심을 시각화. viewBox 가로 1200.
 - 애니메이션은 SVG 안의 <style> CSS @keyframes로만(스크립트·외부 파일·외부 폰트 금지). 부드럽고 느리게, @media (prefers-reduced-motion:reduce){*{animation:none!important}} 포함.
 - 글꼴: font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif. 글자가 도형과 겹치지 않게 배치. 숫자·기한은 본문과 똑같이.
-- JSON에 "cover":{"src":"/images/guide/<slug>/cover.svg","alt":"그림 설명"} 를 넣고, 설명 그림은 해당 섹션에 "figure":{"src":"/images/guide/<slug>/<이름>.svg","alt":"","caption":"짧은 설명"} 로 넣는다.
+- JSON에 "cover":{"src":"/images/guide/<slug>/cover.svg","alt":"그림 설명"} 를 넣고, 설명 그림은 해당 섹션에 "figure":{"src":"/images/guide/<slug>/<이름>.svg","alt":""} 로 넣는다.
 - (API 모드처럼 파일을 만들 수 없으면 cover/figure는 생략한다.)
 
 반드시 아래 JSON 하나만 출력한다. 코드블록·설명 금지.
-{"slug":"","title":"","description":"","keyword":"","cover":{"src":"","alt":""},"keywords":["관련 검색어 3~6개"],"category":"상조 비교|장례 절차|장례 비용|사망 후 행정|요양병원|방문요양|장기요양|추모·장지 중 하나","summary":["핵심 요약 3개, 각 60자 이내"],"sections":[{"heading":"","html":"","figure":{"src":"","alt":"","caption":""}}],"faq":[{"q":"","a":""}]}
+{"slug":"","title":"","description":"","keyword":"","cover":{"src":"","alt":""},"keywords":["관련 검색어 3~6개"],"category":"상조 비교|장례 절차|장례 비용|사망 후 행정|요양병원|방문요양|장기요양|추모·장지 중 하나","summary":["핵심 요약 3개, 각 60자 이내"],"sections":[{"heading":"","html":"","figure":{"src":"","alt":""}}],"faq":[{"q":"","a":""}]}
 FAQ는 3~5개, 실제로 사람들이 검색할 법한 질문으로.`;
 }
 

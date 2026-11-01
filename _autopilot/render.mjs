@@ -67,14 +67,14 @@ export function safeImg(src) {
 function figure(f, cls = '') {
   const src = f && safeImg(f.src);
   if (!src) return '';
-  return `<figure class="fig ${cls}"><img src="${src}" alt="${esc(f.alt || '')}" loading="${cls === 'cover' ? 'eager' : 'lazy'}" decoding="async">${f.caption ? `<figcaption>${esc(f.caption)}</figcaption>` : ''}</figure>`;
+  return `<figure class="fig ${cls}"><img src="${src}" alt="${esc(f.alt || '')}" loading="${cls === 'cover' ? 'eager' : 'lazy'}" decoding="async"></figure>`;
 }
 
 function gallery(list) {
   const items = (Array.isArray(list) ? list : []).map((g) => ({ ...g, src: safeImg(g && g.src) })).filter((g) => g.src);
   if (!items.length) return '';
   const cols = items.length === 1 ? 1 : items.length === 2 || items.length === 4 ? 2 : 3;
-  return `<div class="gal gal-${cols}">${items.map((g) => `<figure><img src="${g.src}" alt="${esc(g.alt || '')}" loading="lazy" decoding="async">${g.caption ? `<figcaption>${esc(g.caption)}</figcaption>` : ''}</figure>`).join('')}</div>`;
+  return `<div class="gal gal-${cols}">${items.map((g) => `<figure><img src="${g.src}" alt="${esc(g.alt || '')}" loading="lazy" decoding="async"></figure>`).join('')}</div>`;
 }
 function caseCard(info) {
   if (!Array.isArray(info) || !info.length) return '';

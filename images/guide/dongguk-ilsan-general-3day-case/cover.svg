@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="국화 꽃잎이 바람에 실려 숲 언덕으로 날아가는 자연장 분위기의 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes drift{0%{transform:translate(0,0) rotate(0);opacity:0}15%{opacity:1}100%{transform:translate(520px,-120px) rotate(220deg);opacity:0}}
+  @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+  @keyframes flick{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.86)}}
+  .p{transform-box:fill-box;transform-origin:center;animation:drift 8s linear infinite}
+  .p2{animation-delay:1.6s}.p3{animation-delay:3.2s}.p4{animation-delay:4.8s}.p5{animation-delay:6.4s}
+  .tree{transform-box:fill-box;transform-origin:bottom center;animation:sway 5s ease-in-out infinite}
+  .fl{transform-box:fill-box;transform-origin:bottom center;animation:flick 1.4s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}.p{opacity:.8}}
+</style>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef2f0"/><stop offset="1" stop-color="#dfe9e2"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#sky)"/>
+<circle cx="1010" cy="150" r="70" fill="#fff7e0" opacity=".9"/>
+<!-- 언덕 -->
+<path d="M560 470 Q780 330 1000 400 T1200 380 V630 H560 Z" fill="#a7c4a0"/>
+<path d="M0 520 Q300 440 640 500 T1200 470 V630 H0 Z" fill="#7ea57a"/>
+<!-- 나무 -->
+<g class="tree"><rect x="868" y="300" width="14" height="90" fill="#6b5a45"/><circle cx="875" cy="285" r="52" fill="#5f8f62"/><circle cx="845" cy="305" r="34" fill="#6fa070"/><circle cx="905" cy="308" r="34" fill="#6fa070"/></g>
+<g class="tree"><rect x="1043" y="300" width="12" height="80" fill="#6b5a45"/><circle cx="1049" cy="288" r="42" fill="#5f8f62"/></g>
+<!-- 제단 국화와 촛불 -->
+<g transform="translate(110 420)">
+  <rect x="0" y="40" width="300" height="60" rx="8" fill="#fff" stroke="#d6dcd8"/>
+  <g fill="#fff" stroke="#c9d1cc">
+    <circle cx="40" cy="30" r="22"/><circle cx="90" cy="22" r="24"/><circle cx="145" cy="18" r="26"/><circle cx="200" cy="22" r="24"/><circle cx="255" cy="30" r="22"/>
+  </g>
+  <g fill="#f4c542"><circle cx="40" cy="30" r="7"/><circle cx="90" cy="22" r="8"/><circle cx="145" cy="18" r="8"/><circle cx="200" cy="22" r="8"/><circle cx="255" cy="30" r="7"/></g>
+  <rect x="-20" y="5" width="10" height="40" fill="#f8f3e6"/><path class="fl" d="M-15 -15 Q-6 -2 -15 5 Q-24 -2 -15 -15Z" fill="#f59e0b"/>
+  <rect x="310" y="5" width="10" height="40" fill="#f8f3e6"/><path class="fl" d="M315 -15 Q324 -2 315 5 Q306 -2 315 -15Z" fill="#f59e0b"/>
+</g>
+<!-- 날리는 꽃잎 -->
+<g fill="#ffffff" stroke="#d9e0db">
+  <ellipse class="p" cx="300" cy="430" rx="9" ry="5"/>
+  <ellipse class="p p2" cx="260" cy="450" rx="8" ry="4"/>
+  <ellipse class="p p3" cx="340" cy="420" rx="9" ry="5"/>
+  <ellipse class="p p4" cx="220" cy="440" rx="7" ry="4"/>
+  <ellipse class="p p5" cx="380" cy="435" rx="8" ry="5"/>
+</g>
+<text x="70" y="115" class="t" font-size="50" font-weight="900" fill="#1f3a2c">동국대일산병원장례식장 3일장</text>
+<text x="70" y="168" class="t" font-size="26" font-weight="700" fill="#4b6355">일반장례 · 화장 후 유택동산 산골까지 · 실제 진행 사례</text>
+</svg>

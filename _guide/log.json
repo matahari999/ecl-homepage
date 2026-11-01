@@ -76,5 +76,31 @@
       "postpaid-vs-prepaid-sangjo",
       "after-death-checklist"
     ]
+  },
+  {
+    "date": "2026-11-01",
+    "keyword": "동국대일산병원장례식장 후불제 상조",
+    "source": "case",
+    "slug": "dongguk-ilsan-general-3day-case",
+    "title": "동국대일산병원장례식장 일반장례 3일장 후기: 화장 후 산골까지",
+    "gsc": null,
+    "linkedFrom": [
+      "goyang-postpaid-sangjo",
+      "ilsan-bogeum-funeral-3day-case",
+      "paju-hanbit-christian-family-funeral-case"
+    ]
+  },
+  {
+    "date": "2026-11-01",
+    "keyword": "일산쉴낙원장례식장 후불제 상조",
+    "source": "case",
+    "slug": "ilsan-shilnakwon-dawn-lawn-burial-case",
+    "title": "일산쉴낙원장례식장 3일장 후기: 새벽 발인부터 용인 잔디장까지",
+    "gsc": null,
+    "linkedFrom": [
+      "dongguk-ilsan-general-3day-case",
+      "goyang-postpaid-sangjo",
+      "ilsan-bogeum-funeral-3day-case"
+    ]
   }
 ]

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-label="새벽 발인부터 화장, 장거리 이동, 잔디장 안치까지 셋째 날 하루 일정 타임라인">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes grow{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+  @keyframes pop{0%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:translateY(0)}}
+  .bar{transform-box:fill-box;transform-origin:left center;animation:grow 2.4s ease-out both}
+  .s{animation:pop .7s ease-out both}.s2{animation-delay:.6s}.s3{animation-delay:1.2s}.s4{animation-delay:1.8s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="900" height="540" rx="18" fill="#f5f7fb"/>
+<text x="40" y="58" class="t" font-size="28" font-weight="900" fill="#1b2548">셋째 날, 새벽에 시작해 잔디장에서 끝나는 하루</text>
+<text x="40" y="92" class="t" font-size="17" fill="#5a6478">화장 회차와 장지 거리에 따라 시간은 달라집니다</text>
+<rect x="60" y="170" width="780" height="14" rx="7" fill="#dde3ee"/>
+<rect class="bar" x="60" y="170" width="780" height="14" rx="7" fill="#e9b98a"/>
+<g class="t">
+  <g class="s"><circle cx="90" cy="177" r="22" fill="#1b2548"/><text x="90" y="184" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">1</text>
+    <text x="90" y="236" text-anchor="middle" font-size="18" font-weight="800" fill="#1b2548">새벽 발인</text><text x="90" y="262" text-anchor="middle" font-size="14" fill="#5a6478">5시대 운구</text></g>
+  <g class="s s2"><circle cx="330" cy="177" r="22" fill="#1b2548"/><text x="330" y="184" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">2</text>
+    <text x="330" y="236" text-anchor="middle" font-size="18" font-weight="800" fill="#1b2548">승화원 접수·화장</text><text x="330" y="262" text-anchor="middle" font-size="14" fill="#5a6478">화장 30분 전 서류 완료</text></g>
+  <g class="s s3"><circle cx="570" cy="177" r="22" fill="#1b2548"/><text x="570" y="184" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">3</text>
+    <text x="570" y="236" text-anchor="middle" font-size="18" font-weight="800" fill="#1b2548">용인으로 이동</text><text x="570" y="262" text-anchor="middle" font-size="14" fill="#5a6478">유골함 모시고 장거리</text></g>
+  <g class="s s4"><circle cx="810" cy="177" r="22" fill="#5d8a5a"/><text x="810" y="184" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">4</text>
+    <text x="810" y="236" text-anchor="middle" font-size="18" font-weight="800" fill="#1b2548">잔디장 안치</text><text x="810" y="262" text-anchor="middle" font-size="14" fill="#5a6478">자연장으로 마무리</text></g>
+</g>
+<g class="t s s4">
+  <rect x="40" y="310" width="400" height="190" rx="14" fill="#fff" stroke="#dde3ee"/>
+  <text x="64" y="348" font-size="18" font-weight="800" fill="#1b2548">전날 밤까지 정할 것</text>
+  <text x="64" y="382" font-size="15" fill="#3f4859">· 운구 인원과 집합 시간</text>
+  <text x="64" y="410" font-size="15" fill="#3f4859">· 장지까지 갈 가족과 차량 좌석</text>
+  <text x="64" y="438" font-size="15" fill="#3f4859">· 화장 접수 서류 챙길 사람</text>
+  <text x="64" y="466" font-size="15" fill="#3f4859">· 이른 아침 식사·간식 준비</text>
+  <rect x="460" y="310" width="400" height="190" rx="14" fill="#fff" stroke="#dde3ee"/>
+  <text x="484" y="348" font-size="18" font-weight="800" fill="#1b2548">승화원 관내 요금 기준</text>
+  <text x="484" y="382" font-size="15" fill="#3f4859">· 서울·고양·파주 주민등록</text>
+  <text x="484" y="410" font-size="15" fill="#3f4859">· 사망 시점까지 6개월 이상 거주</text>
+  <text x="484" y="438" font-size="15" fill="#3f4859">· 6개월 미만이면 관외 회차 예약</text>
+  <text x="484" y="466" font-size="15" fill="#3f4859">· 출처: 서울시설공단 안내</text>
+</g>
+</svg>

@@ -38,13 +38,17 @@
       "logNo": "224108283541",
       "title": "동국대병원장례식장 후불제상조 진행 사례",
       "type": "case",
-      "status": "pending"
+      "status": "done",
+      "slug": "dongguk-ilsan-general-3day-case",
+      "date": "2026-11-01"
     },
     {
       "logNo": "224097017562",
       "title": "일산쉴낙원병원장례식장 후불제상조 진행 사례",
       "type": "case",
-      "status": "pending"
+      "status": "done",
+      "slug": "ilsan-shilnakwon-dawn-lawn-burial-case",
+      "date": "2026-11-01"
     },
     {
       "logNo": "224120817252",

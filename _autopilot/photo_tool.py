@@ -26,9 +26,14 @@ elif a[0] == 'crop':
     im = Image.open(src).convert('RGB')
     if len(a) > 8 and a[8] == 'blur':
         for b in a[9:]:
+            # 모자이크(네모 블록) 대신 부드러운 흐림 + 가장자리 페더링 → 덜 눈에 띄게
             bx = tuple(map(int, b.split(','))); reg = im.crop(bx)
-            reg = reg.resize((max(1, reg.width // 12), max(1, reg.height // 12)), Image.BILINEAR).resize(reg.size, Image.NEAREST).filter(ImageFilter.GaussianBlur(6))
-            im.paste(reg, bx)
+            r = max(8, min(reg.size) // 4)
+            soft = reg.filter(ImageFilter.GaussianBlur(r))
+            mask = Image.new('L', reg.size, 0); pad = max(2, min(reg.size) // 8)
+            ImageDraw.Draw(mask).rounded_rectangle((pad, pad, reg.width - pad, reg.height - pad), radius=pad * 2, fill=255)
+            mask = mask.filter(ImageFilter.GaussianBlur(pad))
+            im.paste(Image.composite(soft, reg, mask), bx)
     im = im.crop((x0, y0, x1, y1))
     im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
     im = ImageEnhance.Contrast(im.filter(ImageFilter.UnsharpMask(1.2, 60, 2))).enhance(1.04)

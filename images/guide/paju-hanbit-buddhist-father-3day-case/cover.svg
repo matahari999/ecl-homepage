@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="새벽 하늘 아래 연등과 연꽃, 먼 장지로 향하는 길을 표현한 불교식 부친상 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+  @keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+  @keyframes glow{0%,100%{opacity:.35}50%{opacity:.8}}
+  @keyframes dash{to{stroke-dashoffset:-120}}
+  @keyframes dawn{0%,100%{opacity:.55}50%{opacity:.85}}
+  .st{animation:tw 3s ease-in-out infinite}.s2{animation-delay:1s}.s3{animation-delay:2s}
+  .ln{transform-box:fill-box;transform-origin:50% 0;animation:sway 4s ease-in-out infinite}.ln2{animation-delay:1.3s}
+  .gl{animation:glow 3s ease-in-out infinite}
+  .rd{animation:dash 3s linear infinite}
+  .dw{animation:dawn 6s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1b4b"/><stop offset=".6" stop-color="#4c3a6b"/><stop offset="1" stop-color="#e8a87c"/></linearGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#fcd34d" stop-opacity=".9"/><stop offset="1" stop-color="#fcd34d" stop-opacity="0"/></radialGradient>
+  <linearGradient id="pet" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f9a8d4"/><stop offset="1" stop-color="#fff1f2"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#sky)"/>
+<ellipse class="dw" cx="980" cy="470" rx="320" ry="110" fill="#fbbf77" opacity=".6"/>
+<g fill="#fff"><circle class="st" cx="90" cy="300" r="2.5"/><circle class="st s2" cx="1100" cy="60" r="2.5"/><circle class="st s3" cx="820" cy="90" r="2"/><circle class="st" cx="650" cy="50" r="2"/><circle class="st s2" cx="980" cy="160" r="2"/><circle class="st s3" cx="1150" cy="220" r="2"/></g>
+<!-- 산 -->
+<path d="M0 470 L160 380 L300 450 L470 360 L640 455 L800 370 L980 440 L1120 380 L1200 420 L1200 630 L0 630 Z" fill="#3b2f55" opacity=".85"/>
+<path d="M0 520 L200 450 L420 510 L640 440 L880 505 L1060 455 L1200 490 L1200 630 L0 630 Z" fill="#2a2140"/>
+<!-- 길 -->
+<path d="M640 630 C 700 560, 820 520, 1000 500 C 1080 492, 1140 488, 1200 486" fill="none" stroke="#58507a" stroke-width="44" stroke-linecap="round"/>
+<path class="rd" d="M640 630 C 700 560, 820 520, 1000 500 C 1080 492, 1140 488, 1200 486" fill="none" stroke="#fde68a" stroke-width="4" stroke-dasharray="26 34"/>
+<!-- 연등 -->
+<g class="ln"><line x1="820" y1="0" x2="820" y2="150" stroke="#e7d3a7" stroke-width="2"/>
+  <circle class="gl" cx="820" cy="190" r="70" fill="url(#halo)"/>
+  <ellipse cx="820" cy="190" rx="38" ry="44" fill="#f472b6"/><path d="M790 168 Q820 150 850 168 M786 190 H854 M790 212 Q820 230 850 212" stroke="#fbcfe8" stroke-width="3" fill="none"/>
+  <line x1="820" y1="234" x2="820" y2="262" stroke="#fcd34d" stroke-width="3"/></g>
+<g class="ln ln2"><line x1="1010" y1="0" x2="1010" y2="110" stroke="#e7d3a7" stroke-width="2"/>
+  <circle class="gl" cx="1010" cy="146" r="56" fill="url(#halo)"/>
+  <ellipse cx="1010" cy="146" rx="30" ry="35" fill="#fbbf24"/><path d="M986 128 Q1010 114 1034 128 M984 146 H1036 M986 164 Q1010 178 1034 164" stroke="#fef3c7" stroke-width="3" fill="none"/>
+  <line x1="1010" y1="181" x2="1010" y2="204" stroke="#f472b6" stroke-width="3"/></g>
+<!-- 연꽃 -->
+<g transform="translate(1040 600)" fill="url(#pet)" stroke="#f472b6" stroke-width="1.5">
+  <path d="M0 0 C -60 -8, -100 -34, -110 -60 C -76 -60, -34 -34, 0 0 Z"/>
+  <path d="M0 0 C 60 -8, 100 -34, 110 -60 C 76 -60, 34 -34, 0 0 Z"/>
+  <path d="M0 0 C -42 -26, -60 -76, -46 -110 C -20 -84, -8 -42, 0 0 Z"/>
+  <path d="M0 0 C 42 -26, 60 -76, 46 -110 C 20 -84, 8 -42, 0 0 Z"/>
+  <path d="M0 0 C -18 -42, -15 -100, 0 -134 C 15 -100, 18 -42, 0 0 Z"/>
+</g>
+<!-- 제목 -->
+<rect x="56" y="96" width="560" height="300" rx="22" fill="#1e1b4b" opacity=".55"/>
+<text class="t" x="90" y="160" font-size="26" fill="#fcd34d" font-weight="700">불교식 부친상 · 3일장</text>
+<text class="t" x="90" y="238" font-size="60" fill="#fff" font-weight="800">파주한빛</text>
+<text class="t" x="90" y="310" font-size="60" fill="#fff" font-weight="800">장례식장</text>
+<text class="t" x="90" y="362" font-size="26" fill="#e9d5ff">새벽 발인, 먼 봉안당까지 · 실제 진행 사례</text>
+<text class="t" x="90" y="580" font-size="22" fill="#d6cbe8">이음케어라이프 후불제 상조</text>
+</svg>

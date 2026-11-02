@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="임종한 병원에서 다른 장례식장으로 모실 때 사망진단서, 장례식장 결정, 이송 차량, 빈소 대기, 안치 순서로 진행되는 흐름도">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes fill{0%{stroke-dashoffset:520}60%,100%{stroke-dashoffset:0}}
+  @keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  .ln{stroke-dasharray:520;animation:fill 4s ease-out infinite}
+  .dot{transform-box:fill-box;transform-origin:50% 50%;animation:pop 2.4s ease-in-out infinite}
+  .d2{animation-delay:.4s}.d3{animation-delay:.8s}.d4{animation-delay:1.2s}.d5{animation-delay:1.6s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}.ln{stroke-dashoffset:0}}
+</style>
+<rect width="1000" height="700" rx="24" fill="#f5f8fb"/>
+<text class="t" x="40" y="62" font-size="30" font-weight="800" fill="#1f2937">임종한 병원과 다른 장례식장으로 모실 때</text>
+<path class="ln" d="M90 130 V 640" stroke="#93c5fd" stroke-width="6" fill="none"/>
+<g class="t">
+  <circle class="dot" cx="90" cy="140" r="22" fill="#2563eb"/><text x="90" y="148" font-size="20" fill="#fff" text-anchor="middle" font-weight="700">1</text>
+  <text x="135" y="134" font-size="24" font-weight="700" fill="#1f2937">사망진단서 받기</text>
+  <text x="135" y="166" font-size="19" fill="#4b5563">임종한 병원에서 발급 · 이송과 이후 행정에 모두 필요</text>
+
+  <circle class="dot d2" cx="90" cy="250" r="22" fill="#2563eb"/><text x="90" y="258" font-size="20" fill="#fff" text-anchor="middle" font-weight="700">2</text>
+  <text x="135" y="244" font-size="24" font-weight="700" fill="#1f2937">모실 장례식장 정하기</text>
+  <text x="135" y="276" font-size="19" fill="#4b5563">가족 생활권 · 조문객 동선 · 빈소 여유 확인</text>
+
+  <circle class="dot d3" cx="90" cy="360" r="22" fill="#2563eb"/><text x="90" y="368" font-size="20" fill="#fff" text-anchor="middle" font-weight="700">3</text>
+  <text x="135" y="354" font-size="24" font-weight="700" fill="#1f2937">상조에 연락 → 이송 차량 배차</text>
+  <text x="135" y="386" font-size="19" fill="#4b5563">임종 병원 안치실에서 고인을 정중히 모셔 출발</text>
+
+  <circle class="dot d4" cx="90" cy="470" r="22" fill="#2563eb"/><text x="90" y="478" font-size="20" fill="#fff" text-anchor="middle" font-weight="700">4</text>
+  <text x="135" y="464" font-size="24" font-weight="700" fill="#1f2937">장례지도사가 장례식장에서 먼저 대기</text>
+  <text x="135" y="496" font-size="19" fill="#4b5563">가족 도착 전 빈소·안치 접수 준비</text>
+
+  <circle class="dot d5" cx="90" cy="580" r="22" fill="#f59e0b"/><text x="90" y="588" font-size="20" fill="#fff" text-anchor="middle" font-weight="700">5</text>
+  <text x="135" y="574" font-size="24" font-weight="700" fill="#1f2937">안치 · 빈소 마련 → 3일장 시작</text>
+  <text x="135" y="606" font-size="19" fill="#4b5563">화장 예약 · 부고 발송 · 입관 일정 확정</text>
+</g>
+<rect x="600" y="620" width="360" height="52" rx="26" fill="#fff" stroke="#dbe4ee" stroke-width="2"/>
+<text class="t" x="780" y="654" font-size="19" fill="#2563eb" text-anchor="middle">한 번의 전화로 3~5단계 진행</text>
+</svg>

@@ -54,13 +54,17 @@
       "logNo": "224120817252",
       "title": "파주 불교 부친상 후불제상조 진행 사례 정리",
       "type": "case",
-      "status": "pending"
+      "status": "done",
+      "slug": "paju-hanbit-buddhist-father-3day-case",
+      "date": "2026-11-02"
     },
     {
       "logNo": "224381531239",
       "title": "이음케어라이프 이대목동병원 장례 동행기",
       "type": "case",
-      "status": "pending"
+      "status": "done",
+      "slug": "ewha-mokdong-transfer-3day-case",
+      "date": "2026-11-02"
     },
     {
       "logNo": "224093228089",

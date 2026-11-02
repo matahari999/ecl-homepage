@@ -102,5 +102,31 @@
       "goyang-postpaid-sangjo",
       "ilsan-bogeum-funeral-3day-case"
     ]
+  },
+  {
+    "date": "2026-11-02",
+    "keyword": "파주한빛장례식장 불교 장례",
+    "source": "case",
+    "slug": "paju-hanbit-buddhist-father-3day-case",
+    "title": "파주한빛장례식장 불교 부친상 3일장 후기: 새벽 발인과 원거리 봉안",
+    "gsc": null,
+    "linkedFrom": [
+      "dongguk-ilsan-general-3day-case",
+      "goyang-postpaid-sangjo",
+      "ilsan-shilnakwon-dawn-lawn-burial-case"
+    ]
+  },
+  {
+    "date": "2026-11-02",
+    "keyword": "이대목동병원장례식장 후불제 상조",
+    "source": "case",
+    "slug": "ewha-mokdong-transfer-3day-case",
+    "title": "이대목동병원장례식장 3일장 후기: 다른 병원 임종 후 이송해 모신 과정",
+    "gsc": null,
+    "linkedFrom": [
+      "paju-hanbit-buddhist-father-3day-case",
+      "dongguk-ilsan-general-3day-case",
+      "goyang-postpaid-sangjo"
+    ]
   }
 ]

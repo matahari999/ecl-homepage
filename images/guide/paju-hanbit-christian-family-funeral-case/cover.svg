@@ -12,16 +12,16 @@
   @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8f5ef"/><stop offset="1" stop-color="#e9e2d4"/></linearGradient>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1630"/><stop offset="1" stop-color="#3a2c45"/></linearGradient>
   <radialGradient id="halo"><stop offset="0" stop-color="#fde68a" stop-opacity=".9"/><stop offset="1" stop-color="#fde68a" stop-opacity="0"/></radialGradient>
   <radialGradient id="pet" cx=".5" cy=".2"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e7e5e4"/></radialGradient>
 </defs>
 <rect width="1200" height="630" fill="url(#bg)"/>
 <!-- 빛과 십자가 -->
 <g class="ry" fill="#fde68a"><path d="M980 120 L900 560 L940 560 Z"/><path d="M980 120 L1040 560 L1080 560 Z"/><path d="M980 120 L980 560 L1010 560 Z"/></g>
-<g fill="#b45309" opacity=".75"><rect x="970" y="90" width="20" height="120" rx="4"/><rect x="935" y="125" width="90" height="18" rx="4"/></g>
+<g fill="#f59e0b" opacity=".85"><rect x="970" y="90" width="20" height="120" rx="4"/><rect x="935" y="125" width="90" height="18" rx="4"/></g>
 <!-- 테이블 -->
-<rect x="0" y="560" width="1200" height="70" fill="#d6cab4"/>
+<rect x="0" y="560" width="1200" height="70" fill="#2a2138"/>
 <!-- 초 -->
 <circle class="gl" cx="620" cy="350" r="150" fill="url(#halo)"/>
 <rect x="590" y="380" width="60" height="180" rx="8" fill="#fffdf7" stroke="#e7e5e4" stroke-width="2"/>
@@ -41,7 +41,7 @@
   </g>
   <g stroke="#b45309" stroke-width="2"><line x1="800" y1="345" x2="790" y2="300"/><line x1="800" y1="345" x2="812" y2="298"/></g>
 </g>
-<text x="70" y="140" class="t" font-size="46" font-weight="900" fill="#1c1917">파주한빛장례식장</text>
-<text x="70" y="200" class="t" font-size="40" font-weight="900" fill="#b45309">기독교 2일 가족장</text>
-<text x="70" y="252" class="t" font-size="24" font-weight="700" fill="#57534e">후불제 상조 · 실제 진행 사례</text>
+<text x="70" y="140" class="t" font-size="46" font-weight="900" fill="#ffffff">파주한빛장례식장</text>
+<text x="70" y="200" class="t" font-size="40" font-weight="900" fill="#fbbf24">기독교 2일 가족장</text>
+<text x="70" y="252" class="t" font-size="24" font-weight="700" fill="#e7e5e4">후불제 상조 · 실제 진행 사례</text>
 </svg>

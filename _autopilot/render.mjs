@@ -212,6 +212,24 @@ article th{background:#f1f5f9;font-weight:800;white-space:nowrap}
 .float a:focus{outline:3px solid #93c5fd}
 @media(max-width:560px){.float a{width:48px;height:48px;font-size:20px}}
 .float .f-call{background:var(--blue);color:#fff}.float .f-kakao{background:#fee500;color:#191600;font-size:13px;font-weight:900}
+
+@media (prefers-color-scheme:dark){
+:root{--ink:#e5e7eb;--muted:#9ca3af;--line:#2a3550;--bg:#0b1222;--card:#121a2e;--soft:#1a2747}
+a{color:#93c5fd}
+.summary,.toc,.case,.card,.faq details,article table{background:var(--card)}
+.toc a{color:var(--ink)}
+article th{background:#1a2440}
+article td,article th{border-color:var(--line)}
+article strong{background:linear-gradient(transparent 62%,rgba(250,204,21,.35) 62%)}
+article blockquote{background:#1f1b10;border-color:#4a3d12;color:#f3e8c8}
+.fig img,.gal img{border-color:var(--line);background:#0f172a}
+.tag{background:#1a2747;color:#93c5fd}
+.tag.news{background:#3b1414;color:#fca5a5}
+.btn-ghost{background:#1e293b;color:#e5e7eb;border-color:#334155}
+.card:hover{border-color:#3b5bdb}
+.case b,.summary b{color:#93c5fd}
+.faq details p{color:#cbd5e1}
+}
 `;
 
 function layout({ title, description, canonical, jsonLd = [], body, ogType = 'article' }) {
@@ -220,6 +238,7 @@ function layout({ title, description, canonical, jsonLd = [], body, ogType = 'ar
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${canonical}">

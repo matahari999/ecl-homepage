@@ -16,23 +16,23 @@
   @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdf6ec"/><stop offset="1" stop-color="#eef3ff"/></linearGradient>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101a38"/><stop offset="1" stop-color="#1f2b55"/></linearGradient>
   <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fcd34d"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
 </defs>
 <rect width="1200" height="630" fill="url(#bg)"/>
-<circle cx="1080" cy="90" r="160" fill="#dbeafe" opacity=".6"/>
-<circle cx="90" cy="580" r="140" fill="#fde68a" opacity=".35"/>
+<circle opacity=".55" cx="1080" cy="90" r="160" fill="#2b3a6e"/>
+<circle opacity=".55" cx="90" cy="580" r="140" fill="#2b3a6e"/>
 <line x1="600" y1="70" x2="600" y2="560" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="10 12"/>
 <text x="600" y="320" text-anchor="middle" class="t" font-size="34" font-weight="900" fill="#94a3b8">VS</text>
 
 <!-- 왼쪽: 선불제 -->
-<text x="310" y="110" text-anchor="middle" class="t" font-size="46" font-weight="900" fill="#0f1b3d">선불제 상조</text>
-<text x="310" y="152" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#64748b">매달 미리 납입</text>
+<text x="310" y="110" text-anchor="middle" class="t" font-size="46" font-weight="900" fill="#ffffff">선불제 상조</text>
+<text x="310" y="152" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#cbd5e1">매달 미리 납입</text>
 <g class="c1"><circle cx="270" cy="250" r="22" fill="url(#gold)" stroke="#b45309" stroke-width="3"/><text x="270" y="259" text-anchor="middle" class="t" font-size="22" font-weight="900" fill="#92400e">₩</text></g>
 <g class="c2"><circle cx="312" cy="250" r="22" fill="url(#gold)" stroke="#b45309" stroke-width="3"/><text x="312" y="259" text-anchor="middle" class="t" font-size="22" font-weight="900" fill="#92400e">₩</text></g>
 <g class="c3"><circle cx="354" cy="250" r="22" fill="url(#gold)" stroke="#b45309" stroke-width="3"/><text x="354" y="259" text-anchor="middle" class="t" font-size="22" font-weight="900" fill="#92400e">₩</text></g>
 <rect x="215" y="285" width="190" height="200" rx="26" fill="#fff" stroke="#0f1b3d" stroke-width="5"/>
-<rect x="200" y="272" width="220" height="26" rx="10" fill="#0f1b3d"/>
+<rect x="200" y="272" width="220" height="26" rx="10" fill="#94a3b8"/>
 <rect class="jar" x="226" y="330" width="168" height="140" rx="16" fill="#fbbf24" opacity=".85"/>
 <g class="t" font-size="20" font-weight="700" fill="#475569">
   <rect x="170" y="510" width="62" height="40" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="2"/><text x="201" y="537" text-anchor="middle">1월</text>
@@ -42,8 +42,8 @@
 </g>
 
 <!-- 오른쪽: 후불제 -->
-<text x="890" y="110" text-anchor="middle" class="t" font-size="46" font-weight="900" fill="#1d4ed8">후불제 상조</text>
-<text x="890" y="152" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#64748b">장례 후 한 번 정산</text>
+<text x="890" y="110" text-anchor="middle" class="t" font-size="46" font-weight="900" fill="#93c5fd">후불제 상조</text>
+<text x="890" y="152" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#cbd5e1">장례 후 한 번 정산</text>
 <g class="fl">
   <rect x="740" y="200" width="300" height="300" rx="28" fill="#fff" stroke="#1d4ed8" stroke-width="5"/>
   <rect x="740" y="200" width="300" height="64" rx="28" fill="#1d4ed8"/>

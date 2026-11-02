@@ -163,7 +163,7 @@ ${posts.map((p) => `   - /guide/${p.slug} : ${p.title}`).join('\n') || '   (아�
 
 [그림 — 글마다 2장, 직접 제작]
 - 대표 그림(cover)과 설명 그림 1장을 애니메이션 SVG로 직접 그린다. 파일 위치: images/guide/<slug>/cover.svg , images/guide/<slug>/<이름>.svg
-- cover: viewBox 0 0 1200 630, 주제를 한눈에 보여주는 따뜻한 플랫 일러스트 + 큰 한글 제목 1줄. 장례 주제는 차분한 톤(국화·촛불·남색·크림색), 사람 얼굴·실제 인물·회사 로고는 그리지 않는다.
+- cover: viewBox 0 0 1200 630, 주제를 한눈에 보여주는 플랫 일러스트 + 큰 한글 제목 1줄. 반드시 어두운 배경(짙은 남색·보라 등) + 흰색/밝은 글씨 (밝은 배경은 휴대폰 다크모드에서 색이 뒤집혀 글씨가 안 보임). 장례 주제는 차분한 톤(국화·촛불·남색·크림색), 사람 얼굴·실제 인물·회사 로고는 그리지 않는다.
 - 설명 그림: 절차는 타임라인, 비교는 표/그래프, 기한은 막대 등 본문 핵심을 시각화. viewBox 가로 1200.
 - 애니메이션은 SVG 안의 <style> CSS @keyframes로만(스크립트·외부 파일·외부 폰트 금지). 부드럽고 느리게, @media (prefers-reduced-motion:reduce){*{animation:none!important}} 포함.
 - 글꼴: font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif. 글자가 도형과 겹치지 않게 배치. 숫자·기한은 본문과 똑같이.

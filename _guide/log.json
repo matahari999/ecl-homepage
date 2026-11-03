@@ -141,5 +141,31 @@
       "paju-hanbit-buddhist-father-3day-case",
       "dongguk-ilsan-general-3day-case"
     ]
+  },
+  {
+    "date": "2026-11-03",
+    "keyword": "이대서울병원장례식장 4일장",
+    "source": "case",
+    "slug": "ewha-seoul-general-spouse-4day-case",
+    "title": "이대서울병원장례식장 무종교 4일장 후기: 화장 예약이 밀린 배우자상",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-mokdong-transfer-3day-case",
+      "paju-hanbit-buddhist-father-3day-case",
+      "dongguk-ilsan-general-3day-case"
+    ]
+  },
+  {
+    "date": "2026-11-03",
+    "keyword": "일산복음병원장례식장 모친상",
+    "source": "case",
+    "slug": "ilsan-bogeum-daughters-mourners-case",
+    "title": "일산복음병원장례식장 모친상 후기: 두 딸이 상주가 된 3일장",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-seoul-general-spouse-4day-case",
+      "ewha-mokdong-transfer-3day-case",
+      "paju-hanbit-buddhist-father-3day-case"
+    ]
   }
 ]

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" role="img" aria-label="자매가 상주를 맡을 때 빈소 응대와 일정·행정을 나누고 장례지도사와 도우미 팀장이 현장을 맡는 역할 분담 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes in{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes dash{to{stroke-dashoffset:-24}}
+  .a{animation:in .8s ease-out both}.b{animation:in .8s ease-out .5s both}.c{animation:in .8s ease-out 1s both}
+  .ln{stroke-dasharray:8 8;animation:dash 1.2s linear infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1000" height="640" rx="24" fill="#2a1f4a"/>
+<g class="t">
+  <text x="500" y="58" text-anchor="middle" font-size="28" font-weight="900" fill="#ffffff">자매가 상주일 때, 이렇게 나누면 덜 지칩니다</text>
+  <g class="a">
+    <rect x="40" y="96" width="440" height="300" rx="18" fill="#ffffff"/>
+    <rect x="40" y="96" width="440" height="58" rx="18" fill="#fbcfe8"/><rect x="40" y="132" width="440" height="22" fill="#fbcfe8"/>
+    <text x="260" y="134" text-anchor="middle" font-size="22" font-weight="900" fill="#4a1d3f">상주 A · 빈소와 조문</text>
+    <g font-size="17" fill="#1f2937">
+      <text x="66" y="196">· 조문객 맞이와 답례 인사</text>
+      <text x="66" y="232">· 친척 어른들 응대·좌석 안내</text>
+      <text x="66" y="268">· 입관 때 가족 인사 순서 정하기</text>
+      <text x="66" y="304">· 고인께 드릴 편지·꽃 준비</text>
+    </g>
+    <text x="66" y="364" font-size="16" font-weight="800" fill="#be185d">빈소를 지키는 역할</text>
+  </g>
+  <g class="b">
+    <rect x="520" y="96" width="440" height="300" rx="18" fill="#ffffff"/>
+    <rect x="520" y="96" width="440" height="58" rx="18" fill="#c7d2fe"/><rect x="520" y="132" width="440" height="22" fill="#c7d2fe"/>
+    <text x="740" y="134" text-anchor="middle" font-size="22" font-weight="900" fill="#1e1b4b">상주 B · 일정과 연락</text>
+    <g font-size="17" fill="#1f2937">
+      <text x="546" y="196">· 부고 발송과 발인 시간 공지</text>
+      <text x="546" y="232">· 장지·차량 일정 확인</text>
+      <text x="546" y="268">· 사망진단서 사본 여러 부 챙기기</text>
+      <text x="546" y="304">· 장례 후 정산 내역 함께 확인</text>
+    </g>
+    <text x="546" y="364" font-size="16" font-weight="800" fill="#4338ca">밖의 일을 챙기는 역할</text>
+  </g>
+  <path class="ln" d="M260 396 L420 446 M740 396 L580 446" stroke="#c4b5fd" stroke-width="3" fill="none"/>
+  <g class="c">
+    <rect x="200" y="446" width="600" height="120" rx="18" fill="#fcd34d"/>
+    <text x="500" y="492" text-anchor="middle" font-size="22" font-weight="900" fill="#2a1f4a">장례지도사 · 도우미 팀장</text>
+    <text x="500" y="526" text-anchor="middle" font-size="17" fill="#3b2f5e">입관·발인 진행, 접객 인력과 식사·음료 관리</text>
+    <text x="500" y="552" text-anchor="middle" font-size="17" fill="#3b2f5e">상주 두 사람은 판단만, 실무는 현장 팀이</text>
+  </g>
+  <text x="500" y="608" text-anchor="middle" font-size="16" fill="#ddd6fe">교대로 쉬는 시간을 정해 두면 3일을 함께 버틸 수 있습니다</text>
+</g>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="밤하늘 아래 임진강 물결과 국화, 촛불로 표현한 파주 후불제 상조 안내 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes flick{0%,100%{transform:scale(1,1)}30%{transform:scale(.9,1.08)}60%{transform:scale(1.05,.95)}}
+  @keyframes glow{0%,100%{opacity:.35}50%{opacity:.8}}
+  @keyframes wave{to{transform:translateX(-120px)}}
+  @keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+  .fl{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.6s ease-in-out infinite}
+  .gl{animation:glow 3.4s ease-in-out infinite}
+  .wv{animation:wave 6s linear infinite}
+  .st{animation:tw 3s ease-in-out infinite}.s2{animation-delay:1.2s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1330"/><stop offset="1" stop-color="#1e2a5a"/></linearGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#fcd34d" stop-opacity=".85"/><stop offset="1" stop-color="#fcd34d" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<g fill="#fff"><circle class="st" cx="760" cy="70" r="2.5"/><circle class="st s2" cx="1100" cy="110" r="2.5"/><circle class="st" cx="960" cy="40" r="2"/><circle class="st s2" cx="680" cy="160" r="2"/></g>
+<circle cx="1080" cy="150" r="46" fill="#fef3c7" opacity=".9"/><circle cx="1098" cy="138" r="42" fill="#0f1a3f"/>
+<path d="M600 430 L720 340 L820 410 L930 320 L1060 400 L1200 350 L1200 630 L600 630 Z" fill="#26346b"/>
+<g class="wv" fill="none" stroke="#60a5fa" stroke-width="4" opacity=".55">
+  <path d="M600 520 q30 -14 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
+  <path d="M600 560 q30 -14 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
+</g>
+<rect x="600" y="500" width="600" height="130" fill="#1b2756" opacity=".55"/>
+<circle class="gl" cx="1040" cy="420" r="110" fill="url(#halo)"/>
+<rect x="1018" y="430" width="44" height="120" rx="7" fill="#fffdf7"/>
+<path class="fl" d="M1040 372 C 1057 396, 1056 416, 1040 426 C 1024 416, 1023 396, 1040 372 Z" fill="#f59e0b"/>
+<g transform="translate(860 610)">
+  <path d="M0 0 C -6 -50, -4 -100, 0 -150" stroke="#65a30d" stroke-width="6" fill="none"/>
+  <g fill="#fff7e0" stroke="#e5c97a" stroke-width="1.4"><ellipse cx="0" cy="-172" rx="13" ry="34"/><ellipse cx="0" cy="-172" rx="13" ry="34" transform="rotate(45 0 -172)"/><ellipse cx="0" cy="-172" rx="13" ry="34" transform="rotate(90 0 -172)"/><ellipse cx="0" cy="-172" rx="13" ry="34" transform="rotate(135 0 -172)"/></g>
+  <circle cx="0" cy="-172" r="10" fill="#facc15"/>
+</g>
+<text class="t" x="80" y="190" font-size="28" fill="#fcd34d" font-weight="700">파주시 장례 안내</text>
+<text class="t" x="80" y="290" font-size="76" fill="#fff" font-weight="900">파주 후불제 상조</text>
+<text class="t" x="80" y="360" font-size="30" fill="#cbd5f5">장례식장 10곳 · 승화원 관내 화장 · 비용 구조</text>
+<text class="t" x="80" y="560" font-size="24" fill="#94a3d8">이음케어라이프 · 24시간 1588-9012</text>
+</svg>

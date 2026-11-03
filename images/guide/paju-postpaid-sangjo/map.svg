@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" role="img" aria-label="파주 운정·금촌, 문산·파주읍, 탄현·교하, 광탄·월롱 지역 장례식장에서 고양시 덕양구 서울시립승화원으로 이어지는 흐름 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes dash{to{stroke-dashoffset:-60}}
+  @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+  .rd{animation:dash 2.4s linear infinite}
+  .pl{animation:pulse 2.4s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1000" height="680" rx="24" fill="#f5f7fb"/>
+<text class="t" x="40" y="60" font-size="30" font-weight="800" fill="#1f2937">파주 장례의 흔한 동선</text>
+<text class="t" x="40" y="96" font-size="19" fill="#64748b">시내 장례식장에서 2~3일 → 고양시 덕양구 서울시립승화원 화장 → 장지</text>
+<g class="t">
+  <rect x="40" y="130" width="400" height="104" rx="16" fill="#fff" stroke="#dbe3ef" stroke-width="2"/>
+  <text x="62" y="170" font-size="23" font-weight="700" fill="#1e3a8a">문산·파주읍</text>
+  <text x="62" y="206" font-size="18" fill="#475569">문산장례문화원 · 예담 · 파주한사랑요양병원</text>
+  <rect x="40" y="250" width="400" height="104" rx="16" fill="#fff" stroke="#dbe3ef" stroke-width="2"/>
+  <text x="62" y="290" font-size="23" font-weight="700" fill="#1e3a8a">금촌·운정</text>
+  <text x="62" y="326" font-size="18" fill="#475569">파주병원 · 메디인병원 · 쉴낙원 파주운정</text>
+  <rect x="40" y="370" width="400" height="104" rx="16" fill="#fff" stroke="#dbe3ef" stroke-width="2"/>
+  <text x="62" y="410" font-size="23" font-weight="700" fill="#1e3a8a">탄현·교하</text>
+  <text x="62" y="446" font-size="18" fill="#475569">파주한빛병원 · 교하장례식장</text>
+  <rect x="40" y="490" width="400" height="104" rx="16" fill="#fff" stroke="#dbe3ef" stroke-width="2"/>
+  <text x="62" y="530" font-size="23" font-weight="700" fill="#1e3a8a">광탄·월롱</text>
+  <text x="62" y="566" font-size="18" fill="#475569">광탄현대병원 · 파주보람장례식장</text>
+</g>
+<g fill="none" stroke="#3b82f6" stroke-width="4" stroke-dasharray="14 10">
+  <path class="rd" d="M440 182 C 560 182, 580 360, 650 380"/>
+  <path class="rd" d="M440 302 C 540 302, 580 370, 650 385"/>
+  <path class="rd" d="M440 422 C 540 422, 580 400, 650 392"/>
+  <path class="rd" d="M440 542 C 560 542, 580 420, 650 398"/>
+</g>
+<circle class="pl" cx="770" cy="390" r="120" fill="#bfdbfe" opacity=".5"/>
+<rect x="650" y="320" width="300" height="140" rx="20" fill="#1e3a8a"/>
+<text class="t" x="800" y="372" font-size="25" font-weight="800" fill="#fff" text-anchor="middle">서울시립승화원</text>
+<text class="t" x="800" y="406" font-size="18" fill="#bfdbfe" text-anchor="middle">고양시 덕양구 · 화장</text>
+<text class="t" x="800" y="438" font-size="17" fill="#fde68a" text-anchor="middle">파주 주민 관내 이용 가능</text>
+<text class="t" x="800" y="520" font-size="17" fill="#64748b" text-anchor="middle">※ 주민등록 6개월 이상 거주 기준</text>
+<text class="t" x="40" y="640" font-size="16" fill="#94a3b8">장례식장 목록: 파주시청 장사시설 안내(2026.1.2 기준)</text>
+</svg>

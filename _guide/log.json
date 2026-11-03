@@ -128,5 +128,18 @@
       "dongguk-ilsan-general-3day-case",
       "goyang-postpaid-sangjo"
     ]
+  },
+  {
+    "date": "2026-11-03",
+    "keyword": "파주 후불제상조",
+    "source": "manual",
+    "slug": "paju-postpaid-sangjo",
+    "title": "파주 후불제상조 총정리: 장례식장 10곳과 승화원 관내 화장 기준",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-mokdong-transfer-3day-case",
+      "paju-hanbit-buddhist-father-3day-case",
+      "dongguk-ilsan-general-3day-case"
+    ]
   }
 ]

@@ -4,8 +4,15 @@
 import { config, loadPosts } from './render.mjs';
 const S = config.site;
 const key = config.indexNowKey;
-const slugs = process.argv.slice(2);
+//        node _autopilot/indexnow.mjs --site       → 블로그 전체 + 홈페이지 주요 페이지(sitemap.xml)
+import fs from 'node:fs';
+const site = process.argv.includes('--site');
+const slugs = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 const urls = [`${S.origin}${S.guidePath}`, ...(slugs.length ? slugs : loadPosts().map((p) => p.slug)).map((s) => `${S.origin}${S.guidePath}/${s}`)];
+if (site) {
+  const sm = fs.readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
+  for (const m of sm.matchAll(/<loc>([^<]+)<\/loc>/g)) if (!urls.includes(m[1])) urls.push(m[1]);
+}
 const body = { host: new URL(S.origin).host, key, keyLocation: `${S.origin}/${key}.txt`, urlList: urls };
 for (const ep of ['https://searchadvisor.naver.com/indexnow', 'https://api.indexnow.org/indexnow']) {
   try {

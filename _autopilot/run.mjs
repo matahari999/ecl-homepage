@@ -20,6 +20,7 @@
 //   GSC_SITE_URL               (선택) 기본값 sc-domain:ecl.ai.kr  (URL 접두어 속성이면 https://ecl.ai.kr/)
 //   CLAUDE_MODEL               (선택) 기본값 claude-sonnet-5-5
 import fs from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { config, loadPosts, renderAll, sanitize, textLength, POSTS_DIR, ROOT } from './render.mjs';
@@ -308,6 +309,7 @@ function publishPost(post, target, topGuidePages, log) {
   fs.writeFileSync(path.join(POSTS_DIR, `${post.slug}.json`), JSON.stringify(post, null, 2) + '\n');
   log.push({ date: today(), keyword: target.query, source: target.source, slug: post.slug, title: post.title, gsc: post.gsc || null, linkedFrom: sources });
   fs.writeFileSync(LOG_FILE, JSON.stringify(log, null, 2) + '\n');
+  try { execFileSync('node', [path.join(ROOT, '_autopilot', 'og.mjs')], { stdio: 'inherit' }); } catch { console.log('og.png 생성 실패 (계속 진행)'); }
   const rendered = renderAll();
   console.log(`✓ 발행: ${config.site.origin}${config.site.guidePath}/${post.slug}  ← 링크: ${sources.join(', ') || '없음'} (전체 ${rendered.length}편)`);
   return post;

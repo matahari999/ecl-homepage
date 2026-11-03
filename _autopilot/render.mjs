@@ -232,7 +232,7 @@ article blockquote{background:#1f1b10;border-color:#4a3d12;color:#f3e8c8}
 }
 `;
 
-function layout({ title, description, canonical, jsonLd = [], body, ogType = 'article' }) {
+function layout({ title, description, canonical, jsonLd = [], body, ogType = 'article', image = '' }) {
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -249,8 +249,15 @@ function layout({ title, description, canonical, jsonLd = [], body, ogType = 'ar
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="${S.origin}/logo.png">
-<meta name="twitter:card" content="summary">
+${image ? `<meta property="og:image" content="${image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(title)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${image}">` : `<meta property="og:image" content="${S.origin}/logo.png">
+<meta name="twitter:card" content="summary">`}
 <link rel="icon" type="image/png" href="/logo.png">
 <link rel="alternate" type="application/rss+xml" title="${esc(S.guideTitle)}" href="${S.guidePath}/rss.xml">
 <meta name="theme-color" content="#0a0f1e">
@@ -288,6 +295,14 @@ function card(p) {
   return `<a class="card" href="${S.guidePath}/${p.slug}">${th ? `<img class="thumb" src="${th}" alt="" loading="lazy">` : ''}<span class="tag${p.category === '업계 소식' ? ' news' : ''}">${esc(p.category || '가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><time datetime="${p.publishedAt}">${fmtDate(p.publishedAt)}</time></a>`;
 }
 
+// 공유 미리보기용 PNG (og.mjs가 만든 og.png) 주소
+export function ogImage(post) {
+  const src = post?.cover?.src || '';
+  if (!/^\/images\/.+\.svg$/.test(src)) return '';
+  const rel = path.join(path.dirname(src), 'og.png');
+  return fs.existsSync(path.join(ROOT, rel)) ? `${S.origin}${rel.split(path.sep).join('/')}` : '';
+}
+
 function renderPost(post, all) {
   const bySlug = Object.fromEntries(all.map((p) => [p.slug, p]));
   // 관련글: 직접 지정된 것 + 최신글로 채워 최대 4개
@@ -308,7 +323,7 @@ function renderPost(post, all) {
       mainEntityOfPage: canonical,
       author: { '@type': 'Organization', name: S.brand, url: S.origin },
       publisher: { '@type': 'Organization', name: S.brand, logo: { '@type': 'ImageObject', url: `${S.origin}/logo.png` } },
-      image: `${S.origin}/logo.png`,
+      image: ogImage(post) || `${S.origin}/logo.png`,
     },
     {
       '@context': 'https://schema.org',
@@ -348,7 +363,7 @@ ${bodyWithCtas(post)}
   <p class="note">이 글은 일반적인 안내이며, 법령·지원제도·비용은 바뀔 수 있습니다. 정확한 내용은 해당 기관이나 이음케어라이프 상담(☎ ${S.phone})으로 확인해 주세요.</p>
   ${rel.length ? `<section class="related"><h2>함께 읽으면 좋은 글</h2><div class="cards">${rel.map(card).join('')}</div></section>` : ''}
 </main>`;
-  return layout({ title: `${post.title} | ${S.brand}`, description: post.description, canonical, jsonLd, body });
+  return layout({ title: `${post.title} | ${S.brand}`, description: post.description, canonical, jsonLd, body, image: ogImage(post) });
 }
 
 function renderIndex(all) {
@@ -373,16 +388,20 @@ function renderIndex(all) {
   <div class="cards">${all.map(card).join('\n')}</div>
   ${CTA.quote()}
 </main>`;
-  return layout({ title: `${S.guideTitle} | ${S.brand}`, description: S.guideDescription, canonical, jsonLd, body, ogType: 'website' });
+  return layout({ title: `${S.guideTitle} | ${S.brand}`, description: S.guideDescription, canonical, jsonLd, body, ogType: 'website', image: `${S.origin}/og-home.jpg` });
 }
 
 function renderSitemap(all) {
   const today = new Date().toISOString().slice(0, 10);
   const items = [
     `<url><loc>${S.origin}${S.guidePath}</loc><lastmod>${all[0]?.publishedAt || today}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>`,
-    ...all.map((p) => `<url><loc>${url(p)}</loc><lastmod>${p.updatedAt || p.publishedAt}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`),
+    ...all.map((p) => {
+      const imgs = [ogImage(p), ...(p.sections || []).flatMap((x) => (x.gallery || []).map((g) => g.src))]
+        .filter(Boolean).map((u) => (u.startsWith('http') ? u : `${S.origin}${u}`)).slice(0, 8);
+      return `<url><loc>${url(p)}</loc><lastmod>${p.updatedAt || p.publishedAt}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>${imgs.map((u) => `<image:image><image:loc>${esc(u)}</image:loc></image:image>`).join('')}</url>`;
+    }),
   ];
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${items.join('\n')}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${items.join('\n')}\n</urlset>\n`;
 }
 
 function renderRss(all) {

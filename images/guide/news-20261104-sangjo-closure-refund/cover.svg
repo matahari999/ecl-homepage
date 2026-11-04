@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="상조 납입금 저금통 옆에 방패와 돋보기가 놓여 내 상조를 점검하는 모습">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes coin{0%{transform:translateY(-60px);opacity:0}25%{opacity:1}55%,100%{transform:translateY(40px);opacity:0}}
+  @keyframes glow{0%,100%{opacity:.35}50%{opacity:.8}}
+  @keyframes look{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,10px)}}
+  .c1{animation:coin 5s ease-in infinite}.c2{animation:coin 5s ease-in 2.5s infinite}
+  .halo{animation:glow 4s ease-in-out infinite}
+  .lens{animation:look 6s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#111a3a"/><stop offset="1" stop-color="#26285a"/></linearGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="1080" cy="80" r="160" fill="#2e3470" opacity=".5"/>
+<text x="80" y="120" class="t" font-size="30" font-weight="700" fill="#fcd34d">2026년 11월 장례·상조 소식</text>
+<text x="80" y="190" class="t" font-size="54" font-weight="900" fill="#ffffff">상조회사 폐업, 낸 돈 지키는 법</text>
+<text x="80" y="245" class="t" font-size="28" fill="#cbd5e1">피해보상금 청구기한 · 내상조 그대로 · 가입 확인</text>
+<!-- 저금통 -->
+<g transform="translate(150,330)">
+  <ellipse cx="170" cy="250" rx="170" ry="14" fill="#0b1029" opacity=".6"/>
+  <rect x="20" y="70" width="300" height="170" rx="80" fill="#f5e6c8"/>
+  <rect x="130" y="80" width="80" height="12" rx="6" fill="#7c6a4a"/>
+  <circle cx="250" cy="140" r="9" fill="#7c6a4a"/>
+  <rect x="60" y="225" width="40" height="30" rx="8" fill="#e2cfa8"/><rect x="240" y="225" width="40" height="30" rx="8" fill="#e2cfa8"/>
+  <g class="c1"><circle cx="170" cy="40" r="22" fill="#fbbf24"/><circle cx="170" cy="40" r="14" fill="none" stroke="#b45309" stroke-width="3"/></g>
+  <g class="c2"><circle cx="170" cy="40" r="22" fill="#fbbf24"/><circle cx="170" cy="40" r="14" fill="none" stroke="#b45309" stroke-width="3"/></g>
+</g>
+<!-- 방패 -->
+<g transform="translate(640,320)">
+  <circle class="halo" cx="120" cy="120" r="130" fill="#3b82f6" opacity=".35"/>
+  <path d="M120 10 L215 45 V120 C215 185 170 225 120 245 C70 225 25 185 25 120 V45 Z" fill="#1e3a8a" stroke="#93c5fd" stroke-width="6"/>
+  <path d="M78 125 l30 30 l55 -62" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<!-- 돋보기 -->
+<g class="lens" transform="translate(930,360)">
+  <circle cx="80" cy="80" r="62" fill="#e0f2fe" opacity=".25" stroke="#e2e8f0" stroke-width="12"/>
+  <rect x="122" y="128" width="26" height="90" rx="12" fill="#e2e8f0" transform="rotate(-45 135 173)"/>
+</g>
+</svg>

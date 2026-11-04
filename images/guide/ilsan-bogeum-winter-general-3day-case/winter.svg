@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="겨울 3일장에서 달라지는 네 가지: 저녁에 몰리는 조문, 빈소 안팎 온도 차, 이른 아침 빙판길 발인, 언 땅의 장지 작업">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes up{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .c{animation:up 3s ease-in-out infinite}.c2{animation-delay:.7s}.c3{animation-delay:1.4s}.c4{animation-delay:2.1s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="700" rx="28" fill="#1c2b55"/>
+<text class="t" x="60" y="80" fill="#ffffff" font-size="38" font-weight="800">겨울 3일장에서 달라지는 네 가지</text>
+<text class="t" x="60" y="124" fill="#bae6fd" font-size="24">미리 알고 준비하면 가족이 덜 지칩니다</text>
+<g class="t">
+  <g class="c"><rect x="60" y="170" width="520" height="230" rx="20" fill="#ffffff"/>
+    <circle cx="120" cy="230" r="30" fill="#fde68a"/><text x="120" y="241" text-anchor="middle" font-size="28" font-weight="800" fill="#1c2b55">1</text>
+    <text x="170" y="242" font-size="28" font-weight="800" fill="#1c2b55">조문이 저녁에 몰려요</text>
+    <text x="90" y="305" font-size="22" fill="#334155">해가 일찍 져 퇴근 후 조문이 한꺼번에</text>
+    <text x="90" y="343" font-size="22" fill="#334155">→ 저녁 시간 접객 인력·식사 미리 조정</text></g>
+  <g class="c c2"><rect x="620" y="170" width="520" height="230" rx="20" fill="#ffffff"/>
+    <circle cx="680" cy="230" r="30" fill="#bae6fd"/><text x="680" y="241" text-anchor="middle" font-size="28" font-weight="800" fill="#1c2b55">2</text>
+    <text x="730" y="242" font-size="28" font-weight="800" fill="#1c2b55">빈소 안팎 온도 차</text>
+    <text x="650" y="305" font-size="22" fill="#334155">실내는 따뜻하고 주차장·운구 동선은 추움</text>
+    <text x="650" y="343" font-size="22" fill="#334155">→ 얇은 내복, 겉옷 둘 자리 정해 두기</text></g>
+  <g class="c c3"><rect x="60" y="430" width="520" height="230" rx="20" fill="#ffffff"/>
+    <circle cx="120" cy="490" r="30" fill="#c7d2fe"/><text x="120" y="501" text-anchor="middle" font-size="28" font-weight="800" fill="#1c2b55">3</text>
+    <text x="170" y="502" font-size="28" font-weight="800" fill="#1c2b55">어두운 새벽 발인</text>
+    <text x="90" y="565" font-size="22" fill="#334155">해 뜨기 전 출발, 길이 얼어 있을 수 있음</text>
+    <text x="90" y="603" font-size="22" fill="#334155">→ 미끄럼 적은 구두, 이동 시간 여유</text></g>
+  <g class="c c4"><rect x="620" y="430" width="520" height="230" rx="20" fill="#ffffff"/>
+    <circle cx="680" cy="490" r="30" fill="#fbcfe8"/><text x="680" y="501" text-anchor="middle" font-size="28" font-weight="800" fill="#1c2b55">4</text>
+    <text x="730" y="502" font-size="28" font-weight="800" fill="#1c2b55">장지는 언 땅</text>
+    <text x="650" y="565" font-size="22" fill="#334155">선영·묘지는 바람이 세고 땅이 얼어 있음</text>
+    <text x="650" y="603" font-size="22" fill="#334155">→ 현장 작업 가능 여부 미리 확인</text></g>
+</g>
+</svg>

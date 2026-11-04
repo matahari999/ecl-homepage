@@ -86,13 +86,17 @@
       "logNo": "224203063507",
       "title": "일산복음병원장례식장 후불제상조 3일장 진행 사례",
       "type": "case",
-      "status": "pending"
+      "status": "done",
+      "slug": "ilsan-bogeum-gimpo-seonyeong-case",
+      "date": "2026-11-04"
     },
     {
       "logNo": "224139554673",
       "title": "일산복음병원장례식장 후불제상조 진행 사례",
       "type": "case",
-      "status": "pending"
+      "status": "done",
+      "slug": "ilsan-bogeum-winter-general-3day-case",
+      "date": "2026-11-04"
     },
     {
       "logNo": "224092557353",

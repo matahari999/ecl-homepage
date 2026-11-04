@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-label="발인 날 일산복음병원장례식장에서 서울시립승화원 화장, 수골 후 김포 선영 안치까지 이어지는 동선과 차량 구성">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes dash{to{stroke-dashoffset:-44}}
+  @keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  .ln{animation:dash 2.2s linear infinite}
+  .dot{transform-box:fill-box;transform-origin:50% 50%;animation:pop 2.4s ease-in-out infinite}
+  .d2{animation-delay:.8s}.d3{animation-delay:1.6s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="680" rx="28" fill="#1e2547"/>
+<text class="t" x="60" y="78" fill="#ffffff" font-size="38" font-weight="800">발인 날 하루의 동선</text>
+<text class="t" x="60" y="122" fill="#c7d2fe" font-size="24">장례식장 → 화장장 → 선영, 세 곳을 한 번에 잇는 일정</text>
+<path class="ln" d="M200 300 L600 300 L1000 300" fill="none" stroke="#fcd34d" stroke-width="6" stroke-dasharray="22 22"/>
+<g>
+  <circle class="dot" cx="200" cy="300" r="40" fill="#fcd34d"/>
+  <text class="t" x="200" y="312" text-anchor="middle" fill="#1e2547" font-size="34" font-weight="800">1</text>
+  <circle class="dot d2" cx="600" cy="300" r="40" fill="#fcd34d"/>
+  <text class="t" x="600" y="312" text-anchor="middle" fill="#1e2547" font-size="34" font-weight="800">2</text>
+  <circle class="dot d3" cx="1000" cy="300" r="40" fill="#fcd34d"/>
+  <text class="t" x="1000" y="312" text-anchor="middle" fill="#1e2547" font-size="34" font-weight="800">3</text>
+</g>
+<text class="t" x="400" y="270" text-anchor="middle" fill="#e0e7ff" font-size="22">리무진 + 버스</text>
+<text class="t" x="800" y="270" text-anchor="middle" fill="#e0e7ff" font-size="22">유골함 모시고 이동</text>
+<g class="t">
+  <rect x="70" y="380" width="260" height="240" rx="18" fill="#ffffff"/>
+  <text x="200" y="428" text-anchor="middle" fill="#1e2547" font-size="26" font-weight="800">장례식장</text>
+  <text x="200" y="462" text-anchor="middle" fill="#475569" font-size="20">일산복음병원</text>
+  <text x="200" y="520" text-anchor="middle" fill="#334155" font-size="21">이른 아침 발인</text>
+  <text x="200" y="554" text-anchor="middle" fill="#334155" font-size="21">운구 · 차량 탑승</text>
+  <text x="200" y="588" text-anchor="middle" fill="#334155" font-size="21">영정·위패 모심</text>
+
+  <rect x="470" y="380" width="260" height="240" rx="18" fill="#ffffff"/>
+  <text x="600" y="428" text-anchor="middle" fill="#1e2547" font-size="26" font-weight="800">화장장</text>
+  <text x="600" y="462" text-anchor="middle" fill="#475569" font-size="20">서울시립승화원</text>
+  <text x="600" y="520" text-anchor="middle" fill="#334155" font-size="21">예약 시각 화장</text>
+  <text x="600" y="554" text-anchor="middle" fill="#334155" font-size="21">대기 · 수골</text>
+  <text x="600" y="588" text-anchor="middle" fill="#334155" font-size="21">유골함 인계</text>
+
+  <rect x="870" y="380" width="260" height="240" rx="18" fill="#ffffff"/>
+  <text x="1000" y="428" text-anchor="middle" fill="#1e2547" font-size="26" font-weight="800">장지</text>
+  <text x="1000" y="462" text-anchor="middle" fill="#475569" font-size="20">김포 선영</text>
+  <text x="1000" y="520" text-anchor="middle" fill="#334155" font-size="21">가족 선산 도착</text>
+  <text x="1000" y="554" text-anchor="middle" fill="#334155" font-size="21">안치 · 간단한 인사</text>
+  <text x="1000" y="588" text-anchor="middle" fill="#334155" font-size="21">장례 마무리</text>
+</g>
+</svg>

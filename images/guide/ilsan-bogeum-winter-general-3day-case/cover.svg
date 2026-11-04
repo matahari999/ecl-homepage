@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="눈이 내리는 겨울밤 창가에 놓인 흰 국화와 촛불로 표현한 겨울 일반장례 3일장 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes snow{0%{transform:translateY(-40px);opacity:0}15%{opacity:.9}100%{transform:translateY(680px);opacity:.2}}
+  @keyframes flick{0%,100%{transform:scale(1,1)}30%{transform:scale(.9,1.08)}60%{transform:scale(1.05,.95)}}
+  @keyframes glow{0%,100%{opacity:.45}50%{opacity:.85}}
+  .sn{animation:snow 9s linear infinite}.a2{animation-duration:11s;animation-delay:-3s}.a3{animation-duration:13s;animation-delay:-6s}.a4{animation-duration:10s;animation-delay:-8s}
+  .fl{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.6s ease-in-out infinite}
+  .gl{animation:glow 3.2s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1530"/><stop offset=".7" stop-color="#1c2b55"/><stop offset="1" stop-color="#2b3a6b"/></linearGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#fcd34d" stop-opacity=".85"/><stop offset="1" stop-color="#fcd34d" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<!-- 창틀 -->
+<g fill="none" stroke="#3b4c80" stroke-width="10"><rect x="720" y="70" width="400" height="420" rx="8"/><line x1="920" y1="70" x2="920" y2="490"/><line x1="720" y1="280" x2="1120" y2="280"/></g>
+<g fill="#e0f2fe">
+  <circle class="sn" cx="760" cy="0" r="4"/><circle class="sn a2" cx="830" cy="0" r="3"/><circle class="sn a3" cx="900" cy="0" r="5"/><circle class="sn a4" cx="980" cy="0" r="3"/>
+  <circle class="sn a2" cx="1050" cy="0" r="4"/><circle class="sn" cx="1100" cy="0" r="3" style="animation-delay:-4s"/><circle class="sn a3" cx="620" cy="0" r="3"/><circle class="sn a4" cx="540" cy="0" r="2.5"/>
+  <circle class="sn a2" cx="460" cy="0" r="3" style="animation-delay:-7s"/><circle class="sn" cx="1160" cy="0" r="2.5" style="animation-delay:-1s"/>
+</g>
+<rect x="0" y="500" width="1200" height="130" fill="#111a38"/>
+<rect x="680" y="490" width="480" height="18" rx="4" fill="#3b4c80"/>
+<!-- 촛불 -->
+<g transform="translate(820 400)">
+  <circle class="gl" cx="0" cy="0" r="80" fill="url(#halo)"/>
+  <rect x="-13" y="10" width="26" height="80" rx="4" fill="#fef3c7"/>
+  <path class="fl" d="M0 -28 C 11 -10, 11 4, 0 8 C -11 4, -11 -10, 0 -28 Z" fill="#fbbf24"/>
+</g>
+<!-- 국화 -->
+<g transform="translate(980 410)">
+  <path d="M0 80 L0 0" stroke="#4d7c0f" stroke-width="5"/>
+  <path d="M0 50 C 20 40, 30 30, 34 20" stroke="#4d7c0f" stroke-width="4" fill="none"/>
+  <g fill="#f8fafc"><ellipse cx="0" cy="-14" rx="11" ry="25"/><ellipse cx="0" cy="-14" rx="11" ry="25" transform="rotate(36 0 -14)"/><ellipse cx="0" cy="-14" rx="11" ry="25" transform="rotate(72 0 -14)"/><ellipse cx="0" cy="-14" rx="11" ry="25" transform="rotate(108 0 -14)"/><ellipse cx="0" cy="-14" rx="11" ry="25" transform="rotate(144 0 -14)"/></g>
+  <circle cx="0" cy="-14" r="9" fill="#fde68a"/>
+</g>
+<text class="t" x="70" y="160" fill="#bae6fd" font-size="28" font-weight="700">고양 일산 · 한겨울 일반장례</text>
+<text class="t" x="70" y="240" fill="#ffffff" font-size="60" font-weight="800">일산복음병원장례식장</text>
+<text class="t" x="70" y="310" fill="#e0e7ff" font-size="36" font-weight="500">겨울 3일장, 이렇게 준비했습니다</text>
+<text class="t" x="70" y="362" fill="#c7d2fe" font-size="26">실제 진행 사례 · 이음케어라이프</text>
+</svg>

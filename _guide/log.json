@@ -167,5 +167,31 @@
       "ewha-mokdong-transfer-3day-case",
       "paju-hanbit-buddhist-father-3day-case"
     ]
+  },
+  {
+    "date": "2026-11-04",
+    "keyword": "일산복음병원장례식장 선영 안치",
+    "source": "case",
+    "slug": "ilsan-bogeum-gimpo-seonyeong-case",
+    "title": "일산복음병원장례식장 3일장 후기: 화장 후 김포 선영 안치까지",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-seoul-general-spouse-4day-case",
+      "ilsan-bogeum-daughters-mourners-case",
+      "paju-postpaid-sangjo"
+    ]
+  },
+  {
+    "date": "2026-11-04",
+    "keyword": "일산복음병원장례식장 겨울 장례",
+    "source": "case",
+    "slug": "ilsan-bogeum-winter-general-3day-case",
+    "title": "일산복음병원장례식장 겨울 3일장 후기: 한겨울 일반장례 준비법",
+    "gsc": null,
+    "linkedFrom": [
+      "ilsan-bogeum-gimpo-seonyeong-case",
+      "ewha-seoul-general-spouse-4day-case",
+      "ilsan-bogeum-daughters-mourners-case"
+    ]
   }
 ]

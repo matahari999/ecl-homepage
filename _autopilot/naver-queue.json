@@ -102,13 +102,17 @@
       "logNo": "224092557353",
       "title": "사랑하는 사람을 보내는 마음가짐 (필독)",
       "type": "info",
-      "status": "pending"
+      "status": "done",
+      "slug": "farewell-mindset-before-after-death",
+      "date": "2026-11-05"
     },
     {
       "logNo": "224092560685",
       "title": "환절기 어르신 건강관리 & 임종 준비 체크리스트",
       "type": "info",
-      "status": "pending"
+      "status": "done",
+      "slug": "seasonal-elderly-health-end-of-life-checklist",
+      "date": "2026-11-05"
     },
     {
       "logNo": "224092546150",

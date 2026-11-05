@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="뇌졸중·심근경색 의심 증상 때 바로 119를 부르는 신호와 미리 챙겨 둘 준비물을 나눈 체크리스트 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+  @keyframes ck{0%,10%{stroke-dashoffset:40}20%,100%{stroke-dashoffset:0}}
+  .b{animation:blink 1.4s ease-in-out infinite}
+  .k{stroke-dasharray:40}
+  .k1{animation:ck 8s ease-out infinite}.k2{animation:ck 8s ease-out .8s infinite}.k3{animation:ck 8s ease-out 1.6s infinite}.k4{animation:ck 8s ease-out 2.4s infinite}.k5{animation:ck 8s ease-out 3.2s infinite}.k6{animation:ck 8s ease-out 4s infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="760" rx="28" fill="#161a36"/>
+<text x="600" y="72" text-anchor="middle" class="t" font-size="38" font-weight="900" fill="#fff">환절기, 이 두 장만 냉장고에 붙여 두세요</text>
+<!-- left card -->
+<rect x="50" y="110" width="530" height="610" rx="24" fill="#fff"/>
+<rect x="50" y="110" width="530" height="86" rx="24" fill="#dc2626"/><rect x="50" y="170" width="530" height="26" fill="#dc2626"/>
+<circle class="b" cx="110" cy="153" r="22" fill="#fff"/><text x="110" y="162" text-anchor="middle" class="t" font-size="20" font-weight="900" fill="#dc2626">119</text>
+<text x="150" y="165" class="t" font-size="31" font-weight="900" fill="#fff">'갑자기' 생기면 바로 신고</text>
+<g class="t" font-size="23" fill="#1e293b">
+  <text x="85" y="245" font-weight="900" fill="#b91c1c">뇌졸중 의심</text>
+  <text x="85" y="290">· 한쪽 얼굴·팔·다리 힘 빠짐</text>
+  <text x="85" y="330">· 말이 어눌하거나 못 알아들음</text>
+  <text x="85" y="370">· 한쪽 시야 안 보임, 겹쳐 보임</text>
+  <text x="85" y="410">· 심한 어지럼, 처음 겪는 두통</text>
+  <text x="85" y="470" font-weight="900" fill="#b91c1c">심근경색 의심</text>
+  <text x="85" y="515">· 가슴을 짓누르는 통증·압박감</text>
+  <text x="85" y="555">· 턱·목·등·팔로 퍼지는 통증</text>
+  <text x="85" y="595">· 갑자기 숨이 많이 참</text>
+  <text x="85" y="665" font-weight="800" fill="#7f1d1d">직접 운전 X · 가족 기다리기 X</text>
+</g>
+<!-- right card -->
+<rect x="620" y="110" width="530" height="610" rx="24" fill="#fff"/>
+<rect x="620" y="110" width="530" height="86" rx="24" fill="#15803d"/><rect x="620" y="170" width="530" height="26" fill="#15803d"/>
+<text x="885" y="165" text-anchor="middle" class="t" font-size="31" font-weight="900" fill="#fff">미리 챙겨 둘 것</text>
+<g class="t" font-size="24" font-weight="600" fill="#1e293b">
+  <g><rect x="655" y="230" width="36" height="36" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="3"/><path class="k k1" d="M663 248 l8 8 l14 -16" fill="none" stroke="#15803d" stroke-width="5" stroke-linecap="round"/><text x="708" y="257">독감·코로나19 예방접종</text></g>
+  <g><rect x="655" y="305" width="36" height="36" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="3"/><path class="k k2" d="M663 323 l8 8 l14 -16" fill="none" stroke="#15803d" stroke-width="5" stroke-linecap="round"/><text x="708" y="332">복용약·병원 정보 메모</text></g>
+  <g><rect x="655" y="380" width="36" height="36" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="3"/><path class="k k3" d="M663 398 l8 8 l14 -16" fill="none" stroke="#15803d" stroke-width="5" stroke-linecap="round"/><text x="708" y="407">비상 연락 순서 정하기</text></g>
+  <g><rect x="655" y="455" width="36" height="36" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="3"/><path class="k k4" d="M663 473 l8 8 l14 -16" fill="none" stroke="#15803d" stroke-width="5" stroke-linecap="round"/><text x="708" y="482">연명의료 뜻 확인</text></g>
+  <g><rect x="655" y="530" width="36" height="36" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="3"/><path class="k k5" d="M663 548 l8 8 l14 -16" fill="none" stroke="#15803d" stroke-width="5" stroke-linecap="round"/><text x="708" y="557">신분증·서류 위치</text></g>
+  <g><rect x="655" y="605" width="36" height="36" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="3"/><path class="k k6" d="M663 623 l8 8 l14 -16" fill="none" stroke="#15803d" stroke-width="5" stroke-linecap="round"/><text x="708" y="632">장례 방식 큰 틀 합의</text></g>
+</g>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="임종 전, 장례 중, 장례 후 세 시기에 가족이 할 일을 정리한 흐름 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes pop{0%,8%{opacity:0;transform:translateY(16px)}18%,100%{opacity:1;transform:translateY(0)}}
+  @keyframes dash{to{stroke-dashoffset:-40}}
+  .c1{animation:pop 9s ease-out infinite}.c2{animation:pop 9s ease-out 1s infinite}.c3{animation:pop 9s ease-out 2s infinite}
+  .ln{stroke-dasharray:12 8;animation:dash 1.5s linear infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="700" rx="28" fill="#141b3a"/>
+<text x="600" y="78" text-anchor="middle" class="t" font-size="40" font-weight="900" fill="#fff">이별의 세 시기, 가족이 붙잡을 것</text>
+<line class="ln" x1="200" y1="150" x2="1000" y2="150" stroke="#ffd27a" stroke-width="5"/>
+<g class="t" font-weight="900" font-size="26" text-anchor="middle">
+  <circle cx="200" cy="150" r="34" fill="#ffd27a"/><text x="200" y="160" fill="#1d1640">1</text>
+  <circle cx="600" cy="150" r="34" fill="#ffd27a"/><text x="600" y="160" fill="#1d1640">2</text>
+  <circle cx="1000" cy="150" r="34" fill="#ffd27a"/><text x="1000" y="160" fill="#1d1640">3</text>
+</g>
+<g class="c1">
+  <rect x="50" y="210" width="340" height="440" rx="22" fill="#fff"/>
+  <text x="220" y="265" text-anchor="middle" class="t" font-size="32" font-weight="900" fill="#4c3d9e">임종 전</text>
+  <g class="t" font-size="23" font-weight="600" fill="#1e293b">
+    <text x="80" y="325">· 곁에 머물기</text><text x="80" y="375">· 하고 싶은 말 전하기</text>
+    <text x="80" y="425">· 귀에 대고 말 걸기</text><text x="80" y="475">· 연명의료 뜻 확인</text>
+    <text x="80" y="525">· 장례 방식 큰 틀 합의</text><text x="80" y="575">· 연락할 사람 정리</text>
+  </g>
+</g>
+<g class="c2">
+  <rect x="430" y="210" width="340" height="440" rx="22" fill="#fff"/>
+  <text x="600" y="265" text-anchor="middle" class="t" font-size="32" font-weight="900" fill="#4c3d9e">장례 중</text>
+  <g class="t" font-size="23" font-weight="600" fill="#1e293b">
+    <text x="460" y="325">· 결정은 한 사람에게</text><text x="460" y="375">· 고인다운 것 1~2가지</text>
+    <text x="460" y="425">· 비싼 것 ≠ 좋은 배웅</text><text x="460" y="475">· 교대로 쉬기</text>
+    <text x="460" y="525">· 입관 때 마지막 인사</text><text x="460" y="575">· 내역은 문서로 받기</text>
+  </g>
+</g>
+<g class="c3">
+  <rect x="810" y="210" width="340" height="440" rx="22" fill="#fff"/>
+  <text x="980" y="265" text-anchor="middle" class="t" font-size="32" font-weight="900" fill="#4c3d9e">장례 후</text>
+  <g class="t" font-size="23" font-weight="600" fill="#1e293b">
+    <text x="840" y="325">· 슬픔은 자연스러운 것</text><text x="840" y="375">· 행정은 기한 순서로</text>
+    <text x="840" y="425">· 유품은 천천히</text><text x="840" y="475">· 기일·추모 방식 정하기</text>
+    <text x="840" y="525">· 가족끼리 안부 묻기</text><text x="840" y="575">· 힘들면 전문가 상담</text>
+  </g>
+</g>
+</svg>

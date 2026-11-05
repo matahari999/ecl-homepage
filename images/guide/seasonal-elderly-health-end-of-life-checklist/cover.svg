@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="낙엽이 떨어지는 저녁, 일교차를 보여주는 온도계와 따뜻한 창문의 집을 그린 환절기 건강 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes fall{0%{transform:translate(0,-40px) rotate(0);opacity:0}10%{opacity:1}100%{transform:translate(-120px,560px) rotate(300deg);opacity:0}}
+  @keyframes merc{0%,100%{height:150px;y:300px}50%{height:60px;y:390px}}
+  @keyframes win{0%,100%{opacity:.85}50%{opacity:1}}
+  .l1{animation:fall 9s linear infinite}.l2{animation:fall 11s linear 2s infinite}.l3{animation:fall 10s linear 4s infinite}.l4{animation:fall 12s linear 6s infinite}
+  .m{animation:merc 6s ease-in-out infinite}
+  .w{animation:win 4s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14183a"/><stop offset="1" stop-color="#3a2346"/></linearGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="1060" cy="560" r="200" fill="#4a2d52" opacity=".5"/>
+<!-- house -->
+<path d="M780 300 L930 190 L1080 300 Z" fill="#8b4a3c"/>
+<rect x="800" y="298" width="260" height="200" fill="#e9d8c4"/>
+<rect class="w" x="835" y="340" width="80" height="70" rx="6" fill="#ffd27a"/>
+<line x1="875" y1="340" x2="875" y2="410" stroke="#a0754a" stroke-width="5"/><line x1="835" y1="375" x2="915" y2="375" stroke="#a0754a" stroke-width="5"/>
+<rect x="960" y="380" width="62" height="118" rx="6" fill="#7a4b2f"/>
+<rect x="760" y="496" width="340" height="16" rx="6" fill="#5a3b5e"/>
+<!-- thermometer -->
+<g>
+  <rect x="660" y="260" width="44" height="220" rx="22" fill="#fff"/>
+  <circle cx="682" cy="490" r="36" fill="#fff"/>
+  <rect class="m" x="672" y="300" width="20" height="150" rx="10" fill="#ef4444"/>
+  <circle cx="682" cy="490" r="26" fill="#ef4444"/>
+  <g class="t" font-size="22" font-weight="800"><text x="602" y="290" fill="#fca5a5" text-anchor="end">낮</text><text x="602" y="450" fill="#93c5fd" text-anchor="end">밤</text></g>
+  <path d="M612 300 L612 440" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="6 6"/>
+</g>
+<!-- leaves -->
+<g>
+  <path class="l1" d="M300 0 q16 -18 32 0 q-16 18 -32 0z" fill="#f59e0b"/>
+  <path class="l2" d="M620 0 q16 -18 32 0 q-16 18 -32 0z" fill="#ea580c"/>
+  <path class="l3" d="M900 0 q16 -18 32 0 q-16 18 -32 0z" fill="#facc15"/>
+  <path class="l4" d="M1150 0 q16 -18 32 0 q-16 18 -32 0z" fill="#dc2626"/>
+</g>
+<!-- titles -->
+<text x="70" y="200" class="t" font-size="56" font-weight="900" fill="#fff">환절기 어르신</text>
+<text x="70" y="275" class="t" font-size="56" font-weight="900" fill="#fff">건강과 임종 준비</text>
+<rect x="70" y="315" width="420" height="56" rx="28" fill="#fbbf24"/>
+<text x="280" y="353" text-anchor="middle" class="t" font-size="27" font-weight="800" fill="#2a1840">가족이 함께 보는 체크리스트</text>
+<text x="70" y="430" class="t" font-size="25" font-weight="500" fill="#e2d6f0">119 부를 증상 · 예방접종 · 미리 합의할 것</text>
+</svg>

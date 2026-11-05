@@ -206,5 +206,31 @@
       "funeral-3-day-procedure",
       "after-death-checklist"
     ]
+  },
+  {
+    "date": "2026-11-05",
+    "keyword": "사랑하는 사람을 보내는 마음가짐",
+    "source": "case",
+    "slug": "farewell-mindset-before-after-death",
+    "title": "사랑하는 사람을 보내는 마음가짐: 임종 전·장례 중·장례 후 시기별 안내",
+    "gsc": null,
+    "linkedFrom": [
+      "news-20261104-sangjo-closure-refund",
+      "ilsan-bogeum-gimpo-seonyeong-case",
+      "ilsan-bogeum-winter-general-3day-case"
+    ]
+  },
+  {
+    "date": "2026-11-05",
+    "keyword": "환절기 어르신 건강관리 임종 준비",
+    "source": "case",
+    "slug": "seasonal-elderly-health-end-of-life-checklist",
+    "title": "환절기 어르신 건강관리와 임종 준비 체크리스트: 119 신호부터 가족 합의까지",
+    "gsc": null,
+    "linkedFrom": [
+      "farewell-mindset-before-after-death",
+      "news-20261104-sangjo-closure-refund",
+      "ilsan-bogeum-gimpo-seonyeong-case"
+    ]
   }
 ]

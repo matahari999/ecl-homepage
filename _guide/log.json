@@ -245,5 +245,18 @@
       "news-20261104-sangjo-closure-refund",
       "seasonal-elderly-health-end-of-life-checklist"
     ]
+  },
+  {
+    "date": "2026-11-07",
+    "keyword": "김포 후불제 상조",
+    "source": "priority",
+    "slug": "gimpo-postpaid-sangjo",
+    "title": "김포 후불제 상조: 장례식장 6곳과 관외 화장 예약 순서",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-mokdong-transfer-3day-case",
+      "funeral-3-day-procedure",
+      "after-death-checklist"
+    ]
   }
 ]

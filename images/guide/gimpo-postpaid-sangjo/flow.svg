@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="김포에서 장례를 치를 때의 흐름: 임종, 김포 장례식장 안치, 화장 예약(관외), 타 지역 화장시설에서 화장, 장지 안치, 정산">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes pop{0%,100%{opacity:.55}50%{opacity:1}}
+  @keyframes dash{to{stroke-dashoffset:-40}}
+  .ln{stroke-dasharray:10 10;animation:dash 2.4s linear infinite}
+  .p1{animation:pop 6s ease-in-out infinite}.p2{animation:pop 6s ease-in-out 1s infinite}.p3{animation:pop 6s ease-in-out 2s infinite}
+  .p4{animation:pop 6s ease-in-out 3s infinite}.p5{animation:pop 6s ease-in-out 4s infinite}.p6{animation:pop 6s ease-in-out 5s infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="560" rx="24" fill="#141a3c"/>
+<text class="t" x="600" y="62" text-anchor="middle" fill="#fff" font-size="34" font-weight="800">김포에서 장례를 치를 때의 흐름</text>
+<line class="ln" x1="120" y1="190" x2="1080" y2="190" stroke="#8b7fe0" stroke-width="4"/>
+<circle cx="120" cy="190" r="46" fill="#141a3c"/><circle cx="312" cy="190" r="46" fill="#141a3c"/><circle cx="504" cy="190" r="46" fill="#141a3c"/><circle cx="696" cy="190" r="46" fill="#141a3c"/><circle cx="888" cy="190" r="46" fill="#141a3c"/><circle cx="1080" cy="190" r="46" fill="#141a3c"/>
+<g class="t" text-anchor="middle">
+  <g class="p1"><circle cx="120" cy="190" r="44" fill="#4338ca"/><text x="120" y="202" fill="#fff" font-size="34" font-weight="800">1</text>
+    <text x="120" y="275" fill="#fff" font-size="24" font-weight="700">임종·연락</text><text x="120" y="308" fill="#c7c3ef" font-size="19">사망진단서 받기</text><text x="120" y="334" fill="#c7c3ef" font-size="19">상조에 전화</text></g>
+  <g class="p2"><circle cx="312" cy="190" r="44" fill="#4338ca"/><text x="312" y="202" fill="#fff" font-size="34" font-weight="800">2</text>
+    <text x="312" y="275" fill="#fff" font-size="24" font-weight="700">장례식장 안치</text><text x="312" y="308" fill="#c7c3ef" font-size="19">김포 시내</text><text x="312" y="334" fill="#c7c3ef" font-size="19">장례식장 선택</text></g>
+  <g class="p3"><circle cx="504" cy="190" r="44" fill="#b45309"/><text x="504" y="202" fill="#fff" font-size="34" font-weight="800">3</text>
+    <text x="504" y="275" fill="#fde68a" font-size="24" font-weight="700">화장 예약</text><text x="504" y="308" fill="#c7c3ef" font-size="19">김포 주민은</text><text x="504" y="334" fill="#c7c3ef" font-size="19">'관외'로 예약</text></g>
+  <g class="p4"><circle cx="696" cy="190" r="44" fill="#4338ca"/><text x="696" y="202" fill="#fff" font-size="34" font-weight="800">4</text>
+    <text x="696" y="275" fill="#fff" font-size="24" font-weight="700">빈소·입관</text><text x="696" y="308" fill="#c7c3ef" font-size="19">조문 · 둘째 날</text><text x="696" y="334" fill="#c7c3ef" font-size="19">입관</text></g>
+  <g class="p5"><circle cx="888" cy="190" r="44" fill="#4338ca"/><text x="888" y="202" fill="#fff" font-size="34" font-weight="800">5</text>
+    <text x="888" y="275" fill="#fff" font-size="24" font-weight="700">발인·화장</text><text x="888" y="308" fill="#c7c3ef" font-size="19">타 지역</text><text x="888" y="334" fill="#c7c3ef" font-size="19">화장시설로 이동</text></g>
+  <g class="p6"><circle cx="1080" cy="190" r="44" fill="#047857"/><text x="1080" y="202" fill="#fff" font-size="34" font-weight="800">6</text>
+    <text x="1080" y="275" fill="#fff" font-size="24" font-weight="700">장지·정산</text><text x="1080" y="308" fill="#c7c3ef" font-size="19">봉안·자연장</text><text x="1080" y="334" fill="#c7c3ef" font-size="19">후불 정산</text></g>
+</g>
+<rect x="120" y="390" width="960" height="130" rx="18" fill="#221d4f" stroke="#fcd34d" stroke-width="2"/>
+<text class="t" x="600" y="440" text-anchor="middle" fill="#fde68a" font-size="25" font-weight="800">김포에는 아직 자체 화장시설이 없습니다</text>
+<text class="t" x="600" y="482" text-anchor="middle" fill="#e6e1ff" font-size="21">화장 날짜를 먼저 잡고 발인 시각을 맞추세요 · 김포시 화장 장려금 대상 여부도 확인</text>
+</svg>

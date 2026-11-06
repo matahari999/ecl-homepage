@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-label="일반 장례비 500만원 기본 인정, 증빙 시 1,000만원까지, 봉안시설·자연장지 500만원 별도로 합계 최대 1,500만원인 장례비용 공제 구조">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes grow{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}
+  @keyframes fade{0%{opacity:0}100%{opacity:1}}
+  .b1{transform-origin:0 480px;animation:grow 1s ease-out .2s both}
+  .b2{transform-origin:0 380px;animation:grow 1s ease-out .9s both}
+  .b3{transform-origin:0 280px;animation:grow 1s ease-out 1.6s both}
+  .f{animation:fade 1s ease-out 2.3s both}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1000" height="620" rx="24" fill="#1e1b4b"/>
+<text x="40" y="62" class="t" font-size="30" font-weight="900" fill="#fff">장례비용 공제는 이렇게 쌓입니다</text>
+<text x="40" y="98" class="t" font-size="19" fill="#c7d2fe">상속세 및 증여세법 시행령 제9조 기준 · 상속재산에서 빼 주는 금액</text>
+<!-- axis -->
+<line x1="90" y1="480" x2="600" y2="480" stroke="#64748b" stroke-width="2"/>
+<!-- stacked bar -->
+<rect class="b1" x="200" y="380" width="200" height="100" fill="#60a5fa"/>
+<rect class="b2" x="200" y="280" width="200" height="100" fill="#3b82f6"/>
+<rect class="b3" x="200" y="180" width="200" height="100" fill="#fbbf24"/>
+<g class="t" font-size="20" font-weight="800" text-anchor="middle">
+  <text x="300" y="437" fill="#0f172a">증빙 없어도 500만원</text>
+  <text x="300" y="337" fill="#fff">증빙 시 1,000만원까지</text>
+  <text x="300" y="237" fill="#1e1b4b">봉안·자연장 +500만원</text>
+</g>
+<g class="t" font-size="18" fill="#cbd5e1" text-anchor="end">
+  <text x="185" y="486">0</text><text x="185" y="386">500만</text><text x="185" y="286">1,000만</text><text x="185" y="186">1,500만</text>
+</g>
+<g stroke="#475569" stroke-dasharray="5 6"><line x1="190" y1="380" x2="420" y2="380"/><line x1="190" y1="280" x2="420" y2="280"/><line x1="190" y1="180" x2="420" y2="180"/></g>
+<!-- cards -->
+<g class="f">
+<rect x="460" y="150" width="500" height="120" rx="16" fill="#fff"/>
+<text x="484" y="190" class="t" font-size="21" font-weight="900" fill="#1e1b4b">① 일반 장례비</text>
+<text x="484" y="222" class="t" font-size="17" fill="#334155">실제 비용이 500만원 미만이면 500만원 인정</text>
+<text x="484" y="250" class="t" font-size="17" fill="#334155">넘는 부분은 증빙이 있을 때 1,000만원까지</text>
+<rect x="460" y="290" width="500" height="120" rx="16" fill="#fff"/>
+<text x="484" y="330" class="t" font-size="21" font-weight="900" fill="#1e1b4b">② 봉안시설·자연장지</text>
+<text x="484" y="362" class="t" font-size="17" fill="#334155">봉안당·수목장 등 사용 비용은 따로 계산</text>
+<text x="484" y="390" class="t" font-size="17" fill="#334155">실제 사용액, 최대 500만원</text>
+<rect x="460" y="430" width="500" height="80" rx="16" fill="#fbbf24"/>
+<text x="484" y="470" class="t" font-size="21" font-weight="900" fill="#1e1b4b">합계 최대 1,500만원</text>
+<text x="484" y="497" class="t" font-size="16" fill="#1e1b4b">세금이 아니라 '과세 대상 금액'이 줄어드는 것</text>
+</g>
+<text x="40" y="580" class="t" font-size="17" fill="#a5b4fc">※ 사망일부터 장례일까지 장례에 직접 쓴 비용 기준</text>
+</svg>

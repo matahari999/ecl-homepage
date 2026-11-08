@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="3일장 비용 구조: 상조, 장례식장, 화장·장지 세 덩어리와 각각 금액을 크게 바꾸는 요인">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .c{animation:up 1.2s ease-out both}.c2{animation-delay:.5s}.c3{animation-delay:1s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="640" fill="#14193a"/>
+<text class="t" x="600" y="64" fill="#ffffff" font-size="36" font-weight="800" text-anchor="middle">3일장 비용, 어디에 얼마가 나갈까</text>
+<text class="t" x="600" y="104" fill="#c7d2fe" font-size="22" text-anchor="middle">금액을 가장 크게 바꾸는 것은 조문객 수와 화장장 관내·관외 여부입니다</text>
+
+<g class="c">
+  <rect x="50" y="140" width="350" height="440" rx="20" fill="#1f2752" stroke="#818cf8" stroke-width="3"/>
+  <rect x="50" y="140" width="350" height="70" rx="20" fill="#818cf8"/>
+  <rect x="50" y="190" width="350" height="20" fill="#818cf8"/>
+  <text class="t" x="225" y="186" fill="#14193a" font-size="30" font-weight="800" text-anchor="middle">① 상조</text>
+  <text class="t" x="80" y="255" fill="#e0e7ff" font-size="22">내는 곳: 상조 회사</text>
+  <text class="t" x="80" y="300" fill="#ffffff" font-size="22">· 장례지도사·도우미</text>
+  <text class="t" x="80" y="336" fill="#ffffff" font-size="22">· 관·수의·상복</text>
+  <text class="t" x="80" y="372" fill="#ffffff" font-size="22">· 장의차량·발인 운구</text>
+  <text class="t" x="80" y="440" fill="#fde68a" font-size="22" font-weight="700">금액을 바꾸는 것</text>
+  <text class="t" x="80" y="478" fill="#e0e7ff" font-size="21">도우미 인원, 관·수의 등급</text>
+  <text class="t" x="80" y="512" fill="#e0e7ff" font-size="21">상복 벌수, 차량 종류</text>
+</g>
+
+<g class="c c2">
+  <rect x="425" y="140" width="350" height="440" rx="20" fill="#1f2752" stroke="#f9a8d4" stroke-width="3"/>
+  <rect x="425" y="140" width="350" height="70" rx="20" fill="#f9a8d4"/>
+  <rect x="425" y="190" width="350" height="20" fill="#f9a8d4"/>
+  <text class="t" x="600" y="186" fill="#14193a" font-size="30" font-weight="800" text-anchor="middle">② 장례식장</text>
+  <text class="t" x="455" y="255" fill="#e0e7ff" font-size="22">내는 곳: 장례식장</text>
+  <text class="t" x="455" y="300" fill="#ffffff" font-size="22">· 빈소 사용료</text>
+  <text class="t" x="455" y="336" fill="#ffffff" font-size="22">· 안치료·입관실</text>
+  <text class="t" x="455" y="372" fill="#ffffff" font-size="22">· 조문객 식대·음료</text>
+  <text class="t" x="455" y="440" fill="#fde68a" font-size="22" font-weight="700">금액을 바꾸는 것</text>
+  <text class="t" x="455" y="478" fill="#e0e7ff" font-size="21">조문객 수, 빈소 크기</text>
+  <text class="t" x="455" y="512" fill="#e0e7ff" font-size="21">장례 일수, 식장 종류</text>
+</g>
+
+<g class="c c3">
+  <rect x="800" y="140" width="350" height="440" rx="20" fill="#1f2752" stroke="#fcd34d" stroke-width="3"/>
+  <rect x="800" y="140" width="350" height="70" rx="20" fill="#fcd34d"/>
+  <rect x="800" y="190" width="350" height="20" fill="#fcd34d"/>
+  <text class="t" x="975" y="186" fill="#14193a" font-size="30" font-weight="800" text-anchor="middle">③ 화장·장지</text>
+  <text class="t" x="830" y="255" fill="#e0e7ff" font-size="22">내는 곳: 화장장·장지</text>
+  <text class="t" x="830" y="300" fill="#ffffff" font-size="22">· 화장 요금</text>
+  <text class="t" x="830" y="336" fill="#ffffff" font-size="22">· 봉안당·자연장 이용료</text>
+  <text class="t" x="830" y="372" fill="#ffffff" font-size="22">· 유골함</text>
+  <text class="t" x="830" y="440" fill="#fde68a" font-size="22" font-weight="700">금액을 바꾸는 것</text>
+  <text class="t" x="830" y="478" fill="#e0e7ff" font-size="21">관내·관외 요금 차이</text>
+  <text class="t" x="830" y="512" fill="#e0e7ff" font-size="21">공설·사설 장지 선택</text>
+</g>
+<text class="t" x="600" y="618" fill="#a5b4fc" font-size="19" text-anchor="middle">※ 실제 금액은 지역·시설마다 다르므로 각 시설의 최신 요금을 확인하세요</text>
+</svg>

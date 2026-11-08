@@ -258,5 +258,18 @@
       "funeral-3-day-procedure",
       "after-death-checklist"
     ]
+  },
+  {
+    "date": "2026-11-09",
+    "keyword": "장례비용 평균 3일장",
+    "source": "seed",
+    "slug": "funeral-cost-average-3day",
+    "title": "장례비용 평균 3일장: 세 덩어리로 나눠 보는 총비용 계산법",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-mokdong-transfer-3day-case",
+      "funeral-3-day-procedure",
+      "paju-postpaid-sangjo"
+    ]
   }
 ]

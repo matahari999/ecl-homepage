@@ -26,6 +26,16 @@ Claude가 `--brief`로 오늘의 검색어와 작성 지침을 받고 → 직접
 5. 서치콘솔 속성이 `https://ecl.ai.kr/` (URL 접두어) 형식이면 `GSC_SITE_URL` = `https://ecl.ai.kr/` 도 추가
    (도메인 속성이면 기본값 `sc-domain:ecl.ai.kr` 그대로 두면 됨)
 
+### 2-1) 서치콘솔 연결 — Windsor.ai 커넥터 방식 (현재 사용 중)
+- 서비스 계정 키 대신 claude.ai에 연결된 **Windsor.ai 커넥터(MCP)** 로 서치콘솔 데이터를 가져옵니다 (속성: `sc-domain:ecl.ai.kr`).
+- 예약 작업이 Windsor `get_data`(connector `searchconsole`, 최근 28일)로 ① 검색어+페이지별 ② 페이지별 전체 데이터를 받아 `/tmp/gsc.json` 에 합쳐 저장하고 `--gsc-file /tmp/gsc.json` 으로 넘깁니다.
+  - 형식: `[{"query","pagepath","clicks","impressions","position"}, ..., {"pagepath","clicks","impressions","position"}]` (query 없는 행 = 글별 전체 노출)
+- 스크립트가 하는 분석
+  - **새 글 후보**: 노출은 있는데 우리 가이드 글이 그 검색어로 잡히지 않는 검색어 (이미 잡히는 글이 있으면 새 글 대신 그 글을 보강 → 중복 경쟁 방지)
+  - **기존 글 보강**: 노출 100회 이상·클릭률 3% 이하·평균 2~20위인 글 → `--brief` 끝에 [추가 과제]로 제목·설명·본문 보강 지시 (보강 후 21일은 다시 손대지 않음, 발행 7일 미만 글 제외)
+- `node _autopilot/run.mjs --seo-report --gsc-file /tmp/gsc.json` 로 분석 결과만 볼 수 있습니다.
+- Windsor.ai는 유료 서비스입니다(무료 체험 후 결제 필요). 연결이 끊기면 예비 키워드로 자동 전환됩니다.
+
 ### 3) 사이트맵 제출 (한 번)
 - 구글 서치콘솔 → Sitemaps → `guide-sitemap.xml` 제출
 - 네이버 서치어드바이저 → 요청 → 사이트맵 제출 → `https://ecl.ai.kr/guide-sitemap.xml`, RSS 제출 → `https://ecl.ai.kr/guide/rss.xml`

@@ -66,7 +66,7 @@
   ],
   "gsc": {
     "lookbackDays": 28,
-    "minImpressions": 30,
+    "minImpressions": 10,
     "maxCtr": 0.02,
     "minPosition": 4,
     "maxPosition": 40,
@@ -74,7 +74,10 @@
       "이음케어",
       "ecl.ai",
       "이음 케어"
-    ]
+    ],
+    "refreshMinImpressions": 100,
+    "refreshMaxCtr": 0.03,
+    "refreshCooldownDays": 21
   },
   "publish": {
     "postsPerRun": 1,

@@ -13,6 +13,9 @@
 //   node _autopilot/run.mjs --keyword "무빈소 장례 비용"   # 키워드 직접 지정
 //   node _autopilot/run.mjs --dry-run          # 어떤 키워드를 고를지만 보기 (글 안 씀)
 //   node _autopilot/run.mjs --report           # 서치콘솔 빈칸 검색어 상위 20개 출력
+//   --gsc-file gsc.json                        # Windsor.ai(MCP)로 받은 서치콘솔 데이터 사용 (--brief/--seo-report와 함께)
+//   node _autopilot/run.mjs --seo-report --gsc-file gsc.json   # 새 글 후보 + 개선할 기존 글
+//   node _autopilot/run.mjs --refresh <slug>   # 기존 글 보강 후 검사·수정일 기록·재생성
 //
 // 필요한 환경변수 (GitHub → Settings → Secrets and variables → Actions)
 //   ANTHROPIC_API_KEY          (필수) Claude API 키
@@ -122,6 +125,75 @@ function findGaps(rows, posts) {
     // 노출이 많을수록, 순위가 2페이지 근처일수록 기회가 큼
     .map((a) => ({ ...a, score: a.impressions * (1 - a.ctr) * (a.position <= 20 ? 1.2 : 0.8) }))
     .sort((x, y) => y.score - x.score);
+}
+
+
+/** Windsor.ai(MCP)로 받은 서치콘솔 데이터 파일 → API rows 형식으로 변환
+ *  파일: [{"query","pagepath"|"page","clicks","impressions","position"}...] 또는 {data:[...]} */
+function loadGscFile(file) {
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const arr = Array.isArray(raw) ? raw : raw.data || raw.rows || [];
+  const pageTotals = new Map(); // query 없이 page만 있는 행 = 글별 전체 노출(익명 검색어 포함)
+  for (const r of arr) if (r && !r.query && (r.page || r.pagepath)) pageTotals.set(slugOfPage(r.page || r.pagepath), { impressions: +r.impressions || 0, clicks: +r.clicks || 0, position: +r.position || 0 });
+  const rows = arr
+    .filter((r) => r && r.query)
+    .map((r) => ({
+      keys: [String(r.query), r.page || (r.pagepath ? config.site.origin + r.pagepath : '')],
+      clicks: +r.clicks || 0,
+      impressions: +r.impressions || 0,
+      position: +r.position || 0,
+    }));
+  return { rows, pageTotals };
+}
+const slugOfPage = (u) => {
+  const m = String(u || '').match(new RegExp(config.site.guidePath.replace('/', '\\/') + '\\/([a-z0-9-]+)'));
+  return m ? m[1] : null;
+};
+
+/** 이미 노출은 되는데 클릭이 적은 기존 글 = 제목·설명·본문 보강 대상 */
+function findRefresh(rows, posts, pageTotals = new Map()) {
+  const g = config.gsc;
+  const minImp = g.refreshMinImpressions ?? 100, maxCtr = g.refreshMaxCtr ?? 0.03, cool = g.refreshCooldownDays ?? 21;
+  const byPage = new Map();
+  for (const r of rows) {
+    const slug = slugOfPage(r.keys[1]);
+    if (!slug) continue;
+    const a = byPage.get(slug) || { slug, impressions: 0, clicks: 0, posSum: 0, queries: [] };
+    a.impressions += r.impressions; a.clicks += r.clicks; a.posSum += r.position * r.impressions;
+    a.queries.push({ query: r.keys[0], impressions: r.impressions, clicks: r.clicks, position: r.position });
+    byPage.set(slug, a);
+  }
+  for (const [slug, t] of pageTotals) if (slug && !byPage.has(slug)) byPage.set(slug, { slug, impressions: 0, clicks: 0, posSum: 0, queries: [] });
+  for (const a of byPage.values()) {
+    const t = pageTotals.get(a.slug);
+    if (t && t.impressions > a.impressions) { a.impressions = t.impressions; a.clicks = t.clicks; a.posSum = t.position * t.impressions; }
+  }
+  const cutoff = daysAgo(cool);
+  return [...byPage.values()]
+    .map((a) => ({ ...a, ctr: a.impressions ? a.clicks / a.impressions : 0, position: a.impressions ? a.posSum / a.impressions : 0, post: posts.find((p) => p.slug === a.slug) }))
+    .filter((a) => a.post && a.impressions >= minImp && a.ctr <= maxCtr && a.position >= 2 && a.position <= 20)
+    // 최근에 보강한 글(쿨다운)과 막 발행한 글(7일 미만)은 결과를 더 지켜본다
+    .filter((a) => (!a.post.updatedAt || a.post.updatedAt < cutoff) && (a.post.publishedAt || '') < daysAgo(7))
+    .map((a) => ({ ...a, queries: a.queries.sort((x, y) => y.impressions - x.impressions).slice(0, 12) }))
+    .sort((x, y) => y.impressions - x.impressions);
+}
+
+function refreshBrief(c) {
+  const p = c.post;
+  return `=== [추가 과제] 기존 글 클릭률 개선: ${p.slug} ===
+구글에서 최근 ${config.gsc.lookbackDays}일 ${c.impressions}번 노출됐지만 클릭 ${c.clicks}번(클릭률 ${(c.ctr * 100).toFixed(1)}%, 평균 ${c.position.toFixed(1)}위)입니다.
+검색 결과에 보이는 제목·설명이 검색한 사람의 질문과 맞지 않거나, 본문이 그 질문에 바로 답하지 않는다는 뜻입니다.
+
+현재 제목: ${p.title}
+현재 설명: ${p.description}
+이 글로 노출된 검색어(노출 / 평균 순위):
+${c.queries.map((q) => `  - ${q.query} (${q.impressions} / ${q.position.toFixed(1)}위)`).join('\n')}
+
+할 일 (_guide/posts/${p.slug}.json 을 직접 수정):
+1. 제목(45자 이내): 노출이 가장 많은 검색어 표현을 앞쪽에 넣고, 검색한 사람이 "내 질문의 답이 여기 있다"고 느끼게 구체적으로(숫자·시간·날짜 등). 낚시성 금지.
+2. 설명(description, 80~150자): 위 검색어 2~3개가 자연스럽게 들어가게, 글에서 얻을 수 있는 답을 요약.
+3. 본문: 위 검색어 중 지금 본문이 바로 답하지 못하는 질문이 있으면 기존 섹션에 문단·표를 보강하거나 섹션 1개를 추가하고, FAQ에 1~2개 추가. 사실은 WebSearch로 확인하고, 확실하지 않은 숫자는 쓰지 않습니다.
+4. slug·publishedAt·cover는 바꾸지 않습니다. 저장 후 \`node _autopilot/run.mjs --refresh ${p.slug}\` 실행.`;
 }
 
 // ---------------- Claude ----------------
@@ -234,7 +306,24 @@ async function pickTargets(posts, log) {
   // 방문자 통계에서 많이 본 가이드 글 (예: --top slug1,slug2) → 내부 링크 출발점으로 사용
   if (opt('--top')) topGuidePages = opt('--top').split(',').map((s) => s.trim()).filter(Boolean);
   if (opt('--keyword')) return { candidates: [{ query: opt('--keyword'), source: 'manual' }], topGuidePages };
-  if (env.GSC_SERVICE_ACCOUNT_JSON) {
+  let refresh = [];
+  if (opt('--gsc-file')) {
+    try {
+      const { rows, pageTotals } = loadGscFile(opt('--gsc-file'));
+      if (!topGuidePages.length) {
+        const agg = new Map();
+        for (const r of rows) { const s = slugOfPage(r.keys[1]); if (s) agg.set(s, (agg.get(s) || 0) + r.clicks * 1000 + r.impressions); }
+        topGuidePages = [...agg.entries()].sort((a, b) => b[1] - a[1]).map(([s]) => s);
+      }
+      // 이미 우리 가이드 글이 그 검색어로 노출되고 있으면 새 글(중복 경쟁) 대신 그 글을 보강
+      const servedByPost = new Set(rows.filter((r) => { const s = slugOfPage(r.keys[1]); return s && posts.some((p) => p.slug === s); }).map((r) => r.keys[0]));
+      candidates = findGaps(rows, posts).filter((c) => !servedByPost.has(c.query)).map((c) => ({ ...c, source: 'gsc' }));
+      refresh = findRefresh(rows, posts, pageTotals);
+      console.error(`서치콘솔(파일): 검색어 ${rows.length}행 분석 → 새 글 후보 ${candidates.length}개, 개선할 기존 글 ${refresh.length}개`);
+    } catch (e) {
+      console.error('⚠ 서치콘솔 파일 읽기 실패 → 예비 키워드로 진행:', e.message);
+    }
+  } else if (env.GSC_SERVICE_ACCOUNT_JSON) {
     try {
       const token = await gscToken();
       const rows = await gscQuery(token, ['query', 'page']);
@@ -259,7 +348,7 @@ async function pickTargets(posts, log) {
     const seed = config.seedKeywords.filter((k) => !used.has(norm(k)) && !isCovered(k, posts)).map((query) => ({ query, source: 'seed' }));
     candidates = [...pri, ...seed];
   }
-  return { candidates, topGuidePages };
+  return { candidates, topGuidePages, refresh };
 }
 
 function newsBrief() {
@@ -333,14 +422,50 @@ async function main() {
     return;
   }
 
-  const { candidates, topGuidePages } = await pickTargets(posts, log);
+  // 기존 글 보강 후: 검사·수정일 기록·다시 생성
+  if (opt('--refresh')) {
+    const slug = opt('--refresh');
+    const f = path.join(POSTS_DIR, `${slug}.json`);
+    const post = JSON.parse(fs.readFileSync(f, 'utf8'));
+    let before = {};
+    try { before = JSON.parse(execFileSync('git', ['show', `HEAD:_guide/posts/${slug}.json`], { cwd: ROOT, encoding: 'utf8' })); } catch {}
+    const errs = [];
+    if (post.slug !== slug) errs.push('slug는 바꾸지 마세요');
+    if (!post.title || post.title.length > 60) errs.push('제목 길이');
+    if (!post.description || post.description.length < 50 || post.description.length > 160) errs.push('설명 길이(50~160자)');
+    if (!Array.isArray(post.sections) || post.sections.length < 4) errs.push('섹션 4개 미만');
+    if (textLength(post) < config.publish.minBodyChars) errs.push(`본문 ${textLength(post)}자`);
+    if (errs.length) throw new Error('품질 기준 미달: ' + errs.join(', '));
+    if (before.publishedAt) post.publishedAt = before.publishedAt;
+    post.updatedAt = today();
+    post.sections = post.sections.map((s) => ({ ...s, html: sanitize(s.html) }));
+    post.faq = (post.faq || []).map((x) => ({ q: x.q, a: sanitize(x.a) }));
+    fs.writeFileSync(f, JSON.stringify(post, null, 2) + '\n');
+    log.push({ date: today(), type: 'refresh', slug, before: { title: before.title, description: before.description }, after: { title: post.title, description: post.description } });
+    fs.writeFileSync(LOG_FILE, JSON.stringify(log, null, 2) + '\n');
+    try { execFileSync('node', [path.join(ROOT, '_autopilot', 'og.mjs')], { stdio: 'inherit' }); } catch { console.log('og.png 생성 실패 (계속 진행)'); }
+    renderAll();
+    console.log(`✓ 보강: ${config.site.origin}${config.site.guidePath}/${slug}\n  제목: ${before.title || '?'}\n    → ${post.title}`);
+    return;
+  }
+
+  const { candidates, topGuidePages, refresh } = await pickTargets(posts, log);
+  const refreshNote = flag('--brief') && refresh && refresh.length ? '\n\n' + refreshBrief(refresh[0]) : '';
+
+  if (flag('--seo-report')) {
+    console.log('[새 글 후보: 노출은 있는데 전용 글이 없는 검색어]');
+    console.table(candidates.filter((c) => c.source === 'gsc').slice(0, 15).map((c) => ({ 검색어: c.query, 노출: c.impressions, 클릭: c.clicks, 순위: c.position.toFixed(1) })));
+    console.log('[개선할 기존 글: 노출은 많은데 클릭이 적은 글]');
+    console.table((refresh || []).map((c) => ({ 글: c.slug, 노출: c.impressions, 클릭: c.clicks, 클릭률: (c.ctr * 100).toFixed(1) + '%', 순위: c.position.toFixed(1) })));
+    return;
+  }
 
   if (flag('--report')) {
     console.table(candidates.slice(0, 20).map((c) => ({ 검색어: c.query, 출처: c.source, 노출: c.impressions ?? '', 클릭: c.clicks ?? '', 순위: c.position ? c.position.toFixed(1) : '' })));
     return;
   }
   if (!candidates.length) {
-    console.log('오늘 채울 빈칸이 없습니다. 종료.');
+    console.log('오늘 채울 빈칸이 없습니다. 종료.' + refreshNote);
     return;
   }
 
@@ -351,7 +476,7 @@ async function main() {
     if (sinceNews >= config.news.every - 1) {
       const target = { query: '장례·상조 업계 최신 소식', source: 'news' };
       fs.writeFileSync(BRIEF_FILE, JSON.stringify({ target, topGuidePages }, null, 2));
-      console.log(`=== 오늘은 [업계 뉴스] 차례입니다 ===\n\n[작성 지침]\n${writerPrompt(posts)}\n\n[오늘의 요청]\n${newsBrief()}`);
+      console.log(`=== 오늘은 [업계 뉴스] 차례입니다 ===\n\n[작성 지침]\n${writerPrompt(posts)}\n\n[오늘의 요청]\n${newsBrief()}` + refreshNote);
       return;
     }
   }
@@ -359,7 +484,7 @@ async function main() {
   if (flag('--brief')) {
     const target = candidates[0];
     fs.writeFileSync(BRIEF_FILE, JSON.stringify({ target, topGuidePages }, null, 2));
-    console.log(`=== 오늘의 검색어: ${target.query} (${target.source}) ===\n\n[작성 지침]\n${writerPrompt(posts)}\n\n[오늘의 요청]\n${userBrief(target)}`);
+    console.log(`=== 오늘의 검색어: ${target.query} (${target.source}) ===\n\n[작성 지침]\n${writerPrompt(posts)}\n\n[오늘의 요청]\n${userBrief(target)}` + refreshNote);
     return;
   }
 

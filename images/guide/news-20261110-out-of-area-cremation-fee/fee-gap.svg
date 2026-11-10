@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="서울시립승화원 성인 화장료 관내 12만원과 관외 100만원 막대 비교, 전체 화장 중 원정 화장 약 26% 원형 그래프">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+  
+  .b2{animation:pulse 4s ease-in-out infinite}
+  .arc{animation:pulse 5s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="640" rx="24" fill="#131c3d"/>
+<text x="60" y="80" class="t" font-size="34" font-weight="800" fill="#ffffff">화장료는 고인의 주소지가 정합니다</text>
+<text x="60" y="122" class="t" font-size="22" fill="#94a3b8">서울시립승화원 성인(만 13세 이상) 화장료 · 서울시설공단 안내</text>
+<text x="60" y="222" class="t" font-size="24" fill="#e2e8f0">관내</text>
+<text x="60" y="250" class="t" font-size="17" fill="#94a3b8">서울·고양·파주</text>
+<rect class="bar" x="220" y="196" width="53" height="54" rx="8" fill="#60a5fa"/>
+<text x="290" y="232" class="t" font-size="26" font-weight="800" fill="#ffffff">12만원</text>
+<text x="60" y="342" class="t" font-size="24" fill="#e2e8f0">관외</text>
+<text x="60" y="370" class="t" font-size="17" fill="#94a3b8">그 밖의 지역</text>
+<rect class="bar b2" x="220" y="316" width="440" height="54" rx="8" fill="#f472b6"/>
+<text x="680" y="352" class="t" font-size="26" font-weight="800" fill="#ffffff">100만원</text>
+<text x="60" y="450" class="t" font-size="20" fill="#cbd5e1">관내 = 주소를 두고 6개월 이상 거주하다 돌아가신 경우</text>
+<text x="60" y="484" class="t" font-size="20" fill="#cbd5e1">거주 기간을 못 채우면 관외 회차로 예약해야 합니다</text>
+<line x1="800" y1="170" x2="800" y2="560" stroke="#334155" stroke-width="2"/>
+<g transform="translate(1000 320)">
+  <circle r="100" fill="none" stroke="#334155" stroke-width="34"/>
+  <circle class="arc" r="100" fill="none" stroke="#fbbf24" stroke-width="34" stroke-dasharray="163 628" transform="rotate(-90)"/>
+  <text y="12" class="t" font-size="40" font-weight="900" fill="#ffffff" text-anchor="middle">26%</text>
+</g>
+<text x="1000" y="490" class="t" font-size="22" fill="#e2e8f0" text-anchor="middle">지난해 화장 중 원정 화장</text>
+<text x="1000" y="522" class="t" font-size="18" fill="#94a3b8" text-anchor="middle">8만9882건 / 34만9419건</text>
+<text x="60" y="600" class="t" font-size="16" fill="#64748b">자료: 국회입법조사처 자료 인용 세계일보(2026.11.5), 서울시설공단. 요금은 바뀔 수 있습니다.</text>
+</svg>

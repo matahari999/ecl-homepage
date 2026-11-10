@@ -284,5 +284,18 @@
       "title": "3일장 날짜 계산과 일정: 1일차 안치부터 3일차 발인 시간까지",
       "description": "3일장은 돌아가신 날이 1일차입니다. 3일장 날짜 계산법, 장례식 1~3일차 일정과 할 일, 발인 시간이 정해지는 기준, 3일차 조문 시간까지 날짜별로 정리했습니다."
     }
+  },
+  {
+    "date": "2026-11-11",
+    "keyword": "장례·상조 업계 최신 소식",
+    "source": "news",
+    "slug": "news-20261110-out-of-area-cremation-fee",
+    "title": "관외 화장 비용 10배 차이, 원정 화장 피하는 확인 순서 4단계",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-mokdong-transfer-3day-case",
+      "paju-postpaid-sangjo",
+      "funeral-3-day-procedure"
+    ]
   }
 ]

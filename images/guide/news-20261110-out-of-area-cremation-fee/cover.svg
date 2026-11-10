@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="멀리 떨어진 화장장으로 향하는 길과 국화, 관내와 관외 화장료 차이를 나타낸 일러스트">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes drive{0%{transform:translate(0,0)}100%{transform:translate(330px,-150px)}}
+  @keyframes glow{0%,100%{opacity:.35}50%{opacity:.85}}
+  @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+  .car{animation:drive 9s ease-in-out infinite alternate}
+  .halo{animation:glow 5s ease-in-out infinite}
+  .flower{transform-origin:150px 590px;animation:sway 7s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1736"/><stop offset="1" stop-color="#2a2557"/></linearGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="1060" cy="90" r="150" fill="#2f356e" opacity=".5"/>
+<text x="70" y="105" class="t" font-size="28" font-weight="700" fill="#fcd34d">2026년 11월 장례·상조 소식</text>
+<text x="70" y="172" class="t" font-size="56" font-weight="900" fill="#ffffff">관외 화장 비용 10배 차이</text>
+<text x="70" y="226" class="t" font-size="27" fill="#cbd5e1">원정 화장 26% · 관내 기준 확인 · 상조 점검</text>
+<!-- road -->
+<path d="M560 600 C 680 520, 760 470, 1000 330" stroke="#3b4285" stroke-width="46" fill="none" stroke-linecap="round"/>
+<path d="M560 600 C 680 520, 760 470, 1000 330" stroke="#e2e8f0" stroke-width="3" fill="none" stroke-dasharray="16 18" opacity=".7"/>
+<!-- crematorium building -->
+<g transform="translate(960 220)">
+  <circle class="halo" cx="80" cy="60" r="95" fill="#fde68a" opacity=".4"/>
+  <rect x="20" y="40" width="120" height="80" rx="6" fill="#e9e3d3"/>
+  <polygon points="10,44 80,0 150,44" fill="#c7bfa8"/>
+  <rect x="66" y="78" width="28" height="42" fill="#8b7f66"/>
+  <rect x="112" y="6" width="16" height="34" fill="#c7bfa8"/>
+</g>
+<!-- car -->
+<g class="car"><g transform="translate(600 520)">
+  <rect x="0" y="0" width="92" height="34" rx="10" fill="#f1f5f9"/>
+  <rect x="16" y="-18" width="56" height="22" rx="7" fill="#cbd5e1"/>
+  <circle cx="20" cy="36" r="10" fill="#1e293b"/><circle cx="72" cy="36" r="10" fill="#1e293b"/>
+</g></g>
+<!-- fee chips -->
+<g transform="translate(70 300)">
+  <rect width="200" height="96" rx="16" fill="#1e2a5a" stroke="#64748b"/>
+  <text x="100" y="40" class="t" font-size="24" fill="#cbd5e1" text-anchor="middle">관내 성인</text>
+  <text x="100" y="78" class="t" font-size="32" font-weight="800" fill="#ffffff" text-anchor="middle">12만원</text>
+</g>
+<g transform="translate(300 300)">
+  <rect width="220" height="96" rx="16" fill="#3a1f3f" stroke="#f472b6"/>
+  <text x="110" y="40" class="t" font-size="24" fill="#fbcfe8" text-anchor="middle">관외 성인</text>
+  <text x="110" y="78" class="t" font-size="32" font-weight="800" fill="#ffffff" text-anchor="middle">100만원</text>
+</g>
+<text x="70" y="432" class="t" font-size="20" fill="#94a3b8">서울시립승화원 기준(서울시설공단 안내)</text>
+<!-- chrysanthemum -->
+<g class="flower">
+  <path d="M150 590 L150 520" stroke="#4ade80" stroke-width="5"/>
+  <g transform="translate(150 510)" fill="#fef3c7">
+    <ellipse rx="10" ry="28" transform="rotate(0)"/><ellipse rx="10" ry="28" transform="rotate(30)"/><ellipse rx="10" ry="28" transform="rotate(60)"/>
+    <ellipse rx="10" ry="28" transform="rotate(90)"/><ellipse rx="10" ry="28" transform="rotate(120)"/><ellipse rx="10" ry="28" transform="rotate(150)"/>
+    <circle r="11" fill="#fbbf24"/>
+  </g>
+</g>
+</svg>

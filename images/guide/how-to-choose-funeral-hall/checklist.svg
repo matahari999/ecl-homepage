@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" role="img" aria-label="장례식장 계약 전 비교할 7가지 체크리스트: 빈소 크기와 사용 시간, 안치료와 입관실, 식대 단가와 최소 주문량, 장례용품, 차량, 외부 반입, 정산과 반품 조건">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes in{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+  .r{animation:in 1.2s ease-out both}
+  .d1{animation-delay:.3s}.d2{animation-delay:.6s}.d3{animation-delay:.9s}.d4{animation-delay:1.2s}.d5{animation-delay:1.5s}.d6{animation-delay:1.8s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="780" fill="#14183a"/>
+<text class="t" x="60" y="70" fill="#ffffff" font-size="38" font-weight="800">장례식장 계약 전 비교할 7가지</text>
+<text class="t" x="60" y="112" fill="#c7d2fe" font-size="24">두 곳 이상에 같은 조건(예상 조문객 수·사용 시간)으로 물어보세요</text>
+
+<g class="r"><rect x="60" y="140" width="1080" height="80" rx="14" fill="#262a5c"/><circle cx="110" cy="180" r="26" fill="#818cf8"/><text class="t" x="110" y="189" fill="#0c1230" font-size="26" font-weight="800" text-anchor="middle">1</text><text class="t" x="160" y="175" fill="#fff" font-size="28" font-weight="700">빈소 크기·사용 시간</text><text class="t" x="160" y="207" fill="#c7d2fe" font-size="21">예상 조문객 수에 맞는 평형, 시간당·24시간 단위 요금</text></g>
+<g class="r d1"><rect x="60" y="232" width="1080" height="80" rx="14" fill="#262a5c"/><circle cx="110" cy="272" r="26" fill="#818cf8"/><text class="t" x="110" y="281" fill="#0c1230" font-size="26" font-weight="800" text-anchor="middle">2</text><text class="t" x="160" y="267" fill="#fff" font-size="28" font-weight="700">안치료·입관실 사용료</text><text class="t" x="160" y="299" fill="#c7d2fe" font-size="21">빈소료와 따로 붙는지, 하루 단위인지</text></g>
+<g class="r d2"><rect x="60" y="324" width="1080" height="80" rx="14" fill="#3a2c5c"/><circle cx="110" cy="364" r="26" fill="#f9a8d4"/><text class="t" x="110" y="373" fill="#0c1230" font-size="26" font-weight="800" text-anchor="middle">3</text><text class="t" x="160" y="359" fill="#fff" font-size="28" font-weight="700">식대 단가·최소 주문량</text><text class="t" x="160" y="391" fill="#fbcfe8" font-size="21">가장 크게 늘어나는 항목, 남은 음식 반품 기준까지</text></g>
+<g class="r d3"><rect x="60" y="416" width="1080" height="80" rx="14" fill="#262a5c"/><circle cx="110" cy="456" r="26" fill="#818cf8"/><text class="t" x="110" y="465" fill="#0c1230" font-size="26" font-weight="800" text-anchor="middle">4</text><text class="t" x="160" y="451" fill="#fff" font-size="28" font-weight="700">장례용품·제단 장식</text><text class="t" x="160" y="483" fill="#c7d2fe" font-size="21">상조에 이미 포함된 품목과 겹치지 않는지</text></g>
+<g class="r d4"><rect x="60" y="508" width="1080" height="80" rx="14" fill="#262a5c"/><circle cx="110" cy="548" r="26" fill="#818cf8"/><text class="t" x="110" y="557" fill="#0c1230" font-size="26" font-weight="800" text-anchor="middle">5</text><text class="t" x="160" y="543" fill="#fff" font-size="28" font-weight="700">장의차량·화장장까지 거리</text><text class="t" x="160" y="575" fill="#c7d2fe" font-size="21">관내 화장장과 가까운지, 버스·리무진 요금</text></g>
+<g class="r d5"><rect x="60" y="600" width="1080" height="80" rx="14" fill="#262a5c"/><circle cx="110" cy="640" r="26" fill="#818cf8"/><text class="t" x="110" y="649" fill="#0c1230" font-size="26" font-weight="800" text-anchor="middle">6</text><text class="t" x="160" y="635" fill="#fff" font-size="28" font-weight="700">외부 음식·용품 반입</text><text class="t" x="160" y="667" fill="#c7d2fe" font-size="21">과일·음료·떡 반입 가능 여부와 조건</text></g>
+<g class="r d6"><rect x="60" y="692" width="1080" height="80" rx="14" fill="#262a5c"/><circle cx="110" cy="732" r="26" fill="#818cf8"/><text class="t" x="110" y="741" fill="#0c1230" font-size="26" font-weight="800" text-anchor="middle">7</text><text class="t" x="160" y="727" fill="#fff" font-size="28" font-weight="700">정산 시점·주차·접근성</text><text class="t" x="160" y="759" fill="#c7d2fe" font-size="21">발인 전 정산 방식, 조문객 주차 대수와 대중교통</text></g>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="남색 밤하늘 아래 국화와 촛불, 세 종류의 장례식장 건물과 체크 표시로 표현한 장례식장 고르는 법 안내 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes flick{0%,100%{transform:scale(1,1)}30%{transform:scale(.92,1.07)}60%{transform:scale(1.04,.96)}}
+  @keyframes glow{0%,100%{opacity:.35}50%{opacity:.8}}
+  @keyframes tw{0%,100%{opacity:.2}50%{opacity:1}}
+  @keyframes pop{0%,20%{opacity:0;transform:scale(.6)}40%,100%{opacity:1;transform:scale(1)}}
+  .fl{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.8s ease-in-out infinite}
+  .gl{animation:glow 3.6s ease-in-out infinite}
+  .st{animation:tw 3.2s ease-in-out infinite}.s2{animation-delay:1.3s}
+  .ck{transform-box:fill-box;transform-origin:50% 50%;animation:pop 6s ease-out infinite}
+  .c2{animation-delay:.8s}.c3{animation-delay:1.6s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1230"/><stop offset="1" stop-color="#2a2260"/></linearGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#fcd34d" stop-opacity=".85"/><stop offset="1" stop-color="#fcd34d" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<g fill="#fff"><circle class="st" cx="640" cy="50" r="2.5"/><circle class="st s2" cx="1120" cy="70" r="2.5"/><circle class="st" cx="900" cy="36" r="2"/><circle class="st s2" cx="1010" cy="130" r="2"/><circle class="st" cx="760" cy="110" r="1.8"/></g>
+
+<text class="t" x="70" y="130" fill="#fde68a" font-size="30" font-weight="700">장례·요양 가이드</text>
+<text class="t" x="70" y="210" fill="#ffffff" font-size="62" font-weight="800">장례식장 고르는 법</text>
+<text class="t" x="70" y="285" fill="#e0e7ff" font-size="36" font-weight="600">계약 전 비교할 7가지</text>
+
+<!-- three buildings -->
+<g transform="translate(70,360)">
+  <rect x="0" y="40" width="150" height="150" rx="10" fill="#3b3a80"/>
+  <rect x="55" y="10" width="40" height="40" rx="6" fill="#3b3a80"/>
+  <rect x="68" y="18" width="14" height="24" fill="#fca5a5"/><rect x="63" y="25" width="24" height="10" fill="#fca5a5"/>
+  <g fill="#c7d2fe" opacity=".8"><rect x="20" y="70" width="30" height="24"/><rect x="60" y="70" width="30" height="24"/><rect x="100" y="70" width="30" height="24"/><rect x="20" y="110" width="30" height="24"/><rect x="100" y="110" width="30" height="24"/></g>
+  <rect x="58" y="140" width="34" height="50" fill="#1e1b4b"/>
+  <circle class="ck" cx="140" cy="40" r="22" fill="#34d399"/><path class="ck" d="M129 40l8 8 14-16" stroke="#0c1230" stroke-width="5" fill="none"/>
+  <text class="t" x="75" y="230" fill="#e0e7ff" font-size="24" text-anchor="middle">병원 부설</text>
+
+  <rect x="200" y="60" width="150" height="130" rx="10" fill="#4c3f91"/>
+  <path d="M190 64 L275 20 L360 64 Z" fill="#5b4ca8"/>
+  <g fill="#c7d2fe" opacity=".8"><rect x="222" y="90" width="30" height="24"/><rect x="298" y="90" width="30" height="24"/></g>
+  <rect x="258" y="130" width="34" height="60" fill="#1e1b4b"/>
+  <circle class="ck c2" cx="345" cy="60" r="22" fill="#34d399"/><path class="ck c2" d="M334 60l8 8 14-16" stroke="#0c1230" stroke-width="5" fill="none"/>
+  <text class="t" x="275" y="230" fill="#e0e7ff" font-size="24" text-anchor="middle">전문</text>
+
+  <rect x="400" y="80" width="150" height="110" rx="10" fill="#33508a"/>
+  <rect x="400" y="70" width="150" height="16" rx="6" fill="#4067a8"/>
+  <g fill="#c7d2fe" opacity=".8"><rect x="420" y="105" width="30" height="24"/><rect x="500" y="105" width="30" height="24"/></g>
+  <rect x="458" y="140" width="34" height="50" fill="#1e1b4b"/>
+  <circle class="ck c3" cx="545" cy="75" r="22" fill="#34d399"/><path class="ck c3" d="M534 75l8 8 14-16" stroke="#0c1230" stroke-width="5" fill="none"/>
+  <text class="t" x="475" y="230" fill="#e0e7ff" font-size="24" text-anchor="middle">공설</text>
+</g>
+
+<!-- candle & chrysanthemum -->
+<g transform="translate(900,250)">
+  <circle class="gl" cx="90" cy="70" r="90" fill="url(#halo)"/>
+  <rect x="70" y="100" width="40" height="190" rx="8" fill="#fef3c7"/>
+  <path class="fl" d="M90 40 C105 65 104 85 90 98 C76 85 75 65 90 40 Z" fill="#fbbf24"/>
+  <path d="M90 62 C96 75 96 86 90 93 C84 86 84 75 90 62 Z" fill="#fff7ed"/>
+  <rect x="88" y="94" width="4" height="10" fill="#334155"/>
+</g>
+<g transform="translate(1080,430)">
+  <line x1="0" y1="20" x2="0" y2="170" stroke="#4ade80" stroke-width="5"/>
+  <g fill="#fefce8">
+    <ellipse cx="0" cy="-12" rx="9" ry="26"/><ellipse cx="0" cy="52" rx="9" ry="26"/>
+    <ellipse cx="-32" cy="20" rx="26" ry="9"/><ellipse cx="32" cy="20" rx="26" ry="9"/>
+    <ellipse cx="-22" cy="-2" rx="9" ry="24" transform="rotate(-45 -22 -2)"/><ellipse cx="22" cy="-2" rx="9" ry="24" transform="rotate(45 22 -2)"/>
+    <ellipse cx="-22" cy="42" rx="9" ry="24" transform="rotate(45 -22 42)"/><ellipse cx="22" cy="42" rx="9" ry="24" transform="rotate(-45 22 42)"/>
+  </g>
+  <circle cx="0" cy="20" r="12" fill="#fde68a"/>
+</g>
+</svg>

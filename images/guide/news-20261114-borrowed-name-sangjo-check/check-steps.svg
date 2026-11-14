@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="가입한 상조회사를 확인하는 4단계: 계약서 회사명 확인, 공정위 등록 상태 조회, 선수금 보전기관 확인, 내상조 찾아줘 납입액 조회">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes rise{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes flow{to{stroke-dashoffset:-40}}
+  .s1{animation:rise 1.2s ease-out both}
+  .s2{animation:rise 1.2s ease-out .5s both}
+  .s3{animation:rise 1.2s ease-out 1s both}
+  .s4{animation:rise 1.2s ease-out 1.5s both}
+  .ln{stroke-dasharray:10 10;animation:flow 3s linear infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1200" height="520" rx="24" fill="#131b3d"/>
+<text x="60" y="70" class="t" font-size="34" font-weight="900" fill="#ffffff">가입한 상조, 이 순서로 확인하세요</text>
+<text x="60" y="112" class="t" font-size="22" fill="#cbd5e1">단체 이름·후원 문구가 아니라 '회사 자체'를 확인하는 것이 핵심입니다</text>
+<line class="ln" x1="150" y1="230" x2="1050" y2="230" stroke="#fcd34d" stroke-width="4"/>
+<g transform="translate(40,160)"><g class="s1">
+  <circle cx="110" cy="70" r="40" fill="#fcd34d"/><text x="110" y="83" text-anchor="middle" class="t" font-size="36" font-weight="900" fill="#131b3d">1</text>
+  <rect x="0" y="135" width="220" height="190" rx="16" fill="#1f2a5c"/>
+  <text x="110" y="180" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#ffffff">계약서 회사명</text>
+  <text x="110" y="222" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">단체 이름 말고</text>
+  <text x="110" y="250" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">계약 당사자인</text>
+  <text x="110" y="278" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">회사 이름 적기</text>
+</g></g>
+<g transform="translate(340,160)"><g class="s2">
+  <circle cx="110" cy="70" r="40" fill="#fcd34d"/><text x="110" y="83" text-anchor="middle" class="t" font-size="36" font-weight="900" fill="#131b3d">2</text>
+  <rect x="0" y="135" width="220" height="190" rx="16" fill="#1f2a5c"/>
+  <text x="110" y="180" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#ffffff">등록·영업 상태</text>
+  <text x="110" y="222" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">공정위 누리집</text>
+  <text x="110" y="250" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">사업자 정보 공개</text>
+  <text x="110" y="278" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">에서 조회</text>
+</g></g>
+<g transform="translate(640,160)"><g class="s3">
+  <circle cx="110" cy="70" r="40" fill="#fcd34d"/><text x="110" y="83" text-anchor="middle" class="t" font-size="36" font-weight="900" fill="#131b3d">3</text>
+  <rect x="0" y="135" width="220" height="190" rx="16" fill="#1f2a5c"/>
+  <text x="110" y="180" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#ffffff">선수금 보전기관</text>
+  <text x="110" y="222" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">공제조합·은행과</text>
+  <text x="110" y="250" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">보상 계약이</text>
+  <text x="110" y="278" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">있는지 확인</text>
+</g></g>
+<g transform="translate(940,160)"><g class="s4">
+  <circle cx="110" cy="70" r="40" fill="#fcd34d"/><text x="110" y="83" text-anchor="middle" class="t" font-size="36" font-weight="900" fill="#131b3d">4</text>
+  <rect x="0" y="135" width="220" height="190" rx="16" fill="#1f2a5c"/>
+  <text x="110" y="180" text-anchor="middle" class="t" font-size="24" font-weight="700" fill="#ffffff">내 납입액 조회</text>
+  <text x="110" y="222" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">'내상조 찾아줘'</text>
+  <text x="110" y="250" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">에서 신고된</text>
+  <text x="110" y="278" text-anchor="middle" class="t" font-size="19" fill="#cbd5e1">금액과 대조</text>
+</g></g>
+</svg>

@@ -349,5 +349,31 @@
       "funeral-cost-inheritance-tax-deduction",
       "postpaid-vs-prepaid-sangjo"
     ]
+  },
+  {
+    "date": "2026-11-17",
+    "keyword": "화장 예약 방법 e하늘",
+    "source": "seed",
+    "slug": "cremation-reservation-ehaneul",
+    "title": "화장 예약 방법 e하늘: 임종 당일 5단계와 마감 때 대처 3가지",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-mokdong-transfer-3day-case",
+      "funeral-3-day-procedure",
+      "paju-postpaid-sangjo"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "refresh",
+    "slug": "funeral-cost-inheritance-tax-deduction",
+    "before": {
+      "title": "장례비용 상속세 공제: 최대 1,500만원 한도와 영수증 챙기는 법",
+      "description": "장례비는 연말정산 소득공제가 아니라 상속세 계산 때 상속재산에서 빼 주는 항목입니다. 일반 장례비 500만~1,000만원, 봉안·자연장 500만원 한도와 신고기한, 꼭 남겨야 할 영수증을 정리했습니다."
+    },
+    "after": {
+      "title": "장례비용 소득공제 안 됩니다: 상속세 공제 최대 1,500만원 받는 법",
+      "description": "장례비용 소득공제는 연말정산에 없고, 장례비 공제는 상속세 계산 때 받습니다. 일반 장례비 500만~1,000만원, 봉안·자연장 500만원 등 최대 1,500만원 한도와 신청 방법, 챙길 영수증을 정리했습니다."
+    }
   }
 ]

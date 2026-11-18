@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" role="img" aria-label="발인 날 장례식장에서 서울시립승화원을 거쳐 서현추모공원까지 리무진과 버스가 함께 이동하는 동선">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes move{0%{offset-distance:0%}100%{offset-distance:100%}}
+  @keyframes dash{to{stroke-dashoffset:-40}}
+  @keyframes pulse{0%,100%{r:13}50%{r:17}}
+  .path{stroke-dasharray:14 6;animation:dash 1.4s linear infinite}
+  .lim{offset-path:path('M150 190 C 330 110, 420 110, 500 190 S 700 270, 850 190');animation:move 7s ease-in-out infinite}
+  .bus{offset-path:path('M150 190 C 330 110, 420 110, 500 190 S 700 270, 850 190');animation:move 7s ease-in-out .5s infinite}
+  .dot{animation:pulse 2.4s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1000" height="520" rx="24" fill="#0f1b33"/>
+<text class="t" x="40" y="58" font-size="26" font-weight="800" fill="#ffffff">발인 날 이동 동선</text>
+<text class="t" x="40" y="88" font-size="16" fill="#94a3b8">고인은 운구 리무진, 유가족은 버스로 함께 움직였습니다</text>
+<path class="path" d="M150 190 C 330 110, 420 110, 500 190 S 700 270, 850 190" fill="none" stroke="#fcd34d" stroke-width="4"/>
+<g><circle class="dot" cx="150" cy="190" r="14" fill="#fcd34d"/><circle class="dot" cx="500" cy="190" r="14" fill="#fcd34d"/><circle class="dot" cx="850" cy="190" r="14" fill="#fcd34d"/></g>
+<!-- 움직이는 차량 -->
+<g class="bus"><rect x="-20" y="-11" width="40" height="22" rx="5" fill="#e2e8f0"/><rect x="-14" y="-6" width="28" height="7" rx="2" fill="#334155"/></g>
+<g class="lim"><rect x="-26" y="-9" width="52" height="18" rx="6" fill="#0b0f19" stroke="#fcd34d" stroke-width="2"/></g>
+<!-- 지점 카드 -->
+<g class="t">
+  <rect x="50" y="250" width="200" height="104" rx="14" fill="#ffffff"/>
+  <text x="150" y="282" text-anchor="middle" font-size="15" fill="#64748b">출발</text>
+  <text x="150" y="310" text-anchor="middle" font-size="19" font-weight="800" fill="#0f172a">신촌세브란스</text>
+  <text x="150" y="334" text-anchor="middle" font-size="15" fill="#334155">발인 · 운구</text>
+  <rect x="400" y="250" width="200" height="104" rx="14" fill="#ffffff"/>
+  <text x="500" y="282" text-anchor="middle" font-size="15" fill="#64748b">화장</text>
+  <text x="500" y="310" text-anchor="middle" font-size="19" font-weight="800" fill="#0f172a">서울시립승화원</text>
+  <text x="500" y="334" text-anchor="middle" font-size="15" fill="#334155">예약 회차에 맞춰 도착</text>
+  <rect x="750" y="250" width="200" height="104" rx="14" fill="#ffffff"/>
+  <text x="850" y="282" text-anchor="middle" font-size="15" fill="#64748b">봉안</text>
+  <text x="850" y="310" text-anchor="middle" font-size="19" font-weight="800" fill="#0f172a">서현추모공원</text>
+  <text x="850" y="334" text-anchor="middle" font-size="15" fill="#334155">유골함 안치</text>
+</g>
+<!-- 범례 -->
+<g class="t">
+  <rect x="50" y="400" width="900" height="84" rx="14" fill="#1e2b47"/>
+  <rect x="80" y="430" width="52" height="18" rx="6" fill="#0b0f19" stroke="#fcd34d" stroke-width="2"/>
+  <text x="146" y="445" font-size="17" fill="#ffffff">운구 리무진 — 고인을 모시고</text>
+  <rect x="520" y="428" width="40" height="22" rx="5" fill="#e2e8f0"/>
+  <text x="576" y="445" font-size="17" fill="#ffffff">버스 — 유가족·조문객 한 번에</text>
+</g>
+</svg>

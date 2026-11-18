@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" role="img" aria-label="요양병원 임종부터 장례식장 이송, 3일장 진행, 장지까지 이어지는 4단계 흐름">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes dash{to{stroke-dashoffset:-40}}
+  @keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  @keyframes hl{0%,100%{opacity:.5}50%{opacity:1}}
+  .ln{stroke-dasharray:12 8;animation:dash 1.5s linear infinite}
+  .n1{transform-box:fill-box;transform-origin:center;animation:pop 3.2s ease-in-out infinite}
+  .n2{transform-box:fill-box;transform-origin:center;animation:pop 3.2s ease-in-out .8s infinite}
+  .n3{transform-box:fill-box;transform-origin:center;animation:pop 3.2s ease-in-out 1.6s infinite}
+  .n4{transform-box:fill-box;transform-origin:center;animation:pop 3.2s ease-in-out 2.4s infinite}
+  .bar{animation:hl 2.8s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1000" height="480" rx="24" fill="#0f1b33"/>
+<text class="t" x="40" y="56" font-size="26" font-weight="800" fill="#ffffff">요양병원 임종부터 장지까지</text>
+<text class="t" x="40" y="86" font-size="16" fill="#94a3b8">처음이라 막막한 순서를 네 단계로 정리했습니다</text>
+<path class="ln" d="M125 190 H875" stroke="#fcd34d" stroke-width="4" fill="none"/>
+<g class="t" text-anchor="middle">
+  <g class="n1"><circle cx="125" cy="190" r="34" fill="#fcd34d"/><text x="125" y="200" font-size="28" font-weight="800" fill="#0f172a">1</text></g>
+  <g class="n2"><circle cx="375" cy="190" r="34" fill="#fcd34d"/><text x="375" y="200" font-size="28" font-weight="800" fill="#0f172a">2</text></g>
+  <g class="n3"><circle cx="625" cy="190" r="34" fill="#fcd34d"/><text x="625" y="200" font-size="28" font-weight="800" fill="#0f172a">3</text></g>
+  <g class="n4"><circle cx="875" cy="190" r="34" fill="#fcd34d"/><text x="875" y="200" font-size="28" font-weight="800" fill="#0f172a">4</text></g>
+  <rect x="30" y="250" width="190" height="130" rx="14" fill="#ffffff"/>
+  <text x="125" y="282" font-size="19" font-weight="800" fill="#0f172a">임종 확인</text>
+  <text x="125" y="312" font-size="15" fill="#334155">의사가 사망진단서</text>
+  <text x="125" y="336" font-size="15" fill="#334155">발급, 상조에 연락</text>
+  <rect x="280" y="250" width="190" height="130" rx="14" fill="#ffffff"/>
+  <text x="375" y="282" font-size="19" font-weight="800" fill="#0f172a">이송·안치</text>
+  <text x="375" y="312" font-size="15" fill="#334155">장례식장 안치실로</text>
+  <text x="375" y="336" font-size="15" fill="#334155">모시고 빈소 준비</text>
+  <rect x="530" y="250" width="190" height="130" rx="14" fill="#ffffff"/>
+  <text x="625" y="282" font-size="19" font-weight="800" fill="#0f172a">3일장 진행</text>
+  <text x="625" y="312" font-size="15" fill="#334155">입관·성복·조문</text>
+  <text x="625" y="336" font-size="15" fill="#334155">2일차에 집중</text>
+  <rect x="780" y="250" width="190" height="130" rx="14" fill="#ffffff"/>
+  <text x="875" y="282" font-size="19" font-weight="800" fill="#0f172a">발인·장지</text>
+  <text x="875" y="312" font-size="15" fill="#334155">3일차 오전 발인</text>
+  <text x="875" y="336" font-size="15" fill="#334155">장지로 이동</text>
+</g>
+<rect class="bar" x="40" y="414" width="920" height="40" rx="12" fill="#1e2b47"/>
+<text class="t" x="500" y="440" text-anchor="middle" font-size="17" fill="#fde68a">장례가 끝난 뒤, 남은 가족의 돌봄 계획도 함께 정리해 두세요</text>
+</svg>

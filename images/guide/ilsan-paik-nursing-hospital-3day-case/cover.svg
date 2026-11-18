@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="밤하늘 아래 병원 건물과 집의 불빛, 국화 한 송이가 어우러진 3일장 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+  @keyframes win{0%,100%{opacity:.55}50%{opacity:1}}
+  @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+  @keyframes drift{0%{transform:translate(0,0);opacity:0}15%{opacity:.9}100%{transform:translate(40px,-90px);opacity:0}}
+  .s1{animation:tw 2.6s ease-in-out infinite}.s2{animation:tw 3.4s ease-in-out .8s infinite}.s3{animation:tw 4.2s ease-in-out 1.6s infinite}
+  .w1{animation:win 3.2s ease-in-out infinite}.w2{animation:win 4.1s ease-in-out 1s infinite}
+  .fl{transform-origin:930px 560px;animation:sway 6s ease-in-out infinite}
+  .d1{animation:drift 6s ease-out infinite}.d2{animation:drift 6s ease-out 2s infinite}.d3{animation:drift 6s ease-out 4s infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1730"/><stop offset="1" stop-color="#2b3a5c"/></linearGradient>
+  <radialGradient id="pet" cx=".5" cy=".3"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dbe4f0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<g fill="#fef9c3">
+  <circle class="s1" cx="620" cy="60" r="3"/><circle class="s2" cx="740" cy="130" r="2.5"/><circle class="s3" cx="860" cy="70" r="2"/>
+  <circle class="s2" cx="1100" cy="100" r="3"/><circle class="s1" cx="1000" cy="40" r="2"/><circle class="s3" cx="540" cy="170" r="2"/>
+</g>
+<circle cx="1080" cy="170" r="48" fill="#fef3c7"/><circle cx="1102" cy="154" r="44" fill="#16223d"/>
+<rect x="0" y="560" width="1200" height="70" fill="#18233d"/>
+<!-- 병원 건물 -->
+<g>
+  <rect x="560" y="330" width="170" height="230" fill="#1e2b47"/>
+  <rect x="740" y="390" width="110" height="170" fill="#243354"/>
+  <g class="w1" fill="#fde68a"><rect x="580" y="352" width="24" height="26"/><rect x="620" y="352" width="24" height="26"/><rect x="660" y="352" width="24" height="26"/><rect x="580" y="400" width="24" height="26"/><rect x="660" y="400" width="24" height="26"/></g>
+  <g class="w2" fill="#fde68a"><rect x="700" y="352" width="22" height="26"/><rect x="620" y="400" width="24" height="26"/><rect x="580" y="448" width="24" height="26"/><rect x="660" y="448" width="24" height="26"/><rect x="760" y="412" width="22" height="24"/><rect x="800" y="412" width="22" height="24"/></g>
+  <rect x="636" y="500" width="40" height="60" fill="#0f172a"/>
+  <rect x="636" y="318" width="28" height="12" fill="#e2e8f0"/><rect x="644" y="310" width="12" height="28" fill="#e2e8f0" opacity="0"/>
+  <g fill="#ef4444"><rect x="644" y="296" width="12" height="32" rx="2"/><rect x="634" y="306" width="32" height="12" rx="2"/></g>
+</g>
+<!-- 집 -->
+<g>
+  <path d="M900 470 L970 420 L1040 470 V560 H900Z" fill="#26365a"/>
+  <rect class="w1" x="945" y="490" width="30" height="34" fill="#fcd34d"/>
+  <rect x="990" y="500" width="22" height="60" fill="#0f172a"/>
+</g>
+<!-- 국화 -->
+<g class="fl">
+  <path d="M930 560 C 928 520, 934 490, 930 460" stroke="#4d7c0f" stroke-width="5" fill="none"/>
+  <g transform="translate(930,440)" fill="url(#pet)">
+    <ellipse rx="10" ry="30" transform="rotate(0)"/><ellipse rx="10" ry="30" transform="rotate(30)"/><ellipse rx="10" ry="30" transform="rotate(60)"/><ellipse rx="10" ry="30" transform="rotate(90)"/><ellipse rx="10" ry="30" transform="rotate(120)"/><ellipse rx="10" ry="30" transform="rotate(150)"/>
+    <circle r="9" fill="#fde68a"/>
+  </g>
+</g>
+<g fill="#fef3c7"><circle class="d1" cx="900" cy="410" r="3"/><circle class="d2" cx="960" cy="400" r="2.5"/><circle class="d3" cx="930" cy="395" r="2"/></g>
+<!-- 제목 -->
+<text class="t" x="70" y="150" font-size="60" font-weight="800" fill="#ffffff">일산백병원장례식장</text>
+<text class="t" x="70" y="214" font-size="34" font-weight="700" fill="#fcd34d">3일장 · 요양병원에서 임종 후 진행 과정</text>
+<text class="t" x="70" y="264" font-size="24" fill="#cbd5e1">실제 진행 사례 · 후불제 상조</text>
+</svg>

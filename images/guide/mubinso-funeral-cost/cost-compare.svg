@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="일반 3일장과 무빈소 장례의 비용 항목 비교: 빈소 사용료와 조문객 음식은 무빈소에서 빠지고, 안치료·입관·관과 수의·운구 차량·화장료·장지 비용은 그대로 남는다">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes fadein{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+  .r{opacity:0;animation:fadein .8s ease-out forwards}
+  .r1{animation-delay:.2s}.r2{animation-delay:.5s}.r3{animation-delay:.8s}.r4{animation-delay:1.1s}.r5{animation-delay:1.4s}.r6{animation-delay:1.7s}.r7{animation-delay:2s}.r8{animation-delay:2.3s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}.r{opacity:1}}
+</style>
+<rect width="1200" height="760" fill="#121a3d"/>
+<text x="60" y="70" class="t" font-size="36" font-weight="900" fill="#ffffff">무빈소로 바꾸면 무엇이 빠지고 무엇이 남나</text>
+<text x="60" y="112" class="t" font-size="22" fill="#cbd5e1">금액은 장례식장·지역·선택 품목에 따라 다르므로 항목만 비교합니다</text>
+<g class="t" font-size="24" font-weight="700" fill="#fcd34d">
+  <text x="60" y="170">비용 항목</text><text x="700" y="170" text-anchor="middle">일반 3일장</text><text x="980" y="170" text-anchor="middle">무빈소 장례</text>
+</g>
+<line x1="60" y1="188" x2="1140" y2="188" stroke="#475099" stroke-width="2"/>
+<g class="t" font-size="25">
+  <g class="r r1"><rect x="50" y="200" width="1100" height="58" rx="10" fill="#3a1f3d"/><text x="80" y="238" fill="#fff">빈소(조문실) 사용료</text><text x="700" y="238" text-anchor="middle" fill="#e2e8f0">있음</text><text x="980" y="238" text-anchor="middle" fill="#fca5a5" font-weight="800">빠짐</text></g>
+  <g class="r r2"><rect x="50" y="266" width="1100" height="58" rx="10" fill="#3a1f3d"/><text x="80" y="304" fill="#fff">조문객 음식·음료</text><text x="700" y="304" text-anchor="middle" fill="#e2e8f0">있음</text><text x="980" y="304" text-anchor="middle" fill="#fca5a5" font-weight="800">빠짐</text></g>
+  <g class="r r3"><rect x="50" y="332" width="1100" height="58" rx="10" fill="#1b2a4a"/><text x="80" y="370" fill="#fff">안치료 (하루 단위)</text><text x="700" y="370" text-anchor="middle" fill="#e2e8f0">있음</text><text x="980" y="370" text-anchor="middle" fill="#86efac" font-weight="800">남음 (일수 짧아짐)</text></g>
+  <g class="r r4"><rect x="50" y="398" width="1100" height="58" rx="10" fill="#1b2a4a"/><text x="80" y="436" fill="#fff">입관실·염습(몸을 씻기고 수의 입힘)</text><text x="700" y="436" text-anchor="middle" fill="#e2e8f0">있음</text><text x="980" y="436" text-anchor="middle" fill="#86efac" font-weight="800">남음</text></g>
+  <g class="r r5"><rect x="50" y="464" width="1100" height="58" rx="10" fill="#1b2a4a"/><text x="80" y="502" fill="#fff">관·수의·유골함</text><text x="700" y="502" text-anchor="middle" fill="#e2e8f0">있음</text><text x="980" y="502" text-anchor="middle" fill="#86efac" font-weight="800">남음</text></g>
+  <g class="r r6"><rect x="50" y="530" width="1100" height="58" rx="10" fill="#1b2a4a"/><text x="80" y="568" fill="#fff">이송·운구 차량</text><text x="700" y="568" text-anchor="middle" fill="#e2e8f0">있음</text><text x="980" y="568" text-anchor="middle" fill="#86efac" font-weight="800">남음</text></g>
+  <g class="r r7"><rect x="50" y="596" width="1100" height="58" rx="10" fill="#1b2a4a"/><text x="80" y="634" fill="#fff">화장료 (관내·관외 차이 큼)</text><text x="700" y="634" text-anchor="middle" fill="#e2e8f0">있음</text><text x="980" y="634" text-anchor="middle" fill="#86efac" font-weight="800">남음</text></g>
+  <g class="r r8"><rect x="50" y="662" width="1100" height="58" rx="10" fill="#1b2a4a"/><text x="80" y="700" fill="#fff">봉안·자연장 등 장지</text><text x="700" y="700" text-anchor="middle" fill="#e2e8f0">있음</text><text x="980" y="700" text-anchor="middle" fill="#86efac" font-weight="800">남음</text></g>
+</g>
+</svg>

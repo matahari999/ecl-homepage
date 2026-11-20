@@ -414,5 +414,18 @@
       "funeral-3-day-procedure",
       "paju-postpaid-sangjo"
     ]
+  },
+  {
+    "date": "2026-11-21",
+    "keyword": "무빈소 장례 비용",
+    "source": "seed",
+    "slug": "mubinso-funeral-cost",
+    "title": "무빈소 장례 비용: 빠지는 2가지·남는 6가지와 2일장 일정",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-mokdong-transfer-3day-case",
+      "funeral-3-day-procedure",
+      "paju-postpaid-sangjo"
+    ]
   }
 ]

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="왼쪽에는 불빛이 켜진 봉안당 건물, 오른쪽에는 언덕 위 나무가 있는 봉안당과 수목장 비교 그림">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+  @keyframes glow{0%,100%{opacity:.55}50%{opacity:1}}
+  @keyframes sway{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
+  @keyframes leaf{0%{transform:translate(0,0) rotate(0);opacity:0}15%{opacity:1}100%{transform:translate(-60px,120px) rotate(160deg);opacity:0}}
+  .s1{animation:tw 2.6s ease-in-out infinite}.s2{animation:tw 3.4s ease-in-out .8s infinite}.s3{animation:tw 4.2s ease-in-out 1.6s infinite}
+  .gl{animation:glow 3.6s ease-in-out infinite}
+  .tree{transform-origin:960px 470px;animation:sway 7s ease-in-out infinite}
+  .l1{animation:leaf 7s ease-in infinite}.l2{animation:leaf 7s ease-in 2.4s infinite}.l3{animation:leaf 7s ease-in 4.8s infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1530"/><stop offset="1" stop-color="#22324f"/></linearGradient>
+  <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fde68a" stop-opacity=".35"/><stop offset="1" stop-color="#fde68a" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<g fill="#fef9c3"><circle class="s1" cx="640" cy="70" r="3"/><circle class="s2" cx="780" cy="120" r="2.5"/><circle class="s3" cx="1120" cy="80" r="2"/><circle class="s2" cx="560" cy="150" r="2"/><circle class="s1" cx="1010" cy="40" r="2.5"/></g>
+<!-- 땅 -->
+<path d="M0 520 Q300 495 600 515 T1200 500 V630 H0Z" fill="#17233c"/>
+<!-- 봉안당 -->
+<g>
+  <ellipse class="gl" cx="700" cy="440" rx="170" ry="110" fill="url(#halo)"/>
+  <path d="M590 380 L700 330 L810 380Z" fill="#2c3d63"/>
+  <rect x="605" y="380" width="190" height="135" fill="#24365a"/>
+  <g fill="#334a78"><rect x="620" y="395" width="12" height="120"/><rect x="768" y="395" width="12" height="120"/></g>
+  <g class="gl" fill="#fcd34d"><rect x="648" y="400" width="22" height="20" rx="2"/><rect x="678" y="400" width="22" height="20" rx="2"/><rect x="708" y="400" width="22" height="20" rx="2"/><rect x="738" y="400" width="22" height="20" rx="2"/>
+  <rect x="648" y="428" width="22" height="20" rx="2"/><rect x="678" y="428" width="22" height="20" rx="2"/><rect x="708" y="428" width="22" height="20" rx="2"/><rect x="738" y="428" width="22" height="20" rx="2"/></g>
+  <rect x="684" y="462" width="32" height="53" fill="#0f172a"/>
+</g>
+<!-- 수목장 나무 -->
+<g class="tree">
+  <path d="M955 515 C 952 470, 962 440, 956 400" stroke="#5b4636" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <path d="M957 440 C 930 425, 915 410, 905 395 M958 425 C 985 410, 1000 398, 1010 385" stroke="#5b4636" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="955" cy="360" r="62" fill="#2f6b4f"/><circle cx="905" cy="385" r="44" fill="#3a7d5c"/><circle cx="1008" cy="378" r="46" fill="#3a7d5c"/><circle cx="960" cy="318" r="40" fill="#4a9170"/>
+  <rect x="985" y="445" width="26" height="14" rx="3" fill="#e2e8f0"/><path d="M990 445 L985 433" stroke="#e2e8f0" stroke-width="2"/>
+</g>
+<g fill="#86c5a2"><ellipse class="l1" cx="990" cy="330" rx="7" ry="4"/><ellipse class="l2" cx="930" cy="350" rx="6" ry="3.5"/><ellipse class="l3" cx="1015" cy="365" rx="6" ry="3.5"/></g>
+<text class="t" x="70" y="150" font-size="68" font-weight="800" fill="#ffffff">봉안당 vs 수목장</text>
+<text class="t" x="70" y="218" font-size="32" font-weight="700" fill="#fcd34d">어디에 모실까, 고르기 전 알아둘 차이</text>
+<text class="t" x="70" y="268" font-size="23" fill="#cbd5e1">모시는 방식 · 비용 구조 · 사용 기간 · 나중의 이장</text>
+</svg>

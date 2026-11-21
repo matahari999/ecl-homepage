@@ -364,6 +364,17 @@ function newsBrief() {
 5. JSON에 "category":"업계 소식", "slug":"news-<YYYYMMDD>-<영문 주제>", "keyword": 대표 검색어(예: "상조업체 폐업 피해보상"), 그리고 근거 기사 목록 "sources":[{"title":"기사/보도자료 제목","publisher":"매체·기관","date":"YYYY-MM-DD","url":"https://..."}] 를 2개 이상 넣습니다. 제목은 "[업계 소식]"으로 시작하지 말고, 소식의 핵심과 소비자 행동이 드러나게(예: "OO상조 폐업, 낸 돈 돌려받는 방법과 기한").`;
 }
 
+function jangjiBrief() {
+  const J = config.jangji;
+  return `[장지 글 추가 규칙]
+1. "category":"${J.category}" 로 넣습니다.
+2. 본문 어딘가에 장지 안내 페이지 링크를 자연스럽게 1번 넣습니다: <a href="/jangji">장지 안내: 봉안당·수목장·묘지 비교</a>
+3. 법·제도(장사 등에 관한 법률, 개장 허가·신고, 매장·자연장 신고 기한 등)는 WebSearch로 법제처·보건복지부·지자체 등 공식 자료를 확인한 것만 쓰고 "sources"에 2개 이상 넣습니다.
+4. 특정 봉안당·수목장·추모공원 이름과 가격은 공식 홈페이지나 공공기관 자료로 확인된 것만, 확인 날짜와 함께 씁니다. 확인 안 된 시설 추천·순위·가격은 쓰지 않습니다. 가격은 "시설·위치·기간에 따라 다름"을 기본으로 하고 비용을 구성하는 항목(분양가·관리비·안치·명패 등)으로 설명합니다.
+5. 이음케어라이프가 봉안당·수목장 분양이나 묘지 관리를 직접 한다고 쓰지 않습니다. 회사 언급은 장례 상담·후불제 상조(businessFacts) 범위에서만, 상담 CTA로 연결합니다.
+6. 대표 그림은 어두운 배경 + 밝은 글씨, 나무·봉안당·언덕 같은 차분한 장지 이미지로 그립니다.`;
+}
+
 function userBrief(target) {
   return `오늘 쓸 글의 목표 검색어: "${target.query}"
 ${target.impressions ? `참고: 이 검색어로 최근 ${config.gsc.lookbackDays}일간 우리 사이트가 ${target.impressions}번 노출됐지만 클릭은 ${target.clicks}번(평균 순위 ${target.position.toFixed(1)}위)뿐이었습니다. 이 검색어를 입력한 사람이 정확히 원하는 답을 주는 전용 글이 필요합니다.` : '예비 키워드 목록에서 고른 검색어입니다.'}
@@ -477,6 +488,20 @@ async function main() {
       const target = { query: '장례·상조 업계 최신 소식', source: 'news' };
       fs.writeFileSync(BRIEF_FILE, JSON.stringify({ target, topGuidePages }, null, 2));
       console.log(`=== 오늘은 [업계 뉴스] 차례입니다 ===\n\n[작성 지침]\n${writerPrompt(posts)}\n\n[오늘의 요청]\n${newsBrief()}` + refreshNote);
+      return;
+    }
+  }
+
+  // [장지 차례] 일반 글 사이에 N편마다 1번은 장지(봉안당·수목장·개장·이장) 글
+  if (flag('--brief') && !flag('--no-jangji') && !opt('--keyword') && config.jangji) {
+    const J = config.jangji;
+    const sinceJ = (() => { let n = 0; for (let i = log.length - 1; i >= 0 && log[i].source !== 'jangji'; i--) if (log[i].slug && !log[i].type && log[i].source !== 'case') n++; return n; })();
+    const used = new Set(log.map((x) => norm(x.keyword || '')));
+    const next = J.keywords.find((k) => !used.has(norm(k)) && !isCovered(k, posts));
+    if (next && sinceJ >= J.every - 1) {
+      const target = { query: next, source: 'jangji' };
+      fs.writeFileSync(BRIEF_FILE, JSON.stringify({ target, topGuidePages }, null, 2));
+      console.log(`=== 오늘은 [장지] 차례입니다: ${next} ===\n\n[작성 지침]\n${writerPrompt(posts)}\n\n[오늘의 요청]\n${userBrief(target)}\n\n${jangjiBrief()}` + refreshNote);
       return;
     }
   }

@@ -535,7 +535,7 @@ function fixContactCards(){
         header.insertAdjacentElement('afterend', section);
       }
 
-      // 유튜브 + 네이버 블로그 2분할 카드 섹션 삽입
+      // 유튜브 + 블로그 2분할 카드 섹션 삽입
       function injectYoutubeBlogCards(){
         if(document.getElementById('ecl-yt-blog-section')) return;
         var videoBanner=document.getElementById('ecl-video-banner');
@@ -644,7 +644,7 @@ function fixContactCards(){
         b3.onmouseover=function(){this.style.background='#02a84b';};
         b3.onmouseout=function(){this.style.background='#03C75A';};
 
-        wrap.appendChild(b1);wrap.appendChild(b2);wrap.appendChild(b3);
+        wrap.appendChild(b1);wrap.appendChild(b2);
 
         // dark mode 토글 버튼 바로 앞에 삽입
         var toggleBtn=desktopNav.querySelector('button');

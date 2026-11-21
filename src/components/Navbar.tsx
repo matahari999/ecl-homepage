@@ -30,7 +30,8 @@ const Navbar = () => {
     { name: '견적서', href: '/quote', isQuote: true, isRouter: true },
     { name: '서비스', href: '/services', isRouter: true },
     { name: '후기', href: '/testimonials', isRouter: true },
-    { name: '정보센터', href: 'https://blog.naver.com/sinabro7500', isExternal: true },
+    { name: '블로그', href: '/guide' },
+    { name: '장지 안내', href: '/jangji' },
   ];
 
   const renderNavLink = (link: typeof navLinks[0], className?: string, onClick?: () => void) => {

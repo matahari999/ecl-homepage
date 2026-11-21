@@ -398,6 +398,8 @@ const JANGJI_FAQ = [
   { q: '장지를 아직 못 정했는데 화장부터 해도 되나요?', a: '화장은 예약이 필요하고, 유골을 모실 곳은 그 뒤에 정해도 되는 경우가 많습니다. 다만 봉안시설마다 안치 가능한 시간과 필요한 서류가 있어, 발인 전에 후보를 두세 곳으로 좁혀 두면 일정이 흔들리지 않습니다.' },
   { q: '이미 모신 분을 다른 곳으로 옮기려면 어떻게 하나요?', a: '매장한 시신이나 유골을 다른 분묘·봉안시설로 옮기거나 화장·자연장하는 일을 법에서는 개장이라고 합니다. 옮길 곳을 먼저 정한 뒤, 관할 시·군·구청에 필요한 허가·신고 절차와 서류를 확인하고 진행하세요. 지역마다 안내가 다를 수 있습니다.' },
   { q: '시설이 정식으로 허가받은 곳인지 어떻게 확인하나요?', a: '보건복지부 e하늘 장사정보시스템에서 봉안·자연장지·묘지 시설을 조회할 수 있고, 계약 전에 설치 허가·신고 여부를 시설이나 관할 시·군·구청에 직접 확인하는 것이 안전합니다.' },
+  { q: '장례식장으로 직접 와서 설명해 주나요?', a: '네. 이음케어라이프는 상담이 이루어지면 담당 직원이 서울·경기 지역 장례식장으로 직접 찾아가, 가족분들께 장지별 위치·비용·사용 기간·이용 자격을 비교해 설명드리고 화장·안치 일정까지 함께 정리해 드립니다. 대표전화 1588-9012로 요청하시면 됩니다.' },
+  { q: '국가유공자·참전용사는 어디에 모실 수 있나요?', a: '국가유공자와 6·25 참전군인 등은 국립묘지법에 따라 국립현충원·호국원 안장 대상이 될 수 있습니다. 수도권에서는 경기 이천의 국립이천호국원이 확충 후 2025년부터 안장을 재개했습니다. 대상 여부와 신청 절차는 국가보훈부 국립묘지 안장신청으로 확인하세요.' },
   { q: '일산·고양에서 가까운 수목장은 어디인가요?', a: '고양시 일산동구 지영동의 일산공감수목장(봉화사) 같은 사설 수목장림이 있고, 공설로는 파주 광탄면 서울시립 용미리 제1묘지 잔디장(서울·고양·파주 6개월 이상 거주자 대상)이 있습니다. 사설은 나무와 구역을 골라 오래 모실 수 있고, 공설은 비용이 낮은 대신 이용 조건과 기간 제한이 있습니다.' },
   { q: '서울시립 납골당(봉안당)에 지금 모실 수 있나요?', a: '서울시립 봉안시설은 안치 여건이 부족해 2022년 4월 25일부터 신규 봉안을 받지 않습니다. 이미 배우자가 시립 봉안시설에 계신 경우의 부부합골만 가능하니, 새로 모실 곳은 사설 봉안당이나 자연장지 가운데서 고르셔야 합니다.' },
   { q: '서울추모공원은 납골당인가요?', a: '아닙니다. 서울추모공원(서초구)은 서울시가 운영하는 화장시설입니다. 화장 후 유골을 모실 봉안당·수목장·자연장지는 따로 정해야 하며, 고양·파주 쪽에 모실 계획이라면 고양의 서울시립승화원에서 화장하는 편이 이동이 짧습니다.' },
@@ -455,13 +457,27 @@ const JANGJI_PLACES = [
     tip: '서울시립 자연장지는 파주 용미리에 있어, 자연장 계획이라면 고양 서울시립승화원에서 화장하는 편이 동선이 짧습니다.' },
 ];
 
+
+// 서울·경기·인천 그 밖의 장지 (이름·지역·공식 사이트 위주)
+const JANGJI_MORE = [
+  { name: '화성 함백산추모공원', area: '경기 화성', type: '공설 · 화장·봉안당·자연장', note: '화성·부천·안산·안양·시흥·광명·군포 7개 시 공동 이용', url: 'https://hbm.hu.or.kr' },
+  { name: '광명 메모리얼파크', area: '경기 광명', type: '공설 · 봉안당', note: '광명시 자경로 153 · ☎ 02-2610-7380', url: 'https://www.gm.go.kr/pt/partInfo/wf/funeral/PTMN542.jsp' },
+  { name: '수원시 연화장', area: '경기 수원', type: '공설 · 화장·봉안당·자연장', note: '☎ 031-218-6500' },
+  { name: '성남시 영생관리사업소', area: '경기 성남', type: '공설 · 화장·봉안', note: '☎ 031-754-2268' },
+  { name: '용인공원 (아너스톤)', area: '경기 용인', type: '사설 · 재단법인 묘지·봉안당', note: '처인구 모현읍 새래로 158-33 · ☎ 031-334-3484' },
+  { name: '인천가족공원', area: '인천 부평', type: '공설 · 봉안당·자연장(수목장 등)', note: '부평구 평온로 61', url: 'https://www.incheon.go.kr/welfare/WE010316' },
+  { name: '서울 자치구 추모의집', area: '서울 각 구', type: '구립 봉안시설', note: '동작·성동·성북·종로·중구 등 ☎ 1800-2325', url: 'http://seoulskypark.co.kr/' },
+  { name: '예은추모공원 (강남·동대문·서대문·강동구 추모의집)', area: '충북 음성', type: '구 위탁 봉안시설', note: '해당 구 주민 이용', url: 'http://www.yeaeunpark.com/' },
+  { name: '국립이천호국원', area: '경기 이천', type: '국립묘지 · 국가유공자·참전용사', note: '확충 후 2025년 안장 재개 · ☎ 031-645-2345', url: 'https://www.mpva.go.kr/icnc/index.do' },
+];
+
 function renderJangji(all) {
   const canonical = `${S.origin}/jangji`;
   const re = /봉안|수목|자연장|장지|이장|개장|묘지|납골|추모공원|잔디장/;
   const related = all.filter((p) => re.test(`${p.title} ${p.keyword} ${(p.keywords || []).join(' ')} ${p.category || ''}`)).slice(0, 6);
   const more = related.length >= 3 ? related : [...related, ...all.filter((p) => !related.includes(p))].slice(0, 4);
-  const title = '장지 안내: 고양·일산·파주 추모공원·납골당·수목장 비교와 이장 절차 | ' + S.brand;
-  const description = '고양·일산·파주 추모공원, 납골당(봉안당), 수목장을 한눈에. 일산공감수목장·청아공원·서현추모공원·동화경모공원·용미리 자연장 등 주요 장지의 위치·종류·연락처와 장지 고르는 기준, 개장·이장 절차를 정리했습니다.';
+  const title = '장지 안내: 서울·경기 추모공원·납골당·수목장 비교, 장례식장 방문 상담 | ' + S.brand;
+  const description = '서울·경기 추모공원, 납골당(봉안당), 수목장을 한눈에. 상담 후 담당 직원이 장례식장으로 찾아가 안내합니다. 일산공감수목장·청아공원·서현추모공원·동화경모공원·용미리 자연장 등 주요 장지의 위치·종류·연락처와 장지 고르는 기준, 개장·이장 절차를 정리했습니다.';
   const jsonLd = [
     { '@context': 'https://schema.org', '@type': 'WebPage', name: '장지 안내', description, url: canonical, isPartOf: { '@type': 'WebSite', name: S.brand, url: S.origin } },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
@@ -492,14 +508,34 @@ function renderJangji(all) {
 .jg-p .ad{font-size:14px;color:var(--ink)}
 .jg-p .tp{font-size:14px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;margin-top:10px}
 .jg-rg{font-size:21px;margin:26px 0 4px}
+.jg-visit{background:linear-gradient(135deg,#0a0f1e,#1e3a8a);color:#fff;border-radius:20px;padding:26px 24px;margin:8px 0 26px}
+.jg-visit h2{color:#fff;margin-top:0}
+.jg-visit p{color:#dbeafe}
+.jg-visit ol{list-style:none;padding:0!important;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin:14px 0}
+.jg-visit li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.7}
+.jg-visit li b{display:block;color:#fcd34d;font-size:16px;margin-bottom:2px}
+.jg-more{list-style:none;padding:0!important}
+.jg-more li{border-bottom:1px solid var(--line);padding:10px 0;font-size:15px}
+.jg-more li span{color:var(--muted);font-size:14px}
 </style>
 <section class="hero"><div class="wrap">
   <span class="tag">장지 안내</span>
   <h1>추모공원·납골당·수목장,<br>어디에 모실지 막막하다면</h1>
-  <p>고양·일산·파주 주요 장지의 위치와 특징, 봉안당(납골당)·수목장(자연장)·묘지의 차이와 고르는 기준, 이미 모신 분을 옮기는 개장·이장 절차를 한 곳에 정리했습니다.</p>
+  <p>서울·경기 주요 장지의 위치와 특징, 봉안당(납골당)·수목장(자연장)·묘지의 차이와 고르는 기준, 이미 모신 분을 옮기는 개장·이장 절차를 한 곳에 정리했습니다.</p>
   <p style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap"><a class="btn btn-gold" href="tel:${S.phone}">📞 장지 상담 ${S.phone}</a><a class="btn btn-ghost" href="${S.consultUrl}">상담 신청</a></p>
+  <p style="margin-top:10px;font-size:15px">🚗 상담이 접수되면 <strong>담당 직원이 장례식장으로 직접 찾아가</strong> 장지를 설명드립니다.</p>
 </div></section>
 <main class="wrap"><article>
+<section id="visit" class="jg-visit"><h2>담당 직원이 장례식장으로 찾아가 직접 안내합니다</h2>
+<p>경황없는 장례 중에 전화와 인터넷만으로 장지를 고르기는 쉽지 않습니다. 이음케어라이프는 상담이 이루어지면 담당 직원이 서울·경기 어느 장례식장이든 직접 찾아가, 가족분들 앞에서 장지별 차이와 비용, 조건을 정확하게 설명해 드립니다.</p>
+<ol>
+<li><b>① 전화·카톡 상담</b>고인 주소지, 종교, 성묘 거리, 예산 등 가족의 조건을 여쭙니다.</li>
+<li><b>② 장례식장 방문</b>담당 직원이 빈소로 찾아가 상주·가족분들을 직접 뵙습니다.</li>
+<li><b>③ 맞춤 비교 설명</b>조건에 맞는 봉안당·수목장·자연장 후보의 위치, 비용, 사용 기간, 이용 자격을 자료로 비교해 드립니다.</li>
+<li><b>④ 일정까지 정리</b>화장 시간과 안치 가능 시간, 필요한 서류를 맞춰 발인 날 동선이 흔들리지 않게 돕습니다.</li>
+</ol>
+<p style="display:flex;gap:8px;flex-wrap:wrap;margin:0"><a class="btn btn-gold" href="tel:${S.phone}">📞 방문 상담 요청 ${S.phone}</a><a class="btn btn-ghost" href="${S.consultUrl}">상담 신청서 남기기</a></p>
+</section>
 <section id="types"><h2>장지는 크게 세 가지 방식입니다</h2>
 <div class="jg-types">
   <div class="jg-t"><i>🏛️</i><b>봉안당 (봉안시설)</b><span>화장한 유골함을 시설 안 안치단에 모십니다. 실내에서 참배하기 편하고 날씨 영향이 적습니다.</span></div>
@@ -519,7 +555,11 @@ function renderJangji(all) {
 ${JANGJI_PLACES.map((x) => `<tr><td><a href="#pl-${JANGJI_PLACES.indexOf(x) + 1}">${esc(x.name)}</a></td><td>${esc(x.region)}</td><td>${esc(x.type)}</td><td>${esc(x.op.split(' · ')[0])}</td></tr>`).join('')}
 </tbody></table>
 ${['고양·일산', '파주', '서울'].map((rg) => `<h3 class="jg-rg">${rg === '서울' ? '서울 (화장시설)' : rg + ' 추모공원·납골당·수목장'}</h3><div class="jg-pl">${JANGJI_PLACES.filter((x) => x.region === rg).map((x) => `<div class="jg-p" id="pl-${JANGJI_PLACES.indexOf(x) + 1}"><h3>${esc(x.name)}</h3><p class="meta"><b>${esc(x.type)}</b>${esc(x.op)}</p><p>${esc(x.desc)}</p><p class="ad">📍 ${esc(x.addr)}<br>☎ <a href="tel:${x.tel}">${x.tel}</a></p><p class="tp">💡 ${esc(x.tip)}${x.post ? ` <a href="${x.post}">실제 진행 후기 보기 →</a>` : ''}</p></div>`).join('')}</div>`).join('')}
-<blockquote>어느 곳이 우리 가족에게 맞을지 모르겠다면, 성묘 거리·종교·예산을 알려 주세요. 화장 일정과 안치 동선까지 함께 맞춰 드립니다. ☎ ${S.phone}</blockquote>
+<h3 class="jg-rg">서울·경기·인천 그 밖의 추모공원·납골당</h3>
+<p>공설 시설은 대부분 고인의 주소지(보통 사망 전 6개월 이상 거주)에 따라 이용 자격과 요금이 달라집니다. 아래 시설도 상담하시면 조건에 맞는지 함께 확인해 드립니다.</p>
+<ul class="jg-more">${JANGJI_MORE.map((x) => `<li><strong>${x.url ? `<a href="${x.url}" target="_blank" rel="noopener nofollow">${esc(x.name)}</a>` : esc(x.name)}</strong> · ${esc(x.area)} <span>— ${esc(x.type)} · ${esc(x.note)}</span></li>`).join('')}
+<li><strong><a href="https://www.ehaneul.go.kr" target="_blank" rel="noopener nofollow">e하늘 장사정보시스템</a></strong> · 전국 <span>— 보건복지부 운영, 전국 봉안당·자연장지·묘지·화장시설 검색과 화장 예약</span></li></ul>
+<blockquote>어느 곳이 우리 가족에게 맞을지 모르겠다면, 성묘 거리·종교·예산을 알려 주세요. 담당 직원이 장례식장으로 찾아가 화장 일정과 안치 동선까지 함께 맞춰 드립니다. ☎ ${S.phone}</blockquote>
 </section>
 
 <section id="choose"><h2>장지 고르는 5가지 기준</h2>
@@ -557,7 +597,7 @@ ${CTA.consult()}
 <section id="faq" class="faq"><h2>자주 묻는 질문</h2>${JANGJI_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</section>
 
 ${more.length ? `<section class="related"><h2>장지·장례 관련 글</h2><div class="cards">${more.map(card).join('')}</div></section>` : ''}
-<section class="srcs"><h2>참고한 자료</h2><ol><li><a href="https://www.law.go.kr/법령/장사등에관한법률" target="_blank" rel="noopener nofollow">장사 등에 관한 법률</a> <span>법제처 국가법령정보센터</span></li><li><a href="https://news.seoul.go.kr/welfare/archives/48524" target="_blank" rel="noopener nofollow">서울시립장사시설 운영</a> <span>서울특별시</span></li><li><a href="https://www.sisul.or.kr/open_content/memorial/use/nature.jsp" target="_blank" rel="noopener nofollow">자연장·봉안 이용안내</a> <span>서울시설공단</span></li><li><a href="https://www.paju.go.kr/www/www_02/www_02_01/www_02_01_08/www_02_01_08_02/www_02_01_08_02_05.jsp" target="_blank" rel="noopener nofollow">파주시 봉안시설 현황</a> <span>파주시청</span></li><li><a href="https://www.wbf.or.kr/woodland/facility/list.do" target="_blank" rel="noopener nofollow">전국 수목장림 찾아보기</a> <span>한국수목장문화진흥재단</span></li></ol></section>
+<section class="srcs"><h2>참고한 자료</h2><ol><li><a href="https://www.law.go.kr/법령/장사등에관한법률" target="_blank" rel="noopener nofollow">장사 등에 관한 법률</a> <span>법제처 국가법령정보센터</span></li><li><a href="https://news.seoul.go.kr/welfare/archives/48524" target="_blank" rel="noopener nofollow">서울시립장사시설 운영</a> <span>서울특별시</span></li><li><a href="https://www.sisul.or.kr/open_content/memorial/use/nature.jsp" target="_blank" rel="noopener nofollow">자연장·봉안 이용안내</a> <span>서울시설공단</span></li><li><a href="https://www.paju.go.kr/www/www_02/www_02_01/www_02_01_08/www_02_01_08_02/www_02_01_08_02_05.jsp" target="_blank" rel="noopener nofollow">파주시 봉안시설 현황</a> <span>파주시청</span></li><li><a href="https://www.mpva.go.kr/icnc/contents.do?key=629" target="_blank" rel="noopener nofollow">국립이천호국원 안장 대상</a> <span>국가보훈부</span></li><li><a href="https://www.wbf.or.kr/woodland/facility/list.do" target="_blank" rel="noopener nofollow">전국 수목장림 찾아보기</a> <span>한국수목장문화진흥재단</span></li></ol></section>
 <p class="note">이 페이지는 일반적인 안내이며, 법령·허가 절차·비용은 지역과 시설에 따라 다르고 바뀔 수 있습니다. 정확한 내용은 관할 시·군·구청이나 해당 시설, 이음케어라이프 상담(☎ ${S.phone})으로 확인해 주세요.</p>
 </article></main>`;
   return layout({ title, description, canonical, jsonLd, body, ogType: 'website', image: `${S.origin}/og-home.jpg`, active: 'jangji' });

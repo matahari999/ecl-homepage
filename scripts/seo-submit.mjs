@@ -63,7 +63,11 @@ async function naverConsole() {
   const ctx = await chromium.launchPersistentContext(profile, { channel: 'msedge', headless: false, viewport: { width: 1280, height: 900 }, args: myEdge ? ['--profile-directory=Default'] : [] });
   let closed = false;
   ctx.on('close', () => { closed = true; });
+  let lastDialog = '';
+  const hookDialogs = (p) => p.on('dialog', async (d) => { lastDialog = d.message(); await d.accept().catch(() => {}); });
+  ctx.on('page', hookDialogs);
   let page = ctx.pages()[0] || (await ctx.newPage());
+  hookDialogs(page);
   // 탭이 닫혀도 브라우저가 살아 있으면 새 탭으로 이어서 진행
   const ensurePage = async () => {
     if (closed) throw new Error('엣지 창이 닫혀서 중단했습니다. 작업이 끝날 때까지 창을 닫지 말아 주세요.');
@@ -84,25 +88,41 @@ async function naverConsole() {
   }
   console.log('[네이버] 로그인 확인 ✓');
 
+  const today = (() => { const d = new Date(); return `${String(d.getFullYear()).slice(2)}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`; })();
   const fillAndSubmit = async (pageUrl, value, label) => {
     await ensurePage();
     await page.goto(pageUrl, { waitUntil: 'networkidle' });
-    const input = page.locator('main input[type="text"], form input[type="text"], input[type="text"]').first();
+    const input = page.locator('input[type="text"]').first();
     await input.waitFor({ timeout: 15000 });
+    await input.click();
     await input.fill('');
-    // 입력칸에 도메인이 미리 붙어 있는 화면이면 경로만, 아니면 전체 주소를 넣음
-    const prefix = await page.locator(`text=${ORIGIN}`).first().isVisible().catch(() => false);
-    await input.fill(prefix ? value.replace(ORIGIN, '').replace(/^\//, '') : value);
-    const btn = page.getByRole('button', { name: /^(확인|요청|제출)$/ }).first();
+    await input.pressSequentially(value, { delay: 15 }); // 실제 타이핑처럼 입력해야 확인 버튼이 활성화됨
+    const btn = page.getByRole('button', { name: '확인' }).first();
+    if (await btn.isDisabled().catch(() => false)) {
+      console.log(`[네이버] ${label} ${value} → 확인 버튼 비활성(형식 불가 또는 이미 등록됨)`);
+      await shot(label + '-disabled');
+      return;
+    }
+    lastDialog = '';
     await btn.click();
-    await page.waitForTimeout(1500);
-    const msg = await page.locator('[role="alert"], .v-snack__content, .message, .alert').first().innerText().catch(() => '');
-    console.log(`[네이버] ${label} ${value} → ${msg.trim() || '제출 클릭 완료'}`);
-    await shot(label);
+    await page.waitForTimeout(2500);
+    const toast = await page.locator('.v-snack__content, [role="alert"], .toast, .layer_alert').first().innerText({ timeout: 1000 }).catch(() => '');
+    // 결과 확인: 새로고침 후 내역 맨 위에 오늘 날짜로 들어갔는지 확인
+    await page.reload({ waitUntil: 'networkidle' });
+    const rel = value.replace(ORIGIN, '') || '/';
+    const rows = await page.locator('table tr, li').allInnerTexts().catch(() => []);
+    const ok = rows.some((t) => t.includes(today) && (t.includes(rel) || t.includes(value)));
+    console.log(`[네이버] ${label} ${value} → ${ok ? '✓ 등록 확인' : '✗ 내역에 없음'}${lastDialog ? ` (안내: ${lastDialog.replace(/\s+/g, ' ').trim()})` : ''}${toast ? ` (${toast.replace(/\s+/g, ' ').trim()})` : ''}`);
+    await shot(label + (ok ? '-ok' : '-fail'));
   };
 
+  // 이미 제출된 사이트맵은 건너뜀
+  await ensurePage();
+  await page.goto(`https://searchadvisor.naver.com/console/site/request/sitemap?site=${SITE_PARAM}`, { waitUntil: 'networkidle' });
+  const registered = (await page.locator('body').innerText().catch(() => ''));
   // 사이트맵 제출 (이미 등록된 경우 '이미 제출' 안내가 떠도 괜찮음)
-  for (const sm of SITEMAPS) {
+  for (const sm of SITEMAPS.filter((x) => x.endsWith('sitemap.xml'))) {
+    if (new RegExp(`(^|\\s)${sm.replace('.', '\\.')}(\\s|$)`, 'm').test(registered)) { console.log(`[네이버] 사이트맵 ${sm} → ✓ 이미 등록됨`); continue; }
     try {
       await fillAndSubmit(`https://searchadvisor.naver.com/console/site/request/sitemap?site=${SITE_PARAM}`, `${ORIGIN}/${sm}`, '사이트맵');
     } catch (e) {

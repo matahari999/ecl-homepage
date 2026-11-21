@@ -398,7 +398,61 @@ const JANGJI_FAQ = [
   { q: '장지를 아직 못 정했는데 화장부터 해도 되나요?', a: '화장은 예약이 필요하고, 유골을 모실 곳은 그 뒤에 정해도 되는 경우가 많습니다. 다만 봉안시설마다 안치 가능한 시간과 필요한 서류가 있어, 발인 전에 후보를 두세 곳으로 좁혀 두면 일정이 흔들리지 않습니다.' },
   { q: '이미 모신 분을 다른 곳으로 옮기려면 어떻게 하나요?', a: '매장한 시신이나 유골을 다른 분묘·봉안시설로 옮기거나 화장·자연장하는 일을 법에서는 개장이라고 합니다. 옮길 곳을 먼저 정한 뒤, 관할 시·군·구청에 필요한 허가·신고 절차와 서류를 확인하고 진행하세요. 지역마다 안내가 다를 수 있습니다.' },
   { q: '시설이 정식으로 허가받은 곳인지 어떻게 확인하나요?', a: '보건복지부 e하늘 장사정보시스템에서 봉안·자연장지·묘지 시설을 조회할 수 있고, 계약 전에 설치 허가·신고 여부를 시설이나 관할 시·군·구청에 직접 확인하는 것이 안전합니다.' },
+  { q: '일산·고양에서 가까운 수목장은 어디인가요?', a: '고양시 일산동구 지영동의 일산공감수목장(봉화사) 같은 사설 수목장림이 있고, 공설로는 파주 광탄면 서울시립 용미리 제1묘지 잔디장(서울·고양·파주 6개월 이상 거주자 대상)이 있습니다. 사설은 나무와 구역을 골라 오래 모실 수 있고, 공설은 비용이 낮은 대신 이용 조건과 기간 제한이 있습니다.' },
+  { q: '서울시립 납골당(봉안당)에 지금 모실 수 있나요?', a: '서울시립 봉안시설은 안치 여건이 부족해 2022년 4월 25일부터 신규 봉안을 받지 않습니다. 이미 배우자가 시립 봉안시설에 계신 경우의 부부합골만 가능하니, 새로 모실 곳은 사설 봉안당이나 자연장지 가운데서 고르셔야 합니다.' },
+  { q: '서울추모공원은 납골당인가요?', a: '아닙니다. 서울추모공원(서초구)은 서울시가 운영하는 화장시설입니다. 화장 후 유골을 모실 봉안당·수목장·자연장지는 따로 정해야 하며, 고양·파주 쪽에 모실 계획이라면 고양의 서울시립승화원에서 화장하는 편이 이동이 짧습니다.' },
+  { q: '서현추모공원은 어디에 있나요?', a: '서현공원(서현추모공원)은 경기도 파주시 파주읍 명봉산로 277에 있는 봉안시설입니다(☎ 031-947-4114). 고양 서울시립승화원에서 화장한 뒤 같은 날 봉안까지 이어서 진행하는 경우가 많습니다.' },
   { q: '비용은 얼마나 드나요?', a: '시설 종류, 지역, 안치 위치, 사용 기간, 관리비 방식에 따라 크게 달라 한 가지 금액으로 말씀드리기 어렵습니다. 총액만 보지 말고 분양가에 관리비와 추가 비용(명패·안치 비용 등)이 포함되는지 항목별 견적서로 비교하세요.' },
+];
+
+
+// 고양·파주·서울 주요 장지 (공식 자료 기준, 2026-11 확인). 관계·제휴 표현 금지, 사실 정보만.
+const JANGJI_PLACES = [
+  { region: '고양·일산', name: '일산공감수목장 (봉화사)', alt: '공감수목장, 일산수목장', type: '수목장 (자연장)', op: '사설 · 종교단체(사찰) 운영',
+    addr: '경기도 고양시 일산동구 지영로194번길 132 (지영동)', tel: '031-975-4588',
+    desc: '일산 지영동 현달산 자락에 조성된 수목장림입니다. 한국수목장문화진흥재단 수목장림 목록 기준 약 2만 그루 규모에 주차 80대를 갖췄고, 서울시립승화원(벽제)과 가까워 화장 후 같은 날 안치 일정을 잡기 수월합니다. 개인목·부부목·가족목·공동목으로 나뉘어 가족 형태에 맞게 고를 수 있습니다.',
+    tip: '나무 위치와 조망, 개인·부부·가족목별 비용과 사용 기간을 현장에서 직접 비교해 보세요.' },
+  { region: '고양·일산', name: '청아공원', alt: '일산 청아공원 납골당', type: '봉안당 (납골당)', op: '사설 · 법인',
+    addr: '경기도 고양시 일산동구 은마길 129 (설문동)', tel: '031-977-6700',
+    desc: '일산동구 설문동에 있는 실내 봉안당(납골당)입니다. 일산·파주 생활권에서 성묘 다니기 편한 위치를 찾는 가족들이 많이 비교하는 곳입니다.',
+    tip: '안치단 층·위치에 따라 비용 차이가 크니 같은 조건으로 견적을 받아 비교하세요.' },
+  { region: '고양·일산', name: '장안정사 추모공원', alt: '일산 장안정사 납골당', type: '사찰 봉안시설', op: '사설 · 사찰(대한불교조계종)',
+    addr: '경기도 고양시 일산동구 백마로502번길 64-13 (풍동)', tel: '031-903-6650',
+    desc: '일산동구 풍동의 사찰 추모공원으로 1988년에 문을 열었습니다. 불교식으로 모시고 사찰에서 제례를 함께 올리고 싶은 가족이 찾습니다.',
+    tip: '불교 의식(49재 등)을 함께 진행할지 미리 정해 두면 상담이 빠릅니다.' },
+  { region: '고양·일산', name: '서울시립승화원 (벽제 화장장)', alt: '벽제승화원, 벽제화장장', type: '화장시설 · 봉안당 · 유택동산(산골)', op: '공설 · 서울시설공단',
+    addr: '경기도 고양시 덕양구 통일로 504 (대자동)', tel: '031-960-0236',
+    desc: '화장로 23기를 갖춘 수도권 서북부의 대표 화장장으로, 고양·파주·김포 등 서북부 장례에서 많이 이용합니다. 단지 안 시립 봉안당은 안치 여건이 부족해 2022년 4월부터 신규 봉안을 받지 않고(배우자 합골만 가능), 골분을 뿌리는 유택동산은 이용할 수 있습니다.',
+    tip: '화장 예약은 e하늘 장사정보시스템에서 하며, 서울·고양·파주 6개월 이상 거주자는 관내 요금이 적용됩니다.' },
+  { region: '파주', name: '서울시립 용미리 제1묘지 (잔디장·추모의 숲)', alt: '용미리 자연장, 용미리 묘지', type: '자연장(잔디장) · 산분장', op: '공설 · 서울시설공단',
+    addr: '경기도 파주시 광탄면 명봉산로 262번길 290', tel: '031-943-1930',
+    desc: '서울시가 운영하는 공설 자연장지입니다. 서울·고양·파주에서 6개월 이상 살다 돌아가신 분이 대상이며, 능선형 잔디장은 40년 50만 원(연장·반환 불가)입니다. 수목장 구역은 만장이라 현재는 잔디장 위주로 운영되고, 골분을 뿌리는 추모의 숲도 있습니다.',
+    tip: '예약 없이 화장 당일 승화원 접수실에서 자연장을 신청하면 됩니다. 한 번 안장하면 유골을 돌려받거나 이장할 수 없습니다.' },
+  { region: '파주', name: '서현공원 (서현추모공원)', alt: '파주 서현추모공원 납골당', type: '봉안당 (납골당)', op: '사설',
+    addr: '경기도 파주시 파주읍 명봉산로 277', tel: '031-947-4114',
+    desc: '파주읍 명봉산로에 있는 봉안시설로, 고양 서울시립승화원에서 화장한 뒤 같은 날 이동해 안치하는 경우가 많습니다.',
+    tip: '발인 날 화장 시간과 봉안 가능 시간을 미리 맞춰 두면 하루에 안치까지 마칠 수 있습니다.',
+    post: '/guide/sinchon-severance-limousine-bus-4day-case.html' },
+  { region: '파주', name: '동화경모공원', alt: '파주 동화경모공원 납골당', type: '묘지 · 봉안당', op: '사설 · 재단법인',
+    addr: '경기도 파주시 탄현면 헤이리로 98', tel: '031-945-3226',
+    desc: '파주 통일동산 지구에 있는 실향민 추모공원으로, 매장 묘역과 봉안당을 함께 운영합니다. 임진강 너머 북녘이 보이는 곳이라 고향이 북쪽인 가족들이 많이 찾습니다.',
+    tip: '묘역과 봉안당은 이용 조건이 달라 원하는 방식을 먼저 정하고 문의하세요.' },
+  { region: '파주', name: '통일로추모공원', alt: '파주 통일로추모공원 납골당', type: '봉안당 (납골당)', op: '사설',
+    addr: '경기도 파주시 조리읍 명봉산로114번길 84', tel: '031-943-3501',
+    desc: '파주 조리읍 명봉산로 일대에 있는 봉안시설입니다. 서현공원·용미리 묘지와 같은 권역이라 함께 둘러보며 비교하기 좋습니다.',
+    tip: '관리비 납부 방식(일시납·연납)과 사용 기간을 함께 확인하세요.' },
+  { region: '파주', name: '크리스찬 메모리얼파크', alt: '파주 기독교 납골당', type: '봉안당 (기독교)', op: '사설',
+    addr: '경기도 파주시 조리읍 홀작로 164', tel: '031-957-1260',
+    desc: '파주 조리읍의 기독교 봉안시설입니다. 기독교식으로 모시고 예배하는 공간을 원하는 가족이 비교합니다.',
+    tip: '교회 단체 구역이 있는지, 일반 가족도 분양받을 수 있는지 문의하세요.' },
+  { region: '파주', name: '약수암 (파주추모공원)', alt: '파주추모공원 납골당', type: '사찰 봉안시설', op: '사설 · 사찰',
+    addr: '경기도 파주시 파주읍 약수골길 86', tel: '031-952-4801',
+    desc: '파주읍에 있는 사찰 봉안시설로, 파주추모공원이라는 이름으로도 불립니다.',
+    tip: '사찰 시설은 제례·천도재 운영 방식도 함께 확인해 두면 좋습니다.' },
+  { region: '서울', name: '서울추모공원 (서초 화장장)', alt: '서울추모공원 화장', type: '화장시설 · 유택동산(산골)', op: '공설 · 서울시설공단',
+    addr: '서울특별시 서초구 양재대로12길 74', tel: '1577-2082',
+    desc: '이름은 추모공원이지만 납골당이 아니라 화장로 15기를 갖춘 서울 남부의 화장장입니다. 화장 뒤 유골을 모실 봉안당이나 자연장지는 따로 정해야 합니다.',
+    tip: '서울시립 자연장지는 파주 용미리에 있어, 자연장 계획이라면 고양 서울시립승화원에서 화장하는 편이 동선이 짧습니다.' },
 ];
 
 function renderJangji(all) {
@@ -406,13 +460,14 @@ function renderJangji(all) {
   const re = /봉안|수목|자연장|장지|이장|개장|묘지|납골|추모공원|잔디장/;
   const related = all.filter((p) => re.test(`${p.title} ${p.keyword} ${(p.keywords || []).join(' ')} ${p.category || ''}`)).slice(0, 6);
   const more = related.length >= 3 ? related : [...related, ...all.filter((p) => !related.includes(p))].slice(0, 4);
-  const title = '장지 안내: 봉안당·수목장·묘지 선택과 이장 절차 한눈에 | ' + S.brand;
-  const description = '화장 후 유골을 어디에 모실지 고민이라면. 봉안당·수목장(자연장)·묘지 비교, 장지 고르는 5가지 기준, 이미 모신 분의 개장·이장 절차, 계약 전 체크리스트를 정리했습니다.';
+  const title = '장지 안내: 고양·일산·파주 추모공원·납골당·수목장 비교와 이장 절차 | ' + S.brand;
+  const description = '고양·일산·파주 추모공원, 납골당(봉안당), 수목장을 한눈에. 일산공감수목장·청아공원·서현추모공원·동화경모공원·용미리 자연장 등 주요 장지의 위치·종류·연락처와 장지 고르는 기준, 개장·이장 절차를 정리했습니다.';
   const jsonLd = [
     { '@context': 'https://schema.org', '@type': 'WebPage', name: '장지 안내', description, url: canonical, isPartOf: { '@type': 'WebSite', name: S.brand, url: S.origin } },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: '홈', item: `${S.origin}/` },
       { '@type': 'ListItem', position: 2, name: '장지 안내', item: canonical } ] },
+    { '@context': 'https://schema.org', '@type': 'ItemList', name: '고양·일산·파주 주요 추모공원·납골당·수목장', itemListElement: JANGJI_PLACES.map((x, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Place', name: x.name, alternateName: x.alt, description: `${x.type} · ${x.op}`, telephone: x.tel, address: { '@type': 'PostalAddress', streetAddress: x.addr, addressCountry: 'KR' } } })) },
     { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: JANGJI_FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   ];
   const body = `
@@ -428,11 +483,20 @@ function renderJangji(all) {
 .jg-chk{list-style:none;padding:0!important}
 .jg-chk li{position:relative;padding-left:30px;margin:8px 0}
 .jg-chk li::before{content:'☐';position:absolute;left:0;color:var(--blue);font-size:19px;line-height:1.5}
+.jg-pl{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin:10px 0 18px}
+.jg-p{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.jg-p h3{margin:0 0 4px;font-size:19px;letter-spacing:-.02em}
+.jg-p .meta{font-size:13px;color:var(--muted);margin:0 0 8px}
+.jg-p .meta b{display:inline-block;background:var(--soft);color:var(--blue-d);border-radius:999px;padding:1px 10px;margin-right:6px;font-size:12px}
+.jg-p p{font-size:15px;line-height:1.75;margin:6px 0}
+.jg-p .ad{font-size:14px;color:var(--ink)}
+.jg-p .tp{font-size:14px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;margin-top:10px}
+.jg-rg{font-size:21px;margin:26px 0 4px}
 </style>
 <section class="hero"><div class="wrap">
   <span class="tag">장지 안내</span>
-  <h1>유골을 어디에 모실지 막막하다면,<br>장지 고르는 기준부터</h1>
-  <p>봉안당, 수목장(자연장), 묘지까지 방식별 차이와 고르는 기준, 이미 모신 분을 옮기는 개장·이장 절차를 한 곳에 정리했습니다.</p>
+  <h1>추모공원·납골당·수목장,<br>어디에 모실지 막막하다면</h1>
+  <p>고양·일산·파주 주요 장지의 위치와 특징, 봉안당(납골당)·수목장(자연장)·묘지의 차이와 고르는 기준, 이미 모신 분을 옮기는 개장·이장 절차를 한 곳에 정리했습니다.</p>
   <p style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap"><a class="btn btn-gold" href="tel:${S.phone}">📞 장지 상담 ${S.phone}</a><a class="btn btn-ghost" href="${S.consultUrl}">상담 신청</a></p>
 </div></section>
 <main class="wrap"><article>
@@ -447,6 +511,16 @@ function renderJangji(all) {
 <tr><td>수목장·자연장</td><td>자연 속에 모시고 관리 부담을 줄이고 싶은 가족</td><td>개인·부부·가족·공동 구역 구분, 표지 방식, 사용 기간, 허가·신고된 자연장지인지</td></tr>
 <tr><td>묘지(매장)</td><td>선산이나 종중 묘지를 이어 쓰는 가족</td><td>설치 허가·신고 대상 여부, 관리 주체, 훗날 개장·이장 계획</td></tr>
 </tbody></table></section>
+
+
+<section id="places"><h2>고양·일산·파주 주요 추모공원·납골당·수목장</h2>
+<p>수도권 서북부에서 장례를 치르면 대부분 고양의 서울시립승화원(벽제)에서 화장한 뒤, 가까운 일산·파주의 봉안당(납골당)이나 수목장에 모십니다. 많이 찾는 곳을 지역별로 정리했습니다. 비용과 분양 조건은 자주 바뀌므로 계약 전에 해당 시설에 꼭 확인하세요.</p>
+<table><thead><tr><th>시설</th><th>지역</th><th>종류</th><th>운영</th></tr></thead><tbody>
+${JANGJI_PLACES.map((x) => `<tr><td><a href="#pl-${JANGJI_PLACES.indexOf(x) + 1}">${esc(x.name)}</a></td><td>${esc(x.region)}</td><td>${esc(x.type)}</td><td>${esc(x.op.split(' · ')[0])}</td></tr>`).join('')}
+</tbody></table>
+${['고양·일산', '파주', '서울'].map((rg) => `<h3 class="jg-rg">${rg === '서울' ? '서울 (화장시설)' : rg + ' 추모공원·납골당·수목장'}</h3><div class="jg-pl">${JANGJI_PLACES.filter((x) => x.region === rg).map((x) => `<div class="jg-p" id="pl-${JANGJI_PLACES.indexOf(x) + 1}"><h3>${esc(x.name)}</h3><p class="meta"><b>${esc(x.type)}</b>${esc(x.op)}</p><p>${esc(x.desc)}</p><p class="ad">📍 ${esc(x.addr)}<br>☎ <a href="tel:${x.tel}">${x.tel}</a></p><p class="tp">💡 ${esc(x.tip)}${x.post ? ` <a href="${x.post}">실제 진행 후기 보기 →</a>` : ''}</p></div>`).join('')}</div>`).join('')}
+<blockquote>어느 곳이 우리 가족에게 맞을지 모르겠다면, 성묘 거리·종교·예산을 알려 주세요. 화장 일정과 안치 동선까지 함께 맞춰 드립니다. ☎ ${S.phone}</blockquote>
+</section>
 
 <section id="choose"><h2>장지 고르는 5가지 기준</h2>
 <ol class="jg-steps">
@@ -483,7 +557,7 @@ ${CTA.consult()}
 <section id="faq" class="faq"><h2>자주 묻는 질문</h2>${JANGJI_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</section>
 
 ${more.length ? `<section class="related"><h2>장지·장례 관련 글</h2><div class="cards">${more.map(card).join('')}</div></section>` : ''}
-<section class="srcs"><h2>참고한 자료</h2><ol><li><a href="https://www.law.go.kr/법령/장사등에관한법률" target="_blank" rel="noopener nofollow">장사 등에 관한 법률</a> <span>법제처 국가법령정보센터</span></li></ol></section>
+<section class="srcs"><h2>참고한 자료</h2><ol><li><a href="https://www.law.go.kr/법령/장사등에관한법률" target="_blank" rel="noopener nofollow">장사 등에 관한 법률</a> <span>법제처 국가법령정보센터</span></li><li><a href="https://news.seoul.go.kr/welfare/archives/48524" target="_blank" rel="noopener nofollow">서울시립장사시설 운영</a> <span>서울특별시</span></li><li><a href="https://www.sisul.or.kr/open_content/memorial/use/nature.jsp" target="_blank" rel="noopener nofollow">자연장·봉안 이용안내</a> <span>서울시설공단</span></li><li><a href="https://www.paju.go.kr/www/www_02/www_02_01/www_02_01_08/www_02_01_08_02/www_02_01_08_02_05.jsp" target="_blank" rel="noopener nofollow">파주시 봉안시설 현황</a> <span>파주시청</span></li><li><a href="https://www.wbf.or.kr/woodland/facility/list.do" target="_blank" rel="noopener nofollow">전국 수목장림 찾아보기</a> <span>한국수목장문화진흥재단</span></li></ol></section>
 <p class="note">이 페이지는 일반적인 안내이며, 법령·허가 절차·비용은 지역과 시설에 따라 다르고 바뀔 수 있습니다. 정확한 내용은 관할 시·군·구청이나 해당 시설, 이음케어라이프 상담(☎ ${S.phone})으로 확인해 주세요.</p>
 </article></main>`;
   return layout({ title, description, canonical, jsonLd, body, ogType: 'website', image: `${S.origin}/og-home.jpg`, active: 'jangji' });

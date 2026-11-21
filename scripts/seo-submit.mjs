@@ -66,12 +66,14 @@ async function naverConsole() {
   fs.mkdirSync(shotDir, { recursive: true });
   const shot = (name) => page.screenshot({ path: path.join(shotDir, `${Date.now()}-${name}.png`) }).catch(() => {});
 
-  // 로그인 확인: 로그인 안 되어 있으면 사용자가 직접 로그인할 때까지 최대 5분 대기
+  // 로그인 확인: 로그인 안 되어 있으면 사용자가 직접 로그인할 때까지 최대 10분 대기
   await page.goto('https://searchadvisor.naver.com/console/board', { waitUntil: 'domcontentloaded' });
-  if (/nid\.naver\.com/.test(page.url()) || !(await page.url()).includes('searchadvisor')) {
-    console.log('\n👉 열린 엣지 창에서 네이버에 직접 로그인해 주세요. (최대 5분 대기)\n');
+  if (!new URL(page.url()).hostname.startsWith('searchadvisor')) {
+    console.log('\n👉 열린 엣지 창에서 네이버에 직접 로그인해 주세요. (최대 10분 대기)');
+    console.log('   아이디·비밀번호 대신 [QR코드] 또는 [일회용 번호] 탭으로 네이버 앱 로그인을 하면 가장 확실합니다.\n');
+    await page.waitForURL((u) => u.hostname.startsWith('searchadvisor.naver.com'), { timeout: 10 * 60 * 1000 });
+    await page.goto('https://searchadvisor.naver.com/console/board', { waitUntil: 'domcontentloaded' });
   }
-  await page.waitForURL(/searchadvisor\.naver\.com\/console/, { timeout: 5 * 60 * 1000 });
   console.log('[네이버] 로그인 확인 ✓');
 
   const fillAndSubmit = async (pageUrl, value, label) => {

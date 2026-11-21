@@ -106,13 +106,12 @@ async function naverConsole() {
     lastDialog = '';
     await btn.click();
     await page.waitForTimeout(2500);
-    const toast = await page.locator('.v-snack__content, [role="alert"], .toast, .layer_alert').first().innerText({ timeout: 1000 }).catch(() => '');
     // 결과 확인: 새로고침 후 내역 맨 위에 오늘 날짜로 들어갔는지 확인
     await page.reload({ waitUntil: 'networkidle' });
     const rel = value.replace(ORIGIN, '') || '/';
     const rows = await page.locator('table tr, li').allInnerTexts().catch(() => []);
     const ok = rows.some((t) => t.includes(today) && (t.includes(rel) || t.includes(value)));
-    console.log(`[네이버] ${label} ${value} → ${ok ? '✓ 등록 확인' : '✗ 내역에 없음'}${lastDialog ? ` (안내: ${lastDialog.replace(/\s+/g, ' ').trim()})` : ''}${toast ? ` (${toast.replace(/\s+/g, ' ').trim()})` : ''}`);
+    console.log(`[네이버] ${label} ${value} → ${ok ? '✓ 등록 확인' : '✗ 내역에 없음'}${lastDialog ? ` (안내: ${lastDialog.replace(/\s+/g, ' ').trim()})` : ''}`);
     await shot(label + (ok ? '-ok' : '-fail'));
   };
 

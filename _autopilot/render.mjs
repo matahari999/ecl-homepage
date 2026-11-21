@@ -232,7 +232,7 @@ article blockquote{background:#1f1b10;border-color:#4a3d12;color:#f3e8c8}
 }
 `;
 
-function layout({ title, description, canonical, jsonLd = [], body, ogType = 'article', image = '' }) {
+function layout({ title, description, canonical, jsonLd = [], body, ogType = 'article', image = '', active = 'guide' }) {
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -274,7 +274,8 @@ ${jsonLd.map((j) => `<script type="application/ld+json">${JSON.stringify(j).repl
   <nav class="nav">
     <a class="q" href="${S.quoteUrl}">💰 견적서</a>
     <a class="hide-m" href="/services">서비스</a>
-    <a class="on" href="${S.guidePath}">블로그</a>
+    <a${active === 'guide' ? ' class="on"' : ''} href="${S.guidePath}">블로그</a>
+    <a class="hide-m${active === 'jangji' ? ' on' : ''}" href="/jangji">장지 안내</a>
     <a class="hide-m" href="/testimonials">후기</a>
     <a class="btn btn-blue hide-m" href="${S.consultUrl}">상담문의</a>
   </nav>
@@ -282,7 +283,7 @@ ${jsonLd.map((j) => `<script type="application/ld+json">${JSON.stringify(j).repl
 ${body}
 <footer class="ft"><div class="ft-in">
   <div><b style="color:#fff">${esc(S.brand)}</b><br>고양·파주·김포 및 수도권 후불제 상조 · 요양병원 연계 · 방문요양</div>
-  <div>대표전화 <a href="tel:${S.phone}">${S.phone}</a> (24시간)<br><a href="/">홈</a> · <a href="${S.quoteUrl}">견적 계산기</a> · <a href="${S.guidePath}">블로그</a> · <a href="${S.consultUrl}">상담 신청</a></div>
+  <div>대표전화 <a href="tel:${S.phone}">${S.phone}</a> (24시간)<br><a href="/">홈</a> · <a href="${S.quoteUrl}">견적 계산기</a> · <a href="${S.guidePath}">블로그</a> · <a href="/jangji">장지 안내</a> · <a href="${S.consultUrl}">상담 신청</a></div>
 </div></footer>
 <div class="float"><a class="f-kakao" href="${S.kakao}" target="_blank" rel="noopener" aria-label="카카오톡 상담">톡</a><a class="f-call" href="tel:${S.phone}" aria-label="전화 상담">📞</a></div>
 </body>
@@ -391,10 +392,108 @@ function renderIndex(all) {
   return layout({ title: `${S.guideTitle} | ${S.brand}`, description: S.guideDescription, canonical, jsonLd, body, ogType: 'website', image: `${S.origin}/og-home.jpg` });
 }
 
+// ---------- 장지 안내 페이지 (/jangji) ----------
+const JANGJI_FAQ = [
+  { q: '봉안당과 수목장은 무엇이 다른가요?', a: '봉안당(봉안시설)은 화장한 유골함을 시설 안 안치단에 모시는 방식이고, 수목장 같은 자연장은 화장한 유골의 골분을 나무·화초·잔디 등의 아래나 주변에 묻는 방식입니다. 참배 방식과 관리 방법, 사용 기간 기준이 달라 가족이 성묘를 어떻게 할지부터 정하면 고르기 쉽습니다.' },
+  { q: '장지를 아직 못 정했는데 화장부터 해도 되나요?', a: '화장은 예약이 필요하고, 유골을 모실 곳은 그 뒤에 정해도 되는 경우가 많습니다. 다만 봉안시설마다 안치 가능한 시간과 필요한 서류가 있어, 발인 전에 후보를 두세 곳으로 좁혀 두면 일정이 흔들리지 않습니다.' },
+  { q: '이미 모신 분을 다른 곳으로 옮기려면 어떻게 하나요?', a: '매장한 시신이나 유골을 다른 분묘·봉안시설로 옮기거나 화장·자연장하는 일을 법에서는 개장이라고 합니다. 옮길 곳을 먼저 정한 뒤, 관할 시·군·구청에 필요한 허가·신고 절차와 서류를 확인하고 진행하세요. 지역마다 안내가 다를 수 있습니다.' },
+  { q: '시설이 정식으로 허가받은 곳인지 어떻게 확인하나요?', a: '보건복지부 e하늘 장사정보시스템에서 봉안·자연장지·묘지 시설을 조회할 수 있고, 계약 전에 설치 허가·신고 여부를 시설이나 관할 시·군·구청에 직접 확인하는 것이 안전합니다.' },
+  { q: '비용은 얼마나 드나요?', a: '시설 종류, 지역, 안치 위치, 사용 기간, 관리비 방식에 따라 크게 달라 한 가지 금액으로 말씀드리기 어렵습니다. 총액만 보지 말고 분양가에 관리비와 추가 비용(명패·안치 비용 등)이 포함되는지 항목별 견적서로 비교하세요.' },
+];
+
+function renderJangji(all) {
+  const canonical = `${S.origin}/jangji`;
+  const re = /봉안|수목|자연장|장지|이장|개장|묘지|납골|추모공원|잔디장/;
+  const related = all.filter((p) => re.test(`${p.title} ${p.keyword} ${(p.keywords || []).join(' ')} ${p.category || ''}`)).slice(0, 6);
+  const more = related.length >= 3 ? related : [...related, ...all.filter((p) => !related.includes(p))].slice(0, 4);
+  const title = '장지 안내: 봉안당·수목장·묘지 선택과 이장 절차 한눈에 | ' + S.brand;
+  const description = '화장 후 유골을 어디에 모실지 고민이라면. 봉안당·수목장(자연장)·묘지 비교, 장지 고르는 5가지 기준, 이미 모신 분의 개장·이장 절차, 계약 전 체크리스트를 정리했습니다.';
+  const jsonLd = [
+    { '@context': 'https://schema.org', '@type': 'WebPage', name: '장지 안내', description, url: canonical, isPartOf: { '@type': 'WebSite', name: S.brand, url: S.origin } },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '홈', item: `${S.origin}/` },
+      { '@type': 'ListItem', position: 2, name: '장지 안내', item: canonical } ] },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: JANGJI_FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  ];
+  const body = `
+<style>
+.jg-types{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin:6px 0 10px}
+.jg-t{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.jg-t i{font-style:normal;font-size:28px;display:block;margin-bottom:6px}
+.jg-t b{display:block;font-size:18px;letter-spacing:-.02em}
+.jg-t span{display:block;color:var(--muted);font-size:14px;line-height:1.7;margin-top:4px}
+.jg-steps{counter-reset:s;list-style:none;padding:0!important}
+.jg-steps li{counter-increment:s;position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px 14px 56px;margin:10px 0}
+.jg-steps li::before{content:counter(s);position:absolute;left:16px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;font-size:14px}
+.jg-chk{list-style:none;padding:0!important}
+.jg-chk li{position:relative;padding-left:30px;margin:8px 0}
+.jg-chk li::before{content:'☐';position:absolute;left:0;color:var(--blue);font-size:19px;line-height:1.5}
+</style>
+<section class="hero"><div class="wrap">
+  <span class="tag">장지 안내</span>
+  <h1>유골을 어디에 모실지 막막하다면,<br>장지 고르는 기준부터</h1>
+  <p>봉안당, 수목장(자연장), 묘지까지 방식별 차이와 고르는 기준, 이미 모신 분을 옮기는 개장·이장 절차를 한 곳에 정리했습니다.</p>
+  <p style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap"><a class="btn btn-gold" href="tel:${S.phone}">📞 장지 상담 ${S.phone}</a><a class="btn btn-ghost" href="${S.consultUrl}">상담 신청</a></p>
+</div></section>
+<main class="wrap"><article>
+<section id="types"><h2>장지는 크게 세 가지 방식입니다</h2>
+<div class="jg-types">
+  <div class="jg-t"><i>🏛️</i><b>봉안당 (봉안시설)</b><span>화장한 유골함을 시설 안 안치단에 모십니다. 실내에서 참배하기 편하고 날씨 영향이 적습니다.</span></div>
+  <div class="jg-t"><i>🌳</i><b>수목장 · 자연장</b><span>화장한 골분을 나무·화초·잔디 아래나 주변에 묻습니다. 자연 속에 모시고 싶은 가족이 찾습니다.</span></div>
+  <div class="jg-t"><i>⛰️</i><b>묘지 (매장)</b><span>유골을 땅에 묻고 봉분이나 평장으로 모십니다. 선산·종중 묘지를 이어 쓰는 가족에게 맞습니다.</span></div>
+</div>
+<table><thead><tr><th>구분</th><th>이런 가족에게</th><th>계약 전 확인할 점</th></tr></thead><tbody>
+<tr><td>봉안당</td><td>성묘가 잦고, 날씨와 관계없이 참배하고 싶은 가족</td><td>사용 기간·연장 방식, 관리비, 안치단 위치, 종교 제한, 사용권 승계</td></tr>
+<tr><td>수목장·자연장</td><td>자연 속에 모시고 관리 부담을 줄이고 싶은 가족</td><td>개인·부부·가족·공동 구역 구분, 표지 방식, 사용 기간, 허가·신고된 자연장지인지</td></tr>
+<tr><td>묘지(매장)</td><td>선산이나 종중 묘지를 이어 쓰는 가족</td><td>설치 허가·신고 대상 여부, 관리 주체, 훗날 개장·이장 계획</td></tr>
+</tbody></table></section>
+
+<section id="choose"><h2>장지 고르는 5가지 기준</h2>
+<ol class="jg-steps">
+<li><strong>성묘 거리와 빈도</strong> — 자주 찾을 수 있는 거리인지, 고령의 가족이 이동하기 편한지를 가장 먼저 봅니다.</li>
+<li><strong>비용은 총액으로</strong> — 분양가만 보지 말고 관리비, 안치·명패 비용, 사용 기간 연장 비용까지 항목별 견적서로 비교하세요.</li>
+<li><strong>사용 기간과 만료 후 처리</strong> — 기간이 끝나면 연장할 수 있는지, 연장하지 않으면 유골을 어떻게 하는지 계약서에서 확인합니다.</li>
+<li><strong>가족 합의</strong> — 형제자매, 종교, 부부 합장 여부를 계약 전에 맞춰 두면 훗날 이장 같은 부담이 줄어듭니다.</li>
+<li><strong>정식 허가 시설인지</strong> — 보건복지부 e하늘 장사정보시스템과 관할 시·군·구청에서 설치 허가·신고 여부를 확인하세요.</li>
+</ol></section>
+
+<section id="move"><h2>이미 모신 분을 옮기려면: 개장·이장 절차</h2>
+<p>법에서는 매장한 시신이나 유골을 다른 분묘·봉안시설로 옮기거나, 화장 또는 자연장하는 일을 <strong>개장</strong>이라고 부릅니다. 선산 정리, 묘지 이전, 봉안당 계약 만료 같은 이유로 많이 하며, 지역마다 안내가 조금씩 다르니 시작 전 관할 시·군·구청에 확인하세요.</p>
+<ol class="jg-steps">
+<li><strong>옮길 곳 정하기</strong> — 봉안당·자연장지·새 묘지 중 가족이 합의한 곳과 먼저 계약하거나 안치 일정을 확정합니다.</li>
+<li><strong>허가·신고 서류 확인</strong> — 현재 모신 곳을 관할하는 시·군·구청에 개장에 필요한 허가나 신고 서류를 문의합니다.</li>
+<li><strong>현재 시설 정리</strong> — 현재 봉안시설이나 묘지 관리 주체에 반출·해지 절차와 정산 내역을 확인합니다.</li>
+<li><strong>이장 진행과 신고</strong> — 옮긴 뒤 새 장소에서 필요한 신고를 마치고, 서류는 따로 보관해 둡니다. 매장이나 자연장을 한 경우에는 법정 기한 안에 신고해야 하니 기한도 함께 확인하세요.</li>
+</ol></section>
+
+${CTA.consult()}
+
+<section id="check"><h2>계약 전 체크리스트</h2>
+<ul class="jg-chk">
+<li>시설의 설치 허가·신고 여부를 e하늘 장사정보시스템 또는 관할 청에서 확인했다</li>
+<li>분양가, 관리비, 추가 비용이 항목별로 적힌 견적서를 받았다</li>
+<li>사용 기간, 연장 방식, 만료 후 유골 처리 방법을 계약서에서 확인했다</li>
+<li>사용권을 가족에게 승계하는 방법과 비용을 확인했다</li>
+<li>직접 방문해 위치, 주차, 참배 환경, 시설 관리 상태를 봤다</li>
+<li>환불·해약 조건과 시설 이전·폐업 시 처리 방법을 확인했다</li>
+<li>형제자매와 가족이 장지에 합의했다</li>
+</ul>
+<blockquote>한 번 정하면 바꾸기 어려운 결정이라, 급하게 계약하라는 안내에는 서두르지 않는 것이 좋습니다. 장례 중이라면 화장과 유골을 모실 곳의 일정이 맞는지만 먼저 확인하고, 나머지는 후보를 비교한 뒤 결정해도 늦지 않은 경우가 많습니다.</blockquote></section>
+
+<section id="faq" class="faq"><h2>자주 묻는 질문</h2>${JANGJI_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</section>
+
+${more.length ? `<section class="related"><h2>장지·장례 관련 글</h2><div class="cards">${more.map(card).join('')}</div></section>` : ''}
+<section class="srcs"><h2>참고한 자료</h2><ol><li><a href="https://www.law.go.kr/법령/장사등에관한법률" target="_blank" rel="noopener nofollow">장사 등에 관한 법률</a> <span>법제처 국가법령정보센터</span></li></ol></section>
+<p class="note">이 페이지는 일반적인 안내이며, 법령·허가 절차·비용은 지역과 시설에 따라 다르고 바뀔 수 있습니다. 정확한 내용은 관할 시·군·구청이나 해당 시설, 이음케어라이프 상담(☎ ${S.phone})으로 확인해 주세요.</p>
+</article></main>`;
+  return layout({ title, description, canonical, jsonLd, body, ogType: 'website', image: `${S.origin}/og-home.jpg`, active: 'jangji' });
+}
+
 function renderSitemap(all) {
   const today = new Date().toISOString().slice(0, 10);
   const items = [
     `<url><loc>${S.origin}${S.guidePath}</loc><lastmod>${all[0]?.publishedAt || today}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>`,
+    `<url><loc>${S.origin}/jangji</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`,
     ...all.map((p) => {
       const imgs = [ogImage(p), ...(p.sections || []).flatMap((x) => (x.gallery || []).map((g) => g.src))]
         .filter(Boolean).map((u) => (u.startsWith('http') ? u : `${S.origin}${u}`)).slice(0, 8);
@@ -424,6 +523,8 @@ export function renderAll() {
   for (const p of all) fs.writeFileSync(path.join(OUT_DIR, `${p.slug}.html`), renderPost(p, all));
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), renderIndex(all));
   fs.writeFileSync(path.join(OUT_DIR, 'rss.xml'), renderRss(all));
+  fs.mkdirSync(path.join(ROOT, 'jangji'), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, 'jangji', 'index.html'), renderJangji(all));
   // 홈페이지 메인에 보여줄 최신 글 목록
   fs.writeFileSync(
     path.join(OUT_DIR, 'latest.json'),

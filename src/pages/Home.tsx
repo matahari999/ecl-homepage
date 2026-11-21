@@ -238,63 +238,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── Section 2: YouTube | Naver Blog 2분할 ── */}
-      <section className="py-10 bg-[#0a0f1e]">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-            {/* 유튜브 카드 */}
-            <div className="bg-slate-900/70 border border-red-500/20 rounded-2xl p-6 flex flex-col gap-4 hover:border-red-500/40 transition-all">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/20 shrink-0">
-                  <svg className="w-5 h-5 fill-red-500" viewBox="0 0 24 24">
-                    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.108C19.524 3.545 12 3.545 12 3.545s-7.525 0-9.387.51A3.003 3.003 0 0 0 .502 6.163C0 8.025 0 12 0 12s0 3.975.502 5.837a3.003 3.003 0 0 0 2.11 2.108c1.862.51 9.387.51 9.387.51s7.524 0 9.387-.51a3.003 3.003 0 0 0 2.11-2.108C24 15.975 24 12 24 12s0-3.975-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                </div>
-                <div>
-                  <div className="text-red-400 text-xs font-black uppercase tracking-widest">YouTube</div>
-                  <div className="text-white font-black text-base">신사방TV</div>
-                </div>
-              </div>
-              <p className="text-slate-400 text-sm leading-relaxed flex-1">
-                신사방TV 회원 여러분께 드리는 이음케어라이프만의 특별한 약속입니다.<br/>
-                <span className="text-slate-500 text-xs">신사방TV를 통해 만나게 된 소중한 인연, 더욱 특별한 케어 서비스로 보답하겠습니다.</span>
-              </p>
-              <a href="https://www.youtube.com/@sinsabangTV" target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-3 bg-[#e53e3e] hover:bg-[#c53030] text-white rounded-xl font-bold text-sm transition-all active:scale-95">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.108C19.524 3.545 12 3.545 12 3.545s-7.525 0-9.387.51A3.003 3.003 0 0 0 .502 6.163C0 8.025 0 12 0 12s0 3.975.502 5.837a3.003 3.003 0 0 0 2.11 2.108c1.862.51 9.387.51 9.387.51s7.524 0 9.387-.51a3.003 3.003 0 0 0 2.11-2.108C24 15.975 24 12 24 12s0-3.975-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                신사방TV 유튜브 채널 바로가기
-              </a>
-            </div>
-
-            {/* 네이버 블로그 카드 */}
-            <div className="bg-slate-900/70 border border-green-500/20 rounded-2xl p-6 flex flex-col gap-4 hover:border-green-500/40 transition-all">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center border border-green-500/20 shrink-0">
-                  <svg className="w-5 h-5 fill-[#03C75A]" viewBox="0 0 24 24"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>
-                </div>
-                <div>
-                  <div className="text-green-400 text-xs font-black uppercase tracking-widest">Naver Blog</div>
-                  <div className="text-white font-black text-base">이음케어 공식 블로그</div>
-                </div>
-              </div>
-              <p className="text-slate-400 text-sm leading-relaxed flex-1">
-                후불제 상조, 요양병원, 방문요양 등 시니어 케어에 꼭 필요한 최신 정보를 블로그에서 먼저 확인하세요.<br/>
-                <span className="text-slate-500 text-xs">MOU 협약 소식 및 서비스 안내도 블로그에서 만나보실 수 있습니다.</span>
-              </p>
-              <a href="https://blog.naver.com/sinabro7500" target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-3 bg-[#03C75A] hover:bg-[#02a84b] text-white rounded-xl font-bold text-sm transition-all active:scale-95">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>
-                네이버 블로그 방문하기
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       {/* ── Section 3: Core Services ── */}
       <section className="py-32 bg-[#0a0f1e]">
         <div className="max-w-7xl mx-auto px-4">

@@ -61,7 +61,15 @@ async function naverConsole() {
   const profile = myEdge ? path.join(process.env.LOCALAPPDATA, 'Microsoft', 'Edge', 'User Data') : path.join(ROOT, '.seo-browser-profile');
   if (myEdge) console.log('[브라우저] 평소 쓰시는 엣지 프로필로 엽니다. (엣지 창이 모두 닫혀 있어야 합니다)');
   const ctx = await chromium.launchPersistentContext(profile, { channel: 'msedge', headless: false, viewport: { width: 1280, height: 900 }, args: myEdge ? ['--profile-directory=Default'] : [] });
-  const page = ctx.pages()[0] || (await ctx.newPage());
+  let closed = false;
+  ctx.on('close', () => { closed = true; });
+  let page = ctx.pages()[0] || (await ctx.newPage());
+  // 탭이 닫혀도 브라우저가 살아 있으면 새 탭으로 이어서 진행
+  const ensurePage = async () => {
+    if (closed) throw new Error('엣지 창이 닫혀서 중단했습니다. 작업이 끝날 때까지 창을 닫지 말아 주세요.');
+    if (page.isClosed()) page = ctx.pages().find((p) => !p.isClosed()) || (await ctx.newPage());
+    return page;
+  };
   const shotDir = path.join(ROOT, '.seo-shots');
   fs.mkdirSync(shotDir, { recursive: true });
   const shot = (name) => page.screenshot({ path: path.join(shotDir, `${Date.now()}-${name}.png`) }).catch(() => {});
@@ -77,6 +85,7 @@ async function naverConsole() {
   console.log('[네이버] 로그인 확인 ✓');
 
   const fillAndSubmit = async (pageUrl, value, label) => {
+    await ensurePage();
     await page.goto(pageUrl, { waitUntil: 'networkidle' });
     const input = page.locator('main input[type="text"], form input[type="text"], input[type="text"]').first();
     await input.waitFor({ timeout: 15000 });
@@ -98,6 +107,7 @@ async function naverConsole() {
       await fillAndSubmit(`https://searchadvisor.naver.com/console/site/request/sitemap?site=${SITE_PARAM}`, `${ORIGIN}/${sm}`, '사이트맵');
     } catch (e) {
       console.log(`[네이버] 사이트맵 ${sm} 실패: ${e.message.split('\n')[0]}`);
+      if (closed) return;
       await shot('sitemap-error');
     }
   }
@@ -107,12 +117,13 @@ async function naverConsole() {
       await fillAndSubmit(`https://searchadvisor.naver.com/console/site/request/crawl?site=${SITE_PARAM}`, u, '수집요청');
     } catch (e) {
       console.log(`[네이버] 수집요청 ${u} 실패: ${e.message.split('\n')[0]}`);
+      if (closed) return;
       await shot('crawl-error');
     }
   }
   console.log(`\n완료. 화면 캡처는 .seo-shots 폴더에 있습니다. 창은 10초 뒤 닫힙니다.`);
-  await page.waitForTimeout(10000);
-  await ctx.close();
+  await new Promise((r) => setTimeout(r, 10000));
+  await ctx.close().catch(() => {});
 }
 
 await indexNow();

@@ -5,3 +5,5 @@ dist/
 .DS_Store
 vite.config.ts.timestamp*
 _guide/.brief.json
+.seo-browser-profile/
+.seo-shots/

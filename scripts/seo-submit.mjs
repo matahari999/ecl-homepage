@@ -4,6 +4,7 @@
 //   npm run seo:submit                → IndexNow 알림 + 네이버 사이트맵 제출 + 웹 페이지 수집 요청
 //   npm run seo:submit -- /jangji /quote   → 지정한 주소만 수집 요청
 //   npm run seo:submit -- --indexnow-only  → 브라우저 없이 IndexNow 알림만
+//   npm run seo:submit -- --my-edge        → 평소 엣지(로그인된 프로필) 사용, 엣지 창을 모두 닫고 실행
 //
 // 처음 실행하면 엣지 창이 열리고 네이버 로그인 화면이 나옵니다.
 // 로그인은 직접 해 주세요(비밀번호는 스크립트가 다루지 않습니다).
@@ -55,8 +56,11 @@ async function indexNow() {
 // 2) 네이버 서치어드바이저 화면 자동 입력 (Playwright + 설치된 엣지)
 async function naverConsole() {
   const { chromium } = await import('playwright-core');
-  const profile = path.join(ROOT, '.seo-browser-profile');
-  const ctx = await chromium.launchPersistentContext(profile, { channel: 'msedge', headless: false, viewport: { width: 1280, height: 900 } });
+  // --my-edge: 평소 쓰는 엣지(이미 네이버 로그인된 프로필)를 그대로 사용. 엣지 창을 모두 닫아야 함
+  const myEdge = args.includes('--my-edge') && process.env.LOCALAPPDATA;
+  const profile = myEdge ? path.join(process.env.LOCALAPPDATA, 'Microsoft', 'Edge', 'User Data') : path.join(ROOT, '.seo-browser-profile');
+  if (myEdge) console.log('[브라우저] 평소 쓰시는 엣지 프로필로 엽니다. (엣지 창이 모두 닫혀 있어야 합니다)');
+  const ctx = await chromium.launchPersistentContext(profile, { channel: 'msedge', headless: false, viewport: { width: 1280, height: 900 }, args: myEdge ? ['--profile-directory=Default'] : [] });
   const page = ctx.pages()[0] || (await ctx.newPage());
   const shotDir = path.join(ROOT, '.seo-shots');
   fs.mkdirSync(shotDir, { recursive: true });

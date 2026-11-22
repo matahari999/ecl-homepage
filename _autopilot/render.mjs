@@ -282,7 +282,7 @@ ${jsonLd.map((j) => `<script type="application/ld+json">${JSON.stringify(j).repl
 </div></header>
 ${body}
 <footer class="ft"><div class="ft-in">
-  <div><b style="color:#fff">${esc(S.brand)}</b><br>고양·파주·김포 및 수도권 후불제 상조 · 요양병원 연계 · 방문요양</div>
+  <div><b style="color:#fff">${esc(S.brand)}</b><br>고양·파주·김포 및 수도권 후불제 상조 · 장지 분양 · 요양병원 연계 · 방문요양</div>
   <div>대표전화 <a href="tel:${S.phone}">${S.phone}</a> (24시간)<br><a href="/">홈</a> · <a href="${S.quoteUrl}">견적 계산기</a> · <a href="${S.guidePath}">블로그</a> · <a href="/jangji">장지 안내</a> · <a href="${S.consultUrl}">상담 신청</a></div>
 </div></footer>
 <div class="float"><a class="f-kakao" href="${S.kakao}" target="_blank" rel="noopener" aria-label="카카오톡 상담">톡</a><a class="f-call" href="tel:${S.phone}" aria-label="전화 상담">📞</a></div>
@@ -410,6 +410,7 @@ const JANGJI_FAQ = [
   { q: '서울시립 납골당(봉안당)에 지금 모실 수 있나요?', a: '서울시립 봉안시설은 안치 여건이 부족해 2022년 4월 25일부터 신규 봉안을 받지 않습니다. 이미 배우자가 시립 봉안시설에 계신 경우의 부부합골만 가능하니, 새로 모실 곳은 사설 봉안당이나 자연장지 가운데서 고르셔야 합니다.' },
   { q: '서울추모공원은 납골당인가요?', a: '아닙니다. 서울추모공원(서초구)은 서울시가 운영하는 화장시설입니다. 화장 후 유골을 모실 봉안당·수목장·자연장지는 따로 정해야 하며, 고양·파주 쪽에 모실 계획이라면 고양의 서울시립승화원에서 화장하는 편이 이동이 짧습니다.' },
   { q: '서현추모공원은 어디에 있나요?', a: '서현공원(서현추모공원)은 경기도 파주시 파주읍 명봉산로 277에 있는 봉안시설입니다(☎ 031-947-4114). 고양 서울시립승화원에서 화장한 뒤 같은 날 봉안까지 이어서 진행하는 경우가 많습니다.' },
+  { q: '이음케어라이프에서 봉안당·수목장 분양도 하나요?', a: '네. 봉안당·수목장 분양을 상담부터 계약까지 직접 진행합니다. 고인 주소지와 예산, 성묘 방식, 부부·가족 합장 여부를 알려주시면 맞는 후보와 항목별 비용을 비교해 안내하고, 결정하시면 분양 계약과 안치 일정까지 이어서 진행합니다(☎ 1588-9012).' },
   { q: '비용은 얼마나 드나요?', a: '시설 종류, 지역, 안치 위치, 사용 기간, 관리비 방식에 따라 크게 달라 한 가지 금액으로 말씀드리기 어렵습니다. 총액만 보지 말고 분양가에 관리비와 추가 비용(명패·안치 비용 등)이 포함되는지 항목별 견적서로 비교하세요.' },
 ];
 
@@ -488,7 +489,7 @@ function renderJangji(all) {
   const related = all.filter((p) => re.test(`${p.title} ${p.keyword} ${(p.keywords || []).join(' ')} ${p.category || ''}`)).slice(0, 6);
   const more = related.length >= 3 ? related : [...related, ...all.filter((p) => !related.includes(p))].slice(0, 4);
   const title = '납골당·수목장·추모공원 안내: 서울·경기·일산·파주 장지 비교와 비용 | ' + S.brand;
-  const description = '납골당(봉안당)·수목장·추모공원·공원묘지를 한눈에. 일산·고양·파주·서울·경기 주요 장지의 위치와 비용, 가족납골당 고르는 법, 이장 절차까지 정리했고, 상담하시면 담당 직원이 장례식장으로 찾아가 직접 안내합니다.';
+  const description = '납골당(봉안당)·수목장·추모공원·공원묘지를 한눈에. 일산·고양·파주·서울·경기 주요 장지의 위치와 비용, 가족납골당 고르는 법, 이장 절차까지 정리했습니다. 봉안당·수목장 분양도 상담부터 계약까지 진행하며, 상담하시면 담당 직원이 장례식장으로 찾아가 직접 안내합니다.';
   const jsonLd = [
     { '@context': 'https://schema.org', '@type': 'WebPage', name: '장지 안내', description, url: canonical, isPartOf: { '@type': 'WebSite', name: S.brand, url: S.origin } },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
@@ -532,8 +533,8 @@ function renderJangji(all) {
 <section class="hero"><div class="wrap">
   <span class="tag">장지 안내</span>
   <h1>납골당·수목장·추모공원,<br>어디에 모실지 막막하다면</h1>
-  <p>일산·고양·파주부터 서울·경기까지 납골당(봉안당), 수목장, 추모공원, 공원묘지의 위치와 비용, 가족납골당 고르는 법, 이미 모신 분을 옮기는 개장·이장 절차를 한 곳에 정리했습니다.</p>
-  <p style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap"><a class="btn btn-gold" href="tel:${S.phone}">📞 장지 상담 ${S.phone}</a><a class="btn btn-ghost" href="${S.consultUrl}">상담 신청</a></p>
+  <p>일산·고양·파주부터 서울·경기까지 납골당(봉안당), 수목장, 추모공원, 공원묘지의 위치와 비용, 가족납골당 고르는 법, 이미 모신 분을 옮기는 개장·이장 절차를 한 곳에 정리했습니다. 이음케어라이프는 <b style="color:#fcd34d">봉안당·수목장 분양</b>도 상담부터 계약까지 직접 진행합니다.</p>
+  <p style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap"><a class="btn btn-gold" href="tel:${S.phone}">📞 장지·분양 상담 ${S.phone}</a><a class="btn btn-ghost" href="${S.consultUrl}">상담 신청</a></p>
   <p style="margin-top:10px;font-size:15px">🚗 상담이 접수되면 <strong>담당 직원이 장례식장으로 직접 찾아가</strong> 장지를 설명드립니다.</p>
 </div></section>
 <main class="wrap"><article>
@@ -543,7 +544,7 @@ function renderJangji(all) {
 <li><b>① 전화·카톡 상담</b>고인 주소지, 종교, 성묘 거리, 예산 등 가족의 조건을 여쭙니다.</li>
 <li><b>② 장례식장 방문</b>담당 직원이 빈소로 찾아가 상주·가족분들을 직접 뵙습니다.</li>
 <li><b>③ 맞춤 비교 설명</b>조건에 맞는 봉안당·수목장·자연장 후보의 위치, 비용, 사용 기간, 이용 자격을 자료로 비교해 드립니다.</li>
-<li><b>④ 일정까지 정리</b>화장 시간과 안치 가능 시간, 필요한 서류를 맞춰 발인 날 동선이 흔들리지 않게 돕습니다.</li>
+<li><b>④ 분양 계약·일정 정리</b>가족이 장지를 정하시면 분양 계약까지 진행하고, 화장 시간과 안치 가능 시간, 필요한 서류를 맞춰 발인 날 동선이 흔들리지 않게 돕습니다.</li>
 </ol>
 <p style="display:flex;gap:8px;flex-wrap:wrap;margin:0"><a class="btn btn-gold" href="tel:${S.phone}">📞 방문 상담 요청 ${S.phone}</a><a class="btn btn-ghost" href="${S.consultUrl}">상담 신청서 남기기</a></p>
 </section>
@@ -613,12 +614,12 @@ ${['고양·일산', '파주', '서울'].map((rg) => `<h3 class="jg-rg">${({ '�
 <li><strong>이장 진행과 신고</strong> — 옮긴 뒤 새 장소에서 필요한 신고를 마치고, 서류는 따로 보관해 둡니다. 매장이나 자연장을 한 경우에는 법정 기한 안에 신고해야 하니 기한도 함께 확인하세요.</li>
 </ol></section>
 
-<section id="ecl"><h2>후불제 상조와 장지 상담을 한 번에</h2>
-<p>이음케어라이프는 일산새마을금고·고양누리새마을금고·파주중앙새마을금고·송포농협 MOU 협약 지정시행사로, 선불금 없는 <a href="/services/postpaid-mutual-aid">후불제 상조</a>를 진행합니다. 장례를 맡겨 주시면 화장 예약과 발인 동선, 장지 안치 일정까지 한 흐름으로 맞춰 드리고, 장지만 따로 알아보시는 경우에도 담당 직원이 장례식장으로 찾아가 비교 설명해 드립니다.</p>
+<section id="ecl"><h2>후불제 상조와 장지 분양을 한 번에</h2>
+<p>이음케어라이프는 일산새마을금고·고양누리새마을금고·파주중앙새마을금고·송포농협 MOU 협약 지정시행사로, 선불금 없는 <a href="/services/postpaid-mutual-aid">후불제 상조</a>를 진행합니다. 장례를 맡겨 주시면 화장 예약과 발인 동선, 장지 안치 일정까지 한 흐름으로 맞춰 드립니다. <strong>봉안당·수목장 분양</strong>도 상담부터 계약까지 직접 진행하며, 장지만 따로 알아보시는 경우에도 담당 직원이 장례식장으로 찾아가 비교 설명해 드립니다.</p>
 <table><thead><tr><th>이런 분께</th><th>도와드리는 일</th></tr></thead><tbody>
-<tr><td>장례 중인데 장지를 아직 못 정한 가족</td><td>빈소 방문 상담, 조건별 장지 후보 비교, 화장·안치 시간 조율</td></tr>
-<tr><td>부모님 장례를 미리 준비하는 가족</td><td><a href="${S.quoteUrl}">맞춤 견적서</a>로 장례 비용을 먼저 확인하고, 봉안당·수목장 후보를 미리 좁혀 두기</td></tr>
-<tr><td>선산·묘지를 정리하려는 가족</td><td>개장(이장) 절차와 서류 안내, 옮길 봉안당·수목장 비교</td></tr>
+<tr><td>장례 중인데 장지를 아직 못 정한 가족</td><td>빈소 방문 상담, 조건별 장지 후보 비교, 분양 계약, 화장·안치 시간 조율</td></tr>
+<tr><td>부모님 장례를 미리 준비하는 가족</td><td><a href="${S.quoteUrl}">맞춤 견적서</a>로 장례 비용을 먼저 확인하고, 봉안당·수목장 후보를 미리 좁히고 원하시면 미리 분양 계약</td></tr>
+<tr><td>선산·묘지를 정리하려는 가족</td><td>개장(이장) 절차와 서류 안내, 옮길 봉안당·수목장 비교와 분양</td></tr>
 <tr><td>국가유공자·참전용사 가족</td><td>국립묘지 안장 대상 확인 안내, 안장 전 임시 안치 방법 상담</td></tr>
 </tbody></table></section>
 

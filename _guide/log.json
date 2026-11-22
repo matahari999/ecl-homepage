@@ -440,5 +440,18 @@
       "news-20261118-sanbunjang-where-allowed",
       "ilsan-paik-nursing-hospital-3day-case"
     ]
+  },
+  {
+    "date": "2026-11-23",
+    "keyword": "장례·상조 업계 최신 소식",
+    "source": "news",
+    "slug": "news-20261123-seoul-cremation-capacity",
+    "title": "서울시립승화원 화장 하루 131건으로 확대, 3일장 화장 예약 확인 4가지",
+    "gsc": null,
+    "linkedFrom": [
+      "funeral-3-day-procedure",
+      "ewha-mokdong-transfer-3day-case",
+      "paju-hanbit-buddhist-father-3day-case"
+    ]
   }
 ]

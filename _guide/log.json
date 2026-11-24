@@ -453,5 +453,18 @@
       "ewha-mokdong-transfer-3day-case",
       "paju-hanbit-buddhist-father-3day-case"
     ]
+  },
+  {
+    "date": "2026-11-25",
+    "keyword": "가족장 작은 장례 절차",
+    "source": "seed",
+    "slug": "family-funeral-small-procedure",
+    "title": "가족장 작은 장례 절차: 부고 범위부터 발인까지 6단계",
+    "gsc": null,
+    "linkedFrom": [
+      "ewha-mokdong-transfer-3day-case",
+      "funeral-3-day-procedure",
+      "paju-hanbit-buddhist-father-3day-case"
+    ]
   }
 ]

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="일반 장례, 가족장, 무빈소 장례를 부고 범위, 빈소, 조문, 일정, 입관과 화장 항목으로 비교한 표">
+<style>
+  .t{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  @keyframes fade{0%,100%{opacity:1}50%{opacity:.82}}
+  @keyframes glow{0%,100%{opacity:.55}50%{opacity:1}}
+  .r{animation:fade 8s ease-in-out infinite}
+  .r1{animation-delay:.2s}.r2{animation-delay:.6s}.r3{animation-delay:1s}.r4{animation-delay:1.4s}.r5{animation-delay:1.8s}
+  .hl{animation:glow 4s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}.r{opacity:1}}
+</style>
+<rect width="1200" height="640" fill="#101734"/>
+<text x="600" y="58" class="t" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">일반 장례 · 가족장 · 무빈소, 무엇이 다른가</text>
+<g class="t" font-size="26" font-weight="800" text-anchor="middle">
+  <text x="400" y="132" fill="#cbd5e1">일반 장례</text>
+  <text x="720" y="132" fill="#fcd34d">가족장</text>
+  <text x="1040" y="132" fill="#cbd5e1">무빈소</text>
+</g>
+<g class="t" font-size="23">
+  <g class="r r1"><rect x="30" y="152" width="1140" height="84" rx="10" fill="#1b2350"/>
+    <text x="60" y="202" fill="#a5b4fc" font-weight="700">부고 범위</text>
+    <text x="400" y="202" fill="#e2e8f0" text-anchor="middle">지인·직장까지 넓게</text>
+    <text x="720" y="202" fill="#ffffff" text-anchor="middle">가족·가까운 친척만</text>
+    <text x="1040" y="202" fill="#e2e8f0" text-anchor="middle">가족만, 사후 알림</text></g>
+  <g class="r r2"><rect x="30" y="244" width="1140" height="84" rx="10" fill="#161d44"/>
+    <text x="60" y="294" fill="#a5b4fc" font-weight="700">빈소</text>
+    <text x="400" y="294" fill="#e2e8f0" text-anchor="middle">조문객 수에 맞춘 크기</text>
+    <text x="720" y="294" fill="#ffffff" text-anchor="middle">작은 빈소 또는 가족실</text>
+    <text x="1040" y="294" fill="#e2e8f0" text-anchor="middle">없음(안치실만)</text></g>
+  <g class="r r3"><rect x="30" y="336" width="1140" height="84" rx="10" fill="#1b2350"/>
+    <text x="60" y="386" fill="#a5b4fc" font-weight="700">조문·조의금</text>
+    <text x="400" y="386" fill="#e2e8f0" text-anchor="middle">받음</text>
+    <text x="720" y="386" fill="#ffffff" text-anchor="middle">가족이 미리 정함</text>
+    <text x="1040" y="386" fill="#e2e8f0" text-anchor="middle">대개 사양</text></g>
+  <g class="r r4"><rect x="30" y="428" width="1140" height="84" rx="10" fill="#161d44"/>
+    <text x="60" y="478" fill="#a5b4fc" font-weight="700">일정</text>
+    <text x="400" y="478" fill="#e2e8f0" text-anchor="middle">보통 3일장</text>
+    <text x="720" y="478" fill="#ffffff" text-anchor="middle">2일장 또는 3일장</text>
+    <text x="1040" y="478" fill="#e2e8f0" text-anchor="middle">보통 2일장</text></g>
+  <g class="r r5"><rect x="30" y="520" width="1140" height="84" rx="10" fill="#1b2350"/>
+    <text x="60" y="570" fill="#a5b4fc" font-weight="700">입관·화장</text>
+    <text x="400" y="570" fill="#e2e8f0" text-anchor="middle">동일</text>
+    <text x="720" y="570" fill="#ffffff" text-anchor="middle">동일</text>
+    <text x="1040" y="570" fill="#e2e8f0" text-anchor="middle">동일</text></g>
+</g>
+<rect class="hl" x="560" y="90" width="320" height="530" rx="16" fill="none" stroke="#fcd34d" stroke-width="3"/>
+</svg>
